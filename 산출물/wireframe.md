@@ -22,3 +22,7 @@
 
   ![증상](wireframe.assets/증상.PNG) 
 
+- 코로나
+
+  ![코로나](wireframe.assets/코로나.PNG) 
+
