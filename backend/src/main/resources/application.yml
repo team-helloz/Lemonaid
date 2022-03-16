@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://j6d108.p.ssafy.io:3306/lemonaiddb?serverTimezone=Asia/Seoul
+    username: jingon
+    password: ssafyd108!
