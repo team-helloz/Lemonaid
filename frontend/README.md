@@ -4,7 +4,7 @@
 모든 과정은 Visual Stuido Code 기준으로 설명되어 있습니다.
 ```
 
-<br>
+
 
 ### 로컬에서 실행 방법
 
@@ -14,3 +14,13 @@ cd frontend
 npm i
 npm start
 ```
+
+
+
+### 라이브러리
+
+```
+npm i react-router-dom@5.3.0
+npm i @types/react-redux
+```
+
