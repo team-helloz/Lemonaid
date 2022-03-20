@@ -1,0 +1,15 @@
+.group-box {
+  background-color: gray;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.body-part-group {
+  list-style: none;
+}
+
+.body-part-group li {
+  float: left;
+  margin: 0 20px;
+}
