@@ -1,6 +1,5 @@
-.group-box {
+.part-group-box {
   background-color: gray;
-  height: 50px;
 }
 
 .body-part-group {
@@ -10,4 +9,23 @@
 .body-part-group li {
   float: left;
   margin: 0 20px;
+}
+
+.part-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(121, 164, 189);
+  border: none;
+  padding: 5px 0;
+  width: 90px;
+}
+
+.part-btn p {
+  margin: 0 0 0 10px;
+}
+
+.symptom-group-box {
+  height: 200px;
+  background-color: gray;
 }
