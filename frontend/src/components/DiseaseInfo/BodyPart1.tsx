@@ -1,4 +1,5 @@
 import "./BodyPart.css";
+import PartIcon from "./PartIcon"
 
 export default function BodyPart1() {
   return (
@@ -6,6 +7,7 @@ export default function BodyPart1() {
       <ul className="body-part-group">
         <li>
           <button>
+            <PartIcon size={40} color="black" icon="head"/>
             머리
           </button>
         </li>
