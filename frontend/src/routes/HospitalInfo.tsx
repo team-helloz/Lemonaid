@@ -12,6 +12,7 @@ export default function HospotalInfo() {
         <p>홈</p>
       </div>
       <h1>의료기관 조회</h1>
+      <div className="map"></div>
     </div>
   );
 }
