@@ -2,14 +2,16 @@ import { iconName, IconSet } from "./constants"
 
 interface PartIconProps {
   icon: iconName;
-  size: number;
+  h: number;
+  w: number;
   color?: string;
 }
 
-const PartIcon = ({ icon, size, color }: PartIconProps) => {
+const PartIcon = ({ icon, h, w, color }: PartIconProps) => {
   return (
     <svg
-      height={size}
+      height={h}
+      width={w}
       viewBox={IconSet[icon].viewBox}
       fill={color}
       xmlns="http://www.w3.org/2000/svg"
