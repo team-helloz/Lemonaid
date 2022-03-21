@@ -1,9 +1,20 @@
+// Components
 import NavBar from "../components/NavBar";
 import BodyPart from "../components/DiseaseInfo/BodyPart";
+import Symptom from "../components/DiseaseInfo/Symptom";
+import DiseaseList from "../components/DiseaseInfo/DiseaseList";
+// Type
+import { iconName } from "../components/DiseaseInfo/constants";
 
 export default function DiseaseInfo() {
 
-  const PartOne = [
+  type Part = {
+    id: number,
+    eng: iconName,
+    kor: string,
+  }
+
+  const partOne: Part[] = [
     { id: 1, eng: "head", kor: "머리" },
     { id: 2, eng: "neck", kor: "목" },
     { id: 3, eng: "cest", kor: "가슴" },
@@ -16,7 +27,7 @@ export default function DiseaseInfo() {
     { id: 10, eng: "ear", kor: "귀" },
   ]
 
-  const PartTwo = [
+  const partTwo: Part[] = [
     { id: 1, eng: "nose", kor: "코" },
     { id: 1, eng: "mouth", kor: "입" },
     { id: 1, eng: "body", kor: "전신" },
@@ -33,9 +44,15 @@ export default function DiseaseInfo() {
     <div>
       <NavBar />
       <h1>증상/질병 조회</h1>
-      <BodyPart parts={PartOne}/>
+      <BodyPart parts={partOne}/>
       <br />
-      <BodyPart parts={PartTwo}/>
+      <BodyPart parts={partTwo}/>
+      <br />
+      <p>증상 : </p>
+      <Symptom />
+      <br />
+      <hr />
+      <DiseaseList />
     </div>
   );
 }
