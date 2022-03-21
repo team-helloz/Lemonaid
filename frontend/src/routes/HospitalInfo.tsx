@@ -1,4 +1,6 @@
 import { useHistory } from "react-router-dom";
+import "./HospitalInfo.css";
+import HospitalMap from "../components/HospitalInfo/HospitalMap";
 
 export default function HospotalInfo() {
   const history = useHistory();
@@ -8,11 +10,11 @@ export default function HospotalInfo() {
   }
   return (
     <div>
-      <div onClick={routeHome}>
-        <p>홈</p>
+      <div className="hos-home" onClick={routeHome}>
+        홈으로 이동
       </div>
-      <h1>의료기관 조회</h1>
-      <div className="map"></div>
+      <div className="hos-list">sdfsdsdf</div>
+      <HospitalMap />
     </div>
   );
 }
