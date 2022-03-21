@@ -1,8 +1,6 @@
 .group-box {
   background-color: gray;
   height: 50px;
-  display: flex;
-  justify-content: center;
 }
 
 .body-part-group {
