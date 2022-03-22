@@ -5,22 +5,50 @@
 
 .hos-home {
   background: black;
+
   color: white;
-  width: 10vw;
+  width: 15vw;
   position: absolute;
-  z-index: 2;
   cursor: pointer;
   height: 5vh;
   text-align: center;
   bottom: 0;
 }
 
-.hos-list {
+.hos-right {
   position: absolute;
-  background: blue;
   z-index: 2;
-  width: 20vw;
-  height: 98vh;
-  right: 1vw;
-  top: 1vh;
+  background: rgb(215, 215, 255);
+  width: 15vw;
+  height: 100vh;
+  right: 0;
+  top: 0;
+}
+
+.hos-left {
+  position: absolute;
+  z-index: 2;
+  background: rgb(150, 150, 245);
+  width: 15vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+.hos-search {
+  background: rgb(211, 160, 65);
+  width: 15vw;
+  height: 5vh;
+  cursor: pointer;
+}
+
+.hos-center {
+  position: absolute;
+  z-index: 2;
+  background: rgb(100, 218, 100);
+  width: 50vw;
+  height: 10vh;
+  left: 50%;
+  bottom: 5%;
+  transform: translate(-50%,0%);
 }
