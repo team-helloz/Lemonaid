@@ -4,3 +4,15 @@ spring:
     url: jdbc:mysql://j6d108.p.ssafy.io:3306/lemonaiddb?serverTimezone=Asia/Seoul
     username: jingon
     password: ssafyd108!
+  jpa: #database
+    show-sql: true #show hibernate sql
+    hibernate:
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      ddl-auto: update
+    properties:
+      hibernate:
+        ddl-auto: update #db auto update
+        dialect: org.hibernate.dialect.MySQL57Dialect
+        format_sql: true #pretty formatting
