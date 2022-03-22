@@ -4,11 +4,11 @@ import "./DrugIdentifier.css";
 interface DrugIdentifierProps {
   page: number;
   updatePage: (arg: number) => void;
-  updateIdentifier: (arg: string) => void;
+  moveDrugList: (arg: string) => void;
 }
 
 export default function DrugIdentifier(props: DrugIdentifierProps) {
-  const { page, updatePage, updateIdentifier } = props;
+  const { page, updatePage, moveDrugList } = props;
 
   const [value, setValue] = useState("");
 
@@ -21,7 +21,6 @@ export default function DrugIdentifier(props: DrugIdentifierProps) {
 
   const onClickBack = () => {
     updatePage(page - 1);
-    updateIdentifier("");
   };
 
   const onClickInit = () => {
@@ -29,13 +28,11 @@ export default function DrugIdentifier(props: DrugIdentifierProps) {
   };
 
   const onClickDontKnow = () => {
-    updatePage(page + 1);
-    updateIdentifier("식별문자모름");
+    moveDrugList("식별문자모름");
   };
 
   const onClickIdentifier = () => {
-    updatePage(page + 1);
-    updateIdentifier(value);
+    moveDrugList(value);
   };
 
   return (
