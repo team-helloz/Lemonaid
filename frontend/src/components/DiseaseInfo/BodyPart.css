@@ -8,24 +8,23 @@
 
 .body-part-group li {
   float: left;
-  margin: 0 20px;
 }
 
 .part-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(121, 164, 189);
+  background-color: rgb(151, 204, 235);
   border: none;
   padding: 5px 0;
   width: 90px;
 }
 
-.part-btn p {
-  margin: 0 0 0 10px;
+.part-btn:hover {
+  background-color: rgb(65, 126, 161);
+  cursor: pointer;
 }
 
-.symptom-group-box {
-  height: 200px;
-  background-color: gray;
+.part-btn p {
+  margin: 0 0 0 10px;
 }
