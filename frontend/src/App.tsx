@@ -5,6 +5,7 @@ import Home from "./routes/Home";
 import HospotalInfo from "./routes/HospitalInfo";
 import DrugInfo from "./routes/DrugInfo";
 import DiseaseInfo from "./routes/DiseaseInfo";
+import DiseaseDetail from "./components/DiseaseInfo/DiseaseDetail";
 import CovidInfo from "./routes/CovidInfo";
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       <Route path="/" exact component={Home} />
       <Route path="/hospital" component={HospotalInfo} />
       <Route path="/drug" component={DrugInfo} />
-      <Route path="/disease" component={DiseaseInfo} />
+      <Route path="/disease" component={DiseaseInfo} exact />
+      <Route path="/disease/:diseasename" component={DiseaseDetail} />
       <Route path="/covid" component={CovidInfo} />
     </Router>
   );

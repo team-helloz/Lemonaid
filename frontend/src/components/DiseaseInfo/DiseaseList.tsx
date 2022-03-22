@@ -1,7 +1,16 @@
+// Router
+import { useHistory } from "react-router-dom"
+// Style
 import "./BodyPart.css";
 
 
 export default function DiseaseList() {
+
+  const history = useHistory();
+
+  function routeDetail(diseasename: string) {
+    history.push(`/disease/${diseasename}`)
+  }
 
   const diseases = [
     {
@@ -35,7 +44,7 @@ export default function DiseaseList() {
       {diseases.map((disease, i: number) => (
         <div key={i}>
           <div>
-            <h3>{disease.name}</h3>
+            <h3 onClick={() => routeDetail(disease.name)}>{disease.name}</h3>
 
             <p>증상</p>
             <ul className="body-part-group">
