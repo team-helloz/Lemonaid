@@ -1,79 +1,105 @@
-import { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import NavBar from "../NavBar";
+
 import "./DrugList.css";
 
-// interface DrugListProps {
-//   page: number;
-//   updatePage: (arg: number) => void;
-//   updateIdentifier: (arg: string) => void;
-// }
-
-interface Drug {
-  name: string;
-  description: string;
-  pictureURL: string;
+interface drugInfoInterface {
+  drugInfo: {
+    shape: string;
+    color: string;
+    fomula: string;
+    divide: string;
+    identifier: string;
+  };
 }
 
 export default function DrugList() {
-  //const { page, updatePage, updateIdentifier } = props;
+  const location = useLocation();
+  const drugInfoInterface = location.state as drugInfoInterface;
+  const { drugInfo } = drugInfoInterface;
+
+  const drugs = [
+    {
+      name: "팍스로비드",
+      desc: "측면에 텍스트가 있는 이미지리스트입니다.",
+      image: "img",
+    },
+    {
+      name: "팍스로비드",
+      desc: "측면에 텍스트가 있는 이미지리스트입니다.",
+      image: "img",
+    },
+    {
+      name: "팍스로비드",
+      desc: "측면에 텍스트가 있는 이미지리스트입니다.",
+      image: "img",
+    },
+  ];
 
   return (
     <>
-      <h3>의약품 검색 결과</h3>
+      <NavBar></NavBar>
+      <h2>의약품 검색 결과</h2>
+      <h3>
+        검색조건 : {drugInfo.shape} {" > "} {drugInfo.color} {" > "}{" "}
+        {drugInfo.fomula} {" > "}
+        {drugInfo.divide} {" > "} {drugInfo.identifier}
+      </h3>
       <div className="drug-list-group-box">
         <ul className="drug-list-type">
           <li>
-            <a href="#">
+            <NavLink to="/drug/list/park">
               <img
                 src={require("../../assets/drug.png")}
                 width="90"
                 height="90"
                 alt=""
               />
-            </a>
-            <a href="#">
+            </NavLink>
+            <NavLink to="/drug/list/park">
               <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
               텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
               이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
               텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
               이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
               텍스트가 있는 이미지리스트입니다.
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#">
+            <NavLink to="/drug/list/park">
               <img
                 src={require("../../assets/drug.png")}
                 width="90"
                 height="90"
                 alt=""
               />
-            </a>
-            <a href="#">
+            </NavLink>
+            <NavLink to="/drug/list/park">
               <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
               텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
               이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
               텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
               이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
               텍스트가 있는 이미지리스트입니다.
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#">
+            <NavLink to="/drug/list/park">
               <img
                 src={require("../../assets/drug.png")}
                 width="90"
                 height="90"
                 alt=""
               />
-            </a>
-            <a href="#">
+            </NavLink>
+            <NavLink to="/drug/list/park">
               <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
               텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
               이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
               텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
               이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
               텍스트가 있는 이미지리스트입니다.
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

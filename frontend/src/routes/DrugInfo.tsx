@@ -1,25 +1,21 @@
+import { useState } from "react";
+import { useHistory } from "react-router";
+
 import NavBar from "../components/NavBar";
 import DrugShape from "../components/drug/DrugShape";
 import DrugColor from "../components/drug/DrugColor";
 import DrugFomula from "../components/drug/DrugFomula";
 import DrugDivide from "../components/drug/DrugDivide";
 import DrugIdentifier from "../components/drug/DrugIdentifier";
-import DrugList from "../components/drug/DrugList";
-import { useState } from "react";
-
-interface Drug {
-  name: string;
-  description: string;
-  pictureURL: string;
-}
 
 export default function DrugInfo() {
+  const history = useHistory();
+
   const [page, setPage] = useState<number>(1);
   const [shape, setShape] = useState<string>("");
   const [color, setColor] = useState<string>("");
   const [fomula, setFomula] = useState<string>("");
   const [divide, setDivide] = useState<string>("");
-  const [identifier, setIdentifier] = useState<string>("");
 
   const updatePage = (page: number): void => {
     setPage(page);
@@ -41,8 +37,21 @@ export default function DrugInfo() {
     setDivide(divide);
   };
 
-  const updateIdentifier = (identifier: string): void => {
-    setIdentifier(identifier);
+  const moveDrugList = (identifier: string): void => {
+    const drugInfo = {
+      shape: shape,
+      color: color,
+      fomula: fomula,
+      divide: divide,
+      identifier: identifier,
+    };
+
+    console.log(drugInfo);
+
+    history.push({
+      pathname: "/drug/list",
+      state: { drugInfo: drugInfo },
+    });
   };
 
   return (
@@ -50,7 +59,7 @@ export default function DrugInfo() {
       <NavBar />
       <h1>의약품 조회</h1>
       <h3>
-        STEP {page}, {shape}, {color}, {fomula}, {divide}, {identifier}
+        STEP {page}, {shape}, {color}, {fomula}, {divide}
       </h3>
 
       {page === 1 && (
@@ -85,10 +94,9 @@ export default function DrugInfo() {
         <DrugIdentifier
           page={page}
           updatePage={updatePage}
-          updateIdentifier={updateIdentifier}
+          moveDrugList={moveDrugList}
         ></DrugIdentifier>
       )}
-      {page === 6 && <DrugList></DrugList>}
     </div>
   );
 }
