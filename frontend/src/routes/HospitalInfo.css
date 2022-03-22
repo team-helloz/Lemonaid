@@ -23,8 +23,13 @@
   height: 100vh;
   right: 0;
   top: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
+.hos-right::-webkit-scrollbar {
+  width: 0px;
+}
 .hos-left {
   position: absolute;
   z-index: 2;
@@ -50,5 +55,5 @@
   height: 10vh;
   left: 50%;
   bottom: 5%;
-  transform: translate(-50%,0%);
+  transform: translate(-50%, 0%);
 }
