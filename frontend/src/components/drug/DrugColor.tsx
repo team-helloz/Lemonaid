@@ -11,10 +11,11 @@ export default function DrugColor(props: DrugColorProps) {
 
   const onClickBack = () => {
     updatePage(page - 1);
+    updateColor("");
   };
 
   const onClickInit = () => {
-    updatePage(0);
+    updatePage(1);
   };
 
   const onClickColor = (color: string) => () => {
@@ -40,7 +41,7 @@ export default function DrugColor(props: DrugColorProps) {
             <button onClick={onClickColor("노랑")}>노랑</button>
           </li>
           <li>
-            <button onClick={onClickColor("노랑")}>주황</button>
+            <button onClick={onClickColor("주황")}>주황</button>
           </li>
           <li>
             <button onClick={onClickColor("분홍")}>분홍</button>
