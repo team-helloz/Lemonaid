@@ -1,6 +1,7 @@
-import "./HospitalList.css"
+import "./HospitalList.css";
+import HospitalDetail from "./HospitalDetail";
 
-interface Hospital {
+export interface Hospital {
   id: number;
   type: string;
   name: string;
@@ -8,14 +9,14 @@ interface Hospital {
   address: string;
 }
 
-interface HospitalProps {
+export interface HospitalProps {
   hospitals: Hospital[];
 }
 
 export default function HospitalList({ hospitals }: HospitalProps) {
   console.log(hospitals);
   return (
-    <div >
+    <div>
       {hospitals.map((hospital) => (
         <div className="hos-list-container">
           <h1>{hospital.name}</h1>
