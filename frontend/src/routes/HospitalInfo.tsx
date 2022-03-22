@@ -10,10 +10,14 @@ export default function HospotalInfo() {
   }
   return (
     <div>
-      <div className="hos-home" onClick={routeHome}>
-        홈으로 이동
+      <div className="hos-left">
+        <div className="hos-search"></div>
+        <div className="hos-home" onClick={routeHome}>
+          Home
+        </div>
       </div>
-      <div className="hos-list">sdfsdsdf</div>
+      <div className="hos-center"></div>
+      <div className="hos-right"></div>
       <HospitalMap />
     </div>
   );
