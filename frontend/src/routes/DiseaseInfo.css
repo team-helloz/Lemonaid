@@ -1,0 +1,15 @@
+.disease-group {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.to-top {
+  position: fixed;
+  right: 250px;
+  bottom: 50px;
+}
+
+.to-top:hover {
+  cursor: pointer;
+}
