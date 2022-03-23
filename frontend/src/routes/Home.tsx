@@ -4,9 +4,9 @@ export default function Home() {
   // 경로로 이동하는 함수
   const history = useHistory();
 
-  function routeHospital() {
+  function routeMedical() {
     // 해당 링크로 이동
-    history.push("/hospital");
+    history.push("/medical");
   }
   function routeDrug() {
     history.push("/drug");
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div>
       <h1>home</h1>
-      <div className="home-hospital cursor-pointer" onClick={routeHospital}>
+      <div className="home-hospital cursor-pointer" onClick={routeMedical}>
         <p>의료기관 조회</p>
       </div>
       <div className="home-drug cursor-pointer" onClick={routeDrug}>
