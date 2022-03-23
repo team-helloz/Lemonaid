@@ -21,7 +21,7 @@ public class Hospital extends Medical{
 
     @OneToOne
     @JoinColumn(name = "opentime_no")
-    private OpenTime openTime;
+    private OpenTime opentime;
 
     @Column(name = "hospital_name")
     private String name;
@@ -61,4 +61,8 @@ public class Hospital extends Medical{
 
     @Column(name = "hospital_parking_count")
     private int parkingCount;
+
+    public Hospital(){
+        super(MedicalType.hospital);
+    }
 }

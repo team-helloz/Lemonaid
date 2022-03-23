@@ -39,4 +39,8 @@ public class Pharmacy extends Medical {
 
     @Column(name = "pharmacy_parking_count")
     private int parkingCount;
+
+    public Pharmacy(){
+        super(MedicalType.pharmacy);
+    }
 }
