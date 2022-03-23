@@ -1,11 +1,15 @@
 // Components
 import NavBar from "../NavBar";
+import { NavLink } from "react-router-dom";
 
 export default function MedicineDetail() {
   return (
     <div>
       <NavBar />
       <h1>의약품 상세조회</h1>
+      {/* <NavLink to="/medicine/list">
+        <button>목록으로 돌아가기</button>
+      </NavLink> */}
 
       <div>
         <p>의약품 이름</p>
