@@ -1,12 +1,12 @@
-import "./DrugFomula.css";
+import "./MedicineFomula.css";
 
-interface DrugFomulaProps {
+interface MedicineFomulaProps {
   page: number;
   updatePage: (arg: number) => void;
   updateFomula: (arg: string) => void;
 }
 
-export default function DrugFomula(props: DrugFomulaProps) {
+export default function MedicineFomula(props: MedicineFomulaProps) {
   const { page, updatePage, updateFomula } = props;
 
   const onClickBack = () => {
@@ -26,8 +26,8 @@ export default function DrugFomula(props: DrugFomulaProps) {
   return (
     <>
       <h3>찾으시는 약은 어떤 제형인가요?</h3>
-      <div className="drug-fomula-group-box">
-        <ul className="drug-fomula-group">
+      <div className="medicine-fomula-group-box">
+        <ul className="medicine-fomula-group">
           <li>
             <button onClick={onClickBack}>뒤로가기</button>
           </li>

@@ -1,12 +1,12 @@
-import "./DrugColor.css";
+import "./MedicineColor.css";
 
-interface DrugColorProps {
+interface MedicineColorProps {
   page: number;
   updatePage: (arg: number) => void;
   updateColor: (arg: string) => void;
 }
 
-export default function DrugColor(props: DrugColorProps) {
+export default function MedicineColor(props: MedicineColorProps) {
   const { page, updatePage, updateColor } = props;
 
   const onClickBack = () => {
@@ -26,8 +26,8 @@ export default function DrugColor(props: DrugColorProps) {
   return (
     <>
       <h3>찾으시는 약은 어떤 색깔인가요?</h3>
-      <div className="drug-color-group-box">
-        <ul className="drug-color-group">
+      <div className="medicine-color-group-box">
+        <ul className="medicine-color-group">
           <li>
             <button onClick={onClickBack}>뒤로가기</button>
           </li>
@@ -48,8 +48,8 @@ export default function DrugColor(props: DrugColorProps) {
           </li>
         </ul>
       </div>
-      <div className="drug-color-group-box">
-        <ul className="drug-color-group">
+      <div className="medicine-color-group-box">
+        <ul className="medicine-color-group">
           <li>
             <button onClick={onClickColor("빨강")}>빨강</button>
           </li>
