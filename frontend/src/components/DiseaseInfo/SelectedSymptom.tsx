@@ -2,27 +2,27 @@
 import "./SelectedSymptom.css";
 
 interface SymptomsProps {
-  symptoms: string[];
+  nowSymptoms: string[];
   removeSymptom: (arg: string[]) => void;
 }
 
 export default function Symptom(props: SymptomsProps) {
 
-  const { symptoms, removeSymptom } = props;
+  const { nowSymptoms, removeSymptom } = props;
 
   function onClickSymptom(symptomname: string) {
-    let newSymptoms = symptoms.filter((element) => element !== symptomname);
+    let newSymptoms = nowSymptoms.filter((element) => element !== symptomname);
     removeSymptom(newSymptoms);
   }
 
   return (
-    <div>
+    <div className="selected-symptom-group">
       <p>증상 : </p>
-      { symptoms.map((symptom, i: number) => (
+      { nowSymptoms.map((symptom, i: number) => (
         <button
           key={i}
           onClick={() => {onClickSymptom(symptom)}}
-          className="selected-symptom-btn"
+          className="selected-symptom"
         >
           {symptom}
         </button>
