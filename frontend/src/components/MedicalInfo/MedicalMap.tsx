@@ -15,6 +15,10 @@ export default function MedicalMap() {
     };
 
     let map = new window.kakao.maps.Map(container, options);
+    var position = map.getCenter();
+    var control = new window.kakao.maps.ZoomControl();
+    map.addControl(control, window.kakao.maps.ControlPosition.TOPRIGHT);
+    console.log(position);
   }, []);
   return <div id="map"></div>;
 }
