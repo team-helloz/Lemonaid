@@ -1,9 +1,9 @@
 import { useHistory } from "react-router-dom";
-import "./HospitalInfo.css";
-import HospitalMap from "../components/HospitalInfo/HospitalMap";
-import HospitalList from "../components/HospitalInfo/HospitalList";
+import "./MedicalInfo.css";
+import MedicalMap from "../components/MedicalInfo/MedicalMap";
+import MedicalList from "../components/MedicalInfo/MedicalList";
 
-export default function HospotalInfo() {
+export default function MedicalInfo() {
   const history = useHistory();
 
   interface hospital {
@@ -78,9 +78,9 @@ export default function HospotalInfo() {
       </div>
       <div className="hos-center"></div>
       <div className="hos-right">
-        <HospitalList hospitals={hospitalList} />
+        <MedicalList hospitals={hospitalList} />
       </div>
-      <HospitalMap />
+      <MedicalMap />
     </div>
   );
 }
