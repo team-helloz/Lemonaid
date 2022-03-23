@@ -1,3 +1,4 @@
+import MedicineSerachItem from "./MedicineSerachItem";
 import "./MedicineDivide.css";
 
 interface MedicineDivideProps {
@@ -35,16 +36,24 @@ export default function MedicineDivide(props: MedicineDivideProps) {
             <button onClick={onClickInit}>초기화</button>
           </li>
           <li>
-            <button onClick={onClickDivide("분할선전체")}>분할선전체</button>
+            <span onClick={onClickDivide("분할선전체")}>
+              <MedicineSerachItem itemName="분할선전체"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickDivide("(-)형")}>(-)형</button>
+            <span onClick={onClickDivide("(-)형")}>
+              <MedicineSerachItem itemName="(-)형"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickDivide("(+)형")}>(+)형</button>
+            <span onClick={onClickDivide("(+)형")}>
+              <MedicineSerachItem itemName="(+)형"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickDivide("기타")}>기타</button>
+            <span onClick={onClickDivide("기타")}>
+              <MedicineSerachItem itemName="기타"></MedicineSerachItem>
+            </span>
           </li>
         </ul>
       </div>
