@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-export default function HospitalMap() {
+export default function MedicalMap() {
   useEffect(() => {
     let container = document.getElementById("map");
     let options = {
