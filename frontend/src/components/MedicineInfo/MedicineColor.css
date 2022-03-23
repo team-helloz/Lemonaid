@@ -1,15 +1,15 @@
-.drug-color-group-box {
+.medicine-color-group-box {
   background-color: gray;
   height: 50px;
   display: flex;
   justify-content: center;
 }
 
-.drug-color-group {
+.medicine-color-group {
   list-style: none;
 }
 
-.drug-color-group li {
+.medicine-color-group li {
   float: left;
   margin: 0 20px;
 }

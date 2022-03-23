@@ -1,15 +1,19 @@
-.drug-shape-group-box {
+.medicine-identifier-group-box {
   background-color: gray;
   height: 50px;
   display: flex;
   justify-content: center;
 }
 
-.drug-shape-group {
+.medicine-identifier-group {
   list-style: none;
 }
 
-.drug-shape-group li {
+.medicine-identifier-group li {
   float: left;
   margin: 0 20px;
+}
+
+.medicine-identifier-input {
+  width: 220px;
 }

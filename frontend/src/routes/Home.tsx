@@ -8,8 +8,8 @@ export default function Home() {
     // 해당 링크로 이동
     history.push("/medical");
   }
-  function routeDrug() {
-    history.push("/drug");
+  function routeMedicine() {
+    history.push("/medicine");
   }
   function routeDisease() {
     history.push("/disease");
@@ -23,7 +23,7 @@ export default function Home() {
       <div className="home-hospital cursor-pointer" onClick={routeMedical}>
         <p>의료기관 조회</p>
       </div>
-      <div className="home-drug cursor-pointer" onClick={routeDrug}>
+      <div className="home-medicine cursor-pointer" onClick={routeMedicine}>
         <p>의약품 조회</p>
       </div>
       <div className="home-disease cursor-pointer" onClick={routeDisease}>

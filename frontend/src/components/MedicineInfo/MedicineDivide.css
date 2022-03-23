@@ -1,15 +1,15 @@
-.drug-divide-group-box {
+.medicine-divide-group-box {
   background-color: gray;
   height: 50px;
   display: flex;
   justify-content: center;
 }
 
-.drug-divide-group {
+.medicine-divide-group {
   list-style: none;
 }
 
-.drug-divide-group li {
+.medicine-divide-group li {
   float: left;
   margin: 0 20px;
 }
