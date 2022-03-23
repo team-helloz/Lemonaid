@@ -1,5 +1,5 @@
-import "./HospitalList.css";
-import HospitalDetail from "./HospitalDetail";
+import "./MedicalList.css";
+import MedicalDetail from "./MedicalDetail";
 
 export interface Hospital {
   id: number;
@@ -13,7 +13,7 @@ export interface HospitalProps {
   hospitals: Hospital[];
 }
 
-export default function HospitalList({ hospitals }: HospitalProps) {
+export default function MedicalList({ hospitals }: HospitalProps) {
   console.log(hospitals);
   return (
     <div>
