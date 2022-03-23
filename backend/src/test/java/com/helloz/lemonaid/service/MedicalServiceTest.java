@@ -6,7 +6,7 @@ import com.helloz.lemonaid.db.entity.MedicalSubject;
 import com.helloz.lemonaid.db.entity.OpenTime;
 import com.helloz.lemonaid.db.repository.*;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
-import com.helloz.lemonaid.request.MedicalSearchType;
+import com.helloz.lemonaid.db.entity.MedicalType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
@@ -49,7 +49,7 @@ class MedicalServiceTest {
         OpenTime openTime = new OpenTime();
         openTime = openTimeRepository.save(openTime);
 
-        hospital.setOpenTime(openTime);
+        hospital.setOpentime(openTime);
         hospital.setTel("1111-2222");
         hospital.setX("111");
         hospital.setY("222");
@@ -69,7 +69,7 @@ class MedicalServiceTest {
 
         MedicalSearchFilter filter = new MedicalSearchFilter();
 
-        filter.setSearchType(MedicalSearchType.all);
+        filter.setSearchType(MedicalType.all);
         filter.setCode(0);
         filter.setEmergency(false);
         filter.setParking(false);
