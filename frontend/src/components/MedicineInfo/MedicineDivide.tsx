@@ -1,12 +1,12 @@
-import "./DrugDivide.css";
+import "./MedicineDivide.css";
 
-interface DrugDivideProps {
+interface MedicineDivideProps {
   page: number;
   updatePage: (arg: number) => void;
   updateDivide: (arg: string) => void;
 }
 
-export default function DrugDivide(props: DrugDivideProps) {
+export default function MedicineDivide(props: MedicineDivideProps) {
   const { page, updatePage, updateDivide } = props;
 
   const onClickBack = () => {
@@ -26,8 +26,8 @@ export default function DrugDivide(props: DrugDivideProps) {
   return (
     <>
       <h3>찾으시는 약은 어떤 분할선이 있나요?</h3>
-      <div className="drug-divide-group-box">
-        <ul className="drug-divide-group">
+      <div className="medicine-divide-group-box">
+        <ul className="medicine-divide-group">
           <li>
             <button onClick={onClickBack}>뒤로가기</button>
           </li>

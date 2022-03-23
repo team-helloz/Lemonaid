@@ -41,7 +41,7 @@ const NavBar = () => {
         </NavLink>
 
         <NavLink
-          to="/drug"
+          to="/medicine"
           activeStyle={{
             fontWeight: "bold",
             color: "#0DADEA",
@@ -51,7 +51,7 @@ const NavBar = () => {
         </NavLink>
 
         <NavLink
-          to="/hospital"
+          to="/medical"
           activeStyle={{
             fontWeight: "bold",
             color: "#0DADEA",
