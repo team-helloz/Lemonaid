@@ -45,6 +45,9 @@ export default function MedicineList() {
         {medicineInfo.fomula} {" > "}
         {medicineInfo.divide} {" > "} {medicineInfo.identifier}
       </h3>
+      <NavLink to="/medicine">
+        <button>검색조건 초기화</button>
+      </NavLink>
       <div className="medicine-list-group-box">
         <ul className="medicine-list-type">
           <li>

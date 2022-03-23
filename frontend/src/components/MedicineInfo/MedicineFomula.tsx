@@ -1,3 +1,4 @@
+import MedicineSerachItem from "./MedicineSerachItem";
 import "./MedicineFomula.css";
 
 interface MedicineFomulaProps {
@@ -35,16 +36,24 @@ export default function MedicineFomula(props: MedicineFomulaProps) {
             <button onClick={onClickInit}>초기화</button>
           </li>
           <li>
-            <button onClick={onClickFomula("제형전체")}>제형전체</button>
+            <span onClick={onClickFomula("제형전체")}>
+              <MedicineSerachItem itemName="제형전체"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickFomula("정제류")}>정제류</button>
+            <span onClick={onClickFomula("정제류")}>
+              <MedicineSerachItem itemName="정제류"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickFomula("경질캡슐")}>경질캡슐</button>
+            <span onClick={onClickFomula("경질캡슐")}>
+              <MedicineSerachItem itemName="경질캡슐"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickFomula("연질캡슐")}>연질캡슐</button>
+            <span onClick={onClickFomula("연질캡슐")}>
+              <MedicineSerachItem itemName="연질캡슐"></MedicineSerachItem>
+            </span>
           </li>
         </ul>
       </div>
