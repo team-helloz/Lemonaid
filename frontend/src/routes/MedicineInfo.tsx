@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 
 import NavBar from "../components/NavBar";
-import DrugShape from "../components/drug/DrugShape";
-import DrugColor from "../components/drug/DrugColor";
-import DrugFomula from "../components/drug/DrugFomula";
-import DrugDivide from "../components/drug/DrugDivide";
-import DrugIdentifier from "../components/drug/DrugIdentifier";
+import MedicineShape from "../components/MedicineInfo/MedicineShape";
+import MedicineColor from "../components/MedicineInfo/MedicineColor";
+import MedicineFomula from "../components/MedicineInfo/MedicineFomula";
+import MedicineDivide from "../components/MedicineInfo/MedicineDivide";
+import MedicineIdentifier from "../components/MedicineInfo/MedicineIdentifier";
 
-export default function DrugInfo() {
+export default function MedicineInfo() {
   const history = useHistory();
 
   const [page, setPage] = useState<number>(1);
@@ -37,8 +37,8 @@ export default function DrugInfo() {
     setDivide(divide);
   };
 
-  const moveDrugList = (identifier: string): void => {
-    const drugInfo = {
+  const moveMedicineList = (identifier: string): void => {
+    const medicineInfo = {
       shape: shape,
       color: color,
       fomula: fomula,
@@ -46,11 +46,11 @@ export default function DrugInfo() {
       identifier: identifier,
     };
 
-    console.log(drugInfo);
+    console.log(medicineInfo);
 
     history.push({
-      pathname: "/drug/list",
-      state: { drugInfo: drugInfo },
+      pathname: "/medicine/list",
+      state: { medicineInfo: medicineInfo },
     });
   };
 
@@ -63,39 +63,39 @@ export default function DrugInfo() {
       </h3>
 
       {page === 1 && (
-        <DrugShape
+        <MedicineShape
           page={page}
           updatePage={updatePage}
           updateShape={updateShape}
-        ></DrugShape>
+        ></MedicineShape>
       )}
       {page === 2 && (
-        <DrugColor
+        <MedicineColor
           page={page}
           updatePage={updatePage}
           updateColor={updateColor}
-        ></DrugColor>
+        ></MedicineColor>
       )}
       {page === 3 && (
-        <DrugFomula
+        <MedicineFomula
           page={page}
           updatePage={updatePage}
           updateFomula={updateFomula}
-        ></DrugFomula>
+        ></MedicineFomula>
       )}
       {page === 4 && (
-        <DrugDivide
+        <MedicineDivide
           page={page}
           updatePage={updatePage}
           updateDivide={updateDivide}
-        ></DrugDivide>
+        ></MedicineDivide>
       )}
       {page === 5 && (
-        <DrugIdentifier
+        <MedicineIdentifier
           page={page}
           updatePage={updatePage}
-          moveDrugList={moveDrugList}
-        ></DrugIdentifier>
+          moveMedicineList={moveMedicineList}
+        ></MedicineIdentifier>
       )}
     </div>
   );

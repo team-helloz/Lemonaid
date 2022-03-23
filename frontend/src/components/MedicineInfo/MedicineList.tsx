@@ -1,10 +1,10 @@
 import { NavLink, useLocation } from "react-router-dom";
 import NavBar from "../NavBar";
 
-import "./DrugList.css";
+import "./MedicineList.css";
 
-interface drugInfoInterface {
-  drugInfo: {
+interface medicineInfoInterface {
+  medicineInfo: {
     shape: string;
     color: string;
     fomula: string;
@@ -13,12 +13,12 @@ interface drugInfoInterface {
   };
 }
 
-export default function DrugList() {
+export default function MedicineList() {
   const location = useLocation();
-  const drugInfoInterface = location.state as drugInfoInterface;
-  const { drugInfo } = drugInfoInterface;
+  const medicineInfoInterface = location.state as medicineInfoInterface;
+  const { medicineInfo } = medicineInfoInterface;
 
-  const drugs = [
+  const medicines = [
     {
       name: "팍스로비드",
       desc: "측면에 텍스트가 있는 이미지리스트입니다.",
@@ -41,22 +41,22 @@ export default function DrugList() {
       <NavBar></NavBar>
       <h2>의약품 검색 결과</h2>
       <h3>
-        검색조건 : {drugInfo.shape} {" > "} {drugInfo.color} {" > "}{" "}
-        {drugInfo.fomula} {" > "}
-        {drugInfo.divide} {" > "} {drugInfo.identifier}
+        검색조건 : {medicineInfo.shape} {" > "} {medicineInfo.color} {" > "}{" "}
+        {medicineInfo.fomula} {" > "}
+        {medicineInfo.divide} {" > "} {medicineInfo.identifier}
       </h3>
-      <div className="drug-list-group-box">
-        <ul className="drug-list-type">
+      <div className="medicine-list-group-box">
+        <ul className="medicine-list-type">
           <li>
-            <NavLink to="/drug/list/park">
+            <NavLink to="/medicine/list/park">
               <img
-                src={require("../../assets/drug.png")}
+                src={require("../../assets/medicine.png")}
                 width="90"
                 height="90"
                 alt=""
               />
             </NavLink>
-            <NavLink to="/drug/list/park">
+            <NavLink to="/medicine/list/park">
               <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
               텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
               이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
@@ -66,15 +66,15 @@ export default function DrugList() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/drug/list/park">
+            <NavLink to="/medicine/list/park">
               <img
-                src={require("../../assets/drug.png")}
+                src={require("../../assets/medicine.png")}
                 width="90"
                 height="90"
                 alt=""
               />
             </NavLink>
-            <NavLink to="/drug/list/park">
+            <NavLink to="/medicine/list/park">
               <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
               텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
               이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
@@ -84,15 +84,15 @@ export default function DrugList() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/drug/list/park">
+            <NavLink to="/medicine/list/park">
               <img
-                src={require("../../assets/drug.png")}
+                src={require("../../assets/medicine.png")}
                 width="90"
                 height="90"
                 alt=""
               />
             </NavLink>
-            <NavLink to="/drug/list/park">
+            <NavLink to="/medicine/list/park">
               <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
               텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
               이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
