@@ -3,19 +3,21 @@ import "./Symptom.css";
 
 interface SetPartProps {
   nowPart: number;
+  nowSymptoms: string[];
   addSymptom: (arg: string) => void;
+  removeSymptom: (arg: string[]) => void;
 }
 
 export default function Symptom(props: SetPartProps) {
  
-  const { nowPart, addSymptom } = props
+  const { nowPart, nowSymptoms, addSymptom, removeSymptom } = props
 
   const symptoms = [
     [ "머리 증상 1", "머리 증상 2", "머리 증상 3", "머리 증상 4", "머리 증상 5" ],
     [ "목 증상 1", "목 증상 2", "목 증상 3", "목 증상 4", "목 증상 5" ],
     [ "가슴 증상 1", "가슴 증상 2", "가슴 증상 3", "가슴 증상 4", "가슴 증상 5" ],
-    [ "등 증상 1", "등 증상 2", "등 증상 3", "등 증상 4", "등 증상 5" ],
     [ "배 증상 1", "배 증상 2", "배 증상 3", "배 증상 4", "배 증상 5" ],
+    [ "등 증상 1", "등 증상 2", "등 증상 3", "등 증상 4", "등 증상 5" ],
     [ "엉덩이 증상 1", "엉덩이 증상 2", "엉덩이 증상 3", "엉덩이 증상 4", "엉덩이 증상 5" ],
     [ "팔 증상 1", "팔 증상 2", "팔 증상 3", "팔 증상 4", "팔 증상 5" ],
     [ "다리 증상 1", "다리 증상 2", "다리 증상 3", "다리 증상 4", "다리 증상 5" ],
@@ -34,7 +36,13 @@ export default function Symptom(props: SetPartProps) {
   ]
 
   function onClickSymptom(symptomname: string) {
-    addSymptom(symptomname);
+    if (nowSymptoms.includes(symptomname)) {
+      let newSymptoms = nowSymptoms.filter((element) => element !== symptomname);
+      removeSymptom(newSymptoms);
+    }
+    else {
+      addSymptom(symptomname);
+    }
   }
 
   return (
@@ -43,7 +51,7 @@ export default function Symptom(props: SetPartProps) {
         <button
           key={i}
           onClick={() => onClickSymptom(symptom)}
-          className="symptom-btn"
+          className={nowSymptoms.includes(symptom) ? "selected-symptom" : "symptom-btn"}
         >
           {symptom}
         </button>
