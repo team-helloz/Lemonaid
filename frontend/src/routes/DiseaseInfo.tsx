@@ -6,6 +6,8 @@ import SelectedSymptom from "../components/DiseaseInfo/SelectedSymptom";
 import DiseaseList from "../components/DiseaseInfo/DiseaseList";
 // React
 import { useState } from "react";
+// Style
+import "./DiseaseInfo.css"
 
 export default function DiseaseInfo() {
 
@@ -24,26 +26,40 @@ export default function DiseaseInfo() {
     setSymptoms(nowSymptoms);
   }
 
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
   return (
     <div>
       <NavBar />
-      <h1>증상/질병 조회</h1>
-      <BodyPart
-        nowPart={nowPart}
-        updatePart={updatePart}
-      />
-      <br />
-      <SelectedSymptom
-        symptoms={nowSymptoms}
-        removeSymptom={removeSymptom}
-      />
-      <Symptom
-        nowPart={nowPart}
-        addSymptom={addSymptom}
-      />
-      <br />
-      <hr />
-      <DiseaseList />
+      <button
+        onClick={scrollToTop}
+        className="to-top"
+      >TOP</button>
+      <div className="disease-group">
+        <BodyPart
+          nowPart={nowPart}
+          updatePart={updatePart}
+        />
+      </div>
+      <div className="disease-group">
+        <SelectedSymptom
+          nowSymptoms={nowSymptoms}
+          removeSymptom={removeSymptom}
+        />
+      </div>
+      <div className="disease-group">
+        <Symptom
+          nowPart={nowPart}
+          nowSymptoms={nowSymptoms}
+          addSymptom={addSymptom}
+          removeSymptom={removeSymptom}
+        />
+      </div>
+      <div className="disease-group">
+        <DiseaseList />
+      </div>
     </div>
   );
 }

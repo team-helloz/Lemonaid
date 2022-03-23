@@ -1,0 +1,34 @@
+.disease-list {
+  width: 1120px;
+}
+
+.disease-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.disease-img {
+  width: 200px;
+  height: 100px;
+  background-color: gray;
+}
+
+.list-title {
+  margin: 10px 0 5px 0;
+  font-weight: bold;
+}
+
+.list-line {
+  width: 80px;
+  border-color: blue;
+}
+
+.detail-list {
+  display: flex;
+}
+
+.detail-list * {
+  margin: 0 10px 10px 0;
+}

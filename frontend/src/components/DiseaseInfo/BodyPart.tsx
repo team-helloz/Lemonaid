@@ -11,7 +11,7 @@ interface SetPartProps {
 
 export default function BodyPart(props: SetPartProps) {
 
-  const { updatePart } = props;
+  const { nowPart, updatePart } = props;
 
   type Part = {
     id: number,
@@ -56,8 +56,8 @@ export default function BodyPart(props: SetPartProps) {
             { partOne.map((part, i:number) => (
               <li key={i}>
                 <button
-                  className="part-btn"
                   onClick={() => onClickPart(part.id)}
+                  className={nowPart===part.id ? "selected-part" : "part-btn"}
                 >
                   <PartIcon h={20} w={20} color={"#FFFFFF"} icon={part.eng} />
                   <p>{part.kor}</p>
@@ -73,8 +73,8 @@ export default function BodyPart(props: SetPartProps) {
             { partTwo.map((part, i:number) => (
               <li key={i}>
                 <button
-                  className="part-btn"
                   onClick={() => onClickPart(part.id)}
+                  className={nowPart===part.id ? "selected-part" : "part-btn"}
                 >
                   <PartIcon h={20} w={20} color={"#FFFFFF"} icon={part.eng} />
                   <p>{part.kor}</p>
