@@ -1,12 +1,12 @@
-import "./DrugShape.css";
+import "./MedicineShape.css";
 
-interface DrugShapeProps {
+interface MedicineShapeProps {
   page: number;
   updatePage: (arg: number) => void;
   updateShape: (arg: string) => void;
 }
 
-export default function DrugShape(props: DrugShapeProps) {
+export default function MedicineShape(props: MedicineShapeProps) {
   const { page, updatePage, updateShape } = props;
 
   const onClickShape = (shape: string) => () => {
@@ -17,8 +17,8 @@ export default function DrugShape(props: DrugShapeProps) {
   return (
     <>
       <h3>찾으시는 약은 어떤 모양인가요?</h3>
-      <div className="drug-shape-group-box">
-        <ul className="drug-shape-group">
+      <div className="medicine-shape-group-box">
+        <ul className="medicine-shape-group">
           <li>
             <button onClick={onClickShape("모양전체")}>모양전체</button>
           </li>
@@ -39,8 +39,8 @@ export default function DrugShape(props: DrugShapeProps) {
           </li>
         </ul>
       </div>
-      <div className="drug-shape-group-box">
-        <ul className="drug-shape-group">
+      <div className="medicine-shape-group-box">
+        <ul className="medicine-shape-group">
           <li>
             <button onClick={onClickShape("마름모형")}>마름모형</button>
           </li>

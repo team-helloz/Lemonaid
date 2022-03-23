@@ -1,7 +1,7 @@
 // Components
 import NavBar from "../NavBar";
 
-export default function DrugDetail() {
+export default function MedicineDetail() {
   return (
     <div>
       <NavBar />
