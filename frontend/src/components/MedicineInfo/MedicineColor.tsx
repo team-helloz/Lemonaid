@@ -1,3 +1,4 @@
+import MedicineSerachItem from "./MedicineSerachItem";
 import "./MedicineColor.css";
 
 interface MedicineColorProps {
@@ -35,38 +36,58 @@ export default function MedicineColor(props: MedicineColorProps) {
             <button onClick={onClickInit}>초기화</button>
           </li>
           <li>
-            <button onClick={onClickColor("하양")}>하양</button>
+            <span onClick={onClickColor("하양")}>
+              <MedicineSerachItem itemName="하양"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickColor("노랑")}>노랑</button>
+            <span onClick={onClickColor("노랑")}>
+              <MedicineSerachItem itemName="노랑"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickColor("주황")}>주황</button>
+            <span onClick={onClickColor("주황")}>
+              <MedicineSerachItem itemName="주황"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickColor("분홍")}>분홍</button>
+            <span onClick={onClickColor("분홍")}>
+              <MedicineSerachItem itemName="분홍"></MedicineSerachItem>
+            </span>
           </li>
         </ul>
       </div>
       <div className="medicine-color-group-box">
         <ul className="medicine-color-group">
           <li>
-            <button onClick={onClickColor("빨강")}>빨강</button>
+            <span onClick={onClickColor("빨강")}>
+              <MedicineSerachItem itemName="빨강"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickColor("갈색")}>갈색</button>
+            <span onClick={onClickColor("갈색")}>
+              <MedicineSerachItem itemName="갈색"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickColor("연두")}>연두</button>
+            <span onClick={onClickColor("연두")}>
+              <MedicineSerachItem itemName="연두"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickColor("초록")}>초록</button>
+            <span onClick={onClickColor("초록")}>
+              <MedicineSerachItem itemName="초록"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickColor("청록")}>청록</button>
+            <span onClick={onClickColor("청록")}>
+              <MedicineSerachItem itemName="청록"></MedicineSerachItem>
+            </span>
           </li>
           <li>
-            <button onClick={onClickColor("파랑")}>파랑</button>
+            <span onClick={onClickColor("파랑")}>
+              <MedicineSerachItem itemName="파랑"></MedicineSerachItem>
+            </span>
           </li>
         </ul>
       </div>
