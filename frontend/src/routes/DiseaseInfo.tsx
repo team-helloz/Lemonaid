@@ -58,7 +58,9 @@ export default function DiseaseInfo() {
         />
       </div>
       <div className="disease-group">
-        <DiseaseList />
+        <DiseaseList
+          nowSymptoms={nowSymptoms}
+        />
       </div>
     </div>
   );
