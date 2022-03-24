@@ -2,33 +2,69 @@
   width: 1120px;
 }
 
+.disease-box {
+  border-top: solid 1px black;
+  margin-top: 10px;
+}
+
 .disease-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+}
+
+.disease-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 0 0 0;
 }
 
 .disease-img {
-  width: 200px;
-  height: 100px;
+  margin-top: 40px;
+  width: 500px;
+  height: 230px;
   background-color: gray;
+}
+
+.disease-img:hover {
+  cursor: pointer;
+}
+
+.list-title-box {
+  display: flex;
+}
+
+.item-title-blue {
+  width: 3px;
+  height: 16px;
+  background-color: blue;
+  margin: 13px 5px 0 0;
 }
 
 .list-title {
   margin: 10px 0 5px 0;
   font-weight: bold;
-}
-
-.list-line {
-  width: 80px;
-  border-color: blue;
+  font-size: 15px;
 }
 
 .detail-list {
   display: flex;
 }
 
-.detail-list * {
+.detail-item-list {
+  display: flex;
+  padding-left: 10px;
+}
+
+.detail-item-list * {
   margin: 0 10px 10px 0;
+  font-size: 14px;
+}
+
+.popup-btn {
+  margin: 20px 0 0 10px;
+}
+
+.related-disease:hover {
+  cursor: pointer;
 }
