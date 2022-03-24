@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+nav {
+  background: rgb(204, 204, 250);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

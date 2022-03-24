@@ -1,0 +1,28 @@
+.symptom-group-box {
+  margin-bottom: 10px;
+  padding: 0 5px;
+  background-color: gray;
+  width: 1110px;
+  height: 200px;
+}
+
+.symptom-btn {
+  background-color: rgb(151, 204, 235);
+  border: none;
+  margin: 10px 5px;
+}
+
+.symptom-btn:hover {
+  background-color: rgb(65, 126, 161);
+  cursor: pointer;
+}
+
+.selected-symptom {
+  background-color: rgb(65, 126, 161);
+  border: none;
+  margin: 10px 5px;
+}
+
+.selected-symptom:hover {
+  cursor: pointer;
+}
