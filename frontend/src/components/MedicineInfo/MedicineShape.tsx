@@ -4,19 +4,16 @@ import "./MedicineShape.css";
 interface MedicineShapeProps {
   page: number;
   updatePage: (arg: number) => void;
-  updateShape: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineShape(props: MedicineShapeProps) {
-  const { page, updatePage, updateShape } = props;
+  const { page, updatePage, updateCondition } = props;
 
-  const onClickShape = (shape: string) => () => {
+  const onClickShape = (value: string) => () => {
     updatePage(page + 1);
-    updateShape(shape);
+    updateCondition("shape", value);
   };
-
-  const imgWidth = "80";
-  const imgHeight = "80";
 
   return (
     <>

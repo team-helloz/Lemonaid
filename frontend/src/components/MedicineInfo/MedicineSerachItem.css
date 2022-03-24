@@ -1,4 +1,9 @@
+.medicine-serach-item:hover {
+  cursor: pointer;
+}
+
 .medicine-serach-item-text {
   background-color: white;
   text-align: center;
+  cursor: pointer;
 }

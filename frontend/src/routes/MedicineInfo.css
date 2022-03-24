@@ -1,0 +1,12 @@
+.medicine-info-page {
+  width: 1120px;
+  margin: 0 auto;
+}
+
+.medicine-info-title {
+  padding: 15px;
+  display: flex;
+  align-content: center;
+  vertical-align: middle;
+  background-color: lightskyblue;
+}

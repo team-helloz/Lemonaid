@@ -4,24 +4,26 @@ import "./MedicineColor.css";
 interface MedicineColorProps {
   page: number;
   updatePage: (arg: number) => void;
-  updateColor: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineColor(props: MedicineColorProps) {
-  const { page, updatePage, updateColor } = props;
+  const { page, updatePage, updateCondition } = props;
 
   const onClickBack = () => {
     updatePage(page - 1);
-    updateColor("");
+    updateCondition("shape", "");
   };
 
   const onClickInit = () => {
     updatePage(1);
+    updateCondition("shape", "");
+    updateCondition("color", "");
   };
 
-  const onClickColor = (color: string) => () => {
+  const onClickColor = (value: string) => () => {
     updatePage(page + 1);
-    updateColor(color);
+    updateCondition("color", value);
   };
 
   return (

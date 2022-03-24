@@ -4,11 +4,11 @@ import "./MedicineIdentifier.css";
 interface MedicineIdentifierProps {
   page: number;
   updatePage: (arg: number) => void;
-  moveMedicineList: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineIdentifier(props: MedicineIdentifierProps) {
-  const { page, updatePage, moveMedicineList } = props;
+  const { page, updatePage, updateCondition } = props;
 
   const [value, setValue] = useState("");
 
@@ -21,18 +21,29 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
 
   const onClickBack = () => {
     updatePage(page - 1);
+    updateCondition("divide", "");
+    updateCondition("identifier", "");
   };
 
   const onClickInit = () => {
     updatePage(1);
+    updateCondition("shape", "");
+    updateCondition("color", "");
+    updateCondition("fomula", "");
+    updateCondition("divide", "");
+    updateCondition("identifier", "");
   };
 
   const onClickDontKnow = () => {
-    moveMedicineList("식별문자모름");
+    updateCondition("identifier", "식별문자모름");
   };
 
   const onClickIdentifier = () => {
-    moveMedicineList(value);
+    let identifier = value;
+    if (identifier === "") {
+      identifier = "식별문자모름";
+    }
+    updateCondition("identifier", identifier);
   };
 
   return (
