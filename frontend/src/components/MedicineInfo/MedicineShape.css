@@ -1,0 +1,15 @@
+.medicine-shape-group-box {
+  background-color: gray;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.medicine-shape-group {
+  list-style: none;
+}
+
+.medicine-shape-group li {
+  float: left;
+  margin: 0 30px;
+}

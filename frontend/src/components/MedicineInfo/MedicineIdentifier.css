@@ -1,0 +1,19 @@
+.medicine-identifier-group-box {
+  background-color: gray;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.medicine-identifier-group {
+  list-style: none;
+}
+
+.medicine-identifier-group li {
+  float: left;
+  margin: 0 20px;
+}
+
+.medicine-identifier-input {
+  width: 220px;
+}
