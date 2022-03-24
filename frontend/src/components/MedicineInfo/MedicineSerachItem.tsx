@@ -10,7 +10,7 @@ export default function MedicineSerachItem(props: MedicineSerachItemProps) {
 
   return (
     <>
-      <div>
+      <div className="medicine-serach-item">
         <img
           src={require("../../assets/medicine.png")}
           width="80"

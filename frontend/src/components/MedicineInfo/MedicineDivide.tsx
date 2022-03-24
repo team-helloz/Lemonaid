@@ -4,24 +4,29 @@ import "./MedicineDivide.css";
 interface MedicineDivideProps {
   page: number;
   updatePage: (arg: number) => void;
-  updateDivide: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineDivide(props: MedicineDivideProps) {
-  const { page, updatePage, updateDivide } = props;
+  const { page, updatePage, updateCondition } = props;
 
   const onClickBack = () => {
     updatePage(page - 1);
-    updateDivide("");
+    updateCondition("fomula", "");
+    updateCondition("divide", "");
   };
 
   const onClickInit = () => {
     updatePage(1);
+    updateCondition("shape", "");
+    updateCondition("color", "");
+    updateCondition("fomula", "");
+    updateCondition("divide", "");
   };
 
-  const onClickDivide = (Divide: string) => () => {
+  const onClickDivide = (value: string) => () => {
     updatePage(page + 1);
-    updateDivide(Divide);
+    updateCondition("divide", value);
   };
 
   return (

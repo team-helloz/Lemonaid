@@ -1,4 +1,18 @@
 /* UI Object */
+.to-top {
+  position: fixed;
+  right: 250px;
+  bottom: 50px;
+}
+
+.to-top:hover {
+  cursor: pointer;
+}
+
+.medicine-list-page {
+  width: 1120px;
+  margin: 0 auto;
+}
 
 .medicine-list-group-box {
   background-color: gray;

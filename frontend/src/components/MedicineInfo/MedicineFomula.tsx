@@ -4,24 +4,28 @@ import "./MedicineFomula.css";
 interface MedicineFomulaProps {
   page: number;
   updatePage: (arg: number) => void;
-  updateFomula: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineFomula(props: MedicineFomulaProps) {
-  const { page, updatePage, updateFomula } = props;
+  const { page, updatePage, updateCondition } = props;
 
   const onClickBack = () => {
     updatePage(page - 1);
-    updateFomula("");
+    updateCondition("color", "");
+    updateCondition("fomula", "");
   };
 
   const onClickInit = () => {
     updatePage(1);
+    updateCondition("shape", "");
+    updateCondition("color", "");
+    updateCondition("fomula", "");
   };
 
-  const onClickFomula = (Fomula: string) => () => {
+  const onClickFomula = (value: string) => () => {
     updatePage(page + 1);
-    updateFomula(Fomula);
+    updateCondition("fomula", value);
   };
 
   return (
