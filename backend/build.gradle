@@ -81,6 +81,11 @@ processResources {
     }
 }
 
+tasks {
+    processResources {
+        duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
+    }
+}
 
 dependencies {
     //spring
