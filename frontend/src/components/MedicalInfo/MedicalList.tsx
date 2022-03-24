@@ -14,7 +14,6 @@ export interface HospitalProps {
 }
 
 export default function MedicalList({ hospitals }: HospitalProps) {
-  console.log(hospitals);
   return (
     <div>
       {hospitals.map((hospital) => (
