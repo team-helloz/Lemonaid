@@ -1,0 +1,15 @@
+.medicine-fomula-group-box {
+  background-color: gray;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.medicine-fomula-group {
+  list-style: none;
+}
+
+.medicine-fomula-group li {
+  float: left;
+  margin: 0 30px;
+}

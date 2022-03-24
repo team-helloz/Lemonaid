@@ -1,0 +1,15 @@
+.medicine-color-group-box {
+  background-color: gray;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.medicine-color-group {
+  list-style: none;
+}
+
+.medicine-color-group li {
+  float: left;
+  margin: 0 30px;
+}
