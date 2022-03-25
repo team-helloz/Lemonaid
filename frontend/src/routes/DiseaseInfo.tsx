@@ -30,11 +30,8 @@ export default function DiseaseInfo() {
   }
 
   return (
-    <div>
+    <>
       <NavBar />
-      <button onClick={scrollToTop} className="to-top">
-        TOP
-      </button>
       <div className="disease-group">
         <BodyPart nowPart={nowPart} updatePart={updatePart} />
       </div>
@@ -55,6 +52,9 @@ export default function DiseaseInfo() {
       <div className="disease-group">
         <DiseaseList nowSymptoms={nowSymptoms} />
       </div>
-    </div>
+      <button onClick={scrollToTop} className="to-top">
+        TOP
+      </button>
+    </>
   );
 }
