@@ -5,8 +5,59 @@
 
 .medicine-info-title {
   padding: 15px;
+  margin-top: 40px;
+  margin-bottom: 0px;
   display: flex;
-  align-content: center;
-  vertical-align: middle;
-  background-color: lightskyblue;
+  background-color: #d0d7fd;
+  position: relative;
+  height: 65px;
+}
+
+.medicine-info-title img {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+}
+
+.medicine-info-title p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 13%;
+  transform: translate(-50%, -50%);
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.medicine-info-title span {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 27%;
+  transform: translate(-50%, -50%);
+  font-size: large;
+  font-weight: bold;
+}
+
+#medicine-info-refresh {
+  left: 95%;
+}
+
+#medicine-info-refresh:hover {
+  cursor: pointer;
+}
+
+.medicine-info-step {
+  padding: 30px;
+  padding-bottom: 20px;
+  padding-left: 60px;
+  font-size: large;
+  font-weight: bold;
+  background-color: #e5e5e5;
+}
+
+.medicine-info-step span {
+  margin-left: 500px;
 }

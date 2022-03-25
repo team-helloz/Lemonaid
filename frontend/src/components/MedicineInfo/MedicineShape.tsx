@@ -17,7 +17,7 @@ export default function MedicineShape(props: MedicineShapeProps) {
 
   return (
     <>
-      <h3>찾으시는 약은 어떤 모양인가요?</h3>
+      <div className="medicine-shape-title">찾으시는 약은 어떤 모양인가요?</div>
       <div className="medicine-shape-group-box">
         <ul className="medicine-shape-group">
           <li>
@@ -76,6 +76,7 @@ export default function MedicineShape(props: MedicineShapeProps) {
           </li>
         </ul>
       </div>
+      <div className="medicine-shape-bottom"></div>
     </>
   );
 }

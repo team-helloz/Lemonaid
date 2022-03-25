@@ -47,15 +47,21 @@ export default function MedicineList() {
         TOP
       </button>
       <div className="medicine-list-page">
-        <h2>의약품 검색 결과</h2>
-        <h3>
-          검색조건 : {medicineInfo.shape} {" > "} {medicineInfo.color} {" > "}{" "}
-          {medicineInfo.fomula} {" > "}
-          {medicineInfo.divide} {" > "} {medicineInfo.identifier}
-        </h3>
-        <NavLink to="/medicine">
-          <button>검색조건 초기화</button>
-        </NavLink>
+        <div className="medicine-list-title">
+          검색 항목 : 모양 {medicineInfo.shape} {" > "} 색깔
+          {medicineInfo.color} {" > "} 제형 {medicineInfo.fomula} {" > "}
+          분할선 {medicineInfo.divide} {" > "} 식별문자{" "}
+          {medicineInfo.identifier}
+          {/* <NavLink to="/medicine">
+            <img
+              id="medicine-info-refresh"
+              src={require("../../assets/refresh-icon.png")}
+            ></img>
+          </NavLink> */}
+          <NavLink to="/medicine">
+            <button>검색조건 초기화</button>
+          </NavLink>
+        </div>
         <div className="medicine-list-group-box">
           <ul className="medicine-list-type">
             <li>
