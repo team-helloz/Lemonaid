@@ -54,6 +54,15 @@ export default function MedicineInfo() {
     });
   };
 
+  const initCondition = (): void => {
+    updatePage(1);
+    setShape("");
+    setColor("");
+    setFomula("");
+    setDivide("");
+    setIdentifier("");
+  };
+
   return (
     <>
       <NavBar />
@@ -61,10 +70,20 @@ export default function MedicineInfo() {
         <div className="medicine-info-title">
           <img src={require("../assets/medicinebottle.png")}></img>
           <p>의약품 검색</p>
+          <span>어떤 약을 찾고 계신가요?</span>
+          <img
+            id="medicine-info-refresh"
+            src={require("../assets/refresh-icon.png")}
+            onClick={initCondition}
+          ></img>
         </div>
-        <h3>
-          STEP {page}, {shape}, {color}, {fomula}, {divide}, {identifier}
-        </h3>
+        <div className="medicine-info-step">
+          STEP {page}
+          <span>
+            ({shape} {">"} {color} {">"} {fomula} {">"} {divide} {">"}{" "}
+            {identifier})
+          </span>
+        </div>
 
         {page === 1 && (
           <MedicineShape

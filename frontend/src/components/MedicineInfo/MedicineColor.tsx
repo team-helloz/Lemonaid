@@ -28,14 +28,13 @@ export default function MedicineColor(props: MedicineColorProps) {
 
   return (
     <>
-      <h3>찾으시는 약은 어떤 색깔인가요?</h3>
+      <div className="medicine-shape-title">찾으시는 약은 어떤 색깔인가요?</div>
       <div className="medicine-color-group-box">
         <ul className="medicine-color-group">
           <li>
-            <button onClick={onClickBack}>뒤로가기</button>
-          </li>
-          <li>
-            <button onClick={onClickInit}>초기화</button>
+            <span onClick={onClickColor("색깔전체")}>
+              <MedicineSerachItem itemName="색깔전체"></MedicineSerachItem>
+            </span>
           </li>
           <li>
             <span onClick={onClickColor("하양")}>
@@ -57,15 +56,15 @@ export default function MedicineColor(props: MedicineColorProps) {
               <MedicineSerachItem itemName="분홍"></MedicineSerachItem>
             </span>
           </li>
-        </ul>
-      </div>
-      <div className="medicine-color-group-box">
-        <ul className="medicine-color-group">
           <li>
             <span onClick={onClickColor("빨강")}>
               <MedicineSerachItem itemName="빨강"></MedicineSerachItem>
             </span>
           </li>
+        </ul>
+      </div>
+      <div className="medicine-color-group-box">
+        <ul className="medicine-color-group">
           <li>
             <span onClick={onClickColor("갈색")}>
               <MedicineSerachItem itemName="갈색"></MedicineSerachItem>
@@ -92,6 +91,12 @@ export default function MedicineColor(props: MedicineColorProps) {
             </span>
           </li>
         </ul>
+      </div>
+      <div className="medicine-color-bottom">
+        <img
+          src={require("../../assets/back-icon.png")}
+          onClick={onClickBack}
+        ></img>
       </div>
     </>
   );

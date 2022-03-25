@@ -31,15 +31,11 @@ export default function MedicineDivide(props: MedicineDivideProps) {
 
   return (
     <>
-      <h3>찾으시는 약은 어떤 분할선이 있나요?</h3>
+      <div className="medicine-divide-title">
+        찾으시는 약은 어떤 분할선이 있나요?
+      </div>
       <div className="medicine-divide-group-box">
         <ul className="medicine-divide-group">
-          <li>
-            <button onClick={onClickBack}>뒤로가기</button>
-          </li>
-          <li>
-            <button onClick={onClickInit}>초기화</button>
-          </li>
           <li>
             <span onClick={onClickDivide("분할선전체")}>
               <MedicineSerachItem itemName="분할선전체"></MedicineSerachItem>
@@ -61,6 +57,12 @@ export default function MedicineDivide(props: MedicineDivideProps) {
             </span>
           </li>
         </ul>
+      </div>
+      <div className="medicine-divide-bottom">
+        <img
+          src={require("../../assets/back-icon.png")}
+          onClick={onClickBack}
+        ></img>
       </div>
     </>
   );
