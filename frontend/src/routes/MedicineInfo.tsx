@@ -8,6 +8,8 @@ import MedicineFomula from "../components/MedicineInfo/MedicineFomula";
 import MedicineDivide from "../components/MedicineInfo/MedicineDivide";
 import MedicineIdentifier from "../components/MedicineInfo/MedicineIdentifier";
 
+import "./MedicineInfo.css";
+
 export default function MedicineInfo() {
   const history = useHistory();
 
@@ -16,25 +18,25 @@ export default function MedicineInfo() {
   const [color, setColor] = useState<string>("");
   const [fomula, setFomula] = useState<string>("");
   const [divide, setDivide] = useState<string>("");
+  const [identifier, setIdentifier] = useState<string>("");
 
   const updatePage = (page: number): void => {
     setPage(page);
   };
 
-  const updateShape = (shape: string): void => {
-    setShape(shape);
-  };
-
-  const updateColor = (color: string): void => {
-    setColor(color);
-  };
-
-  const updateFomula = (fomula: string): void => {
-    setFomula(fomula);
-  };
-
-  const updateDivide = (divide: string): void => {
-    setDivide(divide);
+  const updateCondition = (name: string, value: string): void => {
+    if (name === "shape") {
+      setShape(value);
+    } else if (name === "color") {
+      setColor(value);
+    } else if (name === "fomula") {
+      setFomula(value);
+    } else if (name === "divide") {
+      setDivide(value);
+    } else if (name === "identifier") {
+      setIdentifier(value);
+      moveMedicineList(value);
+    }
   };
 
   const moveMedicineList = (identifier: string): void => {
@@ -46,57 +48,79 @@ export default function MedicineInfo() {
       identifier: identifier,
     };
 
-    console.log(medicineInfo);
-
     history.push({
       pathname: "/medicine/list",
       state: { medicineInfo: medicineInfo },
     });
   };
 
-  return (
-    <div>
-      <NavBar />
-      <h1>의약품 조회</h1>
-      <h3>
-        STEP {page}, {shape}, {color}, {fomula}, {divide}
-      </h3>
+  const initCondition = (): void => {
+    updatePage(1);
+    setShape("");
+    setColor("");
+    setFomula("");
+    setDivide("");
+    setIdentifier("");
+  };
 
-      {page === 1 && (
-        <MedicineShape
-          page={page}
-          updatePage={updatePage}
-          updateShape={updateShape}
-        ></MedicineShape>
-      )}
-      {page === 2 && (
-        <MedicineColor
-          page={page}
-          updatePage={updatePage}
-          updateColor={updateColor}
-        ></MedicineColor>
-      )}
-      {page === 3 && (
-        <MedicineFomula
-          page={page}
-          updatePage={updatePage}
-          updateFomula={updateFomula}
-        ></MedicineFomula>
-      )}
-      {page === 4 && (
-        <MedicineDivide
-          page={page}
-          updatePage={updatePage}
-          updateDivide={updateDivide}
-        ></MedicineDivide>
-      )}
-      {page === 5 && (
-        <MedicineIdentifier
-          page={page}
-          updatePage={updatePage}
-          moveMedicineList={moveMedicineList}
-        ></MedicineIdentifier>
-      )}
-    </div>
+  return (
+    <>
+      <NavBar />
+      <div className="medicine-info-page">
+        <div className="medicine-info-title">
+          <img src={require("../assets/medicinebottle.png")}></img>
+          <p>의약품 검색</p>
+          <span>어떤 약을 찾고 계신가요?</span>
+          <img
+            id="medicine-info-refresh"
+            src={require("../assets/refresh-icon.png")}
+            onClick={initCondition}
+          ></img>
+        </div>
+        <div className="medicine-info-step">
+          STEP {page}
+          <span>
+            ({shape} {">"} {color} {">"} {fomula} {">"} {divide} {">"}{" "}
+            {identifier})
+          </span>
+        </div>
+
+        {page === 1 && (
+          <MedicineShape
+            page={page}
+            updatePage={updatePage}
+            updateCondition={updateCondition}
+          ></MedicineShape>
+        )}
+        {page === 2 && (
+          <MedicineColor
+            page={page}
+            updatePage={updatePage}
+            updateCondition={updateCondition}
+          ></MedicineColor>
+        )}
+        {page === 3 && (
+          <MedicineFomula
+            page={page}
+            updatePage={updatePage}
+            updateCondition={updateCondition}
+          ></MedicineFomula>
+        )}
+        {page === 4 && (
+          <MedicineDivide
+            page={page}
+            updatePage={updatePage}
+            updateCondition={updateCondition}
+          ></MedicineDivide>
+        )}
+        {page === 5 && (
+          <MedicineIdentifier
+            page={page}
+            updatePage={updatePage}
+            updateCondition={updateCondition}
+          ></MedicineIdentifier>
+        )}
+      </div>
+    </>
   );
 }
