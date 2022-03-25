@@ -9,6 +9,7 @@ public class Driver {
         try {
             pgd.addClass("wordcount", Wordcount.class, "A map/reduce program");
             pgd.addClass("medicalsubjectsearch", MedicalSubjectSearch.class, "");
+            pgd.addClass("medicalsidogugun", MedicalSidoGugun.class, "시도, 구군 별로 갯수 카운트");
 
             pgd.driver(args);
             exitCode = 0;
