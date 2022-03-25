@@ -3,6 +3,8 @@ import "./MedicalInfo.css";
 import MedicalList from "../components/MedicalInfo/MedicalList";
 import { useEffect } from "react";
 import * as React from "react";
+import axios from "axios";
+
 declare global {
   interface Window {
     kakao: any;
@@ -14,7 +16,7 @@ const nowCoor = {
 };
 export default function MedicalInfo() {
   const history = useHistory();
-
+  var center = 0;
   interface hospital {
     id: number;
     type: string;
@@ -78,28 +80,65 @@ export default function MedicalInfo() {
     history.push("/");
   }
   const [nowCenter, setNowCenter] = React.useState(nowCoor);
-
+  const [roadAdd, setRoadAdd] = React.useState("");
+  const api = "8bfd93b5e35e8d6039d2b40188560f8b";
   const userGeo = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         var lat = position.coords.latitude,
           lon = position.coords.longitude;
         setNowCenter({ y: lat, x: lon });
+        xyToAdd(lon, lat);
       });
     } else {
     }
-    console.log(nowCenter);
   };
 
+  const xyToAdd = (lon: any, lat: any) => {
+    axios
+      .get(
+        `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${lon}&y=${lat}`,
+        {
+          headers: {
+            Authorization: `KakaoAK ${api}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data.documents[0].road_address.address_name);
+        setRoadAdd(res.data.documents[0].road_address.address_name);
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const addToXy = (address: any) => {
+    console.log(address);
+    axios
+      .get(
+        `https://dapi.kakao.com/v2/local/search/address.json?query=${address}`,
+        {
+          headers: {
+            Authorization: `KakaoAK ${api}`,
+          },
+        }
+      )
+      .then((res) => {
+        const x = res.data.documents[0].road_address.x;
+        const y = res.data.documents[0].road_address.y;
+        if (x !== null) {
+          setNowCenter({ x, y });
+          setRoadAdd(res.data.documents[0].road_address.address_name);
+        }
+      })
+      .catch((e) => console.log(e));
+  };
   const mapContainer = () => {
-    let container = document.getElementById("map");
-    let options = {
+    var container = document.getElementById("map");
+    var options = {
       center: new window.kakao.maps.LatLng(nowCenter.y, nowCenter.x),
       level: 4,
     };
-    console.log(options);
     let map = new window.kakao.maps.Map(container, options);
-
     var control = new window.kakao.maps.ZoomControl();
     map.addControl(control, window.kakao.maps.ControlPosition.TOPRIGHT);
   };
@@ -111,16 +150,24 @@ export default function MedicalInfo() {
   useEffect(() => {
     mapContainer();
   }, [nowCenter]);
+
+  const handleKeyPress = (e: any) => {
+    if (e.key === "Enter") {
+      addToXy(e.target.value);
+      setRoadAdd(e.target.value);
+    }
+  };
   return (
     <>
       <div className="medi-left">
         <div className="medi-search"></div>
+        <p>{roadAdd}</p>
         <div className="medi-home" onClick={routeHome}>
           Home
         </div>
       </div>
       <div className="medi-center1">
-        <input type="text" />
+        <input type="text" placeholder={roadAdd} onKeyPress={handleKeyPress} />
       </div>
       <div className="medi-center2"></div>
       <div className="medi-right">
