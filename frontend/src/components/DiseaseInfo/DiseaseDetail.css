@@ -1,0 +1,48 @@
+.d-detail-page {
+  display: flex;
+  justify-content: center;
+}
+
+.d-detail-content {
+  width: 1120px;
+}
+
+.d-detail-title {
+  display: flex;
+  align-items: center;
+}
+
+.d-detail-name {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.d-medical-btn {
+  height: 25px;
+  margin-left: 10px;
+}
+
+.d-detail-list {
+  display: flex;
+  margin-left: 20px;
+}
+
+.d-detail-list * {
+  margin-right: 10px;
+}
+
+.d-item-box {
+  display: flex;
+}
+
+.d-item-blue {
+  width: 3px;
+  height: 16px;
+  background-color: blue;
+  margin: 13px 5px 0 0;
+}
+
+.d-item-mini-title {
+  margin: 10px 0 5px 0;
+  font-weight: bold;
+}
