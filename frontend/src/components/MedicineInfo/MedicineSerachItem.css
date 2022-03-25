@@ -1,7 +1,8 @@
 .medicine-serach-item {
-  border: 2px dashed black;
+  border: 2px black;
   border-radius: 10px;
   padding: 15px;
+  border-style: solid;
 }
 
 .medicine-serach-item:hover {

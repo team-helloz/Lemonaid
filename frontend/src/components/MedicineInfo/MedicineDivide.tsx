@@ -16,14 +16,6 @@ export default function MedicineDivide(props: MedicineDivideProps) {
     updateCondition("divide", "");
   };
 
-  const onClickInit = () => {
-    updatePage(1);
-    updateCondition("shape", "");
-    updateCondition("color", "");
-    updateCondition("fomula", "");
-    updateCondition("divide", "");
-  };
-
   const onClickDivide = (value: string) => () => {
     updatePage(page + 1);
     updateCondition("divide", value);
@@ -62,6 +54,7 @@ export default function MedicineDivide(props: MedicineDivideProps) {
         <img
           src={require("../../assets/back-icon.png")}
           onClick={onClickBack}
+          alt=""
         ></img>
       </div>
     </>
