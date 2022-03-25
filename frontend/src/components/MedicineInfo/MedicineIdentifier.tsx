@@ -24,14 +24,6 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
     updateCondition("divide", "");
   };
 
-  const onClickInit = () => {
-    updatePage(1);
-    updateCondition("shape", "");
-    updateCondition("color", "");
-    updateCondition("fomula", "");
-    updateCondition("divide", "");
-  };
-
   const onClickDontKnow = () => {
     updateCondition("identifier", "식별문자모름");
   };
@@ -69,6 +61,7 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
         <img
           src={require("../../assets/back-icon.png")}
           onClick={onClickBack}
+          alt=""
         ></img>
       </div>
     </>

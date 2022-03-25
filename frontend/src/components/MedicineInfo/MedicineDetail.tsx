@@ -1,6 +1,5 @@
 // Components
 import NavBar from "../NavBar";
-import { NavLink } from "react-router-dom";
 import "./MedicineDetail.css";
 
 export default function MedicineDetail() {
