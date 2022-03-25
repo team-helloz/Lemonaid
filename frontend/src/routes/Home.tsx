@@ -1,16 +1,20 @@
+// React
+import { useState } from "react";
 // Route
 import { useHistory } from "react-router-dom";
 // Components
 import HomeScroll from "../components/Home/HomeScroll";
+import SlideWidget from "../components/Home/SlideWidget";
 // Style
 import "./Home.css"
 
 export default function Home() {
-  // 경로로 이동하는 함수
-  const history = useHistory();
 
+  const history = useHistory();
+  const [nowMenu, setMenu] = useState<string>("h-m-menu-list h-m-medical");
+
+  // 해당 링크로 이동
   function routeMedical() {
-    // 해당 링크로 이동
     history.push("/medical");
   }
   function routeMedicine() {
@@ -23,10 +27,35 @@ export default function Home() {
     history.push("/covid");
   }
 
+  window.addEventListener('scroll', function() {
+    updateMenu(window.scrollY)
+  })
+
+  function updateMenu (s: number) {
+    let scrollPoint = s
+    console.log(1)
+
+    if (scrollPoint < 300) {
+      setMenu("h-m-menu-list h-m-medical")
+    } else if (300 <= scrollPoint && scrollPoint < 900) {
+      setMenu("h-m-menu-list h-m-medicine")
+    } else if (900 <= scrollPoint && scrollPoint < 1500) {
+      setMenu("h-m-menu-list h-m-disease")
+    } else {
+      setMenu("h-m-menu-list h-m-covid")
+    }
+  }
+
   return (
-    <div className="home-page">
+    <div
+      className="home-page"
+    >
       <div className="h-main">
-        <h1>Lemonaid</h1>
+        <SlideWidget
+          nowMenu={nowMenu}
+        />
+        <p className="team-logo">Lemonaid.</p>
+        <p className="team">ⓒ SSAFY 6th - 안녕즈</p>
       </div>
 
       <HomeScroll 
