@@ -1,0 +1,33 @@
+.nav-container {
+  width: 100%;
+}
+
+.nav-bottom {
+  width: 100%;
+  height: 20vh;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+}
+
+.nav-content {
+  text-align: right;
+  padding: 20px 60px 20px 60px;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-content a {
+  font-size: 20px;
+  margin: 0;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-content :nth-child(2) {
+  margin-left: auto;
+}
+
+.nav-home {
+  height: 100px;
+  cursor: pointer;
+}

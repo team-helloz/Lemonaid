@@ -1,4 +1,5 @@
 .selected-symptom-group {
   display: flex;
   width: 1120px;
+  margin-top: 5vh;
 }

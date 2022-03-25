@@ -1,28 +1,37 @@
 .symptom-group-box {
   margin-bottom: 10px;
-  padding: 0 5px;
-  background-color: gray;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
   width: 1110px;
   height: 200px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .symptom-btn {
-  background-color: rgb(151, 204, 235);
-  border: none;
-  margin: 10px 5px;
+  background: linear-gradient(
+    to right,
+    rgba(77, 160, 176, 0.2),
+    rgba(211, 157, 56, 0.2)
+  );
 }
 
 .symptom-btn:hover {
   background-color: rgb(65, 126, 161);
-  cursor: pointer;
 }
 
 .selected-symptom {
   background-color: rgb(65, 126, 161);
-  border: none;
-  margin: 10px 5px;
 }
 
-.selected-symptom:hover {
+.sys-btn {
+  margin: 10px 5px;
   cursor: pointer;
+  width: 10%;
+  height: 25%;
+  margin: 5px;
+  border-radius: 5px;
+  border: 0;
+  transition: 0.2s;
 }
