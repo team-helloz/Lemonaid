@@ -69,18 +69,21 @@ export default function MedicalInfo() {
     history.push("/");
   }
   return (
-    <div>
-      <div className="hos-left">
-        <div className="hos-search"></div>
-        <div className="hos-home" onClick={routeHome}>
+    <>
+      <div className="medi-left">
+        <div className="medi-search"></div>
+        <div className="medi-home" onClick={routeHome}>
           Home
         </div>
       </div>
-      <div className="hos-center"></div>
-      <div className="hos-right">
+      <div className="medi-center1">
+        <input type="text" />
+      </div>
+      <div className="medi-center2"></div>
+      <div className="medi-right">
         <MedicalList hospitals={hospitalList} />
       </div>
       <MedicalMap />
-    </div>
+    </>
   );
 }

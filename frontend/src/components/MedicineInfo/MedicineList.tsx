@@ -36,75 +36,87 @@ export default function MedicineList() {
     },
   ];
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
-      <NavBar></NavBar>
-      <h2>의약품 검색 결과</h2>
-      <h3>
-        검색조건 : {medicineInfo.shape} {" > "} {medicineInfo.color} {" > "}{" "}
-        {medicineInfo.fomula} {" > "}
-        {medicineInfo.divide} {" > "} {medicineInfo.identifier}
-      </h3>
-      <NavLink to="/medicine">
-        <button>검색조건 초기화</button>
-      </NavLink>
-      <div className="medicine-list-group-box">
-        <ul className="medicine-list-type">
-          <li>
-            <NavLink to="/medicine/list/park">
-              <img
-                src={require("../../assets/medicine.png")}
-                width="90"
-                height="90"
-                alt=""
-              />
-            </NavLink>
-            <NavLink to="/medicine/list/park">
-              <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/medicine/list/park">
-              <img
-                src={require("../../assets/medicine.png")}
-                width="90"
-                height="90"
-                alt=""
-              />
-            </NavLink>
-            <NavLink to="/medicine/list/park">
-              <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/medicine/list/park">
-              <img
-                src={require("../../assets/medicine.png")}
-                width="90"
-                height="90"
-                alt=""
-              />
-            </NavLink>
-            <NavLink to="/medicine/list/park">
-              <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.
-            </NavLink>
-          </li>
-        </ul>
+      <NavBar />
+      <button onClick={scrollToTop} className="to-top">
+        TOP
+      </button>
+      <div className="medicine-list-page">
+        <div className="medicine-list-title">
+          검색 항목 : 모양 {medicineInfo.shape} {" > "} 색깔
+          {medicineInfo.color} {" > "} 제형 {medicineInfo.fomula} {" > "}
+          분할선 {medicineInfo.divide} {" > "} 식별문자{" "}
+          {medicineInfo.identifier}
+          {/* <NavLink to="/medicine">
+            <img
+              id="medicine-info-refresh"
+              src={require("../../assets/refresh-icon.png")}
+            ></img>
+          </NavLink> */}
+          <NavLink to="/medicine">
+            <button>검색조건 초기화</button>
+          </NavLink>
+        </div>
+        <div className="medicine-list-group-box">
+          <ul className="medicine-list-type">
+            <li>
+              <NavLink to="/medicine/list/park">
+                <img
+                  src={require("../../assets/medicine.png")}
+                  width="90"
+                  height="90"
+                  alt=""
+                />
+                <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
+                텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/medicine/list/park">
+                <img
+                  src={require("../../assets/medicine.png")}
+                  width="90"
+                  height="90"
+                  alt=""
+                />
+                <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
+                텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/medicine/list/park">
+                <img
+                  src={require("../../assets/medicine.png")}
+                  width="90"
+                  height="90"
+                  alt=""
+                />
+                <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
+                텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는
+                이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.
+              </NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
     </>
   );

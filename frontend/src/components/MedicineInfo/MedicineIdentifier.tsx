@@ -4,11 +4,11 @@ import "./MedicineIdentifier.css";
 interface MedicineIdentifierProps {
   page: number;
   updatePage: (arg: number) => void;
-  moveMedicineList: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineIdentifier(props: MedicineIdentifierProps) {
-  const { page, updatePage, moveMedicineList } = props;
+  const { page, updatePage, updateCondition } = props;
 
   const [value, setValue] = useState("");
 
@@ -21,31 +21,36 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
 
   const onClickBack = () => {
     updatePage(page - 1);
+    updateCondition("divide", "");
   };
 
   const onClickInit = () => {
     updatePage(1);
+    updateCondition("shape", "");
+    updateCondition("color", "");
+    updateCondition("fomula", "");
+    updateCondition("divide", "");
   };
 
   const onClickDontKnow = () => {
-    moveMedicineList("식별문자모름");
+    updateCondition("identifier", "식별문자모름");
   };
 
   const onClickIdentifier = () => {
-    moveMedicineList(value);
+    let identifier = value;
+    if (identifier === "") {
+      identifier = "식별문자모름";
+    }
+    updateCondition("identifier", identifier);
   };
 
   return (
     <>
-      <h3>찾으시는 약은 어떤 식별문자가 있나요?</h3>
+      <div className="medicine-identifier-title">
+        찾으시는 약은 어떤 식별문자가 있나요?
+      </div>
       <div className="medicine-identifier-group-box">
         <ul className="medicine-identifier-group">
-          <li>
-            <button onClick={onClickBack}>뒤로가기</button>
-          </li>
-          <li>
-            <button onClick={onClickInit}>초기화</button>
-          </li>
           <li>
             <button onClick={onClickDontKnow}>식별문자모름</button>
           </li>
@@ -59,6 +64,12 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
             <button onClick={onClickIdentifier}>확인</button>
           </li>
         </ul>
+      </div>
+      <div className="medicine-fomula-bottom">
+        <img
+          src={require("../../assets/back-icon.png")}
+          onClick={onClickBack}
+        ></img>
       </div>
     </>
   );

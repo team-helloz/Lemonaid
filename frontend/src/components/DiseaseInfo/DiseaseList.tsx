@@ -2,9 +2,16 @@
 import { useHistory } from "react-router-dom"
 // Style
 import "./DiseaseList.css";
+// SVG
+import Popup from "../../assets/popup.svg"
 
+interface SymptomProps {
+  nowSymptoms: string[];
+}
 
-export default function DiseaseList() {
+export default function DiseaseList(props: SymptomProps) {
+  
+  const { nowSymptoms } = props
 
   const history = useHistory();
 
@@ -12,7 +19,34 @@ export default function DiseaseList() {
     history.push(`/disease/${diseasename}`)
   }
 
-  const diseases = [
+  const headDiseases = [
+    {
+      name: "뚝배기 깨짐",
+      symptoms: ["머리 증상 1", "두통"],
+      related: ["뇌진탕"],
+      courses: ["외과"],
+      sames: ["머리 깨짐"],
+      image: "이미지",
+    },
+    {
+      name: "머리 질병 1",
+      symptoms: ["머리 증상 1", "치통"],
+      related: ["머리 질병 2"],
+      courses: ["내과"],
+      sames: ["머리머리"],
+      image: "이미지",
+    },
+    {
+      name: "머리 질병 3",
+      symptoms: ["머리 증상 1", "건망증"],
+      related: ["머리 질병 4"],
+      courses: ["내과"],
+      sames: ["머어리"],
+      image: "이미지",
+    }
+  ]
+
+  const elseDiseases = [
     {
       name: "감기",
       symptoms: ["기침", "콧물"],
@@ -39,19 +73,37 @@ export default function DiseaseList() {
     },
   ]
 
+  let diseases = []
+
+  if (nowSymptoms.includes("머리 증상 1")) {
+    diseases = headDiseases
+  } else if (nowSymptoms.length > 0) {
+    diseases = elseDiseases
+  } else {
+    diseases = elseDiseases
+  }
+
   return (
     <div className="disease-list">
       {diseases.map((disease, i: number) => (
         <div
           key={i}
-          className="disease-item"
+          className="disease-item disease-box"
         >
           <div>
-            <h3 onClick={() => routeDetail(disease.name)}>{disease.name}</h3>
-            
-            <p className="list-title">증상</p>
-            <hr className="list-line" />
             <div className="detail-list">
+              <p
+                onClick={() => routeDetail(disease.name)}
+                className="disease-name"
+              >{disease.name}</p>
+              <img src={Popup} alt="" width={"18px"} onClick={() => routeDetail(disease.name)} className="popup-btn" />
+            </div>
+            
+            <div className="list-title-box">
+              <div className="item-title-blue"></div>
+              <p className="list-title">증상</p>
+            </div>
+            <div className="detail-item-list">
               {disease.symptoms.map((symptom, j: number) => (
                 <p key={j}>
                   {symptom}
@@ -59,19 +111,27 @@ export default function DiseaseList() {
               ))}
             </div>
 
-            <p className="list-title">관련 질환</p>
-            <hr className="list-line" />
-            <div className="detail-list">
+            <div className="list-title-box">
+              <div className="item-title-blue"></div>
+              <p className="list-title">관련 질환</p>
+            </div>
+            <div className="detail-item-list">
               {disease.related.map((relate, j: number) => (
-                <p key={j}>
+                <p
+                  key={j}
+                  onClick={() => routeDetail(relate)}
+                  className="related-disease"
+                >
                   {relate}
                 </p>
               ))}
             </div>
 
-            <p className="list-title">진료 과목</p>
-            <hr className="list-line" />
-            <div className="detail-list">
+            <div className="list-title-box">
+              <div className="item-title-blue"></div>
+              <p className="list-title">진료 과목</p>
+            </div>
+            <div className="detail-item-list">
               {disease.courses.map((course, j: number) => (
                 <p key={j}>
                   {course}
@@ -79,9 +139,11 @@ export default function DiseaseList() {
               ))}
             </div>
 
-            <p className="list-title">동의어</p>
-            <hr className="list-line" />
-            <div className="detail-list">
+            <div className="list-title-box">
+              <div className="item-title-blue"></div>
+              <p className="list-title">동의어</p>
+            </div>
+            <div className="detail-item-list">
               {disease.sames.map((same, j: number) => (
                 <p key={j}>
                   {same}
@@ -89,7 +151,10 @@ export default function DiseaseList() {
               ))}
             </div>
           </div>
-          <div className="disease-img">{disease.image}</div>
+          <div
+            onClick={() => routeDetail(disease.name)}
+            className="disease-img"
+          >{disease.image}</div>
         </div>
       ))}
     </div>
