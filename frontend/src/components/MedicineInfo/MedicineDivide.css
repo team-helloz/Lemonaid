@@ -1,0 +1,15 @@
+.medicine-divide-group-box {
+  background-color: gray;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.medicine-divide-group {
+  list-style: none;
+}
+
+.medicine-divide-group li {
+  float: left;
+  margin: 0 30px;
+}

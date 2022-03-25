@@ -4,6 +4,8 @@
 
 .body-part-group {
   list-style: none;
+  padding: 0;
+  width: 1120px;
 }
 
 .body-part-group li {
@@ -14,10 +16,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px 0;
   background-color: rgb(151, 204, 235);
   border: none;
-  padding: 5px 0;
-  width: 90px;
+  width: 112px;
 }
 
 .part-btn:hover {
@@ -26,5 +28,23 @@
 }
 
 .part-btn p {
+  margin: 0 0 0 10px;
+}
+
+.selected-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  background-color: rgb(65, 126, 161);
+  border: none;
+  width: 112px;
+}
+
+.selected-part:hover {
+  cursor: pointer;
+}
+
+.selected-part p {
   margin: 0 0 0 10px;
 }
