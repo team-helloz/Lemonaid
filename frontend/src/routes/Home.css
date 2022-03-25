@@ -3,6 +3,7 @@
 }
 
 .h-main {
+  display: flex;
   width: 70%;
   height: 100vh;
   position: sticky;
@@ -14,4 +15,17 @@
   height: 100vh;
   position: sticky;
   top: 0;
+}
+
+.team-logo {
+  font-size: 75px;
+  font-weight: bold;
+}
+
+.team {
+  position: absolute;
+  margin: 0;
+  bottom: 20px;
+  left: 20px;
+  font-size: 12px;
 }
