@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import NavBar from "../NavBar";
+import Popup from "../../assets/popup.svg";
 
 import "./MedicineList.css";
 
@@ -52,12 +53,6 @@ export default function MedicineList() {
           {medicineInfo.color} {" > "} 제형 {medicineInfo.fomula} {" > "}
           분할선 {medicineInfo.divide} {" > "} 식별문자{" "}
           {medicineInfo.identifier}
-          {/* <NavLink to="/medicine">
-            <img
-              id="medicine-info-refresh"
-              src={require("../../assets/refresh-icon.png")}
-            ></img>
-          </NavLink> */}
           <NavLink to="/medicine">
             <button>검색조건 초기화</button>
           </NavLink>
@@ -66,11 +61,21 @@ export default function MedicineList() {
           <ul className="medicine-list-type">
             <li>
               <NavLink to="/medicine/list/park">
+                <div className="medicine-list-item-title">
+                  <span>팍스로이드</span>
+                  <img
+                    src={Popup}
+                    alt=""
+                    width={"17px"}
+                    className="popup-btn"
+                  />
+                </div>
                 <img
                   src={require("../../assets/medicine.png")}
-                  width="90"
-                  height="90"
+                  width="200"
+                  height="150"
                   alt=""
+                  className="medicine-list-item-img"
                 />
                 <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
                 텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
@@ -83,14 +88,23 @@ export default function MedicineList() {
             </li>
             <li>
               <NavLink to="/medicine/list/park">
+                <div className="medicine-list-item-title">
+                  <span>팍스로이드</span>
+                  <img
+                    src={Popup}
+                    alt=""
+                    width={"17px"}
+                    className="popup-btn"
+                  />
+                </div>
                 <img
                   src={require("../../assets/medicine.png")}
-                  width="90"
-                  height="90"
+                  width="200"
+                  height="150"
                   alt=""
                 />
-                <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
-                텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
+                <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>
+                측면에 텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
                 이미지리스트입니다.측면에 텍스트가 있는
                 이미지리스트입니다.측면에 텍스트가 있는
                 이미지리스트입니다.측면에 텍스트가 있는
@@ -100,10 +114,19 @@ export default function MedicineList() {
             </li>
             <li>
               <NavLink to="/medicine/list/park">
+                <div className="medicine-list-item-title">
+                  <span>팍스로이드</span>
+                  <img
+                    src={Popup}
+                    alt=""
+                    width={"17px"}
+                    className="popup-btn"
+                  />
+                </div>
                 <img
                   src={require("../../assets/medicine.png")}
-                  width="90"
-                  height="90"
+                  width="200"
+                  height="150"
                   alt=""
                 />
                 <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에

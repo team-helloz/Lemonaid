@@ -16,7 +16,8 @@
 
 .medicine-list-title {
   padding: 0px;
-  margin-top: 40px;
+  margin-left: 35px;
+  margin-top: 50px;
   font-size: large;
   font-weight: bold;
   height: 50px;
@@ -29,30 +30,39 @@
 .medicine-list-group-box {
   /* background-color: gray; */
   justify-content: center;
+  margin-left: 35px;
 }
 
 .medicine-list-type {
   overflow: hidden;
-  width: 500px;
+  width: 900px;
   padding: 0 10px 10px;
   /*border: 1px solid #c2c2c2;*/
 }
 .medicine-list-type li {
   overflow: hidden;
   clear: both;
-  margin: 10px 0 0;
+  margin: 0px 0 0;
   color: #2d2c2d;
   /* font-family: "돋움", Dotum; */
   font-size: 12px;
   line-height: 14px;
   list-style: none;
 }
+
+.popup-btn {
+  margin: 0 0 0 7px !important;
+  padding-top: 5px !important;
+  float: none !important;
+}
+
 .medicine-list-type li img {
   display: inline;
-  float: left;
+  float: right;
   margin: 0 10px 0 0;
   border: none;
 }
+
 .medicine-list-type li a {
   color: #2d2c2d;
   text-decoration: none;
@@ -60,4 +70,11 @@
 .medicine-list-type li a:hover {
   text-decoration: underline;
 }
+
+.medicine-list-item-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
 /* //UI Object */

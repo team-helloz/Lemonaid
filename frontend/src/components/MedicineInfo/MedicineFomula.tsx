@@ -16,13 +16,6 @@ export default function MedicineFomula(props: MedicineFomulaProps) {
     updateCondition("fomula", "");
   };
 
-  const onClickInit = () => {
-    updatePage(1);
-    updateCondition("shape", "");
-    updateCondition("color", "");
-    updateCondition("fomula", "");
-  };
-
   const onClickFomula = (value: string) => () => {
     updatePage(page + 1);
     updateCondition("fomula", value);
@@ -61,6 +54,7 @@ export default function MedicineFomula(props: MedicineFomulaProps) {
         <img
           src={require("../../assets/back-icon.png")}
           onClick={onClickBack}
+          alt=""
         ></img>
       </div>
     </>
