@@ -19,7 +19,8 @@ export default function HomeScroll(props: RouteProps) {
         <div>
           <p className="h-menu-num">1</p>
           <div className="cursor-pointer h-menu-box" onClick={routeMedical}>
-            <p>의료기관 조회</p>
+            <p className="h-move-title">의료기관 조회</p>
+            <p className="h-move-to">바로가기</p>
           </div>
           <p className="h-menu-l-description">병원 어디있지?</p>
         </div>
@@ -29,7 +30,8 @@ export default function HomeScroll(props: RouteProps) {
         <div>
           <p className="h-menu-num">2</p>
           <div className="cursor-pointer h-menu-box" onClick={routeMedicine}>
-            <p>의약품 조회</p>
+            <p className="h-move-title">의약품 조회</p>
+            <p className="h-move-to">바로가기</p>
           </div>
           <p className="h-menu-r-description">이 약...</p>
         </div>
@@ -41,7 +43,8 @@ export default function HomeScroll(props: RouteProps) {
         <div>
           <p className="h-menu-num">3</p>
           <div className="cursor-pointer h-menu-box" onClick={routeDisease}>
-            <p>증상 조회</p>
+            <p className="h-move-title">증상 조회</p>
+            <p className="h-move-to">바로가기</p>
           </div>
           <p className="h-menu-l-description">아픈걸까?</p>
         </div>
@@ -51,7 +54,8 @@ export default function HomeScroll(props: RouteProps) {
         <div>
           <p className="h-menu-num">4</p>
           <div className="cursor-pointer h-menu-box" onClick={routeCovid}>
-            <p>코로나 정보 조회</p>
+            <p className="h-move-title">코로나 정보 조회</p>
+            <p className="h-move-to">바로가기</p>
           </div>
           <p className="h-menu-r-description">코로나 정보가</p>
         </div>
