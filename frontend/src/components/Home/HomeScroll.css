@@ -1,6 +1,5 @@
 .h-scroll {
   width: 750px;
-  height: 3000px;
   border-left: 1px solid black;
   border-right: 1px solid black;
 }
@@ -14,10 +13,25 @@
 
 .h-menu-box {
   display: flex;
+  justify-content: end;
   align-items: end;
-  width: 500px;
-  height: 400px;
+  padding: 20px;
+  width: 480px;
+  height: 380px;
   background-color: rgb(159, 211, 235);
+}
+
+.h-move-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.h-move-to {
+  font-size: 15px;
+  margin: 0 0 0 10px;
+  color: white;
 }
 
 .home-medical {
