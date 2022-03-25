@@ -1,13 +1,14 @@
 #map {
-  width: 100vw;
+  left: 10vw;
+  width: 75vw;
   height: 100vh;
 }
 
-.hos-home {
+.medi-home {
   background: black;
 
   color: white;
-  width: 15vw;
+  width: 10vw;
   position: absolute;
   cursor: pointer;
   height: 5vh;
@@ -15,7 +16,7 @@
   bottom: 0;
 }
 
-.hos-right {
+.medi-right {
   position: absolute;
   z-index: 2;
   background: rgb(215, 215, 255);
@@ -27,33 +28,46 @@
   overflow-x: hidden;
 }
 
-.hos-right::-webkit-scrollbar {
+.medi-right::-webkit-scrollbar {
   width: 0px;
 }
-.hos-left {
+.medi-left {
   position: absolute;
   z-index: 2;
   background: rgb(150, 150, 245);
-  width: 15vw;
+  width: 10vw;
   height: 100vh;
   left: 0;
   top: 0;
 }
 
-.hos-search {
+.medi-search {
   background: rgb(211, 160, 65);
-  width: 15vw;
+  width: 10vw;
   height: 5vh;
   cursor: pointer;
 }
 
-.hos-center {
+.medi-center1 {
   position: absolute;
   z-index: 2;
   background: rgb(100, 218, 100);
+  width: 30vw;
+  height: 5vh;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, 0%);
+}
+
+.medi-center2 {
+  position: absolute;
+  z-index: 2;
+  background: rgb(64, 157, 219);
   width: 50vw;
   height: 10vh;
   left: 50%;
   bottom: 5%;
   transform: translate(-50%, 0%);
 }
+
+

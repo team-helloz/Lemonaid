@@ -4,6 +4,18 @@ interface INav {
   open: boolean;
 }
 
+export const NavSide = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+export const NavGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 1120px;
+  height: 110px;
+`
+
 export const StyledBurger = styled.div<INav>`
   width: 2rem;
   height: 2rem;
@@ -64,7 +76,6 @@ export const Logo = styled.img`
   height: 70px;
   object-fit: contain;
   z-index: 1;
-
   @media (max-width: 1250px) {
     margin: 20px 50px 20px 5%;
   }
@@ -74,16 +85,10 @@ export const Ul = styled.ul<INav>`
   font-family: "Zilla Slab", sans-serif;
   list-style: none;
   display: flex;
-  flex-flow: row-reverse nowrap;
-  position: absolute;
-  width: 90%;
-  top: 0;
-  justify-content: flex-end;
   margin-top: 0px;
-  align-items: center;
+  align-items: end;
   font-size: 18px;
   height: 110px;
-  margin-left: 200px;
 
   a {
     text-decoration: none;
@@ -114,7 +119,7 @@ export const Ul = styled.ul<INav>`
 `;
 
 export const Li = styled.li`
-  padding: 18px 10px;
+  padding: 20px 10px;
   outline: none;
 
   @media (max-width: 768px) {
