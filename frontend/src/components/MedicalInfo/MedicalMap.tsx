@@ -6,35 +6,44 @@ declare global {
   }
 }
 const nowCoor = {
-  y: 35.850701,
-  x: 128.570667,
+  y: 36.1072226,
+  x: 128.412915,
 };
 export default function MedicalMap() {
   const [nowCenter, setNowCenter] = React.useState(nowCoor);
 
-  useEffect(() => {
+  const userGeo = () => {
     if (navigator.geolocation) {
-      // GeoLocation을 이용해서 접속 위치를 얻어옵니다.
       navigator.geolocation.getCurrentPosition(function (position) {
-        var lat = position.coords.latitude, // 위도
-          lon = position.coords.longitude; // 경도
+        var lat = position.coords.latitude,
+          lon = position.coords.longitude;
         setNowCenter({ y: lat, x: lon });
-        console.log(nowCenter);
       });
     } else {
     }
+    console.log(nowCenter);
+  };
+
+  const mapContainer = () => {
     let container = document.getElementById("map");
     let options = {
-      center: new window.kakao.maps.LatLng(nowCenter.y, nowCenter.x), // 중심 좌표
-
-      level: 4, // 확대 정도
+      center: new window.kakao.maps.LatLng(nowCenter.y, nowCenter.x),
+      level: 4,
     };
     console.log(options);
     let map = new window.kakao.maps.Map(container, options);
 
     var control = new window.kakao.maps.ZoomControl();
     map.addControl(control, window.kakao.maps.ControlPosition.TOPRIGHT);
+  };
+  useEffect(() => {
+    userGeo();
+    mapContainer();
   }, []);
+
+  useEffect(() => {
+    mapContainer();
+  }, [nowCenter]);
 
   return <div id="map"></div>;
 }
