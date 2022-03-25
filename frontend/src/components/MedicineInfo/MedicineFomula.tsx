@@ -4,37 +4,37 @@ import "./MedicineFomula.css";
 interface MedicineFomulaProps {
   page: number;
   updatePage: (arg: number) => void;
-  updateFomula: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineFomula(props: MedicineFomulaProps) {
-  const { page, updatePage, updateFomula } = props;
+  const { page, updatePage, updateCondition } = props;
 
   const onClickBack = () => {
     updatePage(page - 1);
-    updateFomula("");
+    updateCondition("color", "");
+    updateCondition("fomula", "");
   };
 
   const onClickInit = () => {
     updatePage(1);
+    updateCondition("shape", "");
+    updateCondition("color", "");
+    updateCondition("fomula", "");
   };
 
-  const onClickFomula = (Fomula: string) => () => {
+  const onClickFomula = (value: string) => () => {
     updatePage(page + 1);
-    updateFomula(Fomula);
+    updateCondition("fomula", value);
   };
 
   return (
     <>
-      <h3>찾으시는 약은 어떤 제형인가요?</h3>
+      <div className="medicine-fomula-title">
+        찾으시는 약은 어떤 제형인가요?
+      </div>
       <div className="medicine-fomula-group-box">
         <ul className="medicine-fomula-group">
-          <li>
-            <button onClick={onClickBack}>뒤로가기</button>
-          </li>
-          <li>
-            <button onClick={onClickInit}>초기화</button>
-          </li>
           <li>
             <span onClick={onClickFomula("제형전체")}>
               <MedicineSerachItem itemName="제형전체"></MedicineSerachItem>
@@ -56,6 +56,12 @@ export default function MedicineFomula(props: MedicineFomulaProps) {
             </span>
           </li>
         </ul>
+      </div>
+      <div className="medicine-fomula-bottom">
+        <img
+          src={require("../../assets/back-icon.png")}
+          onClick={onClickBack}
+        ></img>
       </div>
     </>
   );
