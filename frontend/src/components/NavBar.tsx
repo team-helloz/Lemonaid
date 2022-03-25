@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import "./NavBar.css";
 
