@@ -1,20 +1,17 @@
 import { useHistory } from "react-router-dom";
 import "./MedicalInfo.css";
 import MedicalList from "../components/MedicalInfo/MedicalList";
+import MedicalMap from "../components/MedicalInfo/MedicalMap";
 import { useEffect } from "react";
 import * as React from "react";
 import axios from "axios";
 
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
 // 삼성 구미 2사업장
 const nowCoor = {
   y: 36.1072226,
   x: 128.412915,
 };
+
 export default function MedicalInfo() {
   const history = useHistory();
   interface hospital {
@@ -140,33 +137,12 @@ export default function MedicalInfo() {
       })
       .catch((e) => console.log(e));
   };
-  // 지도 그리기
-  const mapContainer = () => {
-    var container = document.getElementById("map");
-    // 현재 위치가 중심
-    var options = {
-      center: new window.kakao.maps.LatLng(nowCenter.y, nowCenter.x),
-      level: 4,
-    };
-    let map = new window.kakao.maps.Map(container, options);
-    // 현재 위치 마커 표시
-    var marker = new window.kakao.maps.Marker({
-      map: map,
-      position: options.center,
-    });
-    // 줌 컨트롤러
-    var control = new window.kakao.maps.ZoomControl();
-    map.addControl(control, window.kakao.maps.ControlPosition.TOPRIGHT);
-  };
-  // 렌더링 시 유저 위치 찾기, 지도 그리기
+
+  // 시작 시 유저 위치 찾기
   useEffect(() => {
     userGeo();
-    mapContainer();
   }, []);
-  // 현재 좌표값 변경되면 지도 다시 그리기
-  useEffect(() => {
-    mapContainer();
-  }, [nowCenter]);
+
   // 주소 검색 시 좌표변환 실행
   const handleKeyPress = (e: any) => {
     if (e.key === "Enter") {
@@ -189,7 +165,7 @@ export default function MedicalInfo() {
       <div className="medi-right">
         <MedicalList hospitals={hospitalList} />
       </div>
-      <div id="map"></div>
+      <MedicalMap nowCenter={nowCenter}></MedicalMap>
     </>
   );
 }
