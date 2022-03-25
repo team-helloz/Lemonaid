@@ -7,10 +7,9 @@ import DiseaseList from "../components/DiseaseInfo/DiseaseList";
 // React
 import { useState } from "react";
 // Style
-import "./DiseaseInfo.css"
+import "./DiseaseInfo.css";
 
 export default function DiseaseInfo() {
-
   const [nowPart, setPart] = useState<number>(0);
   const [nowSymptoms, setSymptoms] = useState<string[]>([]);
 
@@ -31,17 +30,10 @@ export default function DiseaseInfo() {
   }
 
   return (
-    <div>
+    <>
       <NavBar />
-      <button
-        onClick={scrollToTop}
-        className="to-top"
-      >TOP</button>
       <div className="disease-group">
-        <BodyPart
-          nowPart={nowPart}
-          updatePart={updatePart}
-        />
+        <BodyPart nowPart={nowPart} updatePart={updatePart} />
       </div>
       <div className="disease-group">
         <SelectedSymptom
@@ -58,10 +50,11 @@ export default function DiseaseInfo() {
         />
       </div>
       <div className="disease-group">
-        <DiseaseList
-          nowSymptoms={nowSymptoms}
-        />
+        <DiseaseList nowSymptoms={nowSymptoms} />
       </div>
-    </div>
+      <button onClick={scrollToTop} className="to-top">
+        TOP
+      </button>
+    </>
   );
 }
