@@ -6,10 +6,12 @@
 
 .to-top {
   position: fixed;
-  right: 250px;
-  bottom: 50px;
-}
-
-.to-top:hover {
+  right: 5%;
+  bottom: 5%;
+  border: 0;
+  background: none;
+  font-weight: 800;
+  letter-spacing: 3px;
+  font-size: 15px;
   cursor: pointer;
 }
