@@ -1,0 +1,17 @@
+.home-page {
+  display: flex;
+}
+
+.h-main {
+  width: 70%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.h-nav {
+  width: 80px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}

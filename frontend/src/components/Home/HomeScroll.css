@@ -1,0 +1,68 @@
+.h-scroll {
+  width: 750px;
+  height: 3000px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.h-menu-num {
+  margin: 50px 0 10px 0;
+  text-align: end;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.h-menu-box {
+  display: flex;
+  align-items: end;
+  width: 500px;
+  height: 400px;
+  background-color: rgb(159, 211, 235);
+}
+
+.home-medical {
+  display: flex;
+  justify-content: end;
+}
+
+.home-medicine {
+  display: flex;
+}
+
+.home-disease {
+  display: flex;
+  justify-content: end;
+}
+
+.home-covid {
+  display: flex;
+}
+
+.h-menu-l-description {
+  margin: 10px 0 50px 0;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.h-menu-r-description {
+  margin: 10px 0 50px 0;
+  text-align: right;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.h-menu-lside-description {
+  writing-mode: vertical-lr;
+  text-align: end;
+  margin: 0 10px 105px 0;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.h-menu-rside-description {
+  writing-mode: vertical-lr;
+  text-align: end;
+  margin: 0 0 105px 10px;
+  font-size: 35px;
+  font-weight: bold;
+}
