@@ -68,13 +68,14 @@ export default function MedicineInfo() {
       <NavBar />
       <div className="medicine-info-page">
         <div className="medicine-info-title">
-          <img src={require("../assets/medicinebottle.png")}></img>
+          <img src={require("../assets/medicinebottle.png")} alt=""></img>
           <p>의약품 검색</p>
           <span>어떤 약을 찾고 계신가요?</span>
           <img
             id="medicine-info-refresh"
             src={require("../assets/refresh-icon.png")}
             onClick={initCondition}
+            alt=""
           ></img>
         </div>
         <div className="medicine-info-step">

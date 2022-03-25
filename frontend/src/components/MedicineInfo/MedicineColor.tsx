@@ -15,12 +15,6 @@ export default function MedicineColor(props: MedicineColorProps) {
     updateCondition("shape", "");
   };
 
-  const onClickInit = () => {
-    updatePage(1);
-    updateCondition("shape", "");
-    updateCondition("color", "");
-  };
-
   const onClickColor = (value: string) => () => {
     updatePage(page + 1);
     updateCondition("color", value);
