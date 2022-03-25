@@ -21,8 +21,6 @@ import java.util.Set;
 
 public class MedicalSidoGugun {
 
-    Set<String> sidoList = new HashSet<>();
-
     public static class MedicalSidoGugunMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
         private Text Sido = new Text();
@@ -33,13 +31,22 @@ public class MedicalSidoGugun {
 
             if (key.get() > 0) {
                 String[] line = value.toString().split(",");
+                String sido = line[6];
+                String gugun = line[8];
+                try {
+                    Integer.parseInt(sido); // 병원명에 ,가 들어간 것을 걸러내기 위해 추가
+                    sido = line[7];
+                    gugun = line[9];
+                } catch (Exception e) {
 
-                Sido.set("sido," + line[6]);
-                Gugun.set("gugun," + line[8]);
+                } finally {
+                    Sido.set("sido," + sido);
+                    Gugun.set("gugun," + gugun);
+
+                    context.write(Sido, one);
+                    context.write(Gugun, one);
+                }
             }
-
-            context.write(Sido, one);
-            context.write(Gugun, one);
         }
     }
 
