@@ -1,0 +1,52 @@
+.h-m-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.h-m-menu-list {
+  margin-left: 100px;
+  width: 200px;
+}
+
+.h-m-medical {
+  margin-top: 108px;
+}
+
+.h-m-medicine {
+  margin-top: 35px;
+}
+
+.h-m-disease {
+  margin-top: -40px;
+}
+
+.h-m-covid {
+  margin-top: -113px;
+}
+
+.h-m-medical-title {
+  cursor: pointer;
+}
+
+.h-m-medicine-title {
+  cursor: pointer;
+}
+
+.h-m-disease-title {
+  cursor: pointer;
+}
+
+.h-m-covid-title {
+  cursor: pointer;
+}
+
+.h-m-now-menu {
+  position: absolute;
+  left: 100px;
+  width: 150px;
+  height: 20px;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  z-index: -1;
+}
