@@ -1,8 +1,18 @@
+.medicine-divide-title {
+  padding: 30px;
+  padding-top: 0px;
+  padding-left: 80px;
+  font-size: large;
+  font-weight: bold;
+  background-color: #e5e5e5;
+}
+
 .medicine-divide-group-box {
-  background-color: gray;
-  height: 150px;
+  background-color: #e5e5e5;
+  height: 160px;
   display: flex;
   justify-content: center;
+  padding-bottom: 20px;
 }
 
 .medicine-divide-group {
@@ -12,4 +22,18 @@
 .medicine-divide-group li {
   float: left;
   margin: 0 30px;
+}
+
+.medicine-divide-bottom {
+  background-color: #e5e5e5;
+  height: 70px;
+}
+
+.medicine-divide-bottom img {
+  margin-top: 15px;
+  margin-left: 40px;
+}
+
+.medicine-divide-bottom img:hover {
+  cursor: pointer;
 }
