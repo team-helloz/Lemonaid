@@ -77,6 +77,8 @@ export default function DiseaseList(props: SymptomProps) {
 
   if (nowSymptoms.includes("머리 증상 1")) {
     diseases = headDiseases
+  } else if (nowSymptoms.length > 0) {
+    diseases = elseDiseases
   } else {
     diseases = elseDiseases
   }

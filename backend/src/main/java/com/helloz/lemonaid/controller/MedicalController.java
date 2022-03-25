@@ -32,12 +32,12 @@ public class MedicalController {
             @ApiResponse(code = 500, message = "")
     })
     private ResponseEntity<List<Medical>> getMedicalList(
-            @ApiParam(name = "searchType", required = true) @RequestParam MedicalType searchType,
-            @ApiParam(name = "code", defaultValue = "0") @RequestParam int code,
-            @ApiParam(name = "subjects") @RequestParam @Nullable List<Long> subjects,
-            @ApiParam(name = "emergency", defaultValue = "false") @RequestParam boolean emergency,
-            @ApiParam(name = "parking", defaultValue = "false") @RequestParam boolean parking,
-            @ApiParam(name = "keyword")  @RequestParam @Nullable String keyword
+            @ApiParam("search_type") @RequestParam(value = "search_type", required = true) MedicalType searchType,
+            @ApiParam("code") @RequestParam(required = false, defaultValue = "0") int code,
+            @ApiParam("subjects") @RequestParam(required = false, defaultValue = "") List<Long> subjects,
+            @ApiParam("emergency") @RequestParam(required = false, defaultValue = "false") boolean emergency,
+            @ApiParam("parking") @RequestParam(required = false, defaultValue = "false") boolean parking,
+            @ApiParam("keyword") @RequestParam(required = false, defaultValue = "") String keyword
     ) {
         MedicalSearchFilter filter = new MedicalSearchFilter();
         filter.setSearchType(searchType);

@@ -1,8 +1,18 @@
+.medicine-shape-title {
+  padding: 30px;
+  padding-top: 0px;
+  padding-left: 80px;
+  font-size: large;
+  font-weight: bold;
+  background-color: #e5e5e5;
+}
+
 .medicine-shape-group-box {
-  background-color: gray;
-  height: 150px;
+  background-color: #e5e5e5;
+  height: 160px;
   display: flex;
   justify-content: center;
+  padding-bottom: 20px;
 }
 
 .medicine-shape-group {
@@ -12,4 +22,9 @@
 .medicine-shape-group li {
   float: left;
   margin: 0 30px;
+}
+
+.medicine-shape-bottom {
+  background-color: #e5e5e5;
+  height: 70px;
 }
