@@ -1,52 +1,39 @@
 // Components
 import NavBar from "../NavBar";
 // Router
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 // Style
 import "./DiseaseDetail.css";
 
 export default function DiseaseDetail() {
-
   const history = useHistory();
 
   function routeMedical() {
-    history.push("/medical")
+    history.push("/medical");
   }
 
   const diseaseDetailInfo = {
     name: "감기",
-    symptoms: [
-      "머리 증상 2", "코 증상 1", "입 증상 2", "목 증상 1"
-    ],
-    related: [
-      "폐렴", "코로나", "독감"
-    ],
-    courses: [
-      "내과", "이비인후과"
-    ],
-    sames: [
-      "가암기"
-    ],
+    symptoms: ["머리 증상 2", "코 증상 1", "입 증상 2", "목 증상 1"],
+    related: ["폐렴", "코로나", "독감"],
+    courses: ["내과", "이비인후과"],
+    sames: ["가암기"],
     definition: "감기란 무엇인가?",
     cause: "어째서 감기에 걸리는가?",
     diagnosis: "감기라고 어찌 판단하는가?",
     therapy: "감기는 어떻게 치료하는가?",
     pass: "감기는 어떤 순서로 진행되는가?",
-    notandum: "감기는 무엇을 주의해야 하는가?"
-  }
+    notandum: "감기는 무엇을 주의해야 하는가?",
+  };
 
   return (
     <div>
       <NavBar />
-
       <div className="d-detail-page">
         <div className="d-detail-content">
           <div className="d-detail-title">
             <p className="d-detail-name">{diseaseDetailInfo.name}</p>
-            <button
-              onClick={routeMedical}
-              className="d-medical-btn"
-            >
+            <button onClick={routeMedical} className="d-medical-btn">
               병원 찾기
             </button>
           </div>
@@ -57,9 +44,7 @@ export default function DiseaseDetail() {
           </div>
           <div className="d-detail-list">
             {diseaseDetailInfo.symptoms.map((symptom, i: number) => (
-              <p key={i}>
-                {symptom}
-              </p>
+              <p key={i}>{symptom}</p>
             ))}
           </div>
 
@@ -69,9 +54,7 @@ export default function DiseaseDetail() {
           </div>
           <div className="d-detail-list">
             {diseaseDetailInfo.related.map((relate, i: number) => (
-              <p key={i}>
-                {relate}
-              </p>
+              <p key={i}>{relate}</p>
             ))}
           </div>
 
@@ -81,9 +64,7 @@ export default function DiseaseDetail() {
           </div>
           <div className="d-detail-list">
             {diseaseDetailInfo.courses.map((course, i: number) => (
-              <p key={i}>
-                {course}
-              </p>
+              <p key={i}>{course}</p>
             ))}
           </div>
 
@@ -93,9 +74,7 @@ export default function DiseaseDetail() {
           </div>
           <div className="d-detail-list">
             {diseaseDetailInfo.sames.map((same, i: number) => (
-              <p key={i}>
-                {same}
-              </p>
+              <p key={i}>{same}</p>
             ))}
           </div>
 

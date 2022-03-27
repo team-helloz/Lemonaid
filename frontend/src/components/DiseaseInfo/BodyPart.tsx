@@ -1,6 +1,6 @@
 // Components
 import { iconName } from "./constants";
-import PartIcon from "./PartIcon"
+import PartIcon from "./PartIcon";
 // Style
 import "./BodyPart.css";
 
@@ -10,14 +10,13 @@ interface SetPartProps {
 }
 
 export default function BodyPart(props: SetPartProps) {
-
   const { nowPart, updatePart } = props;
 
   type Part = {
-    id: number,
-    eng: iconName,
-    kor: string,
-  }
+    id: number;
+    eng: iconName;
+    kor: string;
+  };
 
   const partOne: Part[] = [
     { id: 0, eng: "head", kor: "머리" },
@@ -30,7 +29,7 @@ export default function BodyPart(props: SetPartProps) {
     { id: 7, eng: "leg", kor: "다리" },
     { id: 8, eng: "eye", kor: "눈" },
     { id: 9, eng: "ear", kor: "귀" },
-  ]
+  ];
 
   const partTwo: Part[] = [
     { id: 10, eng: "nose", kor: "코" },
@@ -43,44 +42,46 @@ export default function BodyPart(props: SetPartProps) {
     { id: 17, eng: "hand", kor: "손" },
     { id: 18, eng: "foot", kor: "발" },
     { id: 19, eng: "etc", kor: "기타" },
-  ]
+  ];
 
   function onClickPart(partname: number) {
     updatePart(partname);
   }
-  
-  return (
-    <div>
-      <div>
-        <ul className="body-part-group">
-            { partOne.map((part, i:number) => (
-              <li key={i}>
-                <button
-                  onClick={() => onClickPart(part.id)}
-                  className={nowPart===part.id ? "selected-part" : "part-btn"}
-                >
-                  <PartIcon h={20} w={20} color={"#FFFFFF"} icon={part.eng} />
-                  <p>{part.kor}</p>
-                </button>
-              </li>
-            ))}
-        </ul>
-      </div>
-      <br />
 
+  return (
+    <div className="bodypart-container">
+      <div>
+        <div className="body-part-group">
+          {partOne.map((part, i: number) => (
+            <li key={i}>
+              <button
+                onClick={() => onClickPart(part.id)}
+                className={
+                  nowPart === part.id ? "selected-part part-btn" : "part-btn"
+                }
+              >
+                <PartIcon h={20} w={20} color={"#FFFFFF"} icon={part.eng} />
+                <p>{part.kor}</p>
+              </button>
+            </li>
+          ))}
+        </div>
+      </div>
       <div>
         <ul className="body-part-group">
-            { partTwo.map((part, i:number) => (
-              <li key={i}>
-                <button
-                  onClick={() => onClickPart(part.id)}
-                  className={nowPart===part.id ? "selected-part" : "part-btn"}
-                >
-                  <PartIcon h={20} w={20} color={"#FFFFFF"} icon={part.eng} />
-                  <p>{part.kor}</p>
-                </button>
-              </li>
-            ))}
+          {partTwo.map((part, i: number) => (
+            <li key={i}>
+              <button
+                onClick={() => onClickPart(part.id)}
+                className={
+                  nowPart === part.id ? "selected-part part-btn" : "part-btn"
+                }
+              >
+                <PartIcon h={20} w={20} color={"#FFFFFF"} icon={part.eng} />
+                <p>{part.kor}</p>
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
