@@ -53,7 +53,7 @@ export default function DiseaseInfo() {
         <DiseaseList nowSymptoms={nowSymptoms} />
       </div>
       <button onClick={scrollToTop} className="to-top">
-        TOP
+        ↑
       </button>
     </>
   );
