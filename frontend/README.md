@@ -22,5 +22,7 @@ npm start
 ```
 npm i react-router-dom@5.3.0
 npm i @types/react-redux
+npm i react-kakao-maps-sdk
+npm i @mui/material @emotion/react @emotion/styled
 ```
 
