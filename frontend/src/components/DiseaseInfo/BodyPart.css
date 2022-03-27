@@ -1,7 +1,11 @@
-.part-group-box {
-  background-color: gray;
+.bodypart-container {
+  margin: 30px 0;
+  border-radius: 5px;
+  overflow: hidden;
 }
-
+.part-group-box {
+  overflow: hidden;
+}
 .body-part-group {
   list-style: none;
   padding: 0;
@@ -16,35 +20,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px 0;
-  background-color: rgb(151, 204, 235);
-  border: none;
+  padding: 10px 0;
+  background-color: rgba(81, 183, 238, 0.5);
+  border: 0;
   width: 112px;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: rgba(92, 92, 92, 0.2) 0px 1px 2px 0px,
+    rgba(113, 114, 114, 0.1) 0px 1px 1px 2px;
 }
 
 .part-btn:hover {
-  background-color: rgb(65, 126, 161);
-  cursor: pointer;
+  background-color: rgba(45, 116, 156, 0.5);
 }
 
 .part-btn p {
-  margin: 0 0 0 10px;
+  margin: 0 0 0 13px;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .selected-part {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 0;
-  background-color: rgb(65, 126, 161);
-  border: none;
-  width: 112px;
-}
-
-.selected-part:hover {
-  cursor: pointer;
-}
-
-.selected-part p {
-  margin: 0 0 0 10px;
+  background-color: rgba(45, 116, 156, 0.5);
 }
