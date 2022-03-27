@@ -49,7 +49,7 @@ export default function NavBar() {
             color: "#0DADEA",
           }}
         >
-          코로나19
+          코로나
         </NavLink>
       </div>
       <div className="nav-bottom"></div>
