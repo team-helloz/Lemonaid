@@ -26,7 +26,6 @@
   cursor: pointer;
   transition: 0.2s;
   color: white;
-  font-family: "lemon-font";
 }
 
 .part-btn:hover {
@@ -35,9 +34,10 @@
 
 .part-btn p {
   margin: 0 0 0 13px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-size: 12px;
   font-weight: 700;
+  font-family: "lemon-font";
 }
 
 .selected-part {

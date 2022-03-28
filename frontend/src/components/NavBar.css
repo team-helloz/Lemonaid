@@ -17,17 +17,9 @@
   margin-right: auto;
   padding: 20px 0;
   font-family: "lemon-font";
+  color: #5c5c5c;
 }
 
-@font-face {
-  font-family: "lemon-font";
-  src: url("https://static.wixstatic.com/ufonts/5bb3a3_9376787887694d50bfe0da75a316af47/woff2/file.woff2")
-      format("woff2"),
-    url("https://static.wixstatic.com/ufonts/5bb3a3_9376787887694d50bfe0da75a316af47/woff/file.woff")
-      format("woff"),
-    url("https://static.wixstatic.com/ufonts/5bb3a3_9376787887694d50bfe0da75a316af47/ttf/file.ttf")
-      format("ttf");
-}
 .nav-content a {
   font-size: 16px;
   margin: 0;
@@ -40,13 +32,13 @@
 }
 .nav-content a:hover {
   padding-top: 28px;
-  color: #5EE6EB;
+  color: #5ee6eb;
   font-weight: 800;
 }
 .nav-content a:after {
   display: block;
   content: "";
-  border-bottom: solid 2px #5EE6EB;
+  border-bottom: solid 2px #5ee6eb;
   transform: scaleX(0);
   transition: transform 0.2s ease-in-out;
 }

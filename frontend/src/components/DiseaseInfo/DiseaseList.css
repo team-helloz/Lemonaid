@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  color: #5C5C5C;
+  color: #5c5c5c;
 }
 
 .disease-list {
@@ -21,7 +21,6 @@
 
 .disease-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -33,10 +32,16 @@
 
 .disease-img {
   margin-top: 40px;
-  width: 500px;
-  height: 230px;
-  background-color: gray;
+  width: 250px;
+  height: 250px;
+  background-image: url(../../../public/gamgi.jpg);
+  background-size: cover;
+  border-radius: 5px;
+  overflow: hidden;
   cursor: pointer;
+  margin: 20px;
+  display: flex;
+  align-self: center;
 }
 
 .list-title-box {
