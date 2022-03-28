@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./MedicineIdentifier.css";
+import "./MedicineSearch.css";
 
 interface MedicineIdentifierProps {
   page: number;
@@ -21,7 +21,7 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
 
   const onClickBack = () => {
     updatePage(page - 1);
-    updateCondition("divide", "");
+    updateCondition("divide", "STEP4");
   };
 
   const onClickDontKnow = () => {
@@ -37,33 +37,38 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
   };
 
   return (
-    <>
-      <div className="medicine-identifier-title">
-        찾으시는 약은 어떤 식별문자가 있나요?
+    <div className="medicine-search-box">
+      <div>
+        <p className="medicine-search-title">찾으시는 약은 어떤 식별문자가 있나요?</p>
+        <div className="medicine-search-group-box">
+          <ul className="medicine-search-group">
+            <li>
+              <button onClick={onClickDontKnow}>식별문자모름</button>
+            </li>
+            <li>
+              <input
+                value={value}
+                onChange={onChange}
+                placeholder="식별문자 (약의 앞면이나 뒷면의 문자)"
+                className="medicine-search-input"
+              ></input>
+              <button onClick={onClickIdentifier}>확인</button>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="medicine-identifier-group-box">
-        <ul className="medicine-identifier-group">
-          <li>
-            <button onClick={onClickDontKnow}>식별문자모름</button>
-          </li>
-          <li>
-            <input
-              value={value}
-              onChange={onChange}
-              placeholder="식별문자 (약의 앞면이나 뒷면의 문자)"
-              className="medicine-identifier-input"
-            ></input>
-            <button onClick={onClickIdentifier}>확인</button>
-          </li>
-        </ul>
+      <div className="medicine-search-bottom">
+       <div className="medicine-search-back">
+          <img
+            onClick={onClickBack}
+            className="back-img"
+            src={require("../../assets/back-icon.png")}
+            alt=""
+          />
+          <p>STEP{page - 1}</p>
+        </div>
+        <p>FINAL STEP</p>
       </div>
-      <div className="medicine-fomula-bottom">
-        <img
-          src={require("../../assets/back-icon.png")}
-          onClick={onClickBack}
-          alt=""
-        ></img>
-      </div>
-    </>
+    </div>
   );
 }
