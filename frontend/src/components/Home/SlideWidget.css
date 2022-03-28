@@ -14,80 +14,124 @@
 .h-m-medical {
   color: #0DADEA;
   top: 485px;
-  left: 100px;
+  left: 180px;
 }
 
 .h-m-medicine {
+  color: rgb(150, 150, 150);
   top: 525px;
-  left: 80px;
+  left: 165px;
+  font-size: 14px;
 }
 
 .h-m-disease {
+  color: rgb(150, 150, 150);
   top: 565px;
-  left: 60px;
+  left: 150px;
+  font-size: 14px;
 }
 
 .h-m-covid {
+  color: rgb(150, 150, 150);
   top: 605px;
-  left: 40px;
+  left: 130px;
+  font-size: 14px;
 }
 
-.h-m-now-menu {
+.stethoscope {
   position: absolute;
-  top: 50%;
-  left: 100px;
-  width: 150px;
-  height: 20px;
-  border-top: solid 1px;
-  border-bottom: solid 1px;
-  z-index: -1;
+  top: 375px;
+  left: -125px;
+  height: 250px;
+  z-index: 1;
 }
 
 /* Animation */
 .h-m-translate {
   transition: all .5s ease;
 }
+
+.h-m-circle {
+  position: absolute;
+  top: 340px;
+  left: -155px;
+  height: 300px;
+  width: 300px;
+  border: 1px solid;
+  border-radius: 100%;
+}
+
+.circle-st {
+  border-radius: 50%;
+  border: 8px solid transparent;
+  background-size: 100% 100%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#f5f5f7, #f5f5f7), 
+                    linear-gradient(30deg, lightgrey 36%, lightgrey 30%),
+                    linear-gradient(130deg, #0DADEA 36%, lightgrey 30%),
+                    linear-gradient(300deg, lightgrey 36%, lightgrey 30%),
+                    linear-gradient(210deg, lightgrey 36%, lightgrey 30%);
+  background-position: center center, left top, right top, left bottom, right bottom;
+  background-origin: content-box, border-box, border-box, border-box, border-box;
+  background-clip: content-box, border-box, border-box, border-box, border-box;
+  transform: rotate(10deg);
+}
+
+.circle-turn-1 {
+  transform: rotate(45deg);
+}
+.circle-turn-2 {
+  transform: rotate(90deg);
+}
+.circle-turn-3 {
+  transform: rotate(135deg);
+}
 /* Medical */
 .medical-up-1 {
-  transform: translate(-20px, -40px);
-  color: black;
+  transform: translate(-15px, -40px);
+  color: rgb(150, 150, 150);
+  font-size: 14px;
 }
 
 .medical-up-2 {
-  transform: translate(-40px, -80px);
+  transform: translate(-30px, -80px);
 }
 
 .medical-up-3 {
-  transform: translate(-60px, -120px);
+  transform: translate(-50px, -120px);
 }
 /* Medicine */
 .medicine-up-1 {
-  transform: translate(20px, -40px);
+  transform: translate(15px, -40px);
   color: #0DADEA;
+  font-size: 16px;
 }
 
 .medicine-up-2 {
   transform: translate(0, -80px);
-  color: black;
+  color: rgb(150, 150, 150);
+  font-size: 14px;
 }
 
 .medicine-up-3 {
-  transform: translate(-20px, -120px);
+  transform: translate(-15px, -120px);
 }
 
 /* Disease */
 .disease-up-1 {
-  transform: translate(20px, -40px);
+  transform: translate(15px, -40px);
 }
 
 .disease-up-2 {
   color: #0DADEA;
-  transform: translate(40px, -80px);
+  transform: translate(30px, -80px);
+  font-size: 16px;
 }
 
 .disease-up-3 {
-  transform: translate(20px, -120px);
-  color: black;
+  transform: translate(15px, -120px);
+  color: rgb(150, 150, 150);
+  font-size: 14px;
 }
 /* Covid */
 .covid-up-1 {
@@ -95,10 +139,11 @@
 }
 
 .covid-up-2 {
-  transform: translate(40px, -80px);
+  transform: translate(35px, -80px);
 }
 
 .covid-up-3 {
   color: #0DADEA;
-  transform: translate(60px, -120px);
+  transform: translate(50px, -120px);
+  font-size: 16px;
 }

@@ -1,10 +1,9 @@
-// React
-import { useState } from "react";
 // Route
 import { useHistory } from "react-router-dom";
 // Components
 import HomeScroll from "../components/Home/HomeScroll";
 import SlideWidget from "../components/Home/SlideWidget";
+import HomeNav from "../components/Home/HomeNav";
 // Style
 import "./Home.css"
 
@@ -32,7 +31,11 @@ export default function Home() {
     >
       <div className="h-main">
         <SlideWidget />
-        <p className="team-logo">Lemonaid.</p>
+        <div className="logo-container">
+          <p className="team-logo">Lemonaid.</p>
+          <p className="logo-description">내 건강을 위한 의료 정보 플랫폼</p>
+          <p className="logo-description">-모두의 안녕을 바라는 사람들 안녕즈-</p>
+        </div>
         <p className="team">ⓒ SSAFY 6th - 안녕즈</p>
       </div>
 
@@ -43,20 +46,13 @@ export default function Home() {
         routeCovid={routeCovid}
       />
 
-      <div className="h-nav">
-        <p
-         onClick={routeMedical}
-         className="cursor-pointer">의료기관</p>
-        <p
-         onClick={routeMedicine}
-         className="cursor-pointer">의약품</p>
-        <p
-         onClick={routeDisease}
-         className="cursor-pointer">증상</p>
-        <p
-         onClick={routeCovid}
-         className="cursor-pointer">코로나</p>
-      </div>
+      <HomeNav 
+        routeMedical={routeMedical}
+        routeMedicine={routeMedicine}
+        routeDisease={routeDisease}
+        routeCovid={routeCovid}
+      />
+      
     </div>
   );
 }

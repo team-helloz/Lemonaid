@@ -4,22 +4,29 @@
 
 .h-main {
   display: flex;
-  width: 70%;
+  width: 65%;
   height: 100vh;
   position: sticky;
   top: 0;
 }
 
-.h-nav {
-  width: 80px;
-  height: 100vh;
-  position: sticky;
-  top: 0;
+.logo-container {
+  position: relative;
+  top: 150px;
+  left: 25%;
 }
 
 .team-logo {
+  margin: 0;
   font-size: 75px;
   font-weight: bold;
+}
+
+.logo-description {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(119, 119, 119);
 }
 
 .team {
