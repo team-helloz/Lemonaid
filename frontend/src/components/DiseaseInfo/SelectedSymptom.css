@@ -1,4 +1,20 @@
 .selected-symptom-group {
   display: flex;
   width: 1120px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.ssg-button {
+  background: rgb(247, 247, 247);
+  font-family: "lemon-font";
+  border-radius: 15px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+  margin: 3px;
+  cursor: pointer;
 }
