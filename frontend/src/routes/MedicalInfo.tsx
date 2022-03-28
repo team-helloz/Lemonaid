@@ -3,9 +3,17 @@ import "./MedicalInfo.css";
 import MedicalList, { Hospital } from "../components/MedicalInfo/MedicalList";
 import MedicalMap from "../components/MedicalInfo/MedicalMap";
 import MedicalDetail from "../components/MedicalInfo/MedicalDetail";
+import MedicalSubject from "../components/MedicalInfo/MedicalSubject";
 import { useEffect } from "react";
 import * as React from "react";
 import axios from "axios";
+
+import SymbolHospital from "../assets/medical_png/symbol_hospital.png";
+import SymbolPharmacy from "../assets/medical_png/symbol_pharmacy.png";
+import SymbolOriental from "../assets/medical_png/symbol_oriental.png";
+import SymbolEmergency from "../assets/medical_png/symbol_emergency.png";
+import MenuOpen from "../assets/medical_png/menu_open.png";
+import MenuClose from "../assets/medical_png/menu_close.png";
 
 // 삼성 구미 2사업장
 const nowCoor = {
@@ -108,6 +116,7 @@ export default function MedicalInfo() {
   // 현재 도로명 주소
   const [roadAdd, setRoadAdd] = React.useState("");
   const [openDetailDlg, setOpenDetailDlg] = React.useState(false);
+  const [openSubject, setOpenSubject] = React.useState(false);
   const [hospitalObj, setHospitalObj] = React.useState<Hospital>(hospitalData);
 
   const api = "8bfd93b5e35e8d6039d2b40188560f8b";
@@ -137,8 +146,9 @@ export default function MedicalInfo() {
       .then((res) => {
         // 좌표는 정확해서 조건문 생략
         // 주소 찾으면 현재 주소 바꾸기
-        console.log(res.data.documents[0].road_address.address_name);
-        setRoadAdd(res.data.documents[0].road_address.address_name);
+        //console.log(res.data.documents[0].road_address.address_name);
+        if (res.data.documents[0].road_address !== null)
+          setRoadAdd(res.data.documents[0].road_address.address_name);
       })
       .catch((e) => console.log(e));
   };
@@ -190,19 +200,45 @@ export default function MedicalInfo() {
       addToXy(e.target.value);
     }
   };
+
   return (
     <>
       <div className="medi-left">
         <div className="medi-search"></div>
-        <p>{roadAdd}</p>
+        {/* <p>{roadAdd}</p> */}
         <div className="medi-home" onClick={routeHome}>
           Home
         </div>
       </div>
-      <div className="medi-center1">
+      {/* <div className="medi-center1">
         <input type="text" placeholder={roadAdd} onKeyPress={handleKeyPress} />
+      </div> */}
+      <div className="medi-bottom">
+        <div className="medi-bottom-menu-first-item">전체 조회</div>
+        <div className="medi-bottom-menu-item">
+          <img src={SymbolHospital} alt="" width={"17px"} />
+          병원 조회
+        </div>
+        <div className="medi-bottom-menu-item">
+          <img src={SymbolPharmacy} alt="" width={"17px"} />
+          약국 조회
+        </div>
+        <div className="medi-bottom-menu-item">
+          <img src={SymbolOriental} alt="" width={"17px"} />
+          한의원 조회
+        </div>
+        <div className="medi-bottom-menu-item">
+          <img src={SymbolEmergency} alt="" width={"17px"} />
+          응급실 조회
+        </div>
+        <div
+          className="medi-bottom-menu-last-item"
+          onClick={() => setOpenSubject(!openSubject)}
+        >
+          진료 과목
+          <img src={openSubject ? MenuClose : MenuOpen} alt="" width={"17px"} />
+        </div>
       </div>
-      <div className="medi-center2"></div>
       <div className="medi-right">
         <MedicalList
           hospitals={hospitalList}
@@ -220,6 +256,7 @@ export default function MedicalInfo() {
         onClose={handDetailClose}
         hospitalDetail={hospitalObj}
       />
+      <MedicalSubject openSubject={openSubject}></MedicalSubject>
     </>
   );
 }

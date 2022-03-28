@@ -1,7 +1,7 @@
 import { CustomOverlayMap, MapMarker, useMap } from "react-kakao-maps-sdk";
 
-import MarkerImgHospital from "../../assets/marker_hospital.png";
-import MarkerImgMedicine from "../../assets/marker_medicine.png";
+import MarkerImgHospital from "../../assets/medical_png/marker_hospital.png";
+import MarkerImgMedicine from "../../assets/medical_png/marker_medicine.png";
 import "./MedicalMarkerContainer.css";
 
 interface Hospital {
