@@ -1,0 +1,60 @@
+.medicine-search-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 550px;
+  background-color: #e5e5e5;
+}
+
+.medicine-search-title {
+  margin: 0;
+  padding-left: 80px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.medicine-search-group-box {
+  height: 160px;
+  display: flex;
+  justify-content: center;
+}
+
+.medicine-search-group {
+  list-style: none;
+  display: flex;
+  padding: 0 38px;
+  width: 100%;
+}
+
+.medicine-search-bottom {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: 0;
+  padding: 0 25px;
+  height: 45px;
+}
+
+.medicine-search-bottom p {
+  margin: 3px 10px;
+}
+
+.medicine-search-back {
+  display: flex;
+  align-items: start;
+}
+
+.back-img {
+  height: 30px;
+  cursor: pointer;
+}
+
+.back-none {
+  opacity: 30%;
+  cursor: default;
+}
+
+.medicine-search-input {
+  width: 250px;
+}
