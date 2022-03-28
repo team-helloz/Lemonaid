@@ -2,6 +2,7 @@
   width: 750px;
   border-left: 1px solid black;
   border-right: 1px solid black;
+  margin-right: 80px;
 }
 
 .h-menu-num {
@@ -19,6 +20,11 @@
   width: 480px;
   height: 380px;
   background-color: rgb(159, 211, 235);
+  transition: .5s ease;
+}
+
+.h-menu-box:hover {
+  width: 500px;
 }
 
 .h-move-title {
@@ -37,10 +43,19 @@
 .home-medical {
   display: flex;
   justify-content: end;
+  transition: .5s ease;
+}
+
+.home-medical:hover p{
+  color: black;
 }
 
 .home-medicine {
   display: flex;
+}
+
+.home-medicine:hover p{
+  color: black;
 }
 
 .home-disease {
@@ -48,8 +63,16 @@
   justify-content: end;
 }
 
+.home-disease:hover p{
+  color: black;
+}
+
 .home-covid {
   display: flex;
+}
+
+.home-covid:hover p{
+  color: black;
 }
 
 .h-menu-l-description {
