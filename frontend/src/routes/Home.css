@@ -16,6 +16,13 @@
   left: 25%;
 }
 
+.h-line {
+  margin: 0 0 5px 5px;
+  width: 50px;
+  height: 10px;
+  background: linear-gradient(to right, #0f72d4, #64cada);
+}
+
 .team-logo {
   margin: 0;
   font-size: 75px;
@@ -23,7 +30,7 @@
 }
 
 .logo-description {
-  margin: 0;
+  margin: 0 5px;
   font-size: 16px;
   font-weight: bold;
   color: rgb(119, 119, 119);

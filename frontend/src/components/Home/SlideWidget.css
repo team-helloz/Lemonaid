@@ -44,6 +44,7 @@
   left: -125px;
   height: 250px;
   z-index: 1;
+  transition: all .5s ease;
 }
 
 /* Animation */
