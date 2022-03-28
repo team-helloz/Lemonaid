@@ -1,4 +1,4 @@
-import { iconName, IconSet } from "./constants"
+import { iconName, IconSet } from "./constants";
 
 interface PartIconProps {
   icon: iconName;
@@ -16,9 +16,7 @@ const PartIcon = ({ icon, h, w, color }: PartIconProps) => {
       fill={color}
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d={IconSet[icon].path}
-      />
+      <path d={IconSet[icon].path} />
     </svg>
   );
 };
