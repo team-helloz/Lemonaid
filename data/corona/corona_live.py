@@ -6,9 +6,11 @@ from selenium.webdriver.support import expected_conditions as EC
 path = '/home/ubuntu/chromedriver'
 options = webdriver.ChromeOptions()
 # 창이 뜨지 않게 설정
-options.add_argument('headless')
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
 
-driver = webdriver.Chrome(path)
+driver = webdriver.Chrome(path, options=options)
 driver.get("http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=")
 
 wait = WebDriverWait(driver, 5)
