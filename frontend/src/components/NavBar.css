@@ -16,10 +16,12 @@
   margin-left: auto;
   margin-right: auto;
   padding: 20px 0;
+  font-family: "lemon-font";
+  color: #5c5c5c;
 }
 
 .nav-content a {
-  font-size: 13px;
+  font-size: 16px;
   margin: 0;
   margin-left: 20px;
   display: flex;
@@ -30,15 +32,15 @@
 }
 .nav-content a:hover {
   padding-top: 28px;
-  color: #0dadea;
+  color: #5ee6eb;
   font-weight: 800;
 }
 .nav-content a:after {
   display: block;
   content: "";
-  border-bottom: solid 2px #21b1ea;
+  border-bottom: solid 2px #5ee6eb;
   transform: scaleX(0);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 .nav-content a:hover:after {
   transform: scaleX(1);
