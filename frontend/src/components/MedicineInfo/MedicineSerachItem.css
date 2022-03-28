@@ -1,8 +1,11 @@
 .medicine-serach-item {
-  border: 2px black;
-  border-radius: 10px;
-  padding: 15px;
-  border-style: solid;
+  margin: 0 36px;
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+}
+
+.medicine-serach-item:hover {
+  border: 1px solid #0DADEA;
 }
 
 .medicine-serach-item:hover {
@@ -10,8 +13,18 @@
 }
 
 .medicine-serach-item-text {
-  margin-top: 7px;
-  background-color: #e5e5e5;
   text-align: center;
   cursor: pointer;
+}
+
+.medicine-serach-item-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+}
+
+.medicine-search-img {
+  width: 80%;
 }

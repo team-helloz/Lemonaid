@@ -33,7 +33,8 @@ export default function Home() {
         <SlideWidget />
         <div className="logo-container">
           <p className="team-logo">Lemonaid.</p>
-          <p className="logo-description">내 건강을 위한 의료 정보 플랫폼</p>
+          <div className="h-line"></div>
+          <p className="logo-description">건강한 삶을 위한 의료 정보 플랫폼</p>
           <p className="logo-description">-모두의 안녕을 바라는 사람들 안녕즈-</p>
         </div>
         <p className="team">ⓒ SSAFY 6th - 안녕즈</p>

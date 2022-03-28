@@ -14,11 +14,11 @@ export default function MedicineInfo() {
   const history = useHistory();
 
   const [page, setPage] = useState<number>(1);
-  const [shape, setShape] = useState<string>("");
-  const [color, setColor] = useState<string>("");
-  const [fomula, setFomula] = useState<string>("");
-  const [divide, setDivide] = useState<string>("");
-  const [identifier, setIdentifier] = useState<string>("");
+  const [shape, setShape] = useState<string>("STEP1");
+  const [color, setColor] = useState<string>("STEP2");
+  const [fomula, setFomula] = useState<string>("STEP3");
+  const [divide, setDivide] = useState<string>("STEP4");
+  const [identifier, setIdentifier] = useState<string>("STEP5");
 
   const updatePage = (page: number): void => {
     setPage(page);
@@ -56,11 +56,11 @@ export default function MedicineInfo() {
 
   const initCondition = (): void => {
     updatePage(1);
-    setShape("");
-    setColor("");
-    setFomula("");
-    setDivide("");
-    setIdentifier("");
+    setShape("STEP1");
+    setColor("STEP2");
+    setFomula("STEP3");
+    setDivide("STEP4");
+    setIdentifier("STEP5");
   };
 
   return (
@@ -68,22 +68,27 @@ export default function MedicineInfo() {
       <NavBar />
       <div className="medicine-info-page">
         <div className="medicine-info-title">
-          <img src={require("../assets/medicinebottle.png")} alt=""></img>
-          <p>의약품 검색</p>
-          <span>어떤 약을 찾고 계신가요?</span>
+          <div className="p-flex">
+            <img
+              className="medicine-icon"
+              src={require("../assets/medicinebottle.png")}
+              alt=""
+            />
+            <p className="medicine-title">의약품 검색</p>
+            <p>어떤 약을 찾고 계신가요?</p>
+          </div>
           <img
-            id="medicine-info-refresh"
+            className="refresh-icon"
             src={require("../assets/refresh-icon.png")}
             onClick={initCondition}
             alt=""
-          ></img>
+          />
         </div>
         <div className="medicine-info-step">
-          STEP {page}
-          <span>
-            ({shape} {">"} {color} {">"} {fomula} {">"} {divide} {">"}{" "}
-            {identifier})
-          </span>
+          <p className="medicine-step">STEP {page}</p>
+          <p className="medicine-progress">
+            [ {shape} {"/"} {color} {"/"} {fomula} {"/"} {divide} {"/"} {" "} {identifier} ]
+          </p>
         </div>
 
         {page === 1 && (

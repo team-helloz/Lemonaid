@@ -1,5 +1,5 @@
 import MedicineSerachItem from "./MedicineSerachItem";
-import "./MedicineFomula.css";
+import "./MedicineSearch.css";
 
 interface MedicineFomulaProps {
   page: number;
@@ -12,8 +12,8 @@ export default function MedicineFomula(props: MedicineFomulaProps) {
 
   const onClickBack = () => {
     updatePage(page - 1);
-    updateCondition("color", "");
-    updateCondition("fomula", "");
+    updateCondition("color", "STEP2");
+    updateCondition("fomula", "STEP3");
   };
 
   const onClickFomula = (value: string) => () => {
@@ -21,42 +21,44 @@ export default function MedicineFomula(props: MedicineFomulaProps) {
     updateCondition("fomula", value);
   };
 
+  const MedicineFomulaList = [
+    "제형전체",
+    "정제류",
+    "경질캡슐",
+    "연질캡슐"
+  ]
+
   return (
-    <>
-      <div className="medicine-fomula-title">
-        찾으시는 약은 어떤 제형인가요?
+    <div className="medicine-search-box">
+      <div>  
+        <p className="medicine-search-title">찾으시는 약은 어떤 제형인가요?</p>
+        <div className="medicine-search-group-box">
+          <ul className="medicine-search-group">
+            {MedicineFomulaList.map((formula, i: number) => (
+              <li
+                onClick={onClickFomula(formula)}
+                key={i}
+              >
+                <MedicineSerachItem
+                  itemName={formula}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="medicine-fomula-group-box">
-        <ul className="medicine-fomula-group">
-          <li>
-            <span onClick={onClickFomula("제형전체")}>
-              <MedicineSerachItem itemName="제형전체"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickFomula("정제류")}>
-              <MedicineSerachItem itemName="정제류"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickFomula("경질캡슐")}>
-              <MedicineSerachItem itemName="경질캡슐"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickFomula("연질캡슐")}>
-              <MedicineSerachItem itemName="연질캡슐"></MedicineSerachItem>
-            </span>
-          </li>
-        </ul>
+      <div className="medicine-search-bottom">
+        <div className="medicine-search-back">
+          <img
+            onClick={onClickBack}
+            className="back-img"
+            src={require("../../assets/back-icon.png")}
+            alt=""
+          />
+          <p>STEP{page - 1}</p>
+        </div>
+        <p>NEXT STEP - 분할선</p>
       </div>
-      <div className="medicine-fomula-bottom">
-        <img
-          src={require("../../assets/back-icon.png")}
-          onClick={onClickBack}
-          alt=""
-        ></img>
-      </div>
-    </>
+    </div>
   );
 }
