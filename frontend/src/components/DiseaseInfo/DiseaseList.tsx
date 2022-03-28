@@ -87,6 +87,12 @@ export default function DiseaseList(props: SymptomProps) {
       <div className="disease-list">
         {diseases.map((disease, i: number) => (
           <div key={i} className="disease-item disease-box">
+            <div
+              onClick={() => routeDetail(disease.name)}
+              className="disease-img"
+            >
+              {disease.image}
+            </div>
             <div>
               <div className="detail-list">
                 <p
@@ -103,7 +109,6 @@ export default function DiseaseList(props: SymptomProps) {
                   className="popup-btn"
                 />
               </div>
-
               <div className="list-title-box">
                 <div className="item-title-blue"></div>
                 <p className="list-title">증상</p>
@@ -149,12 +154,6 @@ export default function DiseaseList(props: SymptomProps) {
                   <p key={j}>{same}</p>
                 ))}
               </div>
-            </div>
-            <div
-              onClick={() => routeDetail(disease.name)}
-              className="disease-img"
-            >
-              {disease.image}
             </div>
           </div>
         ))}
