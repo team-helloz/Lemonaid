@@ -64,7 +64,9 @@ export default function Symptom(props: SetPartProps) {
           key={i}
           onClick={() => onClickSymptom(symptom)}
           className={
-            nowSymptoms.includes(symptom) ? "selected-symptom sys-btn" : "symptom-btn sys-btn"
+            nowSymptoms.includes(symptom)
+              ? "selected-symptom sys-btn"
+              : "symptom-btn sys-btn"
           }
         >
           {symptom}

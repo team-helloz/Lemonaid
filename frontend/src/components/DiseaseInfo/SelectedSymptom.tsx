@@ -17,15 +17,15 @@ export default function Symptom(props: SymptomsProps) {
   return (
     <div className="selected-symptom-group">
       {nowSymptoms.map((symptom, i: number) => (
-        <div
+        <button
           key={i}
           onClick={() => {
             onClickSymptom(symptom);
           }}
-          className="selected-symptom"
+          className="ssg-button"
         >
           {symptom}
-        </div>
+        </button>
       ))}
     </div>
   );
