@@ -2,10 +2,21 @@
   margin: 0 36px;
   padding: 10px;
   border: 1px solid #e5e5e5;
+  transition: .5s ease;
+}
+
+.medicine-serach-item p {
+  margin: 0;
 }
 
 .medicine-serach-item:hover {
   border: 1px solid #0DADEA;
+  transform: scale(1.1);
+}
+
+.medicine-serach-item:hover p {
+  color: #0DADEA;
+  font-weight: bold;
 }
 
 .medicine-serach-item:hover {
