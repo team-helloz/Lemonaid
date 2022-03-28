@@ -1,5 +1,5 @@
 import MedicineSerachItem from "./MedicineSerachItem";
-import "./MedicineShape.css";
+import "./MedicineSearch.css";
 
 interface MedicineShapeProps {
   page: number;
@@ -15,68 +15,68 @@ export default function MedicineShape(props: MedicineShapeProps) {
     updateCondition("shape", value);
   };
 
+  const MedicineShapeList = [
+    [
+      "모양전체",
+      "원형",
+      "타원형",
+      "반원형",
+      "삼각형",
+      "사각형"
+    ],
+    [
+      "마름모형",
+      "장방형",
+      "오각형",
+      "육각형",
+      "팔각형",
+      "기타"
+    ]
+  ]
+
   return (
-    <>
-      <div className="medicine-shape-title">찾으시는 약은 어떤 모양인가요?</div>
-      <div className="medicine-shape-group-box">
-        <ul className="medicine-shape-group">
-          <li>
-            <span onClick={onClickShape("모양전체")}>
-              <MedicineSerachItem itemName="모양전체"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickShape("원형")}>
-              <MedicineSerachItem itemName="원형"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickShape("타원형")}>
-              <MedicineSerachItem itemName="타원형"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickShape("반원형")}>
-              <MedicineSerachItem itemName="반원형"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickShape("삼각형")}>
-              <MedicineSerachItem itemName="삼각형"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickShape("사각형")}>
-              <MedicineSerachItem itemName="사각형"></MedicineSerachItem>
-            </span>
-          </li>
-        </ul>
+    <div className="medicine-search-box">
+      <div>
+        <p className="medicine-search-title">찾으시는 약은 어떤 모양인가요?</p>
+        <div className="medicine-search-group-box">
+          <ul className="medicine-search-group">
+            {MedicineShapeList[0].map((medicine, i: number) => (
+              <li
+                onClick={onClickShape(medicine)}
+                key={i}
+              >
+                <MedicineSerachItem
+                  itemName={medicine}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="medicine-search-group-box">
+          <ul className="medicine-search-group">
+            {MedicineShapeList[1].map((medicine, i: number) => (
+              <li
+                onClick={onClickShape(medicine)}
+                key={i}
+              >
+                <MedicineSerachItem
+                  itemName={medicine}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="medicine-shape-group-box">
-        <ul className="medicine-shape-group">
-          <li>
-            <span onClick={onClickShape("마름모형")}>
-              <MedicineSerachItem itemName="마름모형"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickShape("장방형")}>
-              <MedicineSerachItem itemName="장방형"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickShape("오각형")}>
-              <MedicineSerachItem itemName="오각형"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickShape("육각형")}>
-              <MedicineSerachItem itemName="육각형"></MedicineSerachItem>
-            </span>
-          </li>
-        </ul>
+      <div className="medicine-search-bottom">
+        <div className="medicine-search-back">
+          <img
+            className="back-img back-none"
+            src={require("../../assets/back-icon.png")}
+            alt=""
+          />
+        </div>
+        <p>NEXT STEP - 색상</p>
       </div>
-      <div className="medicine-shape-bottom"></div>
-    </>
+    </div>
   );
 }

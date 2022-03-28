@@ -3,61 +3,50 @@
   margin: 0 auto;
 }
 
-.medicine-info-title {
-  padding: 15px;
-  margin-top: 40px;
-  margin-bottom: 0px;
+.p-flex {
   display: flex;
+  align-items: center;
+}
+
+.medicine-info-title {
+  padding: 15px 25px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #d0d7fd;
-  position: relative;
-  height: 65px;
+  width: 1070px;
+  height: 40px;
 }
 
-.medicine-info-title img {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 6%;
-  transform: translate(-50%, -50%);
+.medicine-icon {
+  width: 40px;
 }
 
-.medicine-info-title p {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 13%;
-  transform: translate(-50%, -50%);
-  font-size: x-large;
-  font-weight: bold;
-}
-
-.medicine-info-title span {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 27%;
-  transform: translate(-50%, -50%);
-  font-size: large;
-  font-weight: bold;
-}
-
-#medicine-info-refresh {
-  left: 95%;
-}
-
-#medicine-info-refresh:hover {
+.refresh-icon {
+  width: 30px;
   cursor: pointer;
 }
 
-.medicine-info-step {
-  padding: 30px;
-  padding-bottom: 20px;
-  padding-left: 60px;
-  font-size: large;
+.medicine-title {
+  font-size: 20px;
   font-weight: bold;
+  margin: 0 10px;
+}
+
+.medicine-info-step {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
   background-color: #e5e5e5;
 }
 
-.medicine-info-step span {
-  margin-left: 500px;
+.medicine-step {
+  font-weight: bold;
+  margin: 0;
+}
+
+.medicine-progress {
+  font-weight: bold;
+  margin: 0;
 }
