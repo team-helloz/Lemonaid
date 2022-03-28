@@ -20,7 +20,8 @@ export default function SlideWidget() {
     const Medical = document.getElementById("medical"), 
         Medicine = document.getElementById("medicine"),
         Disease = document.getElementById("disease"),
-        Covid = document.getElementById("covid")
+        Covid = document.getElementById("covid"),
+        Circle = document.getElementById("circle")
 
     if (this.window.scrollY < 300) {
       Medical?.classList.add("m-0")
@@ -28,7 +29,10 @@ export default function SlideWidget() {
       Medicine?.classList.remove("medicine-up-1")
       Disease?.classList.remove("disease-up-1")
       Covid?.classList.remove("covid-up-1")
+      Circle?.classList.remove("circle-turn-1")
     } else if (300 <= this.window.scrollY && this.window.scrollY < 900) {
+      Circle?.classList.add("circle-turn-1")
+      Circle?.classList.remove("circle-turn-2")
       Medical?.classList.remove("medical-up-2")
       Medical?.classList.add("medical-up-1")
 
@@ -41,6 +45,8 @@ export default function SlideWidget() {
       Covid?.classList.remove("covid-up-2")
       Covid?.classList.add("covid-up-1")
     } else if (900 <= this.window.scrollY && this.window.scrollY < 1500) {
+      Circle?.classList.add("circle-turn-2")
+      Circle?.classList.remove("circle-turn-3")
       Medical?.classList.remove("medical-up-3")
       Medical?.classList.add("medical-up-2")
 
@@ -53,6 +59,7 @@ export default function SlideWidget() {
       Covid?.classList.remove("covid-up-3")
       Covid?.classList.add("covid-up-2")
     } else if (1500 <= this.window.scrollY) {
+      Circle?.classList.add("circle-turn-3")
       Medical?.classList.add("medical-up-3")
       Medicine?.classList.add("medicine-up-3")
       Disease?.classList.add("disease-up-3")
@@ -62,7 +69,14 @@ export default function SlideWidget() {
 
   return (
     <div className="h-m-container">
-      <div className="h-m-now-menu"></div>
+      <img
+        className="stethoscope"
+        src="/stethoscope.png"
+        alt=""
+      />
+      <div
+        id="circle"
+        className="h-m-circle circle-st h-m-translate"></div>
       <div className="h-m-menu-list">
         <p
           onClick={scrollToMedical}
