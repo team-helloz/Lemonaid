@@ -83,80 +83,81 @@ export default function DiseaseList(props: SymptomProps) {
   }
 
   return (
-    <div className="disease-list">
-      {diseases.map((disease, i: number) => (
-        <div key={i} className="disease-item disease-box">
-          <div>
-            <div className="detail-list">
-              <p
-                onClick={() => routeDetail(disease.name)}
-                className="disease-name"
-              >
-                {disease.name}
-              </p>
-              <img
-                src={Popup}
-                alt=""
-                width={"18px"}
-                onClick={() => routeDetail(disease.name)}
-                className="popup-btn"
-              />
+    <div className="disease-list-container">
+      <div className="disease-list">
+        {diseases.map((disease, i: number) => (
+          <div key={i} className="disease-item disease-box">
+            <div
+              onClick={() => routeDetail(disease.name)}
+              className="disease-img"
+            >
+              {disease.image}
             </div>
-
-            <div className="list-title-box">
-              <div className="item-title-blue"></div>
-              <p className="list-title">증상</p>
-            </div>
-            <div className="detail-item-list">
-              {disease.symptoms.map((symptom, j: number) => (
-                <p key={j}>{symptom}</p>
-              ))}
-            </div>
-
-            <div className="list-title-box">
-              <div className="item-title-blue"></div>
-              <p className="list-title">관련 질환</p>
-            </div>
-            <div className="detail-item-list">
-              {disease.related.map((relate, j: number) => (
+            <div>
+              <div className="detail-list">
                 <p
-                  key={j}
-                  onClick={() => routeDetail(relate)}
-                  className="related-disease"
+                  onClick={() => routeDetail(disease.name)}
+                  className="disease-name"
                 >
-                  {relate}
+                  {disease.name}
                 </p>
-              ))}
-            </div>
+                <img
+                  src={Popup}
+                  alt=""
+                  width={"18px"}
+                  onClick={() => routeDetail(disease.name)}
+                  className="popup-btn"
+                />
+              </div>
+              <div className="list-title-box">
+                <div className="item-title-blue"></div>
+                <p className="list-title">증상</p>
+              </div>
+              <div className="detail-item-list">
+                {disease.symptoms.map((symptom, j: number) => (
+                  <p key={j}>{symptom}</p>
+                ))}
+              </div>
 
-            <div className="list-title-box">
-              <div className="item-title-blue"></div>
-              <p className="list-title">진료 과목</p>
-            </div>
-            <div className="detail-item-list">
-              {disease.courses.map((course, j: number) => (
-                <p key={j}>{course}</p>
-              ))}
-            </div>
+              <div className="list-title-box">
+                <div className="item-title-blue"></div>
+                <p className="list-title">관련 질환</p>
+              </div>
+              <div className="detail-item-list">
+                {disease.related.map((relate, j: number) => (
+                  <p
+                    key={j}
+                    onClick={() => routeDetail(relate)}
+                    className="related-disease"
+                  >
+                    {relate}
+                  </p>
+                ))}
+              </div>
 
-            <div className="list-title-box">
-              <div className="item-title-blue"></div>
-              <p className="list-title">동의어</p>
-            </div>
-            <div className="detail-item-list">
-              {disease.sames.map((same, j: number) => (
-                <p key={j}>{same}</p>
-              ))}
+              <div className="list-title-box">
+                <div className="item-title-blue"></div>
+                <p className="list-title">진료 과목</p>
+              </div>
+              <div className="detail-item-list">
+                {disease.courses.map((course, j: number) => (
+                  <p key={j}>{course}</p>
+                ))}
+              </div>
+
+              <div className="list-title-box">
+                <div className="item-title-blue"></div>
+                <p className="list-title">동의어</p>
+              </div>
+              <div className="detail-item-list">
+                {disease.sames.map((same, j: number) => (
+                  <p key={j}>{same}</p>
+                ))}
+              </div>
             </div>
           </div>
-          <div
-            onClick={() => routeDetail(disease.name)}
-            className="disease-img"
-          >
-            {disease.image}
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
