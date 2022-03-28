@@ -9,8 +9,8 @@
 
 .medicine-search-title {
   margin: 0;
-  padding-left: 80px;
-  font-size: large;
+  padding-left: 60px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -55,6 +55,30 @@
   cursor: default;
 }
 
+.medicine-search-identifier-box {
+  display: flex;
+  align-items: center;
+  padding: 20px 80px;
+}
+
 .medicine-search-input {
-  width: 250px;
+  margin-right: 5px;
+  padding: 10px;
+  width: 500px;
+  height: 15px;
+  border: 1px solid black;
+}
+
+.medicine-search-btn {
+  margin-right: 10px;
+  padding: 0 10px;
+  height: 37px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.medicine-search-btn:hover {
+  border: 1px solid #0DADEA;
+  color: #0DADEA;
+  font-weight: bold;
 }

@@ -17,7 +17,7 @@ export default function MedicineSerachItem(props: MedicineSerachItemProps) {
           alt=""
         />
       </div>
-      <div className="medicine-serach-item-text">{itemName}</div>
+      <p className="medicine-serach-item-text">{itemName}</p>
     </div>
   );
 }
