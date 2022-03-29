@@ -19,11 +19,11 @@ public class HospitalMedicalSubject {
     @Column(name = "hospital_medical_subject_no")
     private long no;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "hospital_medical_subject_hospital_no")
     private Hospital hospital;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "hospital_medical_subject_medical_subject_no")
     private MedicalSubject medicalSubject;
 

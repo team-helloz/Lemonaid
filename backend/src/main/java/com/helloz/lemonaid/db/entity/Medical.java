@@ -8,9 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class Medical {
+public class Medical implements Comparable<Medical> {
 
     MedicalType type;
+    double distance;
 
     public Medical(){
 
@@ -18,5 +19,10 @@ public class Medical {
 
     public Medical(MedicalType medicalType) {
         this.type = medicalType;
+    }
+
+    @Override
+    public int compareTo(Medical o) {
+        return Double.compare(this.distance, o.distance);
     }
 }
