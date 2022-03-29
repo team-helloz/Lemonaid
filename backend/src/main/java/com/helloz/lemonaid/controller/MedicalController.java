@@ -4,7 +4,7 @@ import com.helloz.lemonaid.db.entity.Medical;
 import com.helloz.lemonaid.db.entity.MedicalSubject;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
 import com.helloz.lemonaid.db.entity.MedicalType;
-import com.helloz.lemonaid.response.MedicalCode;
+import com.helloz.lemonaid.response.*;
 import com.helloz.lemonaid.service.MedicalService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
@@ -31,13 +31,16 @@ public class MedicalController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "")
     })
-    private ResponseEntity<List<Medical>> getMedicalList(
+    private ResponseEntity<MedicalListRes> getMedicalList(
             @ApiParam("search_type") @RequestParam(value = "search_type", required = true) MedicalType searchType,
             @ApiParam("code") @RequestParam(required = false, defaultValue = "0") int code,
             @ApiParam("subjects") @RequestParam(required = false, defaultValue = "") List<Long> subjects,
             @ApiParam("emergency") @RequestParam(required = false, defaultValue = "false") boolean emergency,
             @ApiParam("parking") @RequestParam(required = false, defaultValue = "false") boolean parking,
-            @ApiParam("keyword") @RequestParam(required = false, defaultValue = "") String keyword
+            @ApiParam("keyword") @RequestParam(required = false, defaultValue = "") String keyword,
+            @ApiParam("lat") @RequestParam double lat,
+            @ApiParam("lng") @RequestParam double lng,
+            @ApiParam("radius") @RequestParam(defaultValue = "0") int radius
     ) {
         MedicalSearchFilter filter = new MedicalSearchFilter();
         filter.setSearchType(searchType);
@@ -46,9 +49,13 @@ public class MedicalController {
         filter.setEmergency(emergency);
         filter.setParking(parking);
         filter.setKeyword(keyword);
+        filter.setLat(lat);
+        filter.setLng(lng);
+        filter.setRadius(radius);
 
         List<Medical> result = medicalService.getMedicalList(filter);
-        return ResponseEntity.ok(result);
+
+        return ResponseEntity.ok(MedicalListRes.of(200, "Success", result));
     }
 
     @GetMapping("/{medicalType}/{medicalNo}")
@@ -58,13 +65,13 @@ public class MedicalController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "")
     })
-    private ResponseEntity<Medical> getMedical(
+    private ResponseEntity<MedicalRes> getMedical(
             @ApiParam("의료 기관 유형") @PathVariable String medicalType,
             @ApiParam("의료 기관 번호") @PathVariable long medicalNo) {
 
         Medical result = medicalService.getMedical(MedicalType.valueOf(medicalType), medicalNo);
 
-        return ResponseEntity.ok(result);
+        return ResponseEntity.ok(MedicalRes.of(200, "Success", result));
     }
 
     @GetMapping("/subject")
@@ -74,11 +81,11 @@ public class MedicalController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "")
     })
-    private ResponseEntity<List<MedicalSubject>> getMedicalSubjectList() {
+    private ResponseEntity<MedicalSubjectListRes> getMedicalSubjectList() {
 
         List<MedicalSubject> result = medicalService.getMedicalSubjectList();
 
-        return ResponseEntity.ok(result);
+        return ResponseEntity.ok(MedicalSubjectListRes.of(200, "Success", result));
     }
 
     @GetMapping("/code")
@@ -88,10 +95,10 @@ public class MedicalController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "")
     })
-    private ResponseEntity<List<MedicalCode>> getMedicalCodeList() {
+    private ResponseEntity<MedicalCodeListRes> getMedicalCodeList() {
 
         List<MedicalCode> result = medicalService.getMedicalCodeList();
 
-        return ResponseEntity.ok(result);
+        return ResponseEntity.ok(MedicalCodeListRes.of(200, "Success", result));
     }
 }
