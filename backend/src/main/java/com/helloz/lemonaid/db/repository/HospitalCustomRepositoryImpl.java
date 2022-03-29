@@ -10,6 +10,7 @@ import com.querydsl.core.types.dsl.MathExpressions;
 import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 import static com.helloz.lemonaid.db.entity.QHospital.hospital;
 import static com.helloz.lemonaid.db.entity.QHospitalMedicalSubject.hospitalMedicalSubject;
 
+@Slf4j
 @RequiredArgsConstructor
 @Repository
 public class HospitalCustomRepositoryImpl implements HospitalCustomRepository {
@@ -30,6 +32,7 @@ public class HospitalCustomRepositoryImpl implements HospitalCustomRepository {
     public List<Hospital> searchByFilter(MedicalSearchFilter filter) {
         List<Hospital> result = jpaQueryFactory.selectFrom(hospital)
                 .join(hospitalMedicalSubject)
+                .on(hospital.eq(hospitalMedicalSubject.hospital))
                 .where(subjectIn(filter.getSubjects()),
                         eqCode(filter.getCode()),
                         eqEmergency(filter.isEmergency()),
@@ -39,7 +42,11 @@ public class HospitalCustomRepositoryImpl implements HospitalCustomRepository {
                 )
                 .fetch();
 
-        result.forEach(h->h.setDistance(DistanceUtil.getDistance(filter.getX(), filter.getY(), h.getX(), h.getY())));
+        result.forEach(h->{
+            h.setDistance(DistanceUtil.getDistance(filter.getLat(), filter.getLng(), h.getLat(), h.getLng()));
+            log.info("distance: " +h.getDistance());
+        }
+        );
 
         Collections.sort(result);
 
