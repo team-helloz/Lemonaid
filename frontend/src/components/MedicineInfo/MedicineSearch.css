@@ -1,3 +1,84 @@
+.medicine-search-step-one {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 588px;
+  background-color: #e5e5e5;
+}
+
+.medicine-search-one-bottom {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 25px;
+  height: 45px;
+  background-color: #e5e5e5;
+}
+
+.medicine-search-one-bottom p {
+  margin: 0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .5s ease;
+}
+
+.medicine-search-one-bottom p:hover {
+  color: #0DADEA;
+  transform: scale(1.1);
+}
+
+.medicine-search-logo {
+  font-weight: bold;
+  font-size: 50px;
+  margin: 0 0 30px 0;
+}
+
+.medicine-search-input-name {
+  padding: 0 15px;
+  width: 500px;
+  height: 35px;
+  font-size: 16px;
+  border: 1px solid;
+  border-radius: 100px;
+  transition: .5s ease;
+}
+
+.medicine-search-input-name:focus {
+  outline: 1px solid #0DADEA;
+  border: 1px solid #0DADEA;
+}
+
+.medicine-most-list {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.medicine-most {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+}
+
+.medicine-most p {
+  margin: 0 0 5px 0;
+  font-size: 12px;
+}
+
+.medicine-most-img {
+  width: 50px;
+  height: 50px;
+}
+
+.medicine-most:hover {
+  border: 1px solid #0DADEA;
+}
+
 .medicine-search-box {
   display: flex;
   flex-direction: column;
@@ -62,23 +143,32 @@
 }
 
 .medicine-search-input {
-  margin-right: 5px;
+  margin-right: 10px;
   padding: 10px;
   width: 500px;
   height: 15px;
-  border: 1px solid black;
+  border: 1px solid white;
+  transition: .5s ease;
+  box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px;
+}
+
+.medicine-search-input:focus {
+  outline: 1px solid #0DADEA;
+  border: 1px solid #0DADEA;
 }
 
 .medicine-search-btn {
   margin-right: 10px;
   padding: 0 10px;
-  height: 37px;
-  border: 1px solid black;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  background-color: #64cada;
+  box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px;
 }
 
 .medicine-search-btn:hover {
-  border: 1px solid #0DADEA;
-  color: #0DADEA;
   font-weight: bold;
+  background-color: #0DADEA;
 }

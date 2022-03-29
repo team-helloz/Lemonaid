@@ -15,6 +15,7 @@
   color: #0DADEA;
   top: 485px;
   left: 180px;
+  font-size: 20px;
 }
 
 .h-m-medicine {
@@ -67,7 +68,7 @@
   border: 8px solid transparent;
   background-size: 100% 100%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
   background-repeat: no-repeat;
-  background-image: linear-gradient(#f5f5f7, #f5f5f7), 
+  background-image: linear-gradient(white, white), 
                     linear-gradient(30deg, lightgrey 36%, lightgrey 30%),
                     linear-gradient(130deg, #0DADEA 36%, lightgrey 30%),
                     linear-gradient(300deg, lightgrey 36%, lightgrey 30%),
@@ -105,7 +106,7 @@
 .medicine-up-1 {
   transform: translate(15px, -40px);
   color: #0DADEA;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .medicine-up-2 {
@@ -126,7 +127,7 @@
 .disease-up-2 {
   color: #0DADEA;
   transform: translate(30px, -80px);
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .disease-up-3 {
@@ -146,5 +147,5 @@
 .covid-up-3 {
   color: #0DADEA;
   transform: translate(50px, -120px);
-  font-size: 16px;
+  font-size: 20px;
 }
