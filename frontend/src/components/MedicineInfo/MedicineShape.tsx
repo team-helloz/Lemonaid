@@ -15,6 +15,10 @@ export default function MedicineShape(props: MedicineShapeProps) {
     updateCondition("shape", value);
   };
 
+  const onClickBack = () => {
+    updatePage(page - 1);
+  };
+
   const MedicineShapeList = [
     [
       "모양전체",
@@ -70,10 +74,12 @@ export default function MedicineShape(props: MedicineShapeProps) {
       <div className="medicine-search-bottom">
         <div className="medicine-search-back">
           <img
-            className="back-img back-none"
+            onClick={onClickBack}
+            className="back-img"
             src={require("../../assets/back-icon.png")}
             alt=""
           />
+          <p>의약품 명칭으로 검색하기</p>
         </div>
         <p>NEXT STEP - 색상</p>
       </div>

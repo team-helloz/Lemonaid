@@ -92,22 +92,22 @@ export default function SlideWidget() {
           onClick={scrollToMedical}
           id="medical"
           className="h-m-medical h-m-translate"
-        >의료기관 조회</p>
+        >MEDICAL</p>
         <p
           onClick={scrollToMedicine}
           id="medicine"
          className="h-m-medicine h-m-translate"
-        >의약품 조회</p>
+        >MEDICINE</p>
         <p
           onClick={scrollToDisease}
           id="disease"
          className="h-m-disease h-m-translate"
-        >증상/질병 조회</p>
+        >DISEASE</p>
         <p
           onClick={scrollToCovid}
           id="covid"
          className="h-m-covid h-m-translate"
-        >코로나 정보 조회</p>
+        >COVID</p>
       </div>
     </div>
   );
