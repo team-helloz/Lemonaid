@@ -1,14 +1,5 @@
 import "./MedicalList.css";
-
-export interface Hospital {
-  id: number;
-  type: string;
-  name: string;
-  call: string;
-  address: string;
-  lat: number;
-  lng: number;
-}
+import { IHospital } from "../../interface";
 
 export interface Coord {
   lat: number;
@@ -16,9 +7,9 @@ export interface Coord {
 }
 
 export interface HospitalProps {
-  hospitals: Hospital[];
+  hospitals: IHospital[];
   setNowCenter: (coord: Coord) => void;
-  handDetailOpen: (hospital: Hospital) => void;
+  handDetailOpen: (hospital: IHospital) => void;
 }
 
 export default function MedicalList({
@@ -26,7 +17,7 @@ export default function MedicalList({
   setNowCenter,
   handDetailOpen,
 }: HospitalProps) {
-  const onClickListItem = (hospital: Hospital) => {
+  const onClickListItem = (hospital: IHospital) => {
     // console.log(hospital.name);
     setNowCenter({ lat: hospital.lat, lng: hospital.lng });
     handDetailOpen(hospital);
@@ -38,11 +29,11 @@ export default function MedicalList({
         <div
           className="hos-list-container"
           onClick={() => onClickListItem(hospital)}
-          key={hospital.id}
+          key={hospital.no}
         >
           <h1>{hospital.name}</h1>
           <p>{hospital.type}</p>
-          <p>{hospital.call}</p>
+          <p>{hospital.tel}</p>
         </div>
       ))}
     </div>

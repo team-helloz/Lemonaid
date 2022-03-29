@@ -1,22 +1,13 @@
 import { CustomOverlayMap, MapMarker, useMap } from "react-kakao-maps-sdk";
+import { IHospital } from "../../interface";
 
 import MarkerImgHospital from "../../assets/medical_png/marker_hospital.png";
 import MarkerImgMedicine from "../../assets/medical_png/marker_medicine.png";
 import "./MedicalMarkerContainer.css";
 
-interface Hospital {
-  id: number;
-  type: string;
-  name: string;
-  call: string;
-  address: string;
-  lat: number;
-  lng: number;
-}
-
 interface MarkerProps {
-  hospital: Hospital;
-  handDetailOpen: (hospital: Hospital) => void;
+  hospital: IHospital;
+  handDetailOpen: (hospital: IHospital) => void;
 }
 
 // const imageSize = { width: 100, height: 137 };
@@ -30,7 +21,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
   // const [isVisible, setIsVisible] = useState(false);
   // const content = <div style={{ color: "#000" }}>{hospital.name}</div>;
 
-  const onClickMarker = (hospital: Hospital) => {
+  const onClickMarker = (hospital: IHospital) => {
     //console.log(hospital.name);
     handDetailOpen(hospital);
     // setNowCenter({ lat: hospital.lat, lng: hospital.lng });
@@ -39,7 +30,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
 
   return (
     <>
-      {hospital.type === "병원" && (
+      {hospital.type === "hospital" && (
         <MapMarker
           position={{ lat: hospital.lat, lng: hospital.lng }} // 마커를 표시할 위치
           onClick={(marker) => {
@@ -56,7 +47,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
           }}
         />
       )}
-      {hospital.type === "약국" && (
+      {hospital.type === "pharamcy" && (
         <MapMarker
           position={{ lat: hospital.lat, lng: hospital.lng }} // 마커를 표시할 위치
           onClick={(marker) => {

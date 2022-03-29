@@ -1,20 +1,11 @@
 import Dialog from "@mui/material/Dialog";
+import { IHospital } from "../../interface";
 import "./MedicalDetail.css";
-
-export interface hospital {
-  id: number;
-  type: string;
-  name: string;
-  call: string;
-  address: string;
-  lat: number;
-  lng: number;
-}
 
 export interface MedicalDetailDlgProps {
   open: boolean;
   onClose: () => void;
-  hospitalDetail: hospital;
+  hospitalDetail: IHospital | undefined;
 }
 
 export default function MedicalDetail(props: MedicalDetailDlgProps) {
@@ -30,7 +21,7 @@ export default function MedicalDetail(props: MedicalDetailDlgProps) {
       open={open}
       PaperProps={{
         style: {
-          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          backgroundColor: "rgb(255, 255, 255 )",
           minWidth: "70vh",
           maxWidth: "90vh",
           minHeight: "60vh",
@@ -38,11 +29,13 @@ export default function MedicalDetail(props: MedicalDetailDlgProps) {
         },
       }}
     >
-      <div className="liarresdlg-container init-contain">
-        <h2>{hospitalDetail.name}</h2>
-        <h4>{hospitalDetail.type}</h4>
-        <h4>{hospitalDetail.call}</h4>
-      </div>
+      {hospitalDetail !== undefined && (
+        <div className="liarresdlg-container init-contain">
+          <h2>{hospitalDetail.name}</h2>
+          <h4>{hospitalDetail.type}</h4>
+          <h4>{hospitalDetail.tel}</h4>
+        </div>
+      )}
     </Dialog>
   );
 }
