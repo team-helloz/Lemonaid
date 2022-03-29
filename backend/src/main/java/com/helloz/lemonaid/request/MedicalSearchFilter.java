@@ -34,4 +34,15 @@ public class MedicalSearchFilter {
 
     @ApiModelProperty(name = "검색어", example = "삼성")
     private String keyword;
+
+    @ApiModelProperty(name = "경도")
+    private double x;
+
+    @ApiModelProperty(name = "위도")
+    private double y;
+
+    @ApiModelProperty(name = "반경")
+    private int radius;
+
+
 }

@@ -33,10 +33,10 @@ public class Hospital extends Medical{
     private int numberOfDoctors;
 
     @Column(name = "hospital_x")
-    private String x;
+    private double x;
 
     @Column(name = "hospital_y")
-    private String y;
+    private double y;
 
     @Column(name = "hospital_code")
     private int code;

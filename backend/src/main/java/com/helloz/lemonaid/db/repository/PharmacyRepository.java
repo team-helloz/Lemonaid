@@ -10,14 +10,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PharmacyRepository extends JpaRepository<Pharmacy, Long> {
+public interface PharmacyRepository extends JpaRepository<Pharmacy, Long>, PharmacyCustomRepository{
 
-    @Query(
-            "select p from Pharmacy p" +
-                    " where (:#{#filter.parking} is false or p.parkingCount > 0)" +
-                    " and (:#{#filter.keyword} = '' or p.name like concat('%',:#{#filter.keyword},'%'))"
-    )
-    List<Pharmacy> searchByFilter(@Param("filter") MedicalSearchFilter filter);
+//    @Query(
+//            "select p from Pharmacy p" +
+//                    " where (:#{#filter.parking} is false or p.parkingCount > 0)" +
+//                    " and (:#{#filter.keyword} = '' or p.name like concat('%',:#{#filter.keyword},'%'))"
+//    )
+//    List<Pharmacy> searchByFilter(@Param("filter") MedicalSearchFilter filter);
 
 
 }
