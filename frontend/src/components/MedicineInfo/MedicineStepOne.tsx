@@ -35,7 +35,6 @@ export default function MedicineStepOne(props: MedicineStepProps) {
   }
 
   function onClickNextStep() {
-    console.log(page)
     updatePage(page + 1);
   }
 

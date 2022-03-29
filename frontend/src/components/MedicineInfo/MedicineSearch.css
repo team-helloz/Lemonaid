@@ -40,8 +40,9 @@
   width: 500px;
   height: 35px;
   font-size: 16px;
-  border: 1px solid;
+  border: 1px solid white;
   border-radius: 100px;
+  box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px;
   transition: .5s ease;
 }
 
@@ -138,8 +139,9 @@
 
 .medicine-search-identifier-box {
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 20px 80px;
+  padding: 0 80px 80px 80px;
 }
 
 .medicine-search-input {

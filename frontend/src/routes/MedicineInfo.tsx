@@ -1,5 +1,5 @@
+// React
 import { useState } from "react";
-import { useHistory } from "react-router";
 // Components
 import NavBar from "../components/NavBar";
 import MedicineStepOne from "../components/MedicineInfo/MedicineStepOne";
@@ -8,11 +8,11 @@ import MedicineColor from "../components/MedicineInfo/MedicineColor";
 import MedicineFomula from "../components/MedicineInfo/MedicineFomula";
 import MedicineDivide from "../components/MedicineInfo/MedicineDivide";
 import MedicineIdentifier from "../components/MedicineInfo/MedicineIdentifier";
-
+import MedicineList from "../components/MedicineInfo/MedicineList";
+// Style
 import "./MedicineInfo.css";
 
 export default function MedicineInfo() {
-  const history = useHistory();
 
   const [page, setPage] = useState<number>(0);
   const [shape, setShape] = useState<string>("STEP1");
@@ -23,7 +23,6 @@ export default function MedicineInfo() {
 
   const updatePage = (page: number): void => {
     setPage(page);
-    console.log(page)
   };
 
   const updateCondition = (name: string, value: string): void => {
@@ -37,23 +36,8 @@ export default function MedicineInfo() {
       setDivide(value);
     } else if (name === "identifier") {
       setIdentifier(value);
-      moveMedicineList(value);
+      window.setTimeout(() => window.scrollTo({top:500, left:0, behavior: 'smooth'}), 10)
     }
-  };
-
-  const moveMedicineList = (identifier: string): void => {
-    const medicineInfo = {
-      shape: shape,
-      color: color,
-      fomula: fomula,
-      divide: divide,
-      identifier: identifier,
-    };
-
-    history.push({
-      pathname: "/medicine/list",
-      state: { medicineInfo: medicineInfo },
-    });
   };
 
   const initCondition = (): void => {
@@ -144,6 +128,9 @@ export default function MedicineInfo() {
           ></MedicineIdentifier>
         )}
       </div>
+      {identifier !== "STEP5" && (
+        <MedicineList />
+      )}
     </>
   );
 }
