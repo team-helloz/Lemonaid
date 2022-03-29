@@ -30,9 +30,6 @@ public class Hospital extends Medical{
     @Column(name = "hospital_tel")
     private String tel;
 
-    @Column(name = "hospital_total_doctor")
-    private int numberOfDoctors;
-
     @Column(name = "hospital_y")
     private double lat;
 
@@ -50,9 +47,6 @@ public class Hospital extends Medical{
 
     @Column(name = "hospital_url")
     private String url;
-
-    @Column(name = "hospital_build_code")
-    private String buildCode;
 
     @Column(name = "hospital_emergency_day")
     private String emergencyDay;
