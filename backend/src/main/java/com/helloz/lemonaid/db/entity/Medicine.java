@@ -19,6 +19,9 @@ public class Medicine {
     @Column(name = "medicine_no")
     private long no;
 
+    @Column(name = "medicine_num")
+    private long num;
+
     @Column(name = "medicine_name")
     private String name;
 
@@ -87,5 +90,17 @@ public class Medicine {
 
     @Column(name = "medicine_eng_name")
     private String engName;
+
+    @Column(name = "medicine_material")
+    private String material;
+
+    @Column(name = "medicine_efficacy")
+    private String efficacy;
+
+    @Column(name = "medicine_usage")
+    private String usage;
+
+    @Column(name = "medicine_caution")
+    private String caution;
 
 }
