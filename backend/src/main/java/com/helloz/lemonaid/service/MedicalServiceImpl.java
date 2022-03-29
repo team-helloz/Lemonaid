@@ -33,10 +33,12 @@ public class MedicalServiceImpl implements MedicalService {
     public List<Medical> getMedicalList(MedicalSearchFilter filter) {
         List<Medical> result = new ArrayList<>();
 
-        if (filter.getSearchType() != MedicalType.hospital) {
+        if (filter.getSearchType() == MedicalType.all) {
             result.addAll(getHospitalList(filter));
-        }
-        if (filter.getSearchType() != MedicalType.pharmacy) {
+            result.addAll(getPharmacyList(filter));
+        } else if (filter.getSearchType() == MedicalType.hospital) {
+            result.addAll(getHospitalList(filter));
+        } else if (filter.getSearchType() == MedicalType.pharmacy) {
             result.addAll(getPharmacyList(filter));
         }
 
