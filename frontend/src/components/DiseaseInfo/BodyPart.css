@@ -1,6 +1,8 @@
 .bodypart-container {
   margin-top: 30px;
   overflow: hidden;
+  border-left: 1px solid rgba(122, 122, 122, 0.3);
+  border-top: 1px solid rgba(122, 122, 122, 0.3);
 }
 .part-group-box {
   overflow: hidden;
@@ -20,16 +22,19 @@
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  background-color: rgba(44, 44, 44, 0.5);
   border: 0;
+  border-right: 1px solid rgba(122, 122, 122, 0.3);
+  border-bottom: 1px solid rgba(122, 122, 122, 0.3);
   width: 112px;
   cursor: pointer;
   transition: 0.2s;
-  color: white;
+  color: rgb(71, 71, 71);
+  background: white;
 }
 
 .part-btn:hover {
   background-color: rgba(0, 38, 255, 0.9);
+  color: white;
 }
 
 .part-btn p {
@@ -42,4 +47,5 @@
 
 .selected-part {
   background-color: rgba(0, 38, 255, 0.8);
+  color: white;
 }
