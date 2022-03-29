@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -32,14 +33,14 @@ public class MedicalServiceImpl implements MedicalService {
         List<Medical> result = new ArrayList<>();
 
         if (filter.getSearchType() == MedicalType.all) {
-            List<Hospital> hospitals = hospitalRepository.searchByFilter(filter,  filter.getSubjects() != null ? filter.getSubjects().size() : 0);
+            List<Hospital> hospitals = hospitalRepository.searchByFilter(filter);
             List<Pharmacy> pharmacies = pharmacyRepository.searchByFilter(filter);
 
             if (hospitals != null) result.addAll(hospitals);
-            if (pharmacies != null) result.addAll( pharmacies);
+            if (pharmacies != null) result.addAll(pharmacies);
 
         } else if (filter.getSearchType() == MedicalType.hospital) {
-            List<Hospital> hospitals = hospitalRepository.searchByFilter(filter, filter.getSubjects() != null ? filter.getSubjects().size() : 0);
+            List<Hospital> hospitals = hospitalRepository.searchByFilter(filter);
             if (hospitals != null) result.addAll(hospitals);
 
         } else if (filter.getSearchType() == MedicalType.pharmacy) {
@@ -47,6 +48,7 @@ public class MedicalServiceImpl implements MedicalService {
             if (pharmacies != null) result.addAll(pharmacies);
         }
 
+        Collections.sort(result);
         return result;
     }
 

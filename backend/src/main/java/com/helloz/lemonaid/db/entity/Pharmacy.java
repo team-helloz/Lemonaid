@@ -29,10 +29,10 @@ public class Pharmacy extends Medical {
     private String tel;
 
     @Column(name = "pharmacy_x")
-    private String x;
+    private double x;
 
     @Column(name = "pharmacy_y")
-    private String y;
+    private double y;
 
     @Column(name = "pharmacy_address")
     private String address;

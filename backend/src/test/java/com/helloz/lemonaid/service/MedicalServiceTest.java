@@ -51,8 +51,8 @@ class MedicalServiceTest {
 
         hospital.setOpentime(openTime);
         hospital.setTel("1111-2222");
-        hospital.setX("111");
-        hospital.setY("222");
+        hospital.setX(123.340);
+        hospital.setY(1234.57);
 
         hospital = hospitalRepository.save(hospital);
 
@@ -74,7 +74,7 @@ class MedicalServiceTest {
         filter.setEmergency(false);
         filter.setParking(false);
 
-        List<Hospital> result = hospitalRepository.searchByFilter(filter, 0);
+        List<Hospital> result = hospitalRepository.searchByFilter(filter);
         Assertions.assertThat(result.size()).isEqualTo(1);
     }
 }
