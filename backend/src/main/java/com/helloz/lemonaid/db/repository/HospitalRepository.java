@@ -11,18 +11,20 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface HospitalRepository extends JpaRepository<Hospital, Long> {
+public interface HospitalRepository extends JpaRepository<Hospital, Long>, HospitalCustomRepository{
+        @Query("select distinct code, name from Hospital")
+        List<MedicalCode> findCodeAll();
 
-    @Query("select distinct code, name from Hospital")
-    List<MedicalCode> findCodeAll();
-
-    @Query(
-            "select h from Hospital h, HospitalMedicalSubject hms"+
-                    " where (:subjectsLength = 0 or hms.medicalSubject.no in :#{#filter.subjects})"+
-                    " and (:#{#filter.code} = 0 or h.code = :#{#filter.code})" +
-                    " and (:#{#filter.emergency} is false or h.emergencyDay = 'Y' or h.emergencyNight ='Y')" +
-                    " and (:#{#filter.parking} is false or h.parkingCount > 0)" +
-                    " and (:#{#filter.keyword} = '' or :#{#filter.keyword} is null or h.name like concat('%',:#{#filter.keyword},'%'))"
-    )
-    List<Hospital> searchByFilter(@Param("filter") MedicalSearchFilter filter, @Param("subjectsLength") int subjectsLength);
+//    @Query(
+//            "select h, (6371 * acos( cos( radians( :#{#filter.y} ) ) * cos( radians( h.y) ) * cos( radians( h.x) - radians(#{#filter.y}))" +
+//                    " sin( radians(#{#filter.x}) ) * sin( radians(h.y) ) ) ) AS distance" +
+//                    " from Hospital h, HospitalMedicalSubject hms" +
+//                    " where (:subjectsLength = 0 or hms.medicalSubject.no in :#{#filter.subjects})" +
+//                    " and (:#{#filter.code} = 0 or h.code = :#{#filter.code})" +
+//                    " and (:#{#filter.emergency} is false or h.emergencyDay = 'Y' or h.emergencyNight ='Y')" +
+//                    " and (:#{#filter.parking} is false or h.parkingCount > 0)" +
+//                    " and (:#{#filter.keyword} = '' or :#{#filter.keyword} is null or h.name like concat('%',:#{#filter.keyword},'%'))" +
+//                    " and "
+//    )
+//    List<Hospital> searchByFilter(@Param("filter") MedicalSearchFilter filter, @Param("subjectsLength") int subjectsLength);
 }
