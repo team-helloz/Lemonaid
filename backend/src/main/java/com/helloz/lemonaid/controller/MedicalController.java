@@ -38,8 +38,8 @@ public class MedicalController {
             @ApiParam("emergency") @RequestParam(required = false, defaultValue = "false") boolean emergency,
             @ApiParam("parking") @RequestParam(required = false, defaultValue = "false") boolean parking,
             @ApiParam("keyword") @RequestParam(required = false, defaultValue = "") String keyword,
-            @ApiParam("x") @RequestParam double x,
-            @ApiParam("y") @RequestParam double y,
+            @ApiParam("lat") @RequestParam double lat,
+            @ApiParam("lng") @RequestParam double lng,
             @ApiParam("radius") @RequestParam(defaultValue = "0") int radius
     ) {
         MedicalSearchFilter filter = new MedicalSearchFilter();
@@ -49,11 +49,12 @@ public class MedicalController {
         filter.setEmergency(emergency);
         filter.setParking(parking);
         filter.setKeyword(keyword);
-        filter.setX(x);
-        filter.setY(y);
+        filter.setLat(lat);
+        filter.setLng(lng);
         filter.setRadius(radius);
 
         List<Medical> result = medicalService.getMedicalList(filter);
+
         return ResponseEntity.ok(MedicalListRes.of(200, "Success", result));
     }
 

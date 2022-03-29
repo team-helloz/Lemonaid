@@ -36,10 +36,10 @@ public class MedicalSearchFilter {
     private String keyword;
 
     @ApiModelProperty(name = "경도")
-    private double x;
+    private double lat;
 
     @ApiModelProperty(name = "위도")
-    private double y;
+    private double lng;
 
     @ApiModelProperty(name = "반경")
     private int radius;
