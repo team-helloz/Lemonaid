@@ -33,7 +33,7 @@ public class PharmacyRepositoryImpl implements PharmacyCustomRepository {
                 )
                 .fetch();
 
-        result.forEach(p -> p.setDistance(DistanceUtil.getDistance(filter.getX(), filter.getY(), p.getX(), p.getY())));
+        result.forEach(p -> p.setDistance(DistanceUtil.getDistance(filter.getLat(), filter.getLng(), p.getLat(), p.getLng())));
 
         Collections.sort(result);
 

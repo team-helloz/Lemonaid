@@ -32,11 +32,11 @@ public class Hospital extends Medical{
     @Column(name = "hospital_total_doctor")
     private int numberOfDoctors;
 
-    @Column(name = "hospital_x")
-    private double x;
-
     @Column(name = "hospital_y")
-    private double y;
+    private double lat;
+
+    @Column(name = "hospital_x")
+    private double lng;
 
     @Column(name = "hospital_code")
     private int code;
