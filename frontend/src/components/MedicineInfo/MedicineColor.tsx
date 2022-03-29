@@ -48,7 +48,7 @@ export default function MedicineColor(props: MedicineColorProps) {
 
   return (
     <div className="medicine-search-box">
-      <p className="medicine-search-title">찾으시는 약은 어떤 색깔인가요?</p>
+      <p className="medicine-search-title">찾으시는 약은 어떤 색상인가요?</p>
       <div className="medicine-search-group-box">
         <ul className="medicine-search-group">
           {MedicineColorList[0].map((color, i: number) => (

@@ -40,21 +40,21 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
     <div className="medicine-search-box">
       <div>
         <p className="medicine-search-title">찾으시는 약은 어떤 식별문자가 있나요?</p>
-        <div className="medicine-search-group-box">
-          <ul className="medicine-search-group">
-            <li>
-              <button onClick={onClickDontKnow}>식별문자모름</button>
-            </li>
-            <li>
-              <input
-                value={value}
-                onChange={onChange}
-                placeholder="식별문자 (약의 앞면이나 뒷면의 문자)"
-                className="medicine-search-input"
-              ></input>
-              <button onClick={onClickIdentifier}>확인</button>
-            </li>
-          </ul>
+        <div className="medicine-search-identifier-box">
+          <input
+            value={value}
+            onChange={onChange}
+            placeholder="식별문자 (약의 앞면이나 뒷면의 문자)"
+            className="medicine-search-input"
+          ></input>
+          <button
+            className="medicine-search-btn"
+            onClick={onClickIdentifier}
+          >확인</button>
+          <button
+            className="medicine-search-btn"
+            onClick={onClickDontKnow}
+          >식별문자모름</button>
         </div>
       </div>
       <div className="medicine-search-bottom">
