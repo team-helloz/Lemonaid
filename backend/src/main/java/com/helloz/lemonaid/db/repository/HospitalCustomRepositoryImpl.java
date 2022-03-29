@@ -30,7 +30,9 @@ public class HospitalCustomRepositoryImpl implements HospitalCustomRepository {
 
     @Override
     public List<Hospital> searchByFilter(MedicalSearchFilter filter) {
+
         List<Hospital> result = jpaQueryFactory.selectFrom(hospital)
+                .distinct()
                 .join(hospitalMedicalSubject)
                 .on(hospital.eq(hospitalMedicalSubject.hospital))
                 .where(subjectIn(filter.getSubjects()),
@@ -44,11 +46,8 @@ public class HospitalCustomRepositoryImpl implements HospitalCustomRepository {
 
         result.forEach(h->{
             h.setDistance(DistanceUtil.getDistance(filter.getLat(), filter.getLng(), h.getLat(), h.getLng()));
-            log.info("distance: " +h.getDistance());
         }
         );
-
-        Collections.sort(result);
 
         result = result.stream().filter(h -> h.getDistance() <= filter.getRadius()).collect(Collectors.toList());
 
