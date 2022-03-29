@@ -59,25 +59,12 @@
   background: #e5e9ff;
   width: 60vw;
   height: 5vh;
-  left: 47%;
+  left: 50%;
   bottom: 5%;
   transform: translate(-50%, 0%);
   overflow: hidden;
   border-radius: 10px;
   vertical-align: middle;
-  border: 1px solid;
-}
-
-.medi-menu {
-  position: absolute;
-  z-index: 2;
-  background: #e5e9ff;
-  width: 25vw;
-  height: 20vh;
-  left: 65%;
-  bottom: 10%;
-  transform: translate(-50%, 0%);
-  border-radius: 10px;
   border: 1px solid;
 }
 
