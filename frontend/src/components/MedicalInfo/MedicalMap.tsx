@@ -1,5 +1,6 @@
 import { Map, ZoomControl } from "react-kakao-maps-sdk";
 import MedicalMarkerContainer from "./MedicalMarkerContainer";
+import { IHospital } from "../../interface";
 
 declare global {
   interface Window {
@@ -12,24 +13,15 @@ interface Coord {
   lng: number;
 }
 
-interface Hospital {
-  id: number;
-  type: string;
-  name: string;
-  call: string;
-  address: string;
-  lat: number;
-  lng: number;
-}
-
 interface MedicalMapProps {
   nowCenter: Coord;
-  hospitals: Hospital[];
-  handDetailOpen: (hospital: Hospital) => void;
+  setNowCenter: (coord: Coord) => void;
+  hospitals: IHospital[];
+  handDetailOpen: (hospital: IHospital) => void;
 }
 
 export default function KakaoMap(props: MedicalMapProps) {
-  const { nowCenter, hospitals, handDetailOpen } = props;
+  const { nowCenter, setNowCenter, hospitals, handDetailOpen } = props;
 
   return (
     <>
@@ -42,7 +34,7 @@ export default function KakaoMap(props: MedicalMapProps) {
           <MedicalMarkerContainer
             hospital={hospital}
             handDetailOpen={handDetailOpen}
-            key={hospital.id}
+            key={hospital.no}
           />
         ))}
         <ZoomControl position={kakao.maps.ControlPosition.TOPRIGHT} />
