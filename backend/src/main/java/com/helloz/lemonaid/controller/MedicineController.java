@@ -38,13 +38,13 @@ public class MedicineController {
             @ApiParam("약품 식별문자") @RequestParam(required = false) String sign
             ) {
         MedicineSearchFilter filter = new MedicineSearchFilter();
-        filter.setName(name);
-        filter.setCompany(company);
+//        filter.setName(name);
+//        filter.setCompany(company);
         filter.setShape(shape);
         filter.setColor(color);
         filter.setForm(form);
         filter.setLine(line);
-        filter.setMark(mark);
+//        filter.setMark(mark);
         filter.setSign(sign);
 
         List<Medicine> result = medicineService.getMedicineList(filter);
