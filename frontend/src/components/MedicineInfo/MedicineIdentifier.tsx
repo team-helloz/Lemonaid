@@ -31,6 +31,7 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
   const onClickBack = () => {
     updatePage(page - 1);
     updateCondition("divide", "STEP4");
+    updateCondition("identifier", "STEP5");
   };
 
   const onClickDontKnow = () => {
@@ -46,8 +47,8 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
   };
 
   return (
-    <div className="medicine-search-box">
-      <div>
+    <div>
+      <div className="medicine-search-box">
         <p className="medicine-search-title">찾으시는 약은 어떤 식별문자가 있나요?</p>
         <div className="medicine-search-identifier-box">
           <input
@@ -66,19 +67,21 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
             onClick={onClickDontKnow}
           >식별문자모름</button>
         </div>
-      </div>
-      <div className="medicine-search-bottom">
-       <div className="medicine-search-back">
-          <img
-            onClick={onClickBack}
-            className="back-img"
-            src={require("../../assets/back-icon.png")}
-            alt=""
-          />
-          <p>STEP{page - 1}</p>
+        <div className="medicine-search-bottom">
+        <div className="medicine-search-back">
+            <img
+              onClick={onClickBack}
+              className="back-img"
+              src={require("../../assets/back-icon.png")}
+              alt=""
+            />
+            <p>STEP{page - 1}</p>
+          </div>
+          <p>FINAL STEP</p>
         </div>
-        <p>FINAL STEP</p>
       </div>
+
+
     </div>
   );
 }
