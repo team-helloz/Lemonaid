@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+
 
 @Slf4j
 @Service
@@ -46,7 +48,9 @@ public class MedicalServiceImpl implements MedicalService {
     @Override
     public Medical getMedical(MedicalType medicalType, long no) {
         if (medicalType == MedicalType.hospital) {
-            return hospitalRepository.findById(no).orElseThrow(NotFoundException::new);
+            Hospital hospital = hospitalRepository.findById(no).orElseThrow(NotFoundException::new);
+            hospital.setMedicalSubjectList(getMedicalSubjectListByHospital(hospital));
+            return hospital;
         } else if (medicalType == MedicalType.pharmacy) {
             return pharmacyRepository.findById(no).orElseThrow(NotFoundException::new);
         }
@@ -66,8 +70,7 @@ public class MedicalServiceImpl implements MedicalService {
     private List<Hospital> getHospitalList(MedicalSearchFilter filter) {
         List<Hospital> result = hospitalRepository.searchByFilter(filter);
         result.forEach(
-                hospital -> hospital.setMedicalSubjectList(hospitalMedicalSubjectRepository.findAllByHospital(hospital)
-                        .stream().map(HospitalMedicalSubject::getMedicalSubject).collect(Collectors.toList()))
+                hospital -> hospital.setMedicalSubjectList(getMedicalSubjectListByHospital(hospital))
         );
 
         return result;
@@ -75,5 +78,10 @@ public class MedicalServiceImpl implements MedicalService {
 
     private List<Pharmacy> getPharmacyList(MedicalSearchFilter filter) {
         return pharmacyRepository.searchByFilter(filter);
+    }
+
+    private List<MedicalSubject> getMedicalSubjectListByHospital(Hospital hospital) {
+        return hospitalMedicalSubjectRepository.findAllByHospital(hospital)
+                .stream().map(HospitalMedicalSubject::getMedicalSubject).collect(Collectors.toList());
     }
 }
