@@ -30,7 +30,6 @@ export default function HomeNav(props: routeProps) {
 
   return (
     <div className="h-nav" id="open">
-      <div className="h-nav-cover"></div>
       <div
         onClick={openNav}
         id="burger"

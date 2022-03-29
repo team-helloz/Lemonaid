@@ -1,4 +1,7 @@
+// React
 import { useState } from "react";
+import { KeyboardEvent } from "react";
+// Style
 import "./MedicineSearch.css";
 
 interface MedicineIdentifierProps {
@@ -8,8 +11,8 @@ interface MedicineIdentifierProps {
 }
 
 export default function MedicineIdentifier(props: MedicineIdentifierProps) {
+  
   const { page, updatePage, updateCondition } = props;
-
   const [value, setValue] = useState("");
 
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -19,19 +22,25 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
     setValue(value);
   };
 
+  function keyDownHandler(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.code === "Enter") {
+      updateCondition("identifier", value);
+    }
+  }
+
   const onClickBack = () => {
     updatePage(page - 1);
     updateCondition("divide", "STEP4");
   };
 
   const onClickDontKnow = () => {
-    updateCondition("identifier", "식별문자모름");
+    updateCondition("identifier", "모름");
   };
 
   const onClickIdentifier = () => {
     let identifier = value;
     if (identifier === "") {
-      identifier = "식별문자모름";
+      identifier = "모름";
     }
     updateCondition("identifier", identifier);
   };
@@ -44,6 +53,7 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
           <input
             value={value}
             onChange={onChange}
+            onKeyDown={keyDownHandler}
             placeholder="식별문자 (약의 앞면이나 뒷면의 문자)"
             className="medicine-search-input"
           ></input>

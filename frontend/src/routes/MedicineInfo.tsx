@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
-
+// Components
 import NavBar from "../components/NavBar";
+import MedicineStepOne from "../components/MedicineInfo/MedicineStepOne";
 import MedicineShape from "../components/MedicineInfo/MedicineShape";
 import MedicineColor from "../components/MedicineInfo/MedicineColor";
 import MedicineFomula from "../components/MedicineInfo/MedicineFomula";
@@ -13,7 +14,7 @@ import "./MedicineInfo.css";
 export default function MedicineInfo() {
   const history = useHistory();
 
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(0);
   const [shape, setShape] = useState<string>("STEP1");
   const [color, setColor] = useState<string>("STEP2");
   const [fomula, setFomula] = useState<string>("STEP3");
@@ -22,6 +23,7 @@ export default function MedicineInfo() {
 
   const updatePage = (page: number): void => {
     setPage(page);
+    console.log(page)
   };
 
   const updateCondition = (name: string, value: string): void => {
@@ -55,7 +57,7 @@ export default function MedicineInfo() {
   };
 
   const initCondition = (): void => {
-    updatePage(1);
+    updatePage(0);
     setShape("STEP1");
     setColor("STEP2");
     setFomula("STEP3");
@@ -69,28 +71,43 @@ export default function MedicineInfo() {
       <div className="medicine-info-page">
         <div className="medicine-info-title">
           <div className="p-flex">
-            <img
-              className="medicine-icon"
-              src={require("../assets/medicinebottle.png")}
-              alt=""
-            />
-            <p className="medicine-title">의약품 검색</p>
-            <p>어떤 약을 찾고 계신가요?</p>
+            <div className="p-flex">
+              <div className="medicine-info-c r"></div>
+              <div className="medicine-info-c o"></div>
+              <div className="medicine-info-c g"></div>
+            </div>
+            <p className="medicine-title">Lemonaid 의약품 검색</p>
           </div>
-          <img
-            className="refresh-icon"
-            src={require("../assets/refresh-icon.png")}
-            onClick={initCondition}
-            alt=""
-          />
-        </div>
-        <div className="medicine-info-step">
-          <p className="medicine-step">STEP {page}</p>
-          <p className="medicine-progress">
-            [ {shape} {"/"} {color} {"/"} {fomula} {"/"} {divide} {"/"} {" "} {identifier} ]
-          </p>
+          {page > 0 && (
+            <div>
+              <div className="medicine-info-reset">
+                <p>초기화</p>
+                <img
+                  className="refresh-icon"
+                  src={require("../assets/refresh-icon.png")}
+                  onClick={initCondition}
+                  alt=""
+                />
+              </div>
+            </div>
+          )}
         </div>
 
+        {page > 0 && (
+          <div className="medicine-info-step">
+            <p className="medicine-step">STEP {page}</p>
+            <p className="medicine-progress">
+              [ {shape} {"/"} {color} {"/"} {fomula} {"/"} {divide} {"/"} {" "} {identifier} ]
+            </p>
+          </div>
+        )}
+
+        {page === 0 && (
+          <MedicineStepOne
+            page={page}
+            updatePage={updatePage}
+          ></MedicineStepOne>
+        )}
         {page === 1 && (
           <MedicineShape
             page={page}
