@@ -70,6 +70,30 @@ export default function DiseaseList(props: SymptomProps) {
       sames: ["가암기"],
       image: "이미지",
     },
+    {
+      name: "감기",
+      symptoms: ["기침", "콧물"],
+      related: ["폐렴"],
+      courses: ["내과"],
+      sames: ["가암기"],
+      image: "이미지",
+    },
+    {
+      name: "감기",
+      symptoms: ["기침", "콧물"],
+      related: ["폐렴"],
+      courses: ["내과"],
+      sames: ["가암기"],
+      image: "이미지",
+    },
+    {
+      name: "감기",
+      symptoms: ["기침", "콧물"],
+      related: ["폐렴"],
+      courses: ["내과"],
+      sames: ["가암기"],
+      image: "이미지",
+    },
   ];
 
   let diseases = [];
@@ -90,10 +114,8 @@ export default function DiseaseList(props: SymptomProps) {
             <div
               onClick={() => routeDetail(disease.name)}
               className="disease-img"
-            >
-              {disease.image}
-            </div>
-            <div>
+            />
+            <div className="disease-content">
               <div className="detail-list">
                 <p
                   onClick={() => routeDetail(disease.name)}
@@ -117,9 +139,6 @@ export default function DiseaseList(props: SymptomProps) {
                 {disease.symptoms.map((symptom, j: number) => (
                   <p key={j}>{symptom}</p>
                 ))}
-              </div>
-
-              <div className="list-title-box">
                 <div className="item-title-blue"></div>
                 <p className="list-title">관련 질환</p>
               </div>
