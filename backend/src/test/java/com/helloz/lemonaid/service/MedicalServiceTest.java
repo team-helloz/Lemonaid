@@ -51,8 +51,8 @@ class MedicalServiceTest {
 
         hospital.setOpentime(openTime);
         hospital.setTel("1111-2222");
-        hospital.setX(123.340);
-        hospital.setY(1234.57);
+        hospital.setLng(123.340);
+        hospital.setLat(1234.57);
 
         hospital = hospitalRepository.save(hospital);
 

@@ -1,5 +1,7 @@
 package com.helloz.lemonaid.response;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.helloz.lemonaid.common.model.response.BaseResponseBody;
 import com.helloz.lemonaid.db.entity.Medical;
 import com.helloz.lemonaid.db.entity.MedicalSubject;
@@ -13,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @ApiModel("MedicalSubjectListResponse")
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class MedicalSubjectListRes extends BaseResponseBody {
 
     @ApiModelProperty(name = "진료 과목 리스트")
