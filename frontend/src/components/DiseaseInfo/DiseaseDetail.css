@@ -66,10 +66,22 @@
 .d-item-box {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  width: 15%;
   padding: 20px;
 }
 
+.d-item-img-box img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.d-item-img-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1.5;
+  padding: 20px;
+  padding-left: 20%;
+}
 .d-item-mini-title {
   font-weight: 900;
   font-size: 14px;
