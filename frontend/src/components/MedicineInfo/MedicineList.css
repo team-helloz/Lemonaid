@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(247, 247, 247);
 }
 
 .medicine-list-group-box {
@@ -13,6 +14,10 @@
   display: flex;
   align-items: start;
   margin: 40px 0;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.2) 1px 1px 3px 1px;
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -20,21 +25,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 800px;
+  padding: 20px;
+  width: 780px;
 }
 
 .medicine-list-item-name {
   margin: 0;
+  padding-left: 5px;
   font-size: 18px;
   font-weight: bold;
+  border-left: solid 4px #5ee6eb;
 }
 
 .medicine-list-item-popup {
   height: 18px;
 }
 
+.medicine-list-item-desc {
+  padding: 10px 20px;
+  width: 780px;
+}
+
+.medicine-list-item-desc p {
+  margin: 0;
+}
+
 .medicine-list-item-img {
-  margin-right: 20px;
   width: 300px;
   height: 200px;
 }

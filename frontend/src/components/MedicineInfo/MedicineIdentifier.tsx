@@ -14,6 +14,7 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
   
   const { page, updatePage, updateCondition } = props;
   const [value, setValue] = useState("");
+  const [hide, sethide] = useState<boolean>(false);
 
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
     const {
@@ -24,8 +25,22 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
 
   function keyDownHandler(event: KeyboardEvent<HTMLInputElement>) {
     if (event.code === "Enter") {
-      updateCondition("identifier", value);
+      onClickIdentifier();
     }
+  }
+
+  function closeSearchBox() {
+    const SearchBox = document.getElementById("search-box");
+    SearchBox?.classList.add("medicine-search-close")
+    window.setTimeout(() => SearchBox?.classList.add("medicine-search-none"), 500)
+    sethide(true);
+  }
+
+  function openSearchBox() {
+    const SearchBox = document.getElementById("search-box");
+    SearchBox?.classList.remove("medicine-search-none")
+    window.setTimeout(() => SearchBox?.classList.remove("medicine-search-close"), 10)
+    sethide(false);
   }
 
   const onClickBack = () => {
@@ -36,6 +51,7 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
 
   const onClickDontKnow = () => {
     updateCondition("identifier", "모름");
+    closeSearchBox();
   };
 
   const onClickIdentifier = () => {
@@ -44,12 +60,16 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
       identifier = "모름";
     }
     updateCondition("identifier", identifier);
+    closeSearchBox();
   };
 
   return (
     <div>
-      <div className="medicine-search-box">
-        <p className="medicine-search-title">찾으시는 약은 어떤 식별문자가 있나요?</p>
+      <div
+        id="search-box"
+        className="medicine-search-box"
+      >
+        <p className="medicine-search-title">STEP{page}. 찾으시는 약은 어떤 식별문자가 있나요?</p>
         <div className="medicine-search-identifier-box">
           <input
             value={value}
@@ -80,8 +100,14 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
           <p>FINAL STEP</p>
         </div>
       </div>
-
-
+      {hide && (
+        <div
+          onClick={openSearchBox}
+          className="medicine-search-open"
+        >
+          <img className="medicine-search-open-btn" src="./Asset 83.png" alt="" />
+        </div>
+      )}
     </div>
   );
 }
