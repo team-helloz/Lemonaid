@@ -5,10 +5,9 @@ import HomeScroll from "../components/Home/HomeScroll";
 import SlideWidget from "../components/Home/SlideWidget";
 import HomeNav from "../components/Home/HomeNav";
 // Style
-import "./Home.css"
+import "./Home.css";
 
 export default function Home() {
-
   const history = useHistory();
 
   // 해당 링크로 이동
@@ -26,34 +25,36 @@ export default function Home() {
   }
 
   return (
-    <div
-      className="home-page"
-    >
+    <div className="home-page">
       <div className="h-main">
         <SlideWidget />
         <div className="logo-container">
           <p className="team-logo">Lemonaid.</p>
           <div className="h-line"></div>
           <p className="logo-description">건강한 삶을 위한 의료 정보 플랫폼</p>
-          <p className="logo-description">-모두의 안녕을 바라는 사람들 안녕즈-</p>
+          <p className="logo-description">
+            -모두의 안녕을 바라는 사람들 안녕즈-
+          </p>
         </div>
+        <p className="home-mouse">
+          <span></span>
+        </p>
         <p className="team">ⓒ SSAFY 6th - 안녕즈</p>
       </div>
 
-      <HomeScroll 
+      <HomeScroll
         routeMedical={routeMedical}
         routeMedicine={routeMedicine}
         routeDisease={routeDisease}
         routeCovid={routeCovid}
       />
 
-      <HomeNav 
+      <HomeNav
         routeMedical={routeMedical}
         routeMedicine={routeMedicine}
         routeDisease={routeDisease}
         routeCovid={routeCovid}
       />
-      
     </div>
   );
 }
