@@ -8,8 +8,10 @@ import com.helloz.lemonaid.db.repository.MedicalSubjectRepository;
 import com.helloz.lemonaid.db.repository.PharmacyRepository;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
 import com.helloz.lemonaid.response.MedicalCode;
+import com.helloz.lemonaid.util.DistanceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.geo.Distance;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -72,14 +74,20 @@ public class MedicalServiceImpl implements MedicalService {
     private List<Hospital> getHospitalList(MedicalSearchFilter filter) {
         List<Hospital> result = hospitalRepository.searchByFilter(filter);
         result.forEach(
-                hospital -> hospital.setMedicalSubjectList(getMedicalSubjectListByHospital(hospital))
+                hospital -> {
+                    hospital.setMedicalSubjectList(getMedicalSubjectListByHospital(hospital));
+                    hospital.setDistance(DistanceUtil.getDistance(hospital.getLat(), hospital.getLng(), filter.getLat(), filter.getLng()));
+                }
         );
 
         return result;
     }
 
     private List<Pharmacy> getPharmacyList(MedicalSearchFilter filter) {
-        return pharmacyRepository.searchByFilter(filter);
+        List<Pharmacy>  result = pharmacyRepository.searchByFilter(filter);
+        result.forEach(pharmacy -> pharmacy.setDistance(DistanceUtil.getDistance(pharmacy.getLat(), pharmacy.getLng(), filter.getLat(), filter.getLng())));
+
+        return result;
     }
 
     private List<MedicalSubject> getMedicalSubjectListByHospital(Hospital hospital) {
