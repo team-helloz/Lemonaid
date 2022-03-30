@@ -20,17 +20,18 @@ export default function MedicalList({
 
   return (
     <div>
-      {hospitals.map((hospital) => (
-        <div
-          className="hos-list-container"
-          onClick={() => onClickListItem(hospital)}
-          key={hospital.no}
-        >
-          <h1>{hospital.name}</h1>
-          <p>{hospital.distance.toFixed()}m</p>
-          <p>{hospital.tel}</p>
-        </div>
-      ))}
+      {hospitals &&
+        hospitals.map((hospital) => (
+          <div
+            className="hos-list-container"
+            onClick={() => onClickListItem(hospital)}
+            key={hospital.no}
+          >
+            <h1>{hospital.name}</h1>
+            <p>{hospital.distance.toFixed()}m</p>
+            <p>{hospital.tel}</p>
+          </div>
+        ))}
     </div>
   );
 }

@@ -132,10 +132,8 @@ export default function MedicalInfo() {
         },
       })
       .then((res) => {
-        const { medical_list } = res.data;
+        const { data: medical_list } = res.data;
         setHospitalList(medical_list);
-
-        console.log(medical_list);
       })
       .catch((e) => console.log(e));
   };
@@ -152,6 +150,8 @@ export default function MedicalInfo() {
   useEffect(() => {
     xyToAdd(nowCenter.lat, nowCenter.lng);
     getMedicalList();
+
+    console.log(hospitalList);
   }, [nowCenter]);
 
   useEffect(() => {
