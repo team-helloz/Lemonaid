@@ -18,7 +18,7 @@ function App() {
       <Route path="/medicine" component={MedicineInfo} exact />
       <Route path="/medicine/list/:medicineId" component={MedicineDetail} />
       <Route path="/disease" component={DiseaseInfo} exact />
-      <Route path="/disease/:diseasename" component={DiseaseDetail} />
+      <Route path="/disease/:diseaseno" component={DiseaseDetail} />
       <Route path="/covid" component={CovidInfo} />
     </Router>
   );
