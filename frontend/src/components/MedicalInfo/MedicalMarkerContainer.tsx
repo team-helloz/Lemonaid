@@ -8,6 +8,7 @@ import "./MedicalMarkerContainer.css";
 interface MarkerProps {
   hospital: IHospital;
   handDetailOpen: (hospital: IHospital) => void;
+  directionMode: boolean;
 }
 
 // const imageSize = { width: 100, height: 137 };
@@ -15,7 +16,7 @@ const spriteSize = { width: 36, height: 60 };
 const spriteMargin = { x: 20, y: 65 };
 
 export default function EventMarkerContainer(props: MarkerProps) {
-  const { hospital, handDetailOpen } = props;
+  const { hospital, handDetailOpen, directionMode } = props;
 
   const map = useMap();
   // const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +31,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
 
   return (
     <>
-      {hospital.type === "hospital" && (
+      {hospital.type === "hospital" && directionMode === false && (
         <MapMarker
           position={{ lat: hospital.lat, lng: hospital.lng }} // 마커를 표시할 위치
           onClick={(marker) => {
@@ -47,7 +48,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
           }}
         />
       )}
-      {hospital.type === "pharamcy" && (
+      {hospital.type === "pharmacy" && directionMode === false && (
         <MapMarker
           position={{ lat: hospital.lat, lng: hospital.lng }} // 마커를 표시할 위치
           onClick={(marker) => {
@@ -64,20 +65,25 @@ export default function EventMarkerContainer(props: MarkerProps) {
           }}
         />
       )}
-      <CustomOverlayMap
-        position={{ lat: hospital.lat, lng: hospital.lng }}
-        yAnchor={1}
-      >
-        <div className="customoverlay" onClick={() => onClickMarker(hospital)}>
-          <a
-            //href="https://map.kakao.com/link/map/11394059"
-            target="_blank"
-            rel="noreferrer"
+      {directionMode === false && (
+        <CustomOverlayMap
+          position={{ lat: hospital.lat, lng: hospital.lng }}
+          yAnchor={1}
+        >
+          <div
+            className="customoverlay"
+            onClick={() => onClickMarker(hospital)}
           >
-            <span className="title">{hospital.name}</span>
-          </a>
-        </div>
-      </CustomOverlayMap>
+            <a
+              //href="https://map.kakao.com/link/map/11394059"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="title">{hospital.name}</span>
+            </a>
+          </div>
+        </CustomOverlayMap>
+      )}
     </>
   );
 }

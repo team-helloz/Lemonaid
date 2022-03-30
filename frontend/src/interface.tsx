@@ -34,4 +34,9 @@ interface IHospital {
   parking_count: number;
 }
 
-export type { IHospital };
+interface ICoord {
+  lat: number;
+  lng: number;
+}
+
+export type { IHospital, ICoord };
