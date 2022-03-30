@@ -10,17 +10,17 @@ from datetime import date
 
 
 # DB의 가장 최신 row의 날짜를 뽑아오기
-def db_date_chk():
+def db_date_chk(name):
     global path, options
 
     conn = pymysql.connect(host='j6d108.p.ssafy.io', user='seungwon', password='ssafyd108!', db='lemonaiddb', charset='utf8')
     cursor = conn.cursor()
 
     sql_select_date = """
-        SELECT corona_count_date FROM corona_count
-        ORDER BY corona_count_date DESC
+        SELECT corona_{}_date FROM corona_{}
+        ORDER BY corona_{}_date DESC
         LIMIT 1
-    """
+    """.format(name, name, name)
 
     cursor.execute(sql_select_date)
     result = cursor.fetchall()
@@ -74,10 +74,27 @@ def get_corona_local(f_date):
     return ret
 
 
+# 질병관리청의 성별 확진자 현황 가져오기
+def get_corona_gender():
+    global path, options
+    ret = []
+
+    driver = webdriver.Chrome(path, options=options)
+    driver.get("http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=11&ncvContSeq=&contSeq=&board_id=&gubun=")
+
+    wait = WebDriverWait(driver, 10)
+
+    men = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="content"]/div/div[15]/table/tbody/tr[1]/td[1]/span[1]'))).text
+    women = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="content"]/div/div[15]/table/tbody/tr[2]/td[1]/span[1]'))).text
+    
+    ret.append(int(men.replace(',', '')))
+    ret.append(int(women.replace(',', '')))
+    driver.close()
+    return ret
+
+
 # 크롤링한 corona_count mysql에 insert
 def insert_corona_count(data):
-    global path, options
-
     conn = pymysql.connect(host='j6d108.p.ssafy.io', user='seungwon', password='ssafyd108!', db='lemonaiddb', charset='utf8')
     cursor = conn.cursor()
 
@@ -93,7 +110,38 @@ def insert_corona_count(data):
     conn.commit()
     conn.close()
 
-    return 
+    return
+
+
+def insert_corona_gender(f_date, data):
+    conn = pymysql.connect(host='j6d108.p.ssafy.io', user='seungwon', password='ssafyd108!', db='lemonaiddb', charset='utf8')
+    cursor = conn.cursor()
+    ret = []
+    ret.append(f_date)
+
+    sql_select_sum = """
+    SELECT SUM(corona_gender_men), SUM(corona_gender_women) FROM corona_gender
+    """
+
+    sql_insert_gender = "insert into corona_gender(corona_gender_date, corona_gender_men, corona_gender_women) values (%s, %s, %s)"
+
+    cursor.execute(sql_select_sum)
+    result = cursor.fetchall()
+    for res in result:
+        data_men_total = int(res[0])
+        data_women_total = int(res[1])
+
+    ret.append(data[0] - data_men_total)
+    ret.append(data[1] - data_women_total)
+
+    insert_data = tuple(ret)
+
+    cursor.execute(sql_insert_gender, insert_data)
+
+    conn.commit()
+    conn.close()
+
+    return
 
 # ubuntu chromedriver 경로
 path = '/home/ubuntu/chromedriver'
@@ -108,27 +156,37 @@ options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
-# get_corona_local()
-db_y, db_m, db_d = db_date_chk()
-print(db_y, db_m, db_d)
 
 dt_y, dt_m, dt_d = data_date_chk()
-print(dt_y, dt_m, dt_d)
+# print(dt_y, dt_m, dt_d)
+db_y, db_m, db_d = db_date_chk('count')
+# print(db_y, db_m, db_d)
 
 if db_y == dt_y and db_m == dt_m and db_d == dt_d:
     print("최신상태!")
 else:
-    print("크롤링해서 DB 최신화하자")
+    print("크롤링해서 count DB 최신화하자")
     my_date = '{}'.format(date(dt_y, dt_m, dt_d))
-
     # corona_count 정보 긁어오기
     ret_corona_local = get_corona_local(my_date)
     # corona_count insert
     insert_corona_count(tuple(ret_corona_local))
-    # corona_age 정보 긁어오기
 
-    # corona_age insert
+db_y, db_m, db_d = db_date_chk('gender')
 
+if db_y == dt_y and db_m == dt_m and db_d == dt_d:
+    print("최신상태!")
+else:
+    print("크롤링해서 gender DB 최신화하자")
+    my_date = '{}'.format(date(dt_y, dt_m, dt_d))
     # corona_gender 정보 긁어오기
-
+    ret_corona_gender = get_corona_gender()
     # corona_gender insert
+    insert_corona_gender(my_date, ret_corona_gender)
+
+
+
+
+
+    # corona_age 정보 긁어오기
+    # corona_age insert
