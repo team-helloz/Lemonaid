@@ -1,25 +1,20 @@
 import "./MedicalList.css";
-import { IHospital } from "../../interface";
-
-export interface Coord {
-  lat: number;
-  lng: number;
-}
+import { IHospital, ICoord } from "../../interface";
 
 export interface HospitalProps {
   hospitals: IHospital[];
-  setNowCenter: (coord: Coord) => void;
+  setViewCenter: (coord: ICoord) => void;
   handDetailOpen: (hospital: IHospital) => void;
 }
 
 export default function MedicalList({
   hospitals,
-  setNowCenter,
+  setViewCenter,
   handDetailOpen,
 }: HospitalProps) {
   const onClickListItem = (hospital: IHospital) => {
     // console.log(hospital.name);
-    setNowCenter({ lat: hospital.lat, lng: hospital.lng });
+    setViewCenter({ lat: hospital.lat, lng: hospital.lng });
     handDetailOpen(hospital);
   };
 
@@ -32,7 +27,7 @@ export default function MedicalList({
           key={hospital.no}
         >
           <h1>{hospital.name}</h1>
-          <p>{hospital.type}</p>
+          <p>{hospital.distance.toFixed()}m</p>
           <p>{hospital.tel}</p>
         </div>
       ))}
