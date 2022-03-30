@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Map, MapMarker, ZoomControl } from "react-kakao-maps-sdk";
+import { Map, ZoomControl } from "react-kakao-maps-sdk";
 import { IHospital, ICoord } from "../../interface";
 import MedicalMarkerContainer from "./MedicalMarkerContainer";
 
@@ -19,17 +18,15 @@ interface MedicalMapProps {
   destCoord: ICoord;
 }
 
-const spriteSize = { width: 36, height: 60 };
-const spriteMargin = { x: 20, y: 65 };
-
 export default function KakaoMap(props: MedicalMapProps) {
   const {
-    nowCenter,
     viewCenter,
     setViewCenter,
     hospitals,
     handDetailOpen,
     directionMode,
+    nowCenter,
+    destCoord,
   } = props;
 
   return (
@@ -45,14 +42,15 @@ export default function KakaoMap(props: MedicalMapProps) {
           })
         }
       >
-        {hospitals.map((hospital, _index) => (
-          <MedicalMarkerContainer
-            hospital={hospital}
-            handDetailOpen={handDetailOpen}
-            key={hospital.no}
-            directionMode={directionMode}
-          />
-        ))}
+        {hospitals &&
+          hospitals.map((hospital, _index) => (
+            <MedicalMarkerContainer
+              hospital={hospital}
+              handDetailOpen={handDetailOpen}
+              key={hospital.no}
+              directionMode={directionMode}
+            />
+          ))}
         <ZoomControl position={kakao.maps.ControlPosition.TOPRIGHT} />
       </Map>
     </>
