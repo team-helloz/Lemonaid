@@ -49,13 +49,14 @@ export default function MedicineList() {
               <div className="medicine-list-item-title">
                 <p className="medicine-list-item-name">{medicine.name}</p>
                 <img
+                  className="medicine-list-item-popup"
                   src={Popup}
                   alt=""
-                  width={"17px"}
-                  className="medicine-list-item-popup"
                 />
               </div>
-              <p>{medicine.desc}</p>
+              <div className="medicine-list-item-desc">
+                <p>{medicine.desc}</p>
+              </div>
             </div>
           </div>
         ))}
