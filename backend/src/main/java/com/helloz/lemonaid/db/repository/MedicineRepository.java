@@ -25,4 +25,7 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
     List<Medicine> searchByFilter(@Param("filter") MedicineSearchFilter filter);
 
     Medicine findByNo(Long no);
+
+    @Query(nativeQuery = true, value = "select * from medicine order by medicine_hit desc limit 5")
+    List<Medicine> findTopMedicines();
 }
