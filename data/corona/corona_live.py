@@ -93,6 +93,26 @@ def get_corona_gender():
     return ret
 
 
+# 질병관리청의 연령별 확진자 현황 가져오기
+def get_corona_age(f_date):
+    global path, options
+    ret = []
+    ret.append(f_date)
+    driver = webdriver.Chrome(path, options=options)
+    driver.get("http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=11&ncvContSeq=&contSeq=&board_id=&gubun=")
+
+    wait = WebDriverWait(driver, 10)
+
+    tbody = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="content"]/div/div[17]/table/tbody')))
+    trs = tbody.find_elements(By.TAG_NAME, 'tr')
+    for tr in trs:
+        td = tr.find_element(By.TAG_NAME, "td")
+        span = td.find_element(By.TAG_NAME, "span").text
+        ret.append(int(span.replace(',', '')))
+    
+    return ret
+
+
 # 크롤링한 corona_count mysql에 insert
 def insert_corona_count(data):
     conn = pymysql.connect(host='j6d108.p.ssafy.io', user='seungwon', password='ssafyd108!', db='lemonaiddb', charset='utf8')
@@ -143,6 +163,30 @@ def insert_corona_gender(f_date, data):
 
     return
 
+
+def insert_corona_age(data):
+    conn = pymysql.connect(host='j6d108.p.ssafy.io', user='seungwon', password='ssafyd108!', db='lemonaiddb', charset='utf8')
+    cursor = conn.cursor()
+
+    sql_select_sum = """
+    SELECT SUM(corona_age_80), SUM(corona_age_70), SUM(corona_age_60), SUM(corona_age_50), SUM(corona_age_40), SUM(corona_age_30), SUM(corona_age_20), SUM(corona_age_10), SUM(corona_age_0) FROM corona_age
+    """
+    
+    sql_insert_age = "insert into corona_age(corona_age_date, corona_age_80, corona_age_70, corona_age_60, corona_age_50, corona_age_40, corona_age_30, corona_age_20, corona_age_10, corona_age_0) values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+
+    
+    cursor.execute(sql_select_sum)
+    result = cursor.fetchall()
+    for i in range(9):
+        data[i+1] -= int(result[0][i])
+    insert_data = tuple(data)
+
+    cursor.execute(sql_insert_age, insert_data)
+    conn.commit()
+    conn.close()
+    return
+
+
 # ubuntu chromedriver 경로
 path = '/home/ubuntu/chromedriver'
 
@@ -163,7 +207,7 @@ db_y, db_m, db_d = db_date_chk('count')
 # print(db_y, db_m, db_d)
 
 if db_y == dt_y and db_m == dt_m and db_d == dt_d:
-    print("최신상태!")
+    print("count 최신상태!")
 else:
     print("크롤링해서 count DB 최신화하자")
     my_date = '{}'.format(date(dt_y, dt_m, dt_d))
@@ -175,7 +219,7 @@ else:
 db_y, db_m, db_d = db_date_chk('gender')
 
 if db_y == dt_y and db_m == dt_m and db_d == dt_d:
-    print("최신상태!")
+    print("gender 최신상태!")
 else:
     print("크롤링해서 gender DB 최신화하자")
     my_date = '{}'.format(date(dt_y, dt_m, dt_d))
@@ -184,9 +228,14 @@ else:
     # corona_gender insert
     insert_corona_gender(my_date, ret_corona_gender)
 
+db_y, db_m, db_d = db_date_chk('age')
 
-
-
-
+if db_y == dt_y and db_m == dt_m and db_d == dt_d:
+    print("age 최신상태!")
+else:
+    print("크롤링해서 age DB 최신화하자")
+    my_date = '{}'.format(date(dt_y, dt_m, dt_d))
     # corona_age 정보 긁어오기
+    ret_corona_age = get_corona_age(my_date)
     # corona_age insert
+    insert_corona_age(ret_corona_age)
