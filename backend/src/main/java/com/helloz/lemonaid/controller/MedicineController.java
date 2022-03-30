@@ -68,6 +68,7 @@ public class MedicineController {
         if (result == null) {
             return ResponseEntity.ok(MedicineRes.of(200, "Data Not Found", null));
         }
+        medicineService.updateHit(medicineNo);
         return ResponseEntity.ok(MedicineRes.of(200, "Success", result));
     }
 

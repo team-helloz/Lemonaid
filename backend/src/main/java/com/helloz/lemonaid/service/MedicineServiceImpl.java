@@ -6,6 +6,7 @@ import com.helloz.lemonaid.request.MedicineSearchFilter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,6 +26,12 @@ public class MedicineServiceImpl implements MedicineService {
     @Override
     public Medicine getMedicine(long no) {
         return medicineRepository.findByNo(no);
+    }
+
+    @Override
+    @Transactional
+    public void updateHit(long no) {
+        medicineRepository.updateHit(no);
     }
 
     @Override
