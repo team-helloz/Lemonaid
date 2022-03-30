@@ -72,6 +72,9 @@ export default function DiseaseDetail() {
                 ))}
               </div>
             </div>
+            <div className="d-item-img-box">
+              <img src="/gamgi.jpg" alt="" />
+            </div>
           </div>
           <div className="dd-content">
             <div className="dd-content-title">
