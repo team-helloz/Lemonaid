@@ -32,64 +32,85 @@ export default function DiseaseDetail() {
       <div className="d-detail-page">
         <div className="d-detail-content">
           <div className="d-detail-title">
-            <p className="d-detail-name">{diseaseDetailInfo.name}</p>
-            <button onClick={routeMedical} className="d-medical-btn">
-              병원 찾기
-            </button>
+            <div className="dd-name-title">
+              <p>질병명</p>
+            </div>
+            <div className="dd-main-title">
+              <p className="d-detail-name">{diseaseDetailInfo.name}</p>
+              <button className="d-medical-btn">
+                <img onClick={routeMedical} src="/map.png" alt="map" />
+              </button>
+            </div>
+            <div className="title-small">
+              {diseaseDetailInfo.courses.map((course, i: number) => (
+                <p key={i}>{course}</p>
+              ))}
+            </div>
           </div>
-
-          <div className="d-item-box">
-            <div className="d-item-blue"></div>
-            <p className="d-item-mini-title">증상</p>
+          <div className="dd-2-box">
+            <div className="d-item-box">
+              <p className="d-item-mini-title">증상</p>
+              <div className="d-detail-list">
+                {diseaseDetailInfo.symptoms.map((symptom, i: number) => (
+                  <p key={i}>{symptom}</p>
+                ))}
+              </div>
+            </div>
+            <div className="d-item-box">
+              <p className="d-item-mini-title">관련질환</p>
+              <div className="d-detail-list">
+                {diseaseDetailInfo.related.map((relate, i: number) => (
+                  <p key={i}>{relate}</p>
+                ))}
+              </div>
+            </div>
+            <div className="d-item-box">
+              <p className="d-item-mini-title">동의어</p>
+              <div className="d-detail-list">
+                {diseaseDetailInfo.sames.map((same, i: number) => (
+                  <p key={i}>{same}</p>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="d-detail-list">
-            {diseaseDetailInfo.symptoms.map((symptom, i: number) => (
-              <p key={i}>{symptom}</p>
-            ))}
+          <div className="dd-content">
+            <div className="dd-content-title">
+              <span>정의</span>
+            </div>
+            <div className="dd-content-content">
+              <p>{diseaseDetailInfo.definition}</p>
+            </div>
+            <div className="dd-content-title">
+              <span>원인</span>
+            </div>
+            <div className="dd-content-content">
+              <p>{diseaseDetailInfo.cause}</p>
+            </div>
+            <div className="dd-content-title">
+              <span>진단</span>
+            </div>
+            <div className="dd-content-content">
+              <p>{diseaseDetailInfo.diagnosis}</p>
+            </div>
+            <div className="dd-content-title">
+              <span>치료</span>
+            </div>
+            <div className="dd-content-content">
+              <p>{diseaseDetailInfo.therapy}</p>
+            </div>
+            <div className="dd-content-title">
+              <span>경과</span>
+            </div>
+            <div className="dd-content-content">
+              <p>{diseaseDetailInfo.pass}</p>
+            </div>
+            <div className="dd-content-title">
+              <span>주의사항</span>
+            </div>
+            <div className="dd-content-content">
+              <p>{diseaseDetailInfo.notandum}</p>
+            </div>
           </div>
-
-          <div className="d-item-box">
-            <div className="d-item-blue"></div>
-            <p className="d-item-mini-title">관련질환</p>
-          </div>
-          <div className="d-detail-list">
-            {diseaseDetailInfo.related.map((relate, i: number) => (
-              <p key={i}>{relate}</p>
-            ))}
-          </div>
-
-          <div className="d-item-box">
-            <div className="d-item-blue"></div>
-            <p className="d-item-mini-title">진료과목</p>
-          </div>
-          <div className="d-detail-list">
-            {diseaseDetailInfo.courses.map((course, i: number) => (
-              <p key={i}>{course}</p>
-            ))}
-          </div>
-
-          <div className="d-item-box">
-            <div className="d-item-blue"></div>
-            <p className="d-item-mini-title">동의어</p>
-          </div>
-          <div className="d-detail-list">
-            {diseaseDetailInfo.sames.map((same, i: number) => (
-              <p key={i}>{same}</p>
-            ))}
-          </div>
-
-          <p>정의</p>
-          <p>{diseaseDetailInfo.definition}</p>
-          <p>원인</p>
-          <p>{diseaseDetailInfo.cause}</p>
-          <p>진단</p>
-          <p>{diseaseDetailInfo.diagnosis}</p>
-          <p>치료</p>
-          <p>{diseaseDetailInfo.therapy}</p>
-          <p>경과</p>
-          <p>{diseaseDetailInfo.pass}</p>
-          <p>주의사항</p>
-          <p>{diseaseDetailInfo.notandum}</p>
         </div>
       </div>
     </div>

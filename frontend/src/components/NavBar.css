@@ -32,13 +32,13 @@
 }
 .nav-content a:hover {
   padding-top: 28px;
-  color: #5ee6eb;
+  color: #06beb6;
   font-weight: 800;
 }
 .nav-content a:after {
   display: block;
   content: "";
-  border-bottom: solid 2px #5ee6eb;
+  border-bottom: solid 2px #06beb6;
   transform: scaleX(0);
   transition: transform 0.2s ease-in-out;
 }

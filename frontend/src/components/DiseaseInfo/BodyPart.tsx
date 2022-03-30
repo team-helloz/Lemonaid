@@ -60,7 +60,12 @@ export default function BodyPart(props: SetPartProps) {
                   nowPart === part.id ? "selected-part part-btn" : "part-btn"
                 }
               >
-                <PartIcon h={20} w={20} color={"#FFFFFF"} icon={part.eng} />
+                <PartIcon
+                  h={20}
+                  w={20}
+                  color={nowPart === part.id ? "#FFFFFF" : "#474747"}
+                  icon={part.eng}
+                />
                 <p>{part.kor}</p>
               </button>
             </li>
@@ -77,7 +82,12 @@ export default function BodyPart(props: SetPartProps) {
                   nowPart === part.id ? "selected-part part-btn" : "part-btn"
                 }
               >
-                <PartIcon h={20} w={20} color={"#FFFFFF"} icon={part.eng} />
+                <PartIcon
+                  h={20}
+                  w={20}
+                  color={nowPart === part.id ? "#FFFFFF" : "#474747"}
+                  icon={part.eng}
+                />
                 <p>{part.kor}</p>
               </button>
             </li>

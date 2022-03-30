@@ -1,48 +1,110 @@
 .d-detail-page {
   display: flex;
   justify-content: center;
+  cursor: default;
 }
 
 .d-detail-content {
   width: 1120px;
+  border: 1px solid rgba(122, 122, 122, 0.3);
+  margin: 50px 0;
+  background: rgba(247, 247, 247);
 }
 
 .d-detail-title {
   display: flex;
   align-items: center;
+  background: linear-gradient(to right, #06beb6, #48b1bf);
+  padding: 30px 20px;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.dd-name-title {
+  display: flex;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+}
+.dd-name-title p {
+  margin: 0;
+}
+.title-small {
+  display: flex;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+}
+.title-small p {
+  margin: 0;
+  margin-right: 10px;
 }
 
 .d-detail-name {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: bold;
+  color: white;
+  margin-top: 15px;
 }
-
-.d-medical-btn {
-  height: 25px;
-  margin-left: 10px;
-}
-
-.d-detail-list {
+.dd-main-title {
+  width: 1080px;
   display: flex;
-  margin-left: 20px;
+  align-items: center;
 }
-
-.d-detail-list * {
-  margin-right: 10px;
+.d-medical-btn {
+  height: 35px;
+  margin-left: auto;
+  width: 100px;
+  border: 0;
+  border-left: 1px solid white;
+  background: none;
+}
+.d-medical-btn img {
+  width: 35px;
+  cursor: pointer;
 }
 
 .d-item-box {
   display: flex;
-}
-
-.d-item-blue {
-  width: 3px;
-  height: 16px;
-  background-color: blue;
-  margin: 13px 5px 0 0;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
 }
 
 .d-item-mini-title {
-  margin: 10px 0 5px 0;
-  font-weight: bold;
+  font-weight: 900;
+  font-size: 14px;
+  color: rgba(122, 122, 122, 0.6);
+}
+
+.dd-2-box {
+  display: flex;
+  flex-direction: row;
+}
+.d-detail-list p {
+  margin-right: 10px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.dd-content {
+  border-top: 1px solid rgba(122, 122, 122, 0.5);
+  margin: 20px;
+  padding-top: 50px;
+}
+
+.dd-content-content {
+  padding: 15px;
+  margin-bottom: 80px;
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.dd-content-title span {
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 2px solid #06beb6;
 }
