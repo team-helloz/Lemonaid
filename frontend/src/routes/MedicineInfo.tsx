@@ -128,7 +128,13 @@ export default function MedicineInfo() {
         )}
       </div>
       {identifier !== "STEP5" && (
-        <MedicineList />
+        <MedicineList
+          shape={shape}
+          color={color}
+          form={fomula}
+          line={divide}
+          sign={identifier}
+        />
       )}
     </>
   );

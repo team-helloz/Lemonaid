@@ -1,32 +1,68 @@
+// React
+import { useEffect, useState } from "react";
 // Router
 import { useHistory } from "react-router-dom";
+// axios
+import axios from "axios";
 // SVG
 import Popup from "../../assets/popup.svg";
 // Style
 import "./MedicineList.css";
 
-export default function MedicineList() {
+interface SearchData {
+  shape: string;
+  color: string;
+  form: string;
+  line: string;
+  sign: string;
+}
+
+interface Medicine {
+  no: number;
+  name: string;
+  company: string;
+  material: string;
+}
+
+export default function MedicineList(props: SearchData) {
 
   const history = useHistory();
+  const { shape, color, form, line, sign } = props
+  const [medicineList, setList] = useState<Medicine[]>([]);
 
   function routeDetail(medicinename: string) {
     history.push(`/medicine/list/${medicinename}`);
   }
 
+  const handleLoad = () => {
+    axios
+      .get(`/medicine?shape=${shape}&colo=${color}&form=${form}&line=${line}&=${sign}`)
+      .then((res) => {
+        console.log(res);
+        setList(res.data.medicines)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+  useEffect(() => {
+    handleLoad();
+  }, []);
+
   const medicines = [
     {
       name: "팍스로비드",
-      desc: "측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다.",
+      material: "측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다.",
       image: "img",
     },
     {
       name: "팍스로비드",
-      desc: "측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다.",
+      material: "측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다.",
       image: "img",
     },
     {
       name: "팍스로비드",
-      desc: "측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다.",
+      material: "측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다.",
       image: "img",
     },
   ];
@@ -55,7 +91,7 @@ export default function MedicineList() {
                 />
               </div>
               <div className="medicine-list-item-desc">
-                <p>{medicine.desc}</p>
+                <p>{medicine.material}</p>
               </div>
             </div>
           </div>
