@@ -1,6 +1,12 @@
 interface IHospital {
   type: string;
   distance: number;
+  medical_subject_list: [
+    {
+      no: number;
+      name: string;
+    }
+  ];
   no: number;
   opentime: {
     no: number;
@@ -21,14 +27,12 @@ interface IHospital {
   };
   name: string;
   tel: string;
-  number_of_doctors: number;
   lat: number;
   lng: number;
   code: number;
   code_name: string;
   address: string;
-  url: null;
-  build_code: string;
+  url: string;
   emergency_day: string;
   emergency_night: string;
   parking_count: number;
