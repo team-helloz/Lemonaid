@@ -10,10 +10,10 @@ import { useState } from "react";
 import "./DiseaseInfo.css";
 
 export default function DiseaseInfo() {
-  const [nowPart, setPart] = useState<number>(0);
+  const [nowPart, setPart] = useState<string>("");
   const [nowSymptoms, setSymptoms] = useState<string[]>([]);
 
-  function updatePart(nowPart: number): void {
+  function updatePart(nowPart: string): void {
     setPart(nowPart);
   }
 
