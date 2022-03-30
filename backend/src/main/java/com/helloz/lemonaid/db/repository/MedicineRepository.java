@@ -3,6 +3,7 @@ package com.helloz.lemonaid.db.repository;
 import com.helloz.lemonaid.db.entity.Medicine;
 import com.helloz.lemonaid.request.MedicineSearchFilter;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -25,6 +26,10 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
     List<Medicine> searchByFilter(@Param("filter") MedicineSearchFilter filter);
 
     Medicine findByNo(Long no);
+
+    @Modifying
+    @Query("update Medicine m set m.hit = m.hit+1 where m.no = :#{#no}")
+    void updateHit(Long no);
 
     @Query(nativeQuery = true, value = "select * from medicine order by medicine_hit desc limit 5")
     List<Medicine> findTopMedicines();
