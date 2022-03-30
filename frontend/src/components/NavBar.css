@@ -3,9 +3,79 @@
 }
 
 .nav-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 60px;
   background: linear-gradient(to right, #2c3e50, #4ca1af);
+  color: white;
+}
+
+.nav-bottom-content {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 1120px;
+  height: 30px;
+}
+
+.nav-news-group {
+  position: relative;
+  top: 67px;
+
+  animation-name: cardnews;
+  animation-duration: 15s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+@keyframes cardnews {
+  0% {
+    animation-play-state: paused;
+  }
+  15% {
+    animation-play-state: running;
+    animation-timing-function: linear;
+  }
+  25% {
+    top: 34px;
+    animation-play-state: paused;
+  }
+  40% {
+    animation-play-state: running;
+    animation-timing-function: linear;
+  }
+  50% {
+    top: 1px;
+    animation-play-state: paused;
+  }
+  65% {
+    animation-play-state: running;
+    animation-timing-function: linear;
+  }
+  75% {
+    top: -32px;
+    animation-play-state: paused;
+  }
+  90% {
+    animation-play-state: running;
+    animation-timing-function: linear;
+  }
+  100% {
+    top: -65px;
+  }
+}
+
+.nave-news-item {
+  margin: 10px 0;
+}
+
+.nav-news-title {
+  margin: 10px;
+  text-decoration: none;
+  color: white;
 }
 
 .nav-content {
