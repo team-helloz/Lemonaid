@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Transient;
 import java.util.List;
 
 @Getter
@@ -13,7 +14,9 @@ import java.util.List;
 public class Medical implements Comparable<Medical> {
 
     MedicalType type;
+
     double distance;
+
     List<MedicalSubject> medicalSubjectList;
     public Medical(){
 
