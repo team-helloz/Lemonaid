@@ -19,7 +19,7 @@ export default function NavBar() {
           to="/medical"
           activeStyle={{
             fontWeight: "bold",
-            color: "#5EE6EB",
+            color: "#06beb6",
           }}
         >
           의료기관 찾기
@@ -28,7 +28,7 @@ export default function NavBar() {
           to="/medicine"
           activeStyle={{
             fontWeight: "bold",
-            color: "#5EE6EB",
+            color: "#06beb6",
           }}
         >
           의약품 조회
@@ -37,7 +37,7 @@ export default function NavBar() {
           to="/disease"
           activeStyle={{
             fontWeight: "bold",
-            color: "#5EE6EB",
+            color: "#06beb6",
           }}
         >
           질병 찾기
@@ -46,7 +46,7 @@ export default function NavBar() {
           to="/covid"
           activeStyle={{
             fontWeight: "bold",
-            color: "#5EE6EB",
+            color: "#06beb6",
           }}
         >
           코로나

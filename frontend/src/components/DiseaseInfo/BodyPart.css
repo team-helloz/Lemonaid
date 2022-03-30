@@ -28,13 +28,12 @@
   width: 112px;
   cursor: pointer;
   transition: 0.2s;
-  color: rgb(71, 71, 71);
+  color: #474747;
   background: white;
 }
 
 .part-btn:hover {
-  background-color: rgba(0, 38, 255, 0.9);
-  color: white;
+  background-color: #6BCB77;
 }
 
 .part-btn p {
@@ -46,6 +45,6 @@
 }
 
 .selected-part {
-  background-color: rgba(0, 38, 255, 0.8);
+  background-color: #6BCB77;
   color: white;
 }

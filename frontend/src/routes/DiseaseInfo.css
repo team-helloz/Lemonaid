@@ -10,8 +10,8 @@
   bottom: 5%;
   border: 0;
   background: none;
-  font-weight: 800;
-  letter-spacing: 3px;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 15px;
   cursor: pointer;
+  font-family: "lemon-font";
 }
