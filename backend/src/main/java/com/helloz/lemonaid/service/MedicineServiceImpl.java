@@ -26,4 +26,9 @@ public class MedicineServiceImpl implements MedicineService {
     public Medicine getMedicine(long no) {
         return medicineRepository.findByNo(no);
     }
+
+    @Override
+    public List<Medicine> topMedicineList() {
+        return medicineRepository.findTopMedicines();
+    }
 }

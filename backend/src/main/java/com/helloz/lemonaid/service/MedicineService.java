@@ -8,4 +8,5 @@ import java.util.List;
 public interface MedicineService {
     List<Medicine> getMedicineList(MedicineSearchFilter filter);
     Medicine getMedicine(long no);
+    List<Medicine> topMedicineList();
 }
