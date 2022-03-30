@@ -36,7 +36,6 @@ export default function MedicineInfo() {
       setDivide(value);
     } else if (name === "identifier") {
       setIdentifier(value);
-      window.setTimeout(() => window.scrollTo({top:500, left:0, behavior: 'smooth'}), 10)
     }
   };
 
@@ -79,7 +78,7 @@ export default function MedicineInfo() {
 
         {page > 0 && (
           <div className="medicine-info-step">
-            <p className="medicine-step">STEP {page}</p>
+            <p className="medicine-step">SEARCH</p>
             <p className="medicine-progress">
               [ {shape} {"/"} {color} {"/"} {fomula} {"/"} {divide} {"/"} {" "} {identifier} ]
             </p>
