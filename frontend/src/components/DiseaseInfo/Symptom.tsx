@@ -1,3 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
+import { adddisease, deldisease } from "../../redux/Disease/action";
+import { RootState } from "../../redux/store";
+import { useEffect } from "react";
 // Style
 import "./Symptom.css";
 
@@ -10,7 +14,7 @@ interface SetPartProps {
 
 export default function Symptom(props: SetPartProps) {
   const { nowPart, nowSymptoms, addSymptom, removeSymptom } = props;
-
+  const dispatch = useDispatch();
   const symptoms = [
     ["머리 증상 1", "머리 증상 2", "머리 증상 3", "머리 증상 4", "머리 증상 5"],
     ["목 증상 1", "목 증상 2", "목 증상 3", "목 증상 4", "목 증상 5"],
@@ -45,18 +49,31 @@ export default function Symptom(props: SetPartProps) {
     ["발 증상 1", "발 증상 2", "발 증상 3", "발 증상 4", "발 증상 5"],
     ["기타 증상 1", "기타 증상 2", "기타 증상 3", "기타 증상 4", "기타 증상 5"],
   ];
-
+  const nowList = useSelector((state: RootState) => state.diseaseReducer);
   function onClickSymptom(symptomname: string) {
     if (nowSymptoms.includes(symptomname)) {
       let newSymptoms = nowSymptoms.filter(
         (element) => element !== symptomname
       );
       removeSymptom(newSymptoms);
+      setTimeout(function () {}, 100);
+      dispatch(deldisease(symptomname));
     } else {
       addSymptom(symptomname);
+      setTimeout(function () {}, 100);
+      dispatch(adddisease(nowSymptoms));
     }
   }
-
+  useEffect(() => {
+    removeSymptom(nowList.diseaseList);
+    window.setTimeout(function () {}, 100);
+  }, []);
+  useEffect(() => {
+    if (nowSymptoms.length !== 0) {
+      dispatch(adddisease(nowSymptoms));
+      setTimeout(function () {}, 100);
+    }
+  }, [nowSymptoms]);
   return (
     <div className="symptom-group-box">
       {symptoms[nowPart].map((symptom, i: number) => (
