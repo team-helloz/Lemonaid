@@ -3,10 +3,12 @@ package com.helloz.lemonaid.request;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.helloz.lemonaid.db.entity.MedicalType;
+import com.helloz.lemonaid.util.DistanceUtil;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.geo.Point;
 
 import java.util.List;
 
@@ -43,6 +45,5 @@ public class MedicalSearchFilter {
 
     @ApiModelProperty(name = "반경")
     private int radius;
-
 
 }

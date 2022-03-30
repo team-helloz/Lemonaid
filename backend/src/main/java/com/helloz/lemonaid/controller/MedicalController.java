@@ -1,5 +1,6 @@
 package com.helloz.lemonaid.controller;
 
+import com.helloz.lemonaid.db.entity.Hospital;
 import com.helloz.lemonaid.db.entity.Medical;
 import com.helloz.lemonaid.db.entity.MedicalSubject;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
@@ -12,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 @Api(value = "의료 기관 정보 API", tags = {"Medical"})
