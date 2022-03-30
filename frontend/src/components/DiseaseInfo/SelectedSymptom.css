@@ -1,8 +1,6 @@
 .selected-symptom-group {
   display: flex;
   width: 1120px;
-  height: 50px;
-  display: flex;
   align-items: center;
 }
 
@@ -10,20 +8,29 @@
   background: rgb(247, 247, 247);
   font-family: "lemon-font";
   border-radius: 15px;
-  height: 30px;
   font-size: 14px;
   font-weight: 600;
   border: 1px solid #ff6b6b;
   color: #ff6b6b;
-  margin: 3px;
+  margin: 5px;
   cursor: pointer;
+  padding: 5px;
+  transition: 0.2s;
 }
 
 .ssg-button:hover {
   box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
-  transform: translate3d(0, 2px, 0);
+  transform: translate3d(0, 0.5px, 0);
 }
 
 .ssg-button:focus {
   box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
+}
+.ssg-close {
+  color: rgb(105, 105, 105);
+}
+
+.selected-symptom-group p {
+  margin-right: 5px;
+  font-weight: 700;
 }
