@@ -1,6 +1,6 @@
 package com.helloz.lemonaid.controller;
 
-import com.helloz.lemonaid.db.entity.Hospital;
+import com.helloz.lemonaid.common.model.response.BaseResponseBody;
 import com.helloz.lemonaid.db.entity.Medical;
 import com.helloz.lemonaid.db.entity.MedicalSubject;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 @Api(value = "의료 기관 정보 API", tags = {"Medical"})
@@ -31,7 +32,7 @@ public class MedicalController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "")
     })
-    private ResponseEntity<MedicalListRes> getMedicalList(
+    private ResponseEntity<? extends BaseResponseBody> getMedicalList(
             @ApiParam("search_type") @RequestParam(value = "search_type", required = true) MedicalType searchType,
             @ApiParam("code") @RequestParam(required = false, defaultValue = "0") int code,
             @ApiParam("subjects") @RequestParam(required = false, defaultValue = "") List<Long> subjects,
@@ -55,7 +56,7 @@ public class MedicalController {
 
         List<Medical> result = medicalService.getMedicalList(filter);
 
-        return ResponseEntity.ok(MedicalListRes.of(200, "Success", result));
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
     }
 
     @GetMapping("/{medicalType}/{medicalNo}")
@@ -65,13 +66,13 @@ public class MedicalController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "")
     })
-    private ResponseEntity<MedicalRes> getMedical(
+    private ResponseEntity< ? extends BaseResponseBody> getMedical(
             @ApiParam("의료 기관 유형") @PathVariable String medicalType,
             @ApiParam("의료 기관 번호") @PathVariable long medicalNo) {
 
         Medical result = medicalService.getMedical(MedicalType.valueOf(medicalType), medicalNo);
 
-        return ResponseEntity.ok(MedicalRes.of(200, "Success", result));
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
     }
 
     @GetMapping("/subject")
@@ -81,11 +82,11 @@ public class MedicalController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "")
     })
-    private ResponseEntity<MedicalSubjectListRes> getMedicalSubjectList() {
+    private ResponseEntity<? extends BaseResponseBody> getMedicalSubjectList() {
 
         List<MedicalSubject> result = medicalService.getMedicalSubjectList();
 
-        return ResponseEntity.ok(MedicalSubjectListRes.of(200, "Success", result));
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
     }
 
     @GetMapping("/code")
@@ -95,10 +96,10 @@ public class MedicalController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "")
     })
-    private ResponseEntity<MedicalCodeListRes> getMedicalCodeList() {
+    private ResponseEntity<? extends BaseResponseBody> getMedicalCodeList() {
 
         List<MedicalCode> result = medicalService.getMedicalCodeList();
 
-        return ResponseEntity.ok(MedicalCodeListRes.of(200, "Success", result));
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
     }
 }

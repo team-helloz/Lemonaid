@@ -16,6 +16,8 @@ public class BaseResponseBody {
     String message = null;
     @ApiModelProperty(name = "응답 코드", example = "200")
     Integer status = null;
+    @ApiModelProperty(name = "데이터")
+    Object data = null;
 
     public BaseResponseBody() {
     }
@@ -33,6 +35,12 @@ public class BaseResponseBody {
         BaseResponseBody body = new BaseResponseBody();
         body.message = message;
         body.status = status;
+        return body;
+    }
+
+    public static BaseResponseBody of(Integer status, String message, Object data){
+        BaseResponseBody body = of(status, message);
+        body.data = data;
         return body;
     }
 }
