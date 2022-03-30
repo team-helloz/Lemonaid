@@ -6,8 +6,8 @@ conn = pymysql.connect(host='j6d108.p.ssafy.io', user='seungwon', password='ssaf
 cursor = conn.cursor()
 
 sql_test = """
-    SELECT SUM(corona_gender_men), SUM(corona_gender_women) FROM corona_gender
-"""
+    SELECT SUM(corona_age_80), SUM(corona_age_70), SUM(corona_age_60), SUM(corona_age_50), SUM(corona_age_40), SUM(corona_age_40), SUM(corona_age_30), SUM(corona_age_20), SUM(corona_age_10), SUM(corona_age_0) FROM corona_age
+    """
 
 sql = """
     SELECT * FROM corona_count
@@ -51,8 +51,8 @@ my_date = '{}'.format(date(2022, 3, 29))
 cursor.execute(sql_test)
 
 result = cursor.fetchall()
-for data in result:
-    print(int(data[0]))
+for i in range(8):
+    print(type(result[0][i]))
 
 conn.commit()
 conn.close()
