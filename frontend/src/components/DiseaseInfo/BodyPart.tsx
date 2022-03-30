@@ -5,8 +5,8 @@ import PartIcon from "./PartIcon";
 import "./BodyPart.css";
 
 interface SetPartProps {
-  nowPart: number;
-  updatePart: (arg: number) => void;
+  nowPart: string;
+  updatePart: (arg: string) => void;
 }
 
 export default function BodyPart(props: SetPartProps) {
@@ -44,7 +44,7 @@ export default function BodyPart(props: SetPartProps) {
     { id: 19, eng: "etc", kor: "기타" },
   ];
 
-  function onClickPart(partname: number) {
+  function onClickPart(partname: string) {
     updatePart(partname);
   }
 
@@ -55,15 +55,15 @@ export default function BodyPart(props: SetPartProps) {
           {partOne.map((part, i: number) => (
             <li key={i}>
               <button
-                onClick={() => onClickPart(part.id)}
+                onClick={() => onClickPart(part.kor)}
                 className={
-                  nowPart === part.id ? "selected-part part-btn" : "part-btn"
+                  nowPart === part.kor ? "selected-part part-btn" : "part-btn"
                 }
               >
                 <PartIcon
                   h={20}
                   w={20}
-                  color={nowPart === part.id ? "#FFFFFF" : "#474747"}
+                  color={nowPart === part.kor ? "#FFFFFF" : "#474747"}
                   icon={part.eng}
                 />
                 <p>{part.kor}</p>
@@ -77,15 +77,15 @@ export default function BodyPart(props: SetPartProps) {
           {partTwo.map((part, i: number) => (
             <li key={i}>
               <button
-                onClick={() => onClickPart(part.id)}
+                onClick={() => onClickPart(part.kor)}
                 className={
-                  nowPart === part.id ? "selected-part part-btn" : "part-btn"
+                  nowPart === part.kor ? "selected-part part-btn" : "part-btn"
                 }
               >
                 <PartIcon
                   h={20}
                   w={20}
-                  color={nowPart === part.id ? "#FFFFFF" : "#474747"}
+                  color={nowPart === part.kor ? "#FFFFFF" : "#474747"}
                   icon={part.eng}
                 />
                 <p>{part.kor}</p>

@@ -2,13 +2,60 @@
   position: fixed;
   right: 250px;
   bottom: 50px;
-}
-
-.to-top:hover {
   cursor: pointer;
 }
 
 .medicine-detail-page {
   width: 1120px;
   margin: 0 auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.medicine-detail-title {
+  background: linear-gradient(to right, #ffafbd, #ffc3a0);
+  color: white;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.medicine-detail-title img {
+  border-radius: 20px;
+  width: 30%;
+  margin-left: auto;
+}
+
+.medicine-detail-select {
+  display: flex;
+  margin-top: 30px;
+}
+
+.medicine-detail-select p {
+  margin: 0;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.medicine-detail-title-container {
+  display: flex;
+  margin: 20px;
+}
+
+.medicine-detail-select div:hover {
+  border-bottom: 5px solid white;
+  color: white;
+}
+
+.medicine-detail-selected {
+  border-bottom: 5px solid white;
+
+  color: rgb(255, 255, 255) !important;
+}
+.medicine-detail-def {
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
 }
