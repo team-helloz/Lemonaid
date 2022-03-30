@@ -103,4 +103,6 @@ public class Medicine {
     @Column(name = "medicine_caution")
     private String caution;
 
+    @Column(name = "medicine_hit")
+    private int hit;
 }
