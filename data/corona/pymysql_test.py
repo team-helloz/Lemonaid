@@ -6,7 +6,7 @@ conn = pymysql.connect(host='j6d108.p.ssafy.io', user='seungwon', password='ssaf
 cursor = conn.cursor()
 
 sql_test = """
-    SELECT * FROM corona_count
+    SELECT SUM(corona_gender_men), SUM(corona_gender_women) FROM corona_gender
 """
 
 sql = """
@@ -52,7 +52,7 @@ cursor.execute(sql_test)
 
 result = cursor.fetchall()
 for data in result:
-    print(data)
+    print(int(data[0]))
 
 conn.commit()
 conn.close()
