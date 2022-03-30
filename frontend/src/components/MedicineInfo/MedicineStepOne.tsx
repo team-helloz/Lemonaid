@@ -1,8 +1,10 @@
 // React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { KeyboardEvent } from "react";
 // Router
 import { useHistory } from "react-router-dom";
+// axios
+import axios from "axios"
 // Style
 import "./MedicineSearch.css";
 
@@ -11,10 +13,16 @@ interface MedicineStepProps {
   updatePage: (arg: number) => void;
 }
 
+interface MedicineHit {
+  name: string;
+  shape: string;
+}
+
 export default function MedicineStepOne(props: MedicineStepProps) {
   
   const { page, updatePage } = props;
   const [MedicineName, setmedicine] = useState("");
+  const [medicineHit, setHit] = useState<MedicineHit[]>([]);
   const history = useHistory();
 
   const intputName = (event: React.FormEvent<HTMLInputElement>) => {
@@ -38,28 +46,20 @@ export default function MedicineStepOne(props: MedicineStepProps) {
     updatePage(page + 1);
   }
 
-  const MostMedicine = [
-    {
-      title: "타이레놀",
-      img: "제형전체"
-    },
-    {
-      title: "타이레놀",
-      img: "제형전체"
-    },
-    {
-      title: "타이레놀",
-      img: "제형전체"
-    },
-    {
-      title: "타이레놀",
-      img: "제형전체"
-    },
-    {
-      title: "타이레놀",
-      img: "제형전체"
-    },
-  ]
+  const handleLoad = () => {
+    axios
+      .get(`/medicine/hit`)
+      .then((res) => {
+        console.log(res);
+        setHit(res.data.medicines)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+  useEffect(() => {
+    handleLoad();
+  }, []);
 
   return (
     <div>
@@ -73,18 +73,18 @@ export default function MedicineStepOne(props: MedicineStepProps) {
           type="text"
         />
         <div className="medicine-most-list">
-          {MostMedicine.map((medicine, i: number) => (
+          {medicineHit.map((medicine, i: number) => (
             <div
               key={i}
-              onClick={() => routeDetail(medicine.title)}
+              onClick={() => routeDetail(medicine.name)}
               className="medicine-most"
             >
               <img
                 className="medicine-most-img"
-                src={`/MedicineSearch/${medicine.img}.png`}
+                src={`/MedicineSearch/${medicine.shape}.png`}
                 alt=""
               />
-              <p>{medicine.title}</p>
+              <p>{medicine.name}</p>
             </div>
           ))}
         </div>

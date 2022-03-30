@@ -77,15 +77,32 @@ export default function DiseaseList(props: SymptomProps) {
                 />
               </div>
               <div className="list-title-box">
-                <div className="item-title-blue"></div>
-                <p className="list-title">증상</p>
-              </div>
-              <div className="detail-item-list">
-                {disease.symptoms.map((symptom: any, j: number) => (
-                  <p key={j}>{symptom.name}</p>
-                ))}
-                <div className="item-title-blue"></div>
-                <p className="list-title">관련 질환</p>
+                <div>
+                  <p className="list-title">증상</p>
+                  <div className="detail-item-list">
+                    {disease.symptoms.map((symptom: any, j: number) => (
+                      <p key={j}>{symptom.name}</p>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="list-title">관련 질환</p>
+                  <div className="detail-item-list">
+                    -
+                  </div>
+                </div>
+                <div>
+                  <p className="list-title">진료 과목</p>
+                  <div className="detail-item-list">
+                    -
+                  </div>
+                </div>
+                <div>
+                  <p className="list-title">동의어</p>
+                  <div className="detail-item-list">
+                    -
+                  </div>
+                </div>
               </div>
               {/* <div className="list-title-box">
                 <div className="item-title-blue"></div>
