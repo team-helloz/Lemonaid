@@ -1,17 +1,25 @@
-.medi-subject-menu {
+.medical-subject-menu {
   position: absolute;
   z-index: 2;
   background: #e5e9ff;
-  width: 10.5vw;
+  width: 48vw;
   height: 40vh;
-  left: 74.7%;
-  bottom: 12%;
-  transform: translate(-50%, 0%);
+  right: 25%;
+  bottom: 13%;
+  /* transform: translate(-50%, 0%); */
   border-radius: 10px;
   border: 1px solid;
 }
 
-.medi-subject-menu ul {
+.medical-subject-group-box {
+  height: 90px;
+  display: flex;
+  justify-content: center;
+}
+
+.medical-subject-group {
   list-style: none;
-  padding-left: 20px;
+  display: flex;
+  padding: 0 10px;
+  width: 100%;
 }

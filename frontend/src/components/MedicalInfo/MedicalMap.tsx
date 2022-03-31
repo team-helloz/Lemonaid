@@ -1,6 +1,8 @@
 import { Map, ZoomControl } from "react-kakao-maps-sdk";
 import { IHospital, ICoord } from "../../interface";
 import MedicalMarkerContainer from "./MedicalMarkerContainer";
+import CustomCurpos from "../../assets/medical_png/map_curpos.png";
+import "./MedicalMap.css";
 
 declare global {
   interface Window {
@@ -16,6 +18,8 @@ interface MedicalMapProps {
   directionMode: boolean;
   nowCenter: ICoord;
   destCoord: ICoord;
+  userGeo: () => void;
+  isEmergency: boolean;
 }
 
 export default function KakaoMap(props: MedicalMapProps) {
@@ -27,6 +31,8 @@ export default function KakaoMap(props: MedicalMapProps) {
     directionMode,
     nowCenter,
     destCoord,
+    userGeo,
+    isEmergency,
   } = props;
 
   return (
@@ -34,7 +40,7 @@ export default function KakaoMap(props: MedicalMapProps) {
       <Map
         center={{ lat: viewCenter.lat, lng: viewCenter.lng }}
         style={{ width: "78vw", height: "100vh", left: "7vw" }}
-        level={4} // 지도의 확대 레벨
+        level={3} // 지도의 확대 레벨
         onDragEnd={(map) =>
           setViewCenter({
             lat: map.getCenter().getLat(),
@@ -49,10 +55,17 @@ export default function KakaoMap(props: MedicalMapProps) {
               handDetailOpen={handDetailOpen}
               key={hospital.no}
               directionMode={directionMode}
+              isEmergency={isEmergency}
             />
           ))}
         <ZoomControl position={kakao.maps.ControlPosition.TOPRIGHT} />
       </Map>
+      {/* 지도 현재위치 컨트롤 div 입니다 */}
+      <div className="custom-curposcontrol" onClick={userGeo}>
+        <span>
+          <img src={CustomCurpos} alt="현재위치" />
+        </span>
+      </div>
     </>
   );
 }

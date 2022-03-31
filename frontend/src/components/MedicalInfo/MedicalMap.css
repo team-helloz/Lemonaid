@@ -1,0 +1,25 @@
+.custom-curposcontrol {
+  position: absolute;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  right: 15.15%;
+  top: 20.5%;
+  background: white;
+  border-radius: 5px;
+}
+
+.custom-curposcontrol span {
+  display: block;
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.custom-curposcontrol span img {
+  width: 17px;
+  height: 17px;
+  padding: 8px 0;
+  border: none;
+}
