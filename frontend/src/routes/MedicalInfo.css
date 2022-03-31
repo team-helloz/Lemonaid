@@ -102,8 +102,8 @@
   margin-right: 8px;
 }
 
-.medi-bottom-menu-item-type {
-  width: 14%;
+.medi-bottom-menu-item-code {
+  width: 15%;
   height: 100%;
   float: left;
   background-color: #e5e9ff;
@@ -115,7 +115,7 @@
   justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
 }
 
-.medi-bottom-menu-item-type img {
+.medi-bottom-menu-item-code img {
   margin-left: 13px;
 }
 
