@@ -59,7 +59,7 @@
   background: #e5e9ff;
   width: 60vw;
   height: 5vh;
-  left: 50%;
+  left: 45%;
   bottom: 5%;
   transform: translate(-50%, 0%);
   overflow: hidden;
@@ -68,8 +68,8 @@
   border: 1px solid;
 }
 
-.medi-bottom-menu-first-item {
-  width: 14%;
+.medi-bottom-menu-item {
+  width: 17.5%;
   height: 100%;
   float: left;
   background-color: #e5e9ff;
@@ -81,15 +81,11 @@
   justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
 }
 
-.medi-bottom-menu-first-item img {
-  margin-right: 8px;
-}
-
-.medi-bottom-menu-item {
-  width: 17%;
+.medi-bottom-menu-item-selected {
+  width: 17.5%;
   height: 100%;
   float: left;
-  background-color: #e5e9ff;
+  background-color: #8864db;
   cursor: pointer;
   border-right: 1px solid;
   display: flex;
@@ -102,8 +98,29 @@
   margin-right: 8px;
 }
 
-.medi-bottom-menu-last-item {
-  width: 16%;
+.medi-bottom-menu-item-selected img {
+  margin-right: 8px;
+}
+
+.medi-bottom-menu-item-type {
+  width: 14%;
+  height: 100%;
+  float: left;
+  background-color: #e5e9ff;
+  cursor: pointer;
+  border-right: 1px solid;
+  display: flex;
+  align-items: center; /* 수직 정렬 */
+  flex-direction: row; /* default: row */
+  justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
+}
+
+.medi-bottom-menu-item-type img {
+  margin-left: 13px;
+}
+
+.medi-bottom-menu-item-subject {
+  width: 14%;
   height: 100%;
   float: left;
   background-color: #e5e9ff;
@@ -114,6 +131,6 @@
   justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
 }
 
-.medi-bottom-menu-last-item img {
+.medi-bottom-menu-item-subject img {
   margin-left: 13px;
 }

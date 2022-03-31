@@ -1,89 +1,112 @@
 import { useEffect, useState } from "react";
+import MedicalSubjectItem from "./MedicalSubjectItem";
 import "./MedicalSubject.css";
 
 export interface MedicalSubjectProps {
   openSubject: boolean;
-  UpdateSubjects: (subjectsData: number[]) => void;
+  UpdateSubJect: (subjectId: number, subjectName: string) => void;
+  selectedSubjectName: string;
 }
 
 export default function MedicalSubject(props: MedicalSubjectProps) {
   const MedicalSubjects = [
-    { id: 1, subject: "내과" },
-    { id: 2, subject: "소아과" },
-    { id: 3, subject: "피부과" },
-    { id: 4, subject: "이비인후과" },
-    { id: 5, subject: "정형외과" },
-    { id: 6, subject: "외과" },
-    { id: 7, subject: "가정의학과" },
-    { id: 8, subject: "신경외과" },
-    { id: 9, subject: "마취통증과" },
-    { id: 10, subject: "성형외과" },
-    { id: 11, subject: "산부인과" },
-    { id: 12, subject: "안과" },
-    { id: 13, subject: "정신의학과" },
-    { id: 14, subject: "비뇨기과" },
-    { id: 15, subject: "치과" },
-    { id: 16, subject: "한의원" },
-    { id: 16, subject: "신경과" },
+    [
+      { id: 0, name: "전체" },
+      { id: 1, name: "내과" },
+      { id: 2, name: "신경과" },
+      { id: 3, name: "정신의학과" },
+      { id: 4, name: "외과" },
+      { id: 5, name: "정형외과" },
+      { id: 6, name: "신경외과" },
+      { id: 7, name: "흉부외과" },
+    ],
+    [
+      { id: 8, name: "성형외과" },
+      { id: 9, name: "마취통증과" },
+      { id: 10, name: "산부인과" },
+      { id: 11, name: "소아청소년과" },
+      { id: 12, name: "안과" },
+      { id: 13, name: "이비인후과" },
+      { id: 14, name: "피부과" },
+      { id: 15, name: "비뇨기과" },
+    ],
+    [
+      { id: 16, name: "영상의학과" },
+      { id: 17, name: "방사선과" },
+      { id: 18, name: "병리과" },
+      { id: 19, name: "진단의학과" },
+      { id: 20, name: "결핵과" },
+      { id: 21, name: "재활의학과" },
+      { id: 22, name: "핵의학과" },
+      { id: 23, name: "가정의학과" },
+    ],
+    [
+      { id: 24, name: "응급의학과" },
+      { id: 25, name: "직업환경과" },
+      { id: 26, name: "예방의학과" },
+      { id: 49, name: "치과" },
+      { id: 80, name: "한의과" },
+    ],
   ];
 
-  const { openSubject, UpdateSubjects } = props;
+  const { openSubject, UpdateSubJect, selectedSubjectName } = props;
 
-  const [checkedState, setCheckedState] = useState(
-    new Array(MedicalSubjects.length).fill(true)
-  );
-
-  useEffect(() => {
-    updateData(checkedState);
-  }, []);
-
-  const handleOnChange = (position: number) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-
-    setCheckedState(updatedCheckedState);
-
-    updateData(updatedCheckedState);
-  };
-
-  const updateData = (checkedState: boolean[]) => {
-    let subjectsId = [];
-    for (let i = 0; i < checkedState.length; i++) {
-      if (checkedState[i] === true) {
-        subjectsId.push(MedicalSubjects[i].id);
-      }
-    }
-
-    UpdateSubjects(subjectsId);
+  const onClickSubject = (subject: any) => () => {
+    UpdateSubJect(subject.id, subject.name);
   };
 
   return (
     <>
       {openSubject === true && (
-        <div className="medi-subject-menu">
-          <ul className="toppings-list">
-            {MedicalSubjects.map(({ subject }, index) => {
-              return (
-                <li key={index}>
-                  <div className="toppings-list-item">
-                    <div className="left-section">
-                      <input
-                        type="checkbox"
-                        id={`custom-checkbox-${index}`}
-                        value={subject}
-                        checked={checkedState[index]}
-                        onChange={() => handleOnChange(index)}
-                      />
-                      <label htmlFor={`custom-checkbox-${index}`}>
-                        {subject}
-                      </label>
-                    </div>
-                  </div>
+        <div className="medical-subject-menu">
+          <div className="medical-subject-group-box">
+            <ul className="medical-subject-group">
+              {MedicalSubjects[0].map((subject, i: number) => (
+                <li onClick={onClickSubject(subject)} key={i}>
+                  <MedicalSubjectItem
+                    itemName={subject.name}
+                    selectedSubjectName={selectedSubjectName}
+                  />
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ul>
+          </div>
+          <div className="medical-subject-group-box">
+            <ul className="medical-subject-group">
+              {MedicalSubjects[1].map((subject, i: number) => (
+                <li onClick={onClickSubject(subject)} key={i}>
+                  <MedicalSubjectItem
+                    itemName={subject.name}
+                    selectedSubjectName={selectedSubjectName}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="medical-subject-group-box">
+            <ul className="medical-subject-group">
+              {MedicalSubjects[2].map((subject, i: number) => (
+                <li onClick={onClickSubject(subject)} key={i}>
+                  <MedicalSubjectItem
+                    itemName={subject.name}
+                    selectedSubjectName={selectedSubjectName}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="medical-subject-group-box">
+            <ul className="medical-subject-group">
+              {MedicalSubjects[3].map((subject, i: number) => (
+                <li onClick={onClickSubject(subject)} key={i}>
+                  <MedicalSubjectItem
+                    itemName={subject.name}
+                    selectedSubjectName={selectedSubjectName}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       )}
     </>

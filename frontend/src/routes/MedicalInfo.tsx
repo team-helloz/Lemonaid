@@ -8,9 +8,9 @@ import { IHospital, ICoord } from "../interface";
 import axios from "axios";
 import "./MedicalInfo.css";
 
+import RefreshIcon from "../assets/refresh-icon.png";
 import SymbolHospital from "../assets/medical_png/symbol_hospital.png";
 import SymbolPharmacy from "../assets/medical_png/symbol_pharmacy.png";
-import SymbolOriental from "../assets/medical_png/symbol_oriental.png";
 import SymbolEmergency from "../assets/medical_png/symbol_emergency.png";
 import MenuOpen from "../assets/medical_png/menu_open.png";
 import MenuClose from "../assets/medical_png/menu_close.png";
@@ -38,10 +38,14 @@ export default function MedicalInfo() {
   const [openSubject, setOpenSubject] = useState(false);
   const [hospitalObj, setHospitalObj] = useState<IHospital>();
   const [viewHospital, setViewHospital] = useState(true);
-  const [viewPharmacy, setViewPharmacy] = useState(true);
-  const [subjects, setSubjects] = useState<number[]>([]);
+  const [viewPharmacy, setViewPharmacy] = useState(false);
+  const [isEmergency, setIsEmergency] = useState(false);
+  //const [subjects, setSubjects] = useState<number[]>([]);
   const [hospitalList, setHospitalList] = useState<IHospital[]>([]);
   const [directionMode, setDirectionMode] = useState(false);
+
+  const [subjectId, setSubjectId] = useState(0);
+  const [subjectName, setSubjectName] = useState("전체");
 
   const isLoading = useRef(false);
 
@@ -107,7 +111,7 @@ export default function MedicalInfo() {
       .catch((e) => console.log(e));
   };
 
-  const getMedicalList = () => {
+  const getMedicalList = (isNowCenter: boolean) => {
     if (isLoading.current === false) return;
 
     let serachType = "all";
@@ -121,14 +125,28 @@ export default function MedicalInfo() {
       setHospitalList([]);
       return;
     }
+
+    let lat = viewCenter.lat;
+    let lng = viewCenter.lng;
+    if (isNowCenter === true) {
+      lat = nowCenter.lat;
+      lng = nowCenter.lng;
+    }
+
+    let subjects: number[] = [];
+    if (subjectId > 0) {
+      subjects.push(subjectId);
+    }
+
     axios
       .get("/medical", {
         params: {
           search_type: serachType,
-          lat: viewCenter.lat,
-          lng: viewCenter.lng,
+          subjects: subjects.join(","),
+          emergency: isEmergency,
+          lat: lat,
+          lng: lng,
           radius: 1000,
-          // subjects: subjects.join(","),
         },
       })
       .then((res) => {
@@ -144,19 +162,13 @@ export default function MedicalInfo() {
   }, []);
 
   useEffect(() => {
-    // console.log(subjects);
-  }, [subjects]);
-
-  useEffect(() => {
     xyToAdd(nowCenter.lat, nowCenter.lng);
-    getMedicalList();
-
-    console.log(hospitalList);
+    getMedicalList(true);
   }, [nowCenter]);
 
   useEffect(() => {
-    getMedicalList();
-  }, [viewHospital, viewPharmacy]);
+    getMedicalList(false);
+  }, [viewHospital, viewPharmacy, isEmergency, subjectId]);
 
   // 병원 상세보기창 닫기
   const handDetailClose = () => {
@@ -169,24 +181,16 @@ export default function MedicalInfo() {
     setOpenDetailDlg(true);
   };
 
-  const UpdateSubjects = (subjectsData: number[]) => {
-    setSubjects(subjectsData);
+  const UpdateSubJect = (subjectId: number, subjectName: string) => {
+    setSubjectId(subjectId);
+    setSubjectName(subjectName);
+    setOpenSubject(false);
   };
 
   const SetDirectionMode = (destCoord: ICoord) => {
     setDestCoord(destCoord);
     setDirectionMode(true);
     setOpenDetailDlg(false);
-  };
-
-  const handleViewAll = () => {
-    if (viewHospital === true && viewPharmacy === true) {
-      setViewHospital(false);
-      setViewPharmacy(false);
-    } else {
-      setViewHospital(true);
-      setViewPharmacy(true);
-    }
   };
 
   return (
@@ -202,39 +206,50 @@ export default function MedicalInfo() {
         <input type="text" placeholder={roadAdd} onKeyPress={handleKeyPress} />
       </div> */}
       <div className="medi-bottom">
-        <div className="medi-bottom-menu-first-item" onClick={handleViewAll}>
-          전체 조회
-        </div>
         <div
           className="medi-bottom-menu-item"
+          onClick={() => getMedicalList(false)}
+        >
+          <img src={RefreshIcon} alt="" width={"17px"} />현 위치에서 검색
+        </div>
+        <div
+          className={
+            "medi-bottom-menu-item" + (viewHospital ? "-selected" : "")
+          }
           onClick={() => setViewHospital(!viewHospital)}
         >
           <img src={SymbolHospital} alt="" width={"17px"} />
           병원 조회
         </div>
         <div
-          className="medi-bottom-menu-item"
+          className={
+            "medi-bottom-menu-item" + (viewPharmacy ? "-selected" : "")
+          }
           onClick={() => setViewPharmacy(!viewPharmacy)}
         >
           <img src={SymbolPharmacy} alt="" width={"17px"} />
           약국 조회
         </div>
-        <div className="medi-bottom-menu-item">
-          <img src={SymbolOriental} alt="" width={"17px"} />
-          한의원 조회
-        </div>
-        <div className="medi-bottom-menu-item">
+        <div
+          className={"medi-bottom-menu-item" + (isEmergency ? "-selected" : "")}
+          onClick={() => setIsEmergency(!isEmergency)}
+        >
           <img src={SymbolEmergency} alt="" width={"17px"} />
           응급실 조회
         </div>
+        <div className="medi-bottom-menu-item-type">
+          종목 코드
+          <img src={MenuOpen} alt="" width={"17px"} />
+        </div>
         <div
-          className="medi-bottom-menu-last-item"
+          className="medi-bottom-menu-item-subject"
           onClick={() => setOpenSubject(!openSubject)}
         >
-          진료 과목
+          {subjectName === "전체" ? "진료 과목" : subjectName}
           <img src={openSubject ? MenuClose : MenuOpen} alt="" width={"17px"} />
         </div>
       </div>
+      <div className="medi-curpos"></div>
       <div className="medi-right">
         <MedicalList
           hospitals={hospitalList}
@@ -250,6 +265,8 @@ export default function MedicalInfo() {
         directionMode={directionMode}
         nowCenter={nowCenter}
         destCoord={destCoord}
+        userGeo={userGeo}
+        isEmergency={isEmergency}
       ></MedicalMap>
       <MedicalDetail
         open={openDetailDlg}
@@ -260,7 +277,8 @@ export default function MedicalInfo() {
       />
       <MedicalSubject
         openSubject={openSubject}
-        UpdateSubjects={UpdateSubjects}
+        UpdateSubJect={UpdateSubJect}
+        selectedSubjectName={subjectName}
       ></MedicalSubject>
     </>
   );
