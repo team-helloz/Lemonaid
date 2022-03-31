@@ -24,8 +24,8 @@ export default function MedicineDivide(props: MedicineDivideProps) {
   const MedicineDivideList = [
     "전체",
     "없음",
-    "(-)형",
-    "(+)형",
+    "-",
+    "+",
     "기타"
   ]
 

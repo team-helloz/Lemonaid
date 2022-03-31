@@ -57,14 +57,14 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
   };
 
   const onClickDontKnow = () => {
-    updateCondition("identifier", "모름");
+    updateCondition("identifier", "전체");
     closeSearchBox();
   };
 
   const onClickIdentifier = () => {
     let identifier = value;
     if (identifier === "") {
-      identifier = "모름";
+      identifier = "전체";
     }
     updateCondition("identifier", identifier);
     closeSearchBox();
