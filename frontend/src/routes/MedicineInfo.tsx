@@ -20,6 +20,8 @@ export default function MedicineInfo() {
   const [fomula, setFomula] = useState<string>("STEP3");
   const [divide, setDivide] = useState<string>("STEP4");
   const [identifier, setIdentifier] = useState<string>("STEP5");
+  const [medicineName, setMedicine] = useState("");
+  const [isSearch, setSearch] = useState<boolean>(false);
 
   const updatePage = (page: number): void => {
     setPage(page);
@@ -39,6 +41,14 @@ export default function MedicineInfo() {
     }
   };
 
+  function setMedicineName(value: string) {
+    setMedicine(value);
+  }
+
+  function updateSearchState(value: boolean) {
+    setSearch(value);
+  }
+
   const initCondition = (): void => {
     updatePage(0);
     setShape("STEP1");
@@ -46,6 +56,8 @@ export default function MedicineInfo() {
     setFomula("STEP3");
     setDivide("STEP4");
     setIdentifier("STEP5");
+    setMedicine("");
+    setSearch(false);
   };
 
   return (
@@ -77,11 +89,20 @@ export default function MedicineInfo() {
         </div>
 
         {page > 0 && (
-          <div className="medicine-info-step">
-            <p className="medicine-step">SEARCH</p>
-            <p className="medicine-progress">
-              [ {shape} {"/"} {color} {"/"} {fomula} {"/"} {divide} {"/"} {" "} {identifier} ]
-            </p>
+          <div>
+            {isSearch && (
+              <div className="medicine-info-step">
+                <p className="medicine-step">검색어 : " {medicineName} "</p>
+              </div>
+            )}
+            {!isSearch && (
+              <div className="medicine-info-step">
+                <p className="medicine-step">SEARCH</p>
+                <p className="medicine-progress">
+                  [ (모양) {shape} {"/"} (색상) {color} {"/"} (제형) {fomula} {"/"} (분할선) {divide} {"/"} (식별문자) {identifier} ]
+                </p>
+              </div>
+            )}
           </div>
         )}
 
@@ -89,6 +110,10 @@ export default function MedicineInfo() {
           <MedicineStepOne
             page={page}
             updatePage={updatePage}
+            medicineName={medicineName}
+            setMedicineName={setMedicineName}
+            isSearch={isSearch}
+            updateSearchState={updateSearchState}
           ></MedicineStepOne>
         )}
         {page === 1 && (
@@ -122,12 +147,13 @@ export default function MedicineInfo() {
         {page === 5 && (
           <MedicineIdentifier
             page={page}
+            isSearch={isSearch}
             updatePage={updatePage}
             updateCondition={updateCondition}
           ></MedicineIdentifier>
         )}
       </div>
-      {identifier !== "STEP5" && (
+      {(identifier !== "STEP5" || isSearch) && (
         <MedicineList
           shape={shape}
           color={color}

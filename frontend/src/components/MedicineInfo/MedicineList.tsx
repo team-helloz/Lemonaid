@@ -47,7 +47,7 @@ export default function MedicineList(props: SearchData) {
   }
   useEffect(() => {
     handleLoad();
-  }, []);
+  });
 
   const medicines = [
     {
