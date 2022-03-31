@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import MedicalList from "../components/MedicalInfo/MedicalList";
 import MedicalMap from "../components/MedicalInfo/MedicalMap";
 import MedicalDetail from "../components/MedicalInfo/MedicalDetail";
+import MedicalCode from "../components/MedicalInfo/MedicalCode";
 import MedicalSubject from "../components/MedicalInfo/MedicalSubject";
 import { IHospital, ICoord } from "../interface";
 import axios from "axios";
@@ -35,15 +36,19 @@ export default function MedicalInfo() {
   });
   const [roadAdd, setRoadAdd] = useState("");
   const [openDetailDlg, setOpenDetailDlg] = useState(false);
-  const [openSubject, setOpenSubject] = useState(false);
   const [hospitalObj, setHospitalObj] = useState<IHospital>();
   const [viewHospital, setViewHospital] = useState(true);
   const [viewPharmacy, setViewPharmacy] = useState(false);
   const [isEmergency, setIsEmergency] = useState(false);
-  //const [subjects, setSubjects] = useState<number[]>([]);
   const [hospitalList, setHospitalList] = useState<IHospital[]>([]);
   const [directionMode, setDirectionMode] = useState(false);
+  const [selectHospital, setSelectHospital] = useState("");
 
+  const [openCode, setOpenCode] = useState(false);
+  const [codeId, setCodeId] = useState(0);
+  const [codeName, setCodeName] = useState("전체");
+
+  const [openSubject, setOpenSubject] = useState(false);
   const [subjectId, setSubjectId] = useState(0);
   const [subjectName, setSubjectName] = useState("전체");
 
@@ -142,6 +147,7 @@ export default function MedicalInfo() {
       .get("/medical", {
         params: {
           search_type: serachType,
+          code: codeId,
           subjects: subjects.join(","),
           emergency: isEmergency,
           lat: lat,
@@ -152,6 +158,7 @@ export default function MedicalInfo() {
       .then((res) => {
         const { data: medical_list } = res.data;
         setHospitalList(medical_list);
+        setSelectHospital("");
       })
       .catch((e) => console.log(e));
   };
@@ -168,7 +175,7 @@ export default function MedicalInfo() {
 
   useEffect(() => {
     getMedicalList(false);
-  }, [viewHospital, viewPharmacy, isEmergency, subjectId]);
+  }, [viewHospital, viewPharmacy, isEmergency, codeId, subjectId]);
 
   // 병원 상세보기창 닫기
   const handDetailClose = () => {
@@ -179,6 +186,16 @@ export default function MedicalInfo() {
   const handDetailOpen = (hospital: IHospital) => {
     setHospitalObj(hospital);
     setOpenDetailDlg(true);
+  };
+
+  const UpdateCode = (codeId: number, codeName: string) => {
+    setCodeId(codeId);
+    setCodeName(codeName);
+    setOpenCode(false);
+  };
+
+  const UpdateSelectHospital = (selectedHospital: string) => {
+    setSelectHospital(selectedHospital);
   };
 
   const UpdateSubJect = (subjectId: number, subjectName: string) => {
@@ -237,9 +254,12 @@ export default function MedicalInfo() {
           <img src={SymbolEmergency} alt="" width={"17px"} />
           응급실 조회
         </div>
-        <div className="medi-bottom-menu-item-type">
-          종목 코드
-          <img src={MenuOpen} alt="" width={"17px"} />
+        <div
+          className="medi-bottom-menu-item-code"
+          onClick={() => setOpenCode(!openCode)}
+        >
+          {codeName === "전체" ? "병원 종류" : codeName}
+          <img src={openCode ? MenuClose : MenuOpen} alt="" width={"17px"} />
         </div>
         <div
           className="medi-bottom-menu-item-subject"
@@ -255,6 +275,8 @@ export default function MedicalInfo() {
           hospitals={hospitalList}
           setViewCenter={setViewCenter}
           handDetailOpen={handDetailOpen}
+          selectHospital={selectHospital}
+          UpdateSelectHospital={UpdateSelectHospital}
         />
       </div>
       <MedicalMap
@@ -267,6 +289,8 @@ export default function MedicalInfo() {
         destCoord={destCoord}
         userGeo={userGeo}
         isEmergency={isEmergency}
+        selectHospital={selectHospital}
+        UpdateSelectHospital={UpdateSelectHospital}
       ></MedicalMap>
       <MedicalDetail
         open={openDetailDlg}
@@ -275,6 +299,11 @@ export default function MedicalInfo() {
         roadAdd={roadAdd}
         SetDirectionMode={SetDirectionMode}
       />
+      <MedicalCode
+        openCode={openCode}
+        UpdateCode={UpdateCode}
+        selectedCodeName={codeName}
+      ></MedicalCode>
       <MedicalSubject
         openSubject={openSubject}
         UpdateSubJect={UpdateSubJect}

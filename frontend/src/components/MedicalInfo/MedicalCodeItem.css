@@ -1,0 +1,48 @@
+.medical-code-item {
+  margin: 0 10px;
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+  transition: .5s ease;
+}
+
+.medical-code-item-selected {
+  margin: 0 10px;
+  padding: 10px;
+  border: 1px solid #973232;
+  transition: .5s ease;
+}
+
+.medical-code-item p {
+  margin: 0;
+}
+
+.medical-code-item:hover {
+  border: 1px solid #0DADEA;
+  transform: scale(1.1);
+}
+
+.medical-code-item:hover p {
+  color: #0DADEA;
+  font-weight: bold;
+}
+
+.medical-code-item:hover {
+  cursor: pointer;
+}
+
+.medical-code-item-text {
+  text-align: center;
+  cursor: pointer;
+}
+
+.medical-code-item-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+
+.medical-code-img {
+  width: 80%;
+}

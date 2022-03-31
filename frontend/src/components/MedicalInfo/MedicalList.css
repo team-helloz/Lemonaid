@@ -3,3 +3,9 @@
   padding: 10px;
   cursor: pointer;
 }
+
+.hos-list-container-selected {
+  border: 2px solid red;
+  padding: 10px;
+  cursor: pointer;
+}
