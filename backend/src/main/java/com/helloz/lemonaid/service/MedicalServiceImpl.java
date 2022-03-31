@@ -69,7 +69,7 @@ public class MedicalServiceImpl implements MedicalService {
     @Override
     public List<MedicalCode> getMedicalCodeList() {
 
-        return hospitalRepository.findCodeAll().stream().map(h->new MedicalCode(h.getCode(), h.getCodeName())).collect(Collectors.toList());
+        return hospitalRepository.findCodeAll();
     }
 
     private List<Hospital> getHospitalList(MedicalSearchFilter filter) {

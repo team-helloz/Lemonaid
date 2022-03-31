@@ -13,8 +13,8 @@ import java.util.List;
 
 @Repository
 public interface HospitalRepository extends JpaRepository<Hospital, Long>{
-        @Query("select distinct code, name from Hospital")
-        List<Hospital> findCodeAll();
+        @Query("select distinct new com.helloz.lemonaid.response.MedicalCode(code, codeName) from Hospital")
+        List<MedicalCode> findCodeAll();
 
     @Query(
             value = "select distinct h.hospital_no, h.opentime_no, h.hospital_name, h.hospital_tel," +
