@@ -20,6 +20,7 @@ interface Disease {
   caution: string;
   definition: string;
   symptoms: Sysptom[];
+  synonym: string;
 }
 
 export default function DiseaseDetail(Params: any) {
@@ -66,26 +67,20 @@ export default function DiseaseDetail(Params: any) {
           <div className="dd-2-box">
             <div className="d-item-box">
               <p className="d-item-mini-title">증상</p>
-              <div className="d-detail-list">
-                {/* {disease.symptoms.map((symptom, i: number) => (
-                  <p key={i}>{symptom.name}</p>
-                ))} */}
-              </div>
-            </div>
-            <div className="d-item-box">
-              <p className="d-item-mini-title">관련질환</p>
-              {/* <div className="d-detail-list">
-                {diseaseDetailInfo.related.map((relate, i: number) => (
-                  <p key={i}>{relate}</p>
-                ))}
-              </div> */}
+              {disease.symptoms !== undefined ? (
+                <div className="d-detail-list">
+                  {disease.symptoms.map((symptom, i: number) => (
+                    <span key={i}>{symptom.name}</span>
+                  ))}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
             <div className="d-item-box">
               <p className="d-item-mini-title">동의어</p>
               <div className="d-detail-list">
-                {/* {diseaseDetailInfo.sames.map((same, i: number) => (
-                  <p key={i}>{same}</p>
-                ))} */}
+                {disease.synonym !== "" ? <p>{disease.synonym}</p> : <p>-</p>}
               </div>
             </div>
             <div className="d-item-img-box">
@@ -97,31 +92,43 @@ export default function DiseaseDetail(Params: any) {
               <span>정의</span>
             </div>
             <div className="dd-content-content">
-              <p>{disease.definition}</p>
+              {disease.definition !== "" ? (
+                <p>{disease.definition}</p>
+              ) : (
+                <p>없음</p>
+              )}
             </div>
             <div className="dd-content-title">
               <span>원인</span>
             </div>
             <div className="dd-content-content">
-              <p>{disease.cause}</p>
+              {disease.cause !== "" ? <p>{disease.cause}</p> : <p>없음</p>}
             </div>
             <div className="dd-content-title">
               <span>진단</span>
             </div>
             <div className="dd-content-content">
-              <p>{disease.symptom_description}</p>
+              {disease.symptom_description !== "" ? (
+                <p>{disease.symptom_description}</p>
+              ) : (
+                <p>없음</p>
+              )}
             </div>
             <div className="dd-content-title">
               <span>치료</span>
             </div>
             <div className="dd-content-content">
-              <p>{disease.treatment}</p>
+              {disease.treatment !== "" ? (
+                <p>{disease.treatment}</p>
+              ) : (
+                <p>없음</p>
+              )}
             </div>
             <div className="dd-content-title">
               <span>주의사항</span>
             </div>
             <div className="dd-content-content">
-              <p>{disease.caution}</p>
+              {disease.caution !== "" ? <p>{disease.caution}</p> : <p>없음</p>}
             </div>
           </div>
         </div>
