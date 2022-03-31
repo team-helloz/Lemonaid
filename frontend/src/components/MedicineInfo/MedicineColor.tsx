@@ -22,7 +22,7 @@ export default function MedicineColor(props: MedicineColorProps) {
 
   const MedicineColorList = [
     [
-      "색상전체",
+      "전체",
       "하양",
       "노랑",
       "주황",

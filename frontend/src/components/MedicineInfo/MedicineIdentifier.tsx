@@ -1,18 +1,19 @@
 // React
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { KeyboardEvent } from "react";
 // Style
 import "./MedicineSearch.css";
 
 interface MedicineIdentifierProps {
   page: number;
+  isSearch: boolean;
   updatePage: (arg: number) => void;
   updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineIdentifier(props: MedicineIdentifierProps) {
   
-  const { page, updatePage, updateCondition } = props;
+  const { page, isSearch, updatePage, updateCondition } = props;
   const [value, setValue] = useState("");
   const [hide, sethide] = useState<boolean>(false);
 
@@ -42,6 +43,12 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
     window.setTimeout(() => SearchBox?.classList.remove("medicine-search-close"), 10)
     sethide(false);
   }
+
+  useEffect(() => {
+    if (isSearch) {
+      closeSearchBox()
+    }
+  }, [isSearch])
 
   const onClickBack = () => {
     updatePage(page - 1);
@@ -100,7 +107,7 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
           <p>FINAL STEP</p>
         </div>
       </div>
-      {hide && (
+      {hide && !isSearch && (
         <div
           onClick={openSearchBox}
           className="medicine-search-open"

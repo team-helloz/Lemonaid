@@ -22,10 +22,11 @@ export default function MedicineFomula(props: MedicineFomulaProps) {
   };
 
   const MedicineFomulaList = [
-    "제형전체",
+    "전체",
     "정제류",
     "경질캡슐",
-    "연질캡슐"
+    "연질캡슐",
+    "기타"
   ]
 
   return (

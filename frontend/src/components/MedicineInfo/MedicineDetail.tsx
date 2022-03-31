@@ -1,12 +1,21 @@
+// React
+import { useEffect } from "react";
+// axios
+import axios from "axios";
 // Components
 import NavBar from "../NavBar";
 import "./MedicineDetail.css";
 import { useState } from "react";
 
-export default function MedicineDetail() {
+interface MedicineDetailInfo {
+  name: string;
+}
+
+export default function MedicineDetail(Params: any) {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
+  const [medicineInfo, setMedicineInfo] = useState<MedicineDetailInfo>();
   const [status, setStatus] = useState<string>("shape");
   const setStatusShape = () => {
     setStatus("shape");
@@ -26,6 +35,24 @@ export default function MedicineDetail() {
   const setStatusCaution = () => {
     setStatus("caution");
   };
+
+  const handleLoad = () => {
+    const mediNo = Params.match.params.medicineNo;
+    console.log(mediNo)
+    axios
+      .get(`/medicine/${mediNo}`)
+      .then((res) => {
+        console.log(res);
+        setMedicineInfo(res.data.medicine);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+  useEffect(() => {
+    handleLoad();
+  }, []);
+
   return (
     <div>
       <NavBar />
@@ -36,7 +63,7 @@ export default function MedicineDetail() {
         <div className="medicine-detail-title">
           <div className="medicine-detail-title-container">
             <div className="medicine-detail-title-letter">
-              <p>의약품 이름</p>
+              <p>{medicineInfo?.name}</p>
               <p>구분:</p>
               <p>제조 업체명:</p>
               <p>제조 수입구분:</p>
