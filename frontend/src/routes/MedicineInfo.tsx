@@ -160,6 +160,7 @@ export default function MedicineInfo() {
           form={fomula}
           line={divide}
           sign={identifier}
+          medicineName={medicineName}
         />
       )}
     </>
