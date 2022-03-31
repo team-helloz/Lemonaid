@@ -31,9 +31,10 @@ public class DiseaseController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Server Error")
     })
-    private ResponseEntity<? extends BaseResponseBody> getDiseaseList(){
+    private ResponseEntity<? extends BaseResponseBody> getDiseaseList(
+            @ApiParam("symptoms") @RequestParam(required = false, defaultValue = "") List<String> symptoms){
 
-        List<Disease> diseases = diseaseService.getDiseaseList();
+        List<Disease> diseases = diseaseService.getDiseaseList(symptoms);
 
         List<DiseaseInfo> diseaseInfos = diseases.stream().map(
                 DiseaseInfo::of
