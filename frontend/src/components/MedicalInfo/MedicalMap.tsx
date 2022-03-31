@@ -20,6 +20,8 @@ interface MedicalMapProps {
   destCoord: ICoord;
   userGeo: () => void;
   isEmergency: boolean;
+  selectHospital: string;
+  UpdateSelectHospital: (selectHospital: string) => void;
 }
 
 export default function KakaoMap(props: MedicalMapProps) {
@@ -33,6 +35,8 @@ export default function KakaoMap(props: MedicalMapProps) {
     destCoord,
     userGeo,
     isEmergency,
+    selectHospital,
+    UpdateSelectHospital,
   } = props;
 
   return (
@@ -56,6 +60,8 @@ export default function KakaoMap(props: MedicalMapProps) {
               key={hospital.no}
               directionMode={directionMode}
               isEmergency={isEmergency}
+              selectHospital={selectHospital}
+              UpdateSelectHospital={UpdateSelectHospital}
             />
           ))}
         <ZoomControl position={kakao.maps.ControlPosition.TOPRIGHT} />

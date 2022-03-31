@@ -1,22 +1,22 @@
-.medical-subject-menu {
+.medical-code-menu {
   position: absolute;
   z-index: 2;
   background: #e5e9ff;
-  width: 48vw;
-  height: 40vh;
-  right: 25%;
-  bottom: 13%;
+  width: 53vw;
+  height: 22vh;
+  right: 33%;
+  bottom: 12%;
   border-radius: 10px;
   border: 1px solid;
 }
 
-.medical-subject-group-box {
+.medical-code-group-box {
   height: 90px;
   display: flex;
   justify-content: center;
 }
 
-.medical-subject-group {
+.medical-code-group {
   list-style: none;
   display: flex;
   padding: 0 10px;
