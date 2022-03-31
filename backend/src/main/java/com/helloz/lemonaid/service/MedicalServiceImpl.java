@@ -68,6 +68,7 @@ public class MedicalServiceImpl implements MedicalService {
 
     @Override
     public List<MedicalCode> getMedicalCodeList() {
+
         return hospitalRepository.findCodeAll();
     }
 
