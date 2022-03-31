@@ -9,6 +9,29 @@ import { useState } from "react";
 
 interface MedicineDetailInfo {
   name: string;
+  // 구분
+  etc_otc_name: string;
+  // 제조업체
+  company: string;
+  // 외형정보
+  shape: string;
+  form_code_name: string;
+  color_f: string;
+  thick: number;
+  leng_l: number;
+  leng_s: number;
+  line_f: string;
+  line_b: string;
+  print_f: string;
+  print_b: string;
+  // 성분정보
+  material: string;
+  // 효능
+  efficacy: string;
+  // 용법용량
+  usage: string;
+  // 주의사항
+  caution: string;
 }
 
 export default function MedicineDetail(Params: any) {
@@ -26,7 +49,7 @@ export default function MedicineDetail(Params: any) {
   };
 
   const setStatusStore = () => {
-    setStatus("store");
+    setStatus("efficacy");
   };
 
   const setStatusUsage = () => {
@@ -62,75 +85,104 @@ export default function MedicineDetail(Params: any) {
       <div className="medicine-detail-page">
         <div className="medicine-detail-title">
           <div className="medicine-detail-title-container">
-            <div className="medicine-detail-title-letter">
-              <p>{medicineInfo?.name}</p>
-              <p>구분:</p>
-              <p>제조 업체명:</p>
-              <p>제조 수입구분:</p>
+            <div className="medicine-detail-title-desc">
+              <div className="medicine-detail-title-letter">
+                <p className="medicine-detail-title-name">{medicineInfo?.name}</p>
+                <p>구분: {medicineInfo?.etc_otc_name}</p>
+                <p>제조 업체명: {medicineInfo?.company}</p>
+              </div>
+              <div className="medicine-detail-select">
+                <div
+                  className={
+                    status === "shape"
+                      ? "medicine-detail-selected medicine-detail-def"
+                      : "medicine-detail-def"
+                  }
+                  onClick={setStatusShape}
+                >
+                  <p>외형정보</p>
+                </div>
+
+                <div
+                  className={
+                    status === "ingredient"
+                      ? "medicine-detail-selected medicine-detail-def"
+                      : "medicine-detail-def"
+                  }
+                  onClick={setStatusIngredient}
+                >
+                  <p>성분정보</p>
+                </div>
+                <div
+                  className={
+                    status === "efficacy"
+                      ? "medicine-detail-selected medicine-detail-def"
+                      : "medicine-detail-def"
+                  }
+                  onClick={setStatusStore}
+                >
+                  <p>효능</p>
+                </div>
+                <div
+                  className={
+                    status === "usage"
+                      ? "medicine-detail-selected medicine-detail-def"
+                      : "medicine-detail-def"
+                  }
+                  onClick={setStatusUsage}
+                >
+                  <p>용법용량</p>
+                </div>
+                <div
+                  className={
+                    status === "caution"
+                      ? "medicine-detail-selected medicine-detail-def"
+                      : "medicine-detail-def"
+                  }
+                  onClick={setStatusCaution}
+                >
+                  <p>사용상 주의사항</p>
+                </div>
+              </div>
             </div>
             <img src="/medicine.jpg" alt="" />
           </div>
-          <div className="medicine-detail-select">
-            <div
-              className={
-                status === "shape"
-                  ? "medicine-detail-selected medicine-detail-def"
-                  : "medicine-detail-def"
-              }
-              onClick={setStatusShape}
-            >
-              <p>외형정보</p>
-            </div>
-
-            <div
-              className={
-                status === "ingredient"
-                  ? "medicine-detail-selected medicine-detail-def"
-                  : "medicine-detail-def"
-              }
-              onClick={setStatusIngredient}
-            >
-              <p>성분정보</p>
-            </div>
-            <div
-              className={
-                status === "store"
-                  ? "medicine-detail-selected medicine-detail-def"
-                  : "medicine-detail-def"
-              }
-              onClick={setStatusStore}
-            >
-              <p>저장방법</p>
-            </div>
-            <div
-              className={
-                status === "usage"
-                  ? "medicine-detail-selected medicine-detail-def"
-                  : "medicine-detail-def"
-              }
-              onClick={setStatusUsage}
-            >
-              <p>용법용량</p>
-            </div>
-            <div
-              className={
-                status === "caution"
-                  ? "medicine-detail-selected medicine-detail-def"
-                  : "medicine-detail-def"
-              }
-              onClick={setStatusCaution}
-            >
-              <p>사용상 주의사항</p>
-            </div>
-          </div>
         </div>
-        <p>sldfkhapsodfiujpasdogjh;dsflkg dfgdfgsdfgsdfg sdfgsd fgsdfgsdfg</p>
-        <p>sldfkhapsodfiujpasdogjh;dsflkg dfgdfgsdfgsdfg sdfgsd fgsdfgsdfg</p>
-        <p>sldfkhapsodfiujpasdogjh;dsflkg dfgdfgsdfgsdfg sdfgsd fgsdfgsdfg</p>
-        <p>sldfkhapsodfiujpasdogjh;dsflkg dfgdfgsdfgsdfg sdfgsd fgsdfgsdfg</p>
-        <p>sldfkhapsodfiujpasdogjh;dsflkg dfgdfgsdfgsdfg sdfgsd fgsdfgsdfg</p>
-        <p>sldfkhapsodfiujpasdogjh;dsflkg dfgdfgsdfgsdfg sdfgsd fgsdfgsdfg</p>
-        <p>sldfkhapsodfiujpasdogjh;dsflkg dfgdfgsdfgsdfg sdfgsd fgsdfgsdfg</p>
+        <div className="medicine-detail-desc-box">
+          {status === "shape" && (
+            <div>
+              <p>제형: {medicineInfo?.shape}</p>
+              <p>성상: {medicineInfo?.form_code_name}</p>
+              <p>색상: {medicineInfo?.color_f}</p>
+              <p>두께: {medicineInfo?.thick}</p>
+              <p>장축/단축: {medicineInfo?.leng_l}/{medicineInfo?.leng_s}</p>
+              <p>전면 분할선: {medicineInfo?.line_f}</p>
+              <p>후면 분할선: {medicineInfo?.line_b}</p>
+              <p>전면 인식문자: {medicineInfo?.print_f}</p>
+              <p>후면 인식문자: {medicineInfo?.print_b}</p>
+            </div>
+          )}
+          {status === "ingredient" && (
+            <div>
+              <p>{medicineInfo?.material}</p>
+            </div>
+          )}
+          {status === "efficacy" && (
+            <div>
+              <p>{medicineInfo?.efficacy}</p>
+            </div>
+          )}
+          {status === "usage" && (
+            <div>
+              <p>{medicineInfo?.usage}</p>
+            </div>
+          )}
+          {status === "caution" && (
+            <div>
+              <p>{medicineInfo?.caution}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

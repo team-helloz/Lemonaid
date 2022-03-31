@@ -36,7 +36,7 @@ export default function NavBar() {
       <div className="nav-content">
         <img
           className="nav-home"
-          src="/navHome.png"
+          src="/Lemonaid.png"
           alt=""
           onClick={routeHome}
         />

@@ -29,7 +29,7 @@ export default function Home() {
       <div className="h-main">
         <SlideWidget />
         <div className="logo-container">
-          <p className="team-logo">Lemonaid.</p>
+          <img className="team-logo" src="/Lemonaid.png" alt="" />
           <div className="h-line"></div>
           <p className="logo-description">건강한 삶을 위한 의료 정보 플랫폼</p>
           <p className="logo-description">
