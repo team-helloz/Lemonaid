@@ -16,7 +16,8 @@ export default function Symptom(props: SymptomsProps) {
 
   return (
     <div className="selected-symptom-group">
-      <p>선택한 증상 :</p>
+      {nowSymptoms.length !== 0 ? <p>선택한 증상 :</p> : <p></p>}
+
       {nowSymptoms.map((symptom, i: number) => (
         <div
           key={i}

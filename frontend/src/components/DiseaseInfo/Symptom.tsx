@@ -44,12 +44,12 @@ export default function Symptom(props: SetPartProps) {
         (element) => element !== symptomname
       );
       removeSymptom(newSymptoms);
-      setTimeout(function () {}, 100);
       dispatch(deldisease(symptomname));
-    } else {
+    } else if (nowSymptoms.length < 6) {
       addSymptom(symptomname);
-      setTimeout(function () {}, 100);
       dispatch(adddisease(nowSymptoms));
+    } else {
+      alert("증상은 최대 6개까지 선택 가능합니다.");
     }
   }
   useEffect(() => {

@@ -39,9 +39,6 @@ export default function DiseaseList(props: SymptomProps) {
       .get(`/disease/?symptoms=${nowSymptoms}`)
       .then((res) => {
         setDiseases(res.data.data);
-        console.log(nowSymptoms);
-        console.log(res.data.data);
-        console.log(diseases);
       })
       .catch((err) => {
         console.log(err);
