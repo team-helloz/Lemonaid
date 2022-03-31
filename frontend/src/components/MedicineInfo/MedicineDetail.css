@@ -7,7 +7,7 @@
 
 .medicine-detail-page {
   width: 1120px;
-  margin: 0 auto;
+  margin: 0 auto 40px auto;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -15,22 +15,39 @@
 }
 
 .medicine-detail-title {
-  background: linear-gradient(to right, #ffafbd, #ffc3a0);
+  background: linear-gradient(to right, #06beb6, #48b1bf);
   color: white;
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
 }
 
+.medicine-detail-title-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.medicine-detail-title-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 20px 0 20px;
+}
+
+.medicine-detail-title-letter {
+  width: 680px;
+}
+
 .medicine-detail-title img {
-  border-radius: 20px;
-  width: 30%;
-  margin-left: auto;
+  margin: 20px 20px 20px auto;
+  border-radius: 10px;
+  width: 500px;
+  height: 200px;
 }
 
 .medicine-detail-select {
   display: flex;
-  margin-top: 30px;
 }
 
 .medicine-detail-select p {
@@ -41,7 +58,6 @@
 
 .medicine-detail-title-container {
   display: flex;
-  margin: 20px;
 }
 
 .medicine-detail-select div:hover {
@@ -58,4 +74,15 @@
   display: flex;
   justify-content: center;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.medicine-detail-desc-box {
+  padding: 0 20px 20px 20px;
+  min-height: 500px;
+}
+
+.medicine-detail-desc-box p {
+  margin: 20px 0 0 0;
+  white-space: pre-line;
+  line-height: 30px;
 }
