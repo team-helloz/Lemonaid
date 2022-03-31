@@ -23,7 +23,7 @@ export default function MedicineFomula(props: MedicineFomulaProps) {
 
   const MedicineFomulaList = [
     "전체",
-    "정제류",
+    "정제",
     "경질캡슐",
     "연질캡슐",
     "기타"
