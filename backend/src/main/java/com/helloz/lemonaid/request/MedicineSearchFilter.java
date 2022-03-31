@@ -10,8 +10,8 @@ import lombok.Setter;
 @ApiModel("MedicineSearchFilter")
 public class MedicineSearchFilter {
 
-//    @ApiModelProperty(name = "약품명", example = "레프로진정")
-//    private String name;
+    @ApiModelProperty(name = "약품명", example = "레프로진정")
+    private String name;
 //
 //    @ApiModelProperty(name = "업체명", example = "위더스제약")
 //    private String company;
