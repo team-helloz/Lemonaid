@@ -73,7 +73,7 @@ public class MedicalServiceImpl implements MedicalService {
     }
 
     private List<Hospital> getHospitalList(MedicalSearchFilter filter) {
-        List<Hospital> result = hospitalRepository.searchByFilter(filter);
+        List<Hospital> result = hospitalRepository.searchByFilter(filter, filter.getSubjects()!= null ? filter.getSubjects().size() : 0);
         result.forEach(
                 hospital -> {
                     hospital.setMedicalSubjectList(getMedicalSubjectListByHospital(hospital));

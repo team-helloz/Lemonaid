@@ -23,7 +23,7 @@ public interface HospitalRepository extends JpaRepository<Hospital, Long>{
                     "ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.lat}, ' ', :#{#filter.lng}, ')'), 4326), hospital_point) AS distance " +
                     "from hospital h join hospital_medical_subject hms " +
                     " on h.hospital_no = hms.hospital_medical_subject_hospital_no"+
-                    " where (:#{#filter.subjects} is null or hms.hospital_medical_subject_medical_subject_no in :#{#filter.subjects})" +
+                    " where (:subjectsSize = 0 or hms.hospital_medical_subject_medical_subject_no in :#{#filter.subjects})" +
                     " and (:#{#filter.code} = 0 or h.hospital_code = :#{#filter.code})" +
                     " and (:#{#filter.emergency} is false or h.hospital_emergency_day = 'Y' or h.hospital_emergency_night ='Y')" +
                     " and (:#{#filter.parking} is false or h.hospital_parking_count  >= 0)" +
@@ -31,5 +31,5 @@ public interface HospitalRepository extends JpaRepository<Hospital, Long>{
                     " having distance <= :#{#filter.radius} order by distance"
 
     , nativeQuery = true)
-    List<Hospital> searchByFilter(@Param("filter") MedicalSearchFilter filter);
+    List<Hospital> searchByFilter(@Param("filter") MedicalSearchFilter filter, int subjectsSize);
 }
