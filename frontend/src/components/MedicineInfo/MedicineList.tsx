@@ -32,8 +32,8 @@ export default function MedicineList(props: SearchData) {
   const { shape, color, form, line, sign, medicineName } = props
   const [medicineList, setList] = useState<Medicine[]>([]);
 
-  function routeDetail(medicinename: string) {
-    history.push(`/medicine/list/${medicinename}`);
+  function routeDetail(medicineNo: number) {
+    history.push(`/medicine/${medicineNo}`);
   }
 
   const handleLoad = () => {
@@ -70,7 +70,7 @@ export default function MedicineList(props: SearchData) {
         {medicineList.length > 0 && medicineList.map((medicine, i: number) => (
           <div
             key={i}
-            onClick={() => routeDetail(medicine.name)}
+            onClick={() => routeDetail(medicine.no)}
             className="medicine-list-item"
           >
             <img
