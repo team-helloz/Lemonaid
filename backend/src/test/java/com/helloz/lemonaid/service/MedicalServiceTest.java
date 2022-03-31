@@ -40,7 +40,6 @@ class MedicalServiceTest {
         Hospital hospital = new Hospital();
         hospital.setName("싸피병원");
         hospital.setAddress("구미 어딘가");
-        hospital.setBuildCode("설립구분명코드1");
         hospital.setCode(1);
         hospital.setCodeName("상급종합");
         hospital.setEmergencyDay("Y");
@@ -74,7 +73,7 @@ class MedicalServiceTest {
         filter.setEmergency(false);
         filter.setParking(false);
 
-        List<Hospital> result = hospitalRepository.searchByFilter(filter);
+        List<Hospital> result = hospitalRepository.searchByFilter(filter, filter.getSubjects()!= null ? filter.getSubjects().size() : 0);
         Assertions.assertThat(result.size()).isEqualTo(1);
     }
 }
