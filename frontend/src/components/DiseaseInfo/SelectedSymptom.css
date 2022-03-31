@@ -1,6 +1,7 @@
 .selected-symptom-group {
   display: flex;
   width: 1120px;
+  height: 50px;
   align-items: center;
 }
 
