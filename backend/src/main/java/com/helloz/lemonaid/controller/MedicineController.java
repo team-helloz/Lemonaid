@@ -32,22 +32,18 @@ public class MedicineController {
     })
     private ResponseEntity<List<Medicine>> getMedicineList(
             @ApiParam("약품명") @RequestParam(required = false) String name,
-            @ApiParam("업체명") @RequestParam(required = false) String company,
-            @ApiParam("약품 모양") @RequestParam(required = false) String shape,
-            @ApiParam("약품 색상") @RequestParam(required = false) String color,
-            @ApiParam("약품 제형") @RequestParam(required = false) String form,
-            @ApiParam("약품 분할선") @RequestParam(required = false) String line,
-            @ApiParam("약품 마크") @RequestParam(required = false) String mark,
-            @ApiParam("약품 식별문자") @RequestParam(required = false) String sign
+            @ApiParam(value = "약품 모양", defaultValue = "전체") @RequestParam(required = false) String shape,
+            @ApiParam(value = "약품 색상", defaultValue = "전체") @RequestParam(required = false) String color,
+            @ApiParam(value = "약품 제형", defaultValue = "전체") @RequestParam(required = false) String form,
+            @ApiParam(value = "약품 분할선", defaultValue = "전체") @RequestParam(required = false) String line,
+            @ApiParam(value = "약품 식별문자", defaultValue = "전체") @RequestParam(required = false) String sign
     ) {
         MedicineSearchFilter filter = new MedicineSearchFilter();
-//        filter.setName(name);
-//        filter.setCompany(company);
+        filter.setName("전체");
         filter.setShape(shape);
         filter.setColor(color);
         filter.setForm(form);
         filter.setLine(line);
-//        filter.setMark(mark);
         filter.setSign(sign);
 
         List<Medicine> result = medicineService.getMedicineList(filter);

@@ -2,7 +2,6 @@ package com.helloz.lemonaid.response;
 
 import com.helloz.lemonaid.common.model.response.BaseResponseBody;
 import com.helloz.lemonaid.db.entity.Medicine;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
