@@ -6,7 +6,7 @@ import com.helloz.lemonaid.db.entity.Symptom;
 import java.util.List;
 
 public interface DiseaseService {
-    List<Disease> getDiseaseList();
+    List<Disease> getDiseaseList(List<String> symptoms);
 
     Disease getDiseaseByNo(long no);
 
