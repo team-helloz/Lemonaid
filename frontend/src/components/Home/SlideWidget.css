@@ -15,7 +15,8 @@
   color: #0DADEA;
   top: 485px;
   left: 180px;
-  font-size: 20px;
+  font-size: 16px;
+  letter-spacing: 5px;
 }
 
 .h-m-medicine {
@@ -23,6 +24,7 @@
   top: 525px;
   left: 165px;
   font-size: 14px;
+  letter-spacing: 3px;
 }
 
 .h-m-disease {
@@ -30,6 +32,7 @@
   top: 565px;
   left: 150px;
   font-size: 14px;
+  letter-spacing: 3px;
 }
 
 .h-m-covid {
@@ -37,6 +40,7 @@
   top: 605px;
   left: 130px;
   font-size: 14px;
+  letter-spacing: 3px;
 }
 
 .stethoscope {
@@ -93,6 +97,7 @@
   transform: translate(-15px, -40px);
   color: rgb(150, 150, 150);
   font-size: 14px;
+  letter-spacing: 3px;
 }
 
 .medical-up-2 {
@@ -106,13 +111,15 @@
 .medicine-up-1 {
   transform: translate(15px, -40px);
   color: #0DADEA;
-  font-size: 20px;
+  font-size: 16px;
+  letter-spacing: 5px;
 }
 
 .medicine-up-2 {
   transform: translate(0, -80px);
   color: rgb(150, 150, 150);
   font-size: 14px;
+  letter-spacing: 3px;
 }
 
 .medicine-up-3 {
@@ -127,13 +134,15 @@
 .disease-up-2 {
   color: #0DADEA;
   transform: translate(30px, -80px);
-  font-size: 20px;
+  font-size: 16px;
+  letter-spacing: 5px;
 }
 
 .disease-up-3 {
   transform: translate(15px, -120px);
   color: rgb(150, 150, 150);
   font-size: 14px;
+  letter-spacing: 3px;
 }
 /* Covid */
 .covid-up-1 {
@@ -147,5 +156,6 @@
 .covid-up-3 {
   color: #0DADEA;
   transform: translate(50px, -120px);
-  font-size: 20px;
+  font-size: 16px;
+  letter-spacing: 5px;
 }
