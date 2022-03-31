@@ -2,6 +2,7 @@ package com.helloz.lemonaid.service;
 
 import com.helloz.lemonaid.db.entity.Medicine;
 import com.helloz.lemonaid.request.MedicineSearchFilter;
+import com.helloz.lemonaid.response.MedicineHitRes;
 
 import java.util.List;
 

@@ -17,10 +17,10 @@ public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "medicine_no")
-    private long no;
+    private Long no;
 
     @Column(name = "medicine_num")
-    private long num;
+    private Long num;
 
     @Column(name = "medicine_name")
     private String name;
@@ -56,16 +56,16 @@ public class Medicine {
     private String lineB;
 
     @Column(name = "medicine_leng_long")
-    private double lengL;
+    private Double lengL;
 
     @Column(name = "medicine_leng_short")
-    private double lengS;
+    private Double lengS;
 
     @Column(name = "medicine_thick")
-    private double thick;
+    private Double thick;
 
     @Column(name = "medicine_class_no")
-    private int classNo;
+    private Integer classNo;
 
     @Column(name = "medicine_class_name ")
     private String className;
@@ -104,5 +104,5 @@ public class Medicine {
     private String caution;
 
     @Column(name = "medicine_hit")
-    private int hit;
+    private Integer hit;
 }
