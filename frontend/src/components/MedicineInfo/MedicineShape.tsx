@@ -21,7 +21,7 @@ export default function MedicineShape(props: MedicineShapeProps) {
 
   const MedicineShapeList = [
     [
-      "모양전체",
+      "전체",
       "원형",
       "타원형",
       "반원형",

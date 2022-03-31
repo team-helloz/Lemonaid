@@ -22,7 +22,7 @@ export default function MedicineDivide(props: MedicineDivideProps) {
   };
 
   const MedicineDivideList = [
-    "분할선전체",
+    "전체",
     "없음",
     "(-)형",
     "(+)형",
