@@ -16,7 +16,7 @@ function App() {
       <Route path="/" exact component={Home} />
       <Route path="/medical" component={MedicalInfo} />
       <Route path="/medicine" component={MedicineInfo} exact />
-      <Route path="/medicine/list/:medicineId" component={MedicineDetail} />
+      <Route path="/medicine/:medicineNo" component={MedicineDetail} />
       <Route path="/disease" component={DiseaseInfo} exact />
       <Route path="/disease/:diseaseno" component={DiseaseDetail} />
       <Route path="/covid" component={CovidInfo} />

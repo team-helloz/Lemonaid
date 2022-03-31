@@ -11,17 +11,20 @@ import "./MedicineSearch.css";
 interface MedicineStepProps {
   page: number;
   updatePage: (arg: number) => void;
+  medicineName: string;
+  setMedicineName: (args: string) => void;
+  isSearch: boolean;
+  updateSearchState: (args: boolean) => void;
 }
 
 interface MedicineHit {
+  no: number;
   name: string;
   shape: string;
 }
-
 export default function MedicineStepOne(props: MedicineStepProps) {
   
-  const { page, updatePage } = props;
-  const [MedicineName, setmedicine] = useState("");
+  const { page, updatePage, medicineName, setMedicineName, updateSearchState } = props;
   const [medicineHit, setHit] = useState<MedicineHit[]>([]);
   const history = useHistory();
 
@@ -29,16 +32,17 @@ export default function MedicineStepOne(props: MedicineStepProps) {
     const {
       currentTarget: { value },
     } = event;
-    setmedicine(value);
+    setMedicineName(value);
   }
 
-  function routeDetail(medicinename: string) {
-    history.push(`/medicine/list/${medicinename}`);
+  function routeDetail(medicineNo: number) {
+    history.push(`/medicine/${medicineNo}`);
   }
 
   function keyDownHandler(event: KeyboardEvent<HTMLInputElement>) {
-    if (event.code === "Enter" && MedicineName !== "") {
-      routeDetail(MedicineName)
+    if (event.code === "Enter" && medicineName !== "") {
+      updatePage(5);
+      updateSearchState(true);
     }
   }
 
@@ -76,7 +80,7 @@ export default function MedicineStepOne(props: MedicineStepProps) {
           {medicineHit.map((medicine, i: number) => (
             <div
               key={i}
-              onClick={() => routeDetail(medicine.name)}
+              onClick={() => routeDetail(medicine.no)}
               className="medicine-most"
             >
               <img
