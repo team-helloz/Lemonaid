@@ -14,14 +14,17 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class DiseaseServiceImpl implements DiseaseService{
+public class DiseaseServiceImpl implements DiseaseService {
 
     private final DiseaseRepository diseaseRepository;
     private final SymptomRepository symptomRepository;
 
     @Override
-    public List<Disease> getDiseaseList() {
-        return diseaseRepository.findAll();
+    public List<Disease> getDiseaseList(List<String> symptoms) {
+        if (symptoms == null || symptoms.size() == 0)
+            return diseaseRepository.findAll();
+        else
+            return diseaseRepository.findAllBySymptoms(symptoms);
     }
 
     @Override
