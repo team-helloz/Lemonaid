@@ -15,10 +15,12 @@ interface SearchData {
   form: string;
   line: string;
   sign: string;
+  medicineName: string;
 }
 
 interface Medicine {
   no: number;
+  num: number;
   name: string;
   company: string;
   material: string;
@@ -27,7 +29,7 @@ interface Medicine {
 export default function MedicineList(props: SearchData) {
 
   const history = useHistory();
-  const { shape, color, form, line, sign } = props
+  const { shape, color, form, line, sign, medicineName } = props
   const [medicineList, setList] = useState<Medicine[]>([]);
 
   function routeDetail(medicinename: string) {
@@ -35,11 +37,24 @@ export default function MedicineList(props: SearchData) {
   }
 
   const handleLoad = () => {
+    let url = ""
+    if (medicineName === "") {
+      let nl = ""
+      if (line === "+") {        
+        nl = "%2B"
+      } else {
+        nl = line
+      }
+      url = `/medicine?shape=${shape}&color=${color}&form=${form}&line=${nl}&sign=${sign}`
+    } else {
+      url = `/medicine?shape=전체&color=전체&form=전체&line=전체&sign=전체&name=${medicineName}`
+    }
+
     axios
-      .get(`/medicine?shape=${shape}&colo=${color}&form=${form}&line=${line}&=${sign}`)
+      .get(url)
       .then((res) => {
         console.log(res);
-        setList(res.data.medicines)
+        setList(res.data)
       })
       .catch((err) => {
         console.log(err);
@@ -47,30 +62,12 @@ export default function MedicineList(props: SearchData) {
   }
   useEffect(() => {
     handleLoad();
-  });
-
-  const medicines = [
-    {
-      name: "팍스로비드",
-      material: "측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다.",
-      image: "img",
-    },
-    {
-      name: "팍스로비드",
-      material: "측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다.",
-      image: "img",
-    },
-    {
-      name: "팍스로비드",
-      material: "측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다. 측면에 텍스트가 있는 이미지리스트입니다.",
-      image: "img",
-    },
-  ];
+  }, [shape, color, form, line, sign]);
 
   return (
     <div className="medicine-list-page">
       <div className="medicine-list-group-box">
-        {medicines.map((medicine, i: number) => (
+        {medicineList.length > 0 && medicineList.map((medicine, i: number) => (
           <div
             key={i}
             onClick={() => routeDetail(medicine.name)}
@@ -96,6 +93,11 @@ export default function MedicineList(props: SearchData) {
             </div>
           </div>
         ))}
+        {medicineList.length === 0 && (
+          <div className="medicine-list-group-box">
+            <p>검색 결과가 없습니다.</p>
+          </div>
+        )}
       </div>
     </div>
   );
