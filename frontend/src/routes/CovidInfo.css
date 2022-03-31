@@ -1,0 +1,32 @@
+.covid-container {
+  width: 1120px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  height: 500px;
+  margin-top: 50px;
+  flex-direction: column;
+}
+
+.today-covid {
+  width: 45%;
+  height: 200px;
+  margin: 2.5%;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  border-radius: 10px;
+}
+
+.covid-2container {
+  display: flex;
+  flex-direction: row;
+  width: 1120px;
+}
+.covid-oneline {
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  border-radius: 10px;
+  margin: 2.5%;
+  width: 90%;
+}

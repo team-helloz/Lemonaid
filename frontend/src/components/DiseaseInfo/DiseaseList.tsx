@@ -7,6 +7,7 @@ import Popup from "../../assets/popup.svg";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import Symptom from "./Symptom";
 
 interface Sysptom {
   no: number;
@@ -25,6 +26,7 @@ interface Diseases {
   caution: string;
   definition: string;
   symptoms: Sysptom[];
+  synonym: string;
 }
 export default function DiseaseList(props: SymptomProps) {
   const { nowSymptoms } = props;
@@ -34,8 +36,9 @@ export default function DiseaseList(props: SymptomProps) {
     history.push(`/disease/${diseaseno}`);
   }
   const handleLoad = () => {
+    setDiseases([]);
     axios
-      .get("/disease")
+      .get(`/disease/?symptoms=${nowSymptoms}`)
       .then((res) => {
         setDiseases(res.data.data);
       })
@@ -49,6 +52,7 @@ export default function DiseaseList(props: SymptomProps) {
 
   useEffect(() => {
     handleLoad();
+    console.log(diseases);
   }, [nowSymptoms]);
 
   return (
@@ -56,18 +60,10 @@ export default function DiseaseList(props: SymptomProps) {
       <div className="disease-list">
         {diseases.map((disease) => (
           <div key={disease.no} className="disease-item disease-box">
-            <div
-              onClick={() => routeDetail(disease.no)}
-              className="disease-img"
-            />
+            <div className="disease-img" />
             <div className="disease-content">
               <div className="detail-list">
-                <p
-                  onClick={() => routeDetail(disease.no)}
-                  className="disease-name"
-                >
-                  {disease.name}
-                </p>
+                <p className="disease-name">{disease.name}</p>
                 <img
                   src={Popup}
                   alt=""
@@ -78,51 +74,30 @@ export default function DiseaseList(props: SymptomProps) {
               </div>
               <div className="list-title-box">
                 <div>
+                  <p className="list-title">정의</p>
+                  <div className="detail-item-list">
+                    <p>{disease.definition}</p>
+                  </div>
+                </div>
+                <div>
                   <p className="list-title">증상</p>
                   <div className="detail-item-list">
                     {disease.symptoms.map((symptom: any, j: number) => (
-                      <p key={j}>{symptom.name}</p>
+                      <span key={j}>{symptom.name} </span>
                     ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="list-title">관련 질환</p>
-                  <div className="detail-item-list">
-                    -
-                  </div>
-                </div>
-                <div>
-                  <p className="list-title">진료 과목</p>
-                  <div className="detail-item-list">
-                    -
                   </div>
                 </div>
                 <div>
                   <p className="list-title">동의어</p>
                   <div className="detail-item-list">
-                    -
+                    {disease.synonym === "" ? (
+                      <p>-</p>
+                    ) : (
+                      <p>{disease.synonym}</p>
+                    )}
                   </div>
                 </div>
               </div>
-              {/* <div className="list-title-box">
-                <div className="item-title-blue"></div>
-                <p className="list-title">진료 과목</p>
-              </div>
-              <div className="detail-item-list">
-                {disease.courses.map((course, j: number) => (
-                  <p key={j}>{course}</p>
-                ))}
-              </div> */}
-
-              {/* <div className="list-title-box">
-                <div className="item-title-blue"></div>
-                <p className="list-title">동의어</p>
-              </div>
-              <div className="detail-item-list">
-                {disease.sames.map((same, j: number) => (
-                  <p key={j}>{same}</p>
-                ))}
-              </div> */}
             </div>
           </div>
         ))}
