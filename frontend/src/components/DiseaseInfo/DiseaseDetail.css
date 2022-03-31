@@ -71,8 +71,9 @@
 }
 
 .d-item-img-box img {
-  width: 100%;
+  width: 50%;
   border-radius: 10px;
+  margin-left: auto;
 }
 
 .d-item-img-box {
@@ -93,6 +94,15 @@
   flex-direction: row;
 }
 .d-detail-list p {
+  margin-right: 10px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.d-detail-list span {
   margin-right: 10px;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.7);

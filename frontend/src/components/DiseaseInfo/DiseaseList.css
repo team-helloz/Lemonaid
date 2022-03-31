@@ -3,23 +3,22 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 100px;
   color: #5c5c5c;
 }
 
 .disease-list {
   width: 1120px;
   background: rgb(247, 247, 247);
-  margin: 50px 0;
+  margin: 100px 0;
 }
 
 .disease-box {
   background: white;
   border-radius: 10px;
-  height: 280px;
-  margin: 30px 0;
+  margin-bottom: 80px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .disease-content {
@@ -31,7 +30,6 @@
 .disease-item {
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 .detail-list {
@@ -55,7 +53,6 @@
   background-image: url(../../../public/gamgi.jpg);
   background-size: cover;
   overflow: hidden;
-  cursor: pointer;
   display: flex;
   align-self: center;
 }
@@ -80,14 +77,16 @@
 
 .detail-item-list p {
   margin: 5px 0;
-  font-size: 12px;
+  font-size: 13px;
+}
+
+.detail-item-list span {
+  margin: 5px 0;
+  font-size: 13px;
 }
 
 .popup-btn {
   width: 20px;
   height: 20px;
-}
-
-.related-disease:hover {
   cursor: pointer;
 }

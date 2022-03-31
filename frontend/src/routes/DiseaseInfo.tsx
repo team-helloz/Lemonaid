@@ -4,13 +4,14 @@ import BodyPart from "../components/DiseaseInfo/BodyPart";
 import Symptom from "../components/DiseaseInfo/Symptom";
 import SelectedSymptom from "../components/DiseaseInfo/SelectedSymptom";
 import DiseaseList from "../components/DiseaseInfo/DiseaseList";
+import Footer from "../components/Footer";
 // React
 import { useState } from "react";
 // Style
 import "./DiseaseInfo.css";
 
 export default function DiseaseInfo() {
-  const [nowPart, setPart] = useState<string>("");
+  const [nowPart, setPart] = useState<string>("머리");
   const [nowSymptoms, setSymptoms] = useState<string[]>([]);
 
   function updatePart(nowPart: string): void {
@@ -55,6 +56,7 @@ export default function DiseaseInfo() {
       <button onClick={scrollToTop} className="to-top">
         맨 위로
       </button>
+      <Footer />
     </>
   );
 }
