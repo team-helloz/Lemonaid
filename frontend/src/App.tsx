@@ -12,7 +12,6 @@ import CovidInfo from "./routes/CovidInfo";
 function App() {
   return (
     <Router>
-      {/* exact 경로 중복 방지 */}
       <Route path="/" exact component={Home} />
       <Route path="/medical" component={MedicalInfo} />
       <Route path="/medicine" component={MedicineInfo} exact />
