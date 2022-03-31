@@ -1,10 +1,16 @@
 import NavBar from "../components/NavBar";
-
+import "./CovidInfo.css";
 export default function CovidInfo() {
   return (
     <div>
       <NavBar />
-      <h1>코로나 조회</h1>
+      <div className="covid-container">
+        <div className="covid-2container">
+          <div className="today-covid"></div>
+          <div className="today-covid"></div>
+        </div>
+        <div className="covid-oneline"></div>
+      </div>
     </div>
   );
 }

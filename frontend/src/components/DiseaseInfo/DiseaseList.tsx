@@ -34,10 +34,14 @@ export default function DiseaseList(props: SymptomProps) {
     history.push(`/disease/${diseaseno}`);
   }
   const handleLoad = () => {
+    setDiseases([]);
     axios
-      .get("/disease")
+      .get(`/disease/?symptoms=${nowSymptoms}`)
       .then((res) => {
         setDiseases(res.data.data);
+        console.log(nowSymptoms);
+        console.log(res.data.data);
+        console.log(diseases);
       })
       .catch((err) => {
         console.log(err);
@@ -87,21 +91,15 @@ export default function DiseaseList(props: SymptomProps) {
                 </div>
                 <div>
                   <p className="list-title">관련 질환</p>
-                  <div className="detail-item-list">
-                    -
-                  </div>
+                  <div className="detail-item-list">-</div>
                 </div>
                 <div>
                   <p className="list-title">진료 과목</p>
-                  <div className="detail-item-list">
-                    -
-                  </div>
+                  <div className="detail-item-list">-</div>
                 </div>
                 <div>
                   <p className="list-title">동의어</p>
-                  <div className="detail-item-list">
-                    -
-                  </div>
+                  <div className="detail-item-list">-</div>
                 </div>
               </div>
               {/* <div className="list-title-box">
