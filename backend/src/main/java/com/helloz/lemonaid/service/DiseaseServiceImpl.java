@@ -21,10 +21,7 @@ public class DiseaseServiceImpl implements DiseaseService {
 
     @Override
     public List<Disease> getDiseaseList(List<String> symptoms) {
-        if (symptoms == null || symptoms.size() == 0)
-            return diseaseRepository.findAll();
-        else
-            return diseaseRepository.findAllBySymptoms(symptoms);
+        return diseaseRepository.findAllBySymptoms(symptoms);
     }
 
     @Override
