@@ -3,12 +3,14 @@ import { IHospital } from "../../interface";
 
 import MarkerImgHospital from "../../assets/medical_png/marker_hospital.png";
 import MarkerImgMedicine from "../../assets/medical_png/marker_medicine.png";
+import MarkerImgEmergency from "../../assets/medical_png/symbol_emergency.png";
 import "./MedicalMarkerContainer.css";
 
 interface MarkerProps {
   hospital: IHospital;
   handDetailOpen: (hospital: IHospital) => void;
   directionMode: boolean;
+  isEmergency: boolean;
 }
 
 // const imageSize = { width: 100, height: 137 };
@@ -16,7 +18,7 @@ const spriteSize = { width: 36, height: 60 };
 const spriteMargin = { x: 20, y: 65 };
 
 export default function EventMarkerContainer(props: MarkerProps) {
-  const { hospital, handDetailOpen, directionMode } = props;
+  const { hospital, handDetailOpen, directionMode, isEmergency } = props;
 
   const map = useMap();
   // const [isVisible, setIsVisible] = useState(false);
@@ -31,7 +33,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
 
   return (
     <>
-      {hospital.type === "hospital" && directionMode === false && (
+      {hospital.type === "hospital" && (
         <MapMarker
           position={{ lat: hospital.lat, lng: hospital.lng }} // 마커를 표시할 위치
           onClick={(marker) => {
