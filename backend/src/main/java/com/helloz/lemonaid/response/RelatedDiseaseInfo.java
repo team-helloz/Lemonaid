@@ -17,7 +17,10 @@ public class RelatedDiseaseInfo {
     public static RelatedDiseaseInfo of(Disease disease) {
         RelatedDiseaseInfo res = new RelatedDiseaseInfo();
         res.setNo(disease.getNo());
-        res.setName(disease.getName());
+        int index = disease.getName().indexOf('(');
+        if (index != -1)
+            res.setName(disease.getName().substring(0, disease.getName().indexOf('(')));
+        else res.setName(disease.getName());
 
         return res;
     }
