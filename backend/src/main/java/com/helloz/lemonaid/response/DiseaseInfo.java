@@ -1,8 +1,9 @@
 package com.helloz.lemonaid.response;
 
-import com.helloz.lemonaid.db.entity.Disease;
-import com.helloz.lemonaid.db.entity.Symptom;
-import com.helloz.lemonaid.db.entity.SymptomDisease;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.helloz.lemonaid.db.entity.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class DiseaseInfo {
     private long no;
     private String name;
@@ -24,6 +26,8 @@ public class DiseaseInfo {
     private String synonym;
     private String symptom_description;
     private List<Symptom> symptoms;
+    private List<RelatedDiseaseInfo> relatedDisease;
+    private List<MedicalSubject> subjects;
 
     public static DiseaseInfo of(Disease disease) {
         DiseaseInfo info = new DiseaseInfo();
@@ -37,7 +41,8 @@ public class DiseaseInfo {
         info.synonym = disease.getSynonym();
         info.symptom_description = disease.getSymptom_description();
         info.symptoms = disease.getSymptomDiseases().stream().map(SymptomDisease::getSymptom).collect(Collectors.toList());
-
+        info.relatedDisease = disease.getRelatedDiseases().stream().map(rd -> RelatedDiseaseInfo.of(rd.getRelatedDisease())).collect(Collectors.toList());
+        info.setSubjects(disease.getMedicalSubjects().stream().map(DiseaseMedicalSubject::getMedicalSubject).collect(Collectors.toList()));
         return info;
     }
 }
