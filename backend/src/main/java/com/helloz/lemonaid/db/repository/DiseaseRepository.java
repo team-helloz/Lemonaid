@@ -10,6 +10,8 @@ import java.util.List;
 public interface DiseaseRepository extends JpaRepository<Disease, Long> {
     @Query("select d from Disease d join SymptomDisease sd" +
                 " on d = sd.disease"+
-                " where sd.symptom.name in :symptoms")
-    List<Disease> findAllBySymptoms(List<String> symptoms);
+                " where sd.symptom.name in :symptoms" +
+                " group by sd.disease.no" +
+                " having count(sd.disease.no) >= :symptomSize")
+    List<Disease> findAllBySymptoms(List<String> symptoms, long symptomSize);
 }
