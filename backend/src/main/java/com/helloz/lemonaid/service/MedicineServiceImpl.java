@@ -7,6 +7,7 @@ import com.helloz.lemonaid.response.MedicineHitRes;
 import io.swagger.models.auth.In;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,7 @@ public class MedicineServiceImpl implements MedicineService {
     private final MedicineRepository medicineRepository;
 
     @Override
-    public List<Medicine> getMedicineList(MedicineSearchFilter filter) {
+    public List<Medicine> getMedicineList(MedicineSearchFilter filter, Pageable pageable) {
         String formCodeName = filter.getForm();
         int formCode = -1;
         switch (formCodeName) {
@@ -43,7 +44,7 @@ public class MedicineServiceImpl implements MedicineService {
                 break;
         }
         List<Medicine> result = medicineRepository.searchByFilter(filter.getName(), filter.getShape(), filter.getColor(),
-                formCode, filter.getLine(), filter.getSign());
+                formCode, filter.getLine(), filter.getSign(), pageable);
         return result;
     }
 

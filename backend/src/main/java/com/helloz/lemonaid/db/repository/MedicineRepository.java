@@ -1,7 +1,7 @@
 package com.helloz.lemonaid.db.repository;
 
 import com.helloz.lemonaid.db.entity.Medicine;
-import com.helloz.lemonaid.request.MedicineSearchFilter;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -14,18 +14,6 @@ import java.util.List;
 @Repository
 public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 
-//    @Query("select m from Medicine m where" +
-////            " (:#{#filter.name} = '' or m.name like '%:#{#filter.name}%')" +
-////            " and (:#{#filter.company} = '' or m.company like '%:#{#filter.company}%')" +
-//            " (:#{#filter.shape} is null or m.shape = :#{#filter.shape})" +
-//            " and (:#{#filter.color} is null or (m.colorF = :#{#filter.color} or m.colorB = :#{#filter.color}))" +
-//            " and (:#{#filter.form} is null or m.formCodeName = :#{#filter.form})" +
-////            " and (:#{#filter.line} = '' or (m.lineF = :#{#filter.line} or m.lineB = :#{#filter.line}))" +
-////            " and (:#{#filter.mark} = '' or (m.markImgFront = :#{#filter.mark} or m.markImgBack = :#{#filter.mark}))" +
-//            " and (:#{#filter.sign} is null or (m.markAnalFront = :#{#filter.sign} or m.markAnalBack = :#{#filter.sign}))"
-//    )
-//    List<Medicine> searchByFilter(@Param("filter") MedicineSearchFilter filter);
-
     @Query(nativeQuery = true, value = "select medicine_no, medicine_num, medicine_name, medicine_company, medicine_chart, medicine_image, medicine_print_front, " +
             "medicine_print_back, medicine_shape, medicine_color_front, medicine_color_back, medicine_line_front, medicine_line_back, medicine_leng_long, medicine_leng_short, " +
             "medicine_thick, medicine_class_no, medicine_class_name, medicine_etc_otc_name, medicine_form_code_no, medicine_form_code_name, medicine_mark_anal_front, medicine_mark_anal_back, " +
@@ -35,10 +23,9 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
             " and (:form = -1 or medicine_form_code_no = :form)" +
             " and (:line = '전체' or (medicine_line_front = :line or medicine_line_back = :line))" +
             " and (:sign = '전체' or (medicine_mark_anal_front like concat('%', :sign, '%') or medicine_mark_anal_front like concat('%', :sign, '%')))" +
-            " and (:name is null or medicine_name like concat('%', :name, '%'))" +
-            " limit 100")
+            " and (:name is null or medicine_name like concat('%', :name, '%'))")
     List<Medicine> searchByFilter(@Param("name") String name, @Param("shape") String shape, @Param("color") String color,
-            @Param("form") int form, @Param("line") String line, @Param("sign") String sign);
+                                  @Param("form") int form, @Param("line") String line, @Param("sign") String sign, Pageable pageable);
 
     Medicine findByNo(Long no);
 
