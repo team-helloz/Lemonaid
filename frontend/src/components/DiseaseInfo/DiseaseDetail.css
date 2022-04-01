@@ -66,12 +66,13 @@
 .d-item-box {
   display: flex;
   flex-direction: column;
-  width: 15%;
+  min-width: 150px;
+  max-width: 300px;
   padding: 20px;
 }
 
 .d-item-img-box img {
-  width: 50%;
+  height: 200px;
   border-radius: 10px;
   margin-left: auto;
 }
@@ -81,7 +82,6 @@
   flex-direction: column;
   flex: 1.5;
   padding: 20px;
-  padding-left: 20%;
 }
 .d-item-mini-title {
   font-weight: 900;
@@ -93,6 +93,7 @@
   display: flex;
   flex-direction: row;
 }
+
 .d-detail-list p {
   margin-right: 10px;
   font-size: 16px;
@@ -113,7 +114,7 @@
 
 .dd-content {
   border-top: 1px solid rgba(122, 122, 122, 0.5);
-  margin: 20px;
+  margin: 0 20px 20px 20px;
   padding-top: 50px;
 }
 
@@ -124,6 +125,7 @@
   background: white;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  white-space: pre-line;
 }
 .dd-content-title span {
   font-size: 18px;
