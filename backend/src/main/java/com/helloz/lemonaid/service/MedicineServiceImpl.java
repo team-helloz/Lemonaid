@@ -23,8 +23,27 @@ public class MedicineServiceImpl implements MedicineService {
 
     @Override
     public List<Medicine> getMedicineList(MedicineSearchFilter filter) {
+        String formCodeName = filter.getForm();
+        int formCode = -1;
+        switch (formCodeName) {
+            case "정제":
+                formCode = 0;
+                break;
+            case "경질캡슐":
+                formCode = 1;
+                break;
+            case "연질캡슐":
+                formCode = 2;
+                break;
+            case "기타":
+                formCode = 3;
+                break;
+            default:
+                formCode = -1;
+                break;
+        }
         List<Medicine> result = medicineRepository.searchByFilter(filter.getName(), filter.getShape(), filter.getColor(),
-                filter.getForm(), filter.getLine(), filter.getSign());
+                formCode, filter.getLine(), filter.getSign());
         return result;
     }
 
