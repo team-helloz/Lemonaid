@@ -10,6 +10,8 @@ import com.helloz.lemonaid.service.MedicalService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +43,9 @@ public class MedicalController {
             @ApiParam("keyword") @RequestParam(required = false, defaultValue = "") String keyword,
             @ApiParam("lat") @RequestParam double lat,
             @ApiParam("lng") @RequestParam double lng,
-            @ApiParam("radius") @RequestParam(defaultValue = "0") int radius
-    ) {
+            @ApiParam("radius") @RequestParam(defaultValue = "0") int radius,
+            @PageableDefault(size = 20)Pageable pageable
+            ) {
         MedicalSearchFilter filter = new MedicalSearchFilter();
         filter.setSearchType(searchType);
         filter.setCode(code);
@@ -54,7 +57,7 @@ public class MedicalController {
         filter.setLng(lng);
         filter.setRadius(radius);
 
-        List<Medical> result = medicalService.getMedicalList(filter);
+        List<Medical> result = medicalService.getMedicalList(filter, pageable);
 
         return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
     }
