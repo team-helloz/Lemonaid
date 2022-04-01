@@ -11,6 +11,17 @@ interface Sysptom {
   no: number;
   name: string;
 }
+
+interface Subject {
+  no: number;
+  name: string;
+}
+
+interface relatedDisease {
+  no: number;
+  name: string;
+}
+
 interface Disease {
   no: number;
   name: string;
@@ -19,6 +30,8 @@ interface Disease {
   cause: string;
   caution: string;
   definition: string;
+  subjects: Subject[];
+  related_disease: relatedDisease[];
   symptoms: Sysptom[];
   synonym: string;
 }
@@ -70,12 +83,50 @@ export default function DiseaseDetail(Params: any) {
               {disease.symptoms !== undefined ? (
                 <div className="d-detail-list">
                   {disease.symptoms.map((symptom, i: number) => (
-                    <span key={i}>{symptom.name}</span>
+                    <>
+                      {i < disease.symptoms.length - 1 && (
+                        <span key={i}>{symptom.name}, </span>
+                      )}
+                      {i === disease.symptoms.length - 1 && (
+                        <span key={i}>{symptom.name}</span>
+                      )}
+                    </>
                   ))}
                 </div>
               ) : (
                 ""
               )}
+            </div>
+            <div className="d-item-box">
+              <p className="d-item-mini-title">관련질병</p>
+              {disease.symptoms !== undefined ? (
+                <div className="d-detail-list">
+                  {disease.related_disease.map((relate, i: number) => (
+                    <>
+                      {i < disease.symptoms.length - 1 && (
+                        <span key={i}>{relate.name}, </span>
+                      )}
+                      {i === disease.symptoms.length - 1 && (
+                        <span key={i}>{relate.name}</span>
+                      )}
+                    </>
+                  ))}
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="d-item-box">
+              <p className="d-item-mini-title">진료과목</p>
+              <div className="d-detail-list">
+                {disease.symptoms !== undefined && (
+                  <>
+                    {disease.subjects.map((subject, i: number) => (
+                      <p key={i}>{subject.name}</p>
+                    ))}
+                  </>
+                )}
+              </div>
             </div>
             <div className="d-item-box">
               <p className="d-item-mini-title">동의어</p>
