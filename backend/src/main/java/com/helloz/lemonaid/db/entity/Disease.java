@@ -46,4 +46,10 @@ public class Disease {
 
     @OneToMany(mappedBy = "disease")
     private List<SymptomDisease> symptomDiseases;
+
+    @OneToMany(mappedBy = "disease")
+    private List<RelatedDisease> relatedDiseases;
+
+    @OneToMany(mappedBy = "disease")
+    private List<DiseaseMedicalSubject> medicalSubjects;
 }
