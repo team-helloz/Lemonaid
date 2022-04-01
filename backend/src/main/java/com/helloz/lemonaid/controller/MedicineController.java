@@ -8,6 +8,8 @@ import com.helloz.lemonaid.service.MedicineService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +25,8 @@ public class MedicineController {
     private final MedicineService medicineService;
 
     @GetMapping
-    @ApiOperation(value = "의약품 목록 조회", notes = "<strong>검색 조건</strong>을 통해 의약품 목록을 조회 한다.")
+    @ApiOperation(value = "의약품 목록 조회", notes = "<strong>검색 조건</strong>을 통해 의약품 목록을 조회 한다." +
+            "※페이지네이션은 요청에 page=2&size=10 식으로 덧붙여 적용, default size값은 50입니다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 404, message = "Not Found"),
@@ -35,7 +38,8 @@ public class MedicineController {
             @ApiParam(value = "약품 색상", defaultValue = "전체") @RequestParam(required = false) String color,
             @ApiParam(value = "약품 제형 (정제, 경질캡슐, 연질캡슐, 기타, 전체)", defaultValue = "전체") @RequestParam(required = false) String form,
             @ApiParam(value = "약품 분할선 (없음, -, +, 기타, 전체)", defaultValue = "전체") @RequestParam(required = false) String line,
-            @ApiParam(value = "약품 식별문자", defaultValue = "전체") @RequestParam(required = false) String sign
+            @ApiParam(value = "약품 식별문자", defaultValue = "전체") @RequestParam(required = false) String sign,
+            @PageableDefault(size = 50) Pageable pageable
     ) {
         MedicineSearchFilter filter = new MedicineSearchFilter();
         filter.setName(name);
@@ -45,7 +49,7 @@ public class MedicineController {
         filter.setLine(line);
         filter.setSign(sign);
 
-        List<Medicine> result = medicineService.getMedicineList(filter);
+        List<Medicine> result = medicineService.getMedicineList(filter, pageable);
         return ResponseEntity.ok(result);
     }
 
