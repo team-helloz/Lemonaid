@@ -2,6 +2,7 @@ package com.helloz.lemonaid.db.repository;
 
 import com.helloz.lemonaid.db.entity.Pharmacy;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,7 +22,7 @@ public interface PharmacyRepository extends JpaRepository<Pharmacy, Long>{
                     " having distance <= :#{#filter.radius} order by distance"
 
     ,nativeQuery = true)
-    List<Pharmacy> searchByFilter(@Param("filter") MedicalSearchFilter filter);
+    List<Pharmacy> searchByFilter(@Param("filter") MedicalSearchFilter filter, Pageable pageable);
 
 
 }
