@@ -3,6 +3,7 @@ package com.helloz.lemonaid.controller;
 import com.helloz.lemonaid.db.entity.Medicine;
 import com.helloz.lemonaid.request.MedicineSearchFilter;
 import com.helloz.lemonaid.response.MedicineHitRes;
+import com.helloz.lemonaid.response.MedicineListRes;
 import com.helloz.lemonaid.response.MedicineRes;
 import com.helloz.lemonaid.service.MedicineService;
 import io.swagger.annotations.*;
@@ -32,7 +33,7 @@ public class MedicineController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Server Error")
     })
-    private ResponseEntity<List<Medicine>> getMedicineList(
+    private ResponseEntity<MedicineListRes> getMedicineList(
             @ApiParam("약품명") @RequestParam(required = false) String name,
             @ApiParam(value = "약품 모양", defaultValue = "전체") @RequestParam(required = false) String shape,
             @ApiParam(value = "약품 색상", defaultValue = "전체") @RequestParam(required = false) String color,
@@ -50,7 +51,8 @@ public class MedicineController {
         filter.setSign(sign);
 
         List<Medicine> result = medicineService.getMedicineList(filter, pageable);
-        return ResponseEntity.ok(result);
+        int count = medicineService.getMedicineCount(filter);
+        return ResponseEntity.ok(MedicineListRes.of(200, "Success", result, count));
     }
 
     @GetMapping("/{medicineNo}")
