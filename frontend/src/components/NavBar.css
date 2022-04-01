@@ -1,5 +1,6 @@
 .nav-container {
   width: 100%;
+  margin-bottom: 80px;
 }
 
 .nav-bottom {
@@ -8,8 +9,11 @@
   align-items: center;
   width: 100%;
   height: 60px;
-  background: linear-gradient(to right, #2c3e50, #4ca1af);
-  color: white;
+  /* background: linear-gradient(to right, #2c3e50, #4ca1af); */
+  background: #2c3e50;
+  color: rgba(224, 224, 224);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .nav-bottom-content {
@@ -75,7 +79,9 @@
 .nav-news-title {
   margin: 10px;
   text-decoration: none;
-  color: white;
+  color: rgb(224, 224, 224);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .nav-content {
@@ -93,7 +99,7 @@
 .nav-content a {
   font-size: 18px;
   margin: 0;
-  margin-left: 50px;
+  margin-left: 40px;
   display: flex;
   align-items: center;
   padding-top: 30px;
