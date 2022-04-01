@@ -12,25 +12,19 @@
 
 .logo-container {
   position: relative;
-  top: 120px;
+  top: 100px;
   left: 15%;
   z-index: -1;
 }
 
-.h-line {
-  margin: 10px 0 5px 66px;
-  width: 40px;
-  height: 8px;
-  background: linear-gradient(to right, #0f72d4, #64cada);
-}
-
 .team-logo {
   margin: 0;
-  height: 140px;
+  height: 80px;
+  margin-bottom: 10px;
 }
 
 .logo-description {
-  margin: 0 66px;
+  margin: 0 40px;
   font-size: 16px;
   font-weight: bold;
   color: rgb(119, 119, 119);
