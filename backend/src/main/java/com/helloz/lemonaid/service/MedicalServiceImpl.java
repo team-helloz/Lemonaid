@@ -11,13 +11,12 @@ import com.helloz.lemonaid.response.MedicalCode;
 import com.helloz.lemonaid.util.DistanceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.geo.Distance;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -32,20 +31,20 @@ public class MedicalServiceImpl implements MedicalService {
     private final HospitalMedicalSubjectRepository hospitalMedicalSubjectRepository;
 
     @Override
-    public List<Medical> getMedicalList(MedicalSearchFilter filter) {
+    public List<Medical> getMedicalList(MedicalSearchFilter filter, Pageable pageable) {
         List<Medical> result = new ArrayList<>();
 
         if (filter.getSearchType() == MedicalType.all) {
-            result.addAll(getHospitalList(filter));
-            result.addAll(getPharmacyList(filter));
+            result.addAll(getHospitalList(filter, pageable));
+            result.addAll(getPharmacyList(filter, pageable));
         } else if (filter.getSearchType() == MedicalType.hospital) {
-            result.addAll(getHospitalList(filter));
+            result.addAll(getHospitalList(filter, pageable));
         } else if (filter.getSearchType() == MedicalType.pharmacy) {
-            result.addAll(getPharmacyList(filter));
+            result.addAll(getPharmacyList(filter, pageable));
         }
 
         Collections.sort(result);
-        log.info("호출, 크기: {}", result.size());
+        result = new ArrayList<>(result.subList(0, Math.min(20, result.size())));
         return result;
     }
 
@@ -72,8 +71,8 @@ public class MedicalServiceImpl implements MedicalService {
         return hospitalRepository.findCodeAll();
     }
 
-    private List<Hospital> getHospitalList(MedicalSearchFilter filter) {
-        List<Hospital> result = hospitalRepository.searchByFilter(filter, filter.getSubjects()!= null ? filter.getSubjects().size() : 0);
+    private List<Hospital> getHospitalList(MedicalSearchFilter filter, Pageable pageable) {
+        List<Hospital> result = hospitalRepository.searchByFilter(filter, filter.getSubjects()!= null ? filter.getSubjects().size() : 0, pageable);
         result.forEach(
                 hospital -> {
                     hospital.setMedicalSubjectList(getMedicalSubjectListByHospital(hospital));
@@ -84,8 +83,8 @@ public class MedicalServiceImpl implements MedicalService {
         return result;
     }
 
-    private List<Pharmacy> getPharmacyList(MedicalSearchFilter filter) {
-        List<Pharmacy>  result = pharmacyRepository.searchByFilter(filter);
+    private List<Pharmacy> getPharmacyList(MedicalSearchFilter filter, Pageable pageable) {
+        List<Pharmacy>  result = pharmacyRepository.searchByFilter(filter, pageable);
         result.forEach(pharmacy -> pharmacy.setDistance(DistanceUtil.getDistance(pharmacy.getLat(), pharmacy.getLng(), filter.getLat(), filter.getLng())));
 
         return result;
