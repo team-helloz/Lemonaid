@@ -12,11 +12,10 @@
 
 .medicine-info-title {
   padding: 10px 20px;
-  margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(to right, #0DADEA 60%, #64cada);
+  background: rgb(78, 78, 78);
   width: 1080px;
   height: 20px;
 }
@@ -28,7 +27,7 @@
 .refresh-icon {
   width: 30px;
   cursor: pointer;
-  transition: .5s ease;
+  transition: 0.5s ease;
 }
 
 .refresh-icon:hover {
@@ -39,6 +38,7 @@
   font-size: 15px;
   font-weight: bold;
   margin: 0 10px;
+  color: rgb(241, 241, 241);
 }
 
 .medicine-info-step {

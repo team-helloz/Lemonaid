@@ -5,6 +5,7 @@
   box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   overflow: hidden;
   overflow-y: scroll;
@@ -33,7 +34,7 @@
 }
 
 .sys-btn {
-  width: 210px;
+  width: 224px;
   height: 75px;
   margin: 5px;
   cursor: pointer;
