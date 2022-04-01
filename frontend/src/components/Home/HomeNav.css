@@ -8,8 +8,8 @@
   right: 0;
   border-left: 1px solid;
   background-color: #f5f5f7;
-  transition: .5s ease;
-  box-shadow: rgba(60, 64, 67, 0.0) 0px 0px 0px 1900px;
+  transition: 0.5s ease;
+  box-shadow: rgba(60, 64, 67, 0) 0px 0px 0px 1900px;
 }
 
 .h-nav-hamburger {
@@ -24,7 +24,7 @@
 }
 
 .h-nav-hamburger:hover {
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   transform: rotate(90deg);
 }
 
@@ -33,14 +33,14 @@
 }
 
 .h-nav-open-burger:hover {
-  transition: all .5s ease;
+  transition: all 1s ease;
   transform: rotate(0deg);
 }
 
 .h-nav-line {
   width: 35px;
   height: 5px;
-  background-color: #0DADEA;
+  background-color: #0dadea;
 }
 
 .h-nav-open {
