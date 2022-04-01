@@ -17,6 +17,12 @@ interface Sysptom {
 interface SymptomProps {
   nowSymptoms: string[];
 }
+
+interface relatedDisease {
+  no: number;
+  name: string;
+}
+
 interface Diseases {
   no: number;
   name: string;
@@ -26,6 +32,7 @@ interface Diseases {
   caution: string;
   definition: string;
   symptoms: Sysptom[];
+  related_disease: relatedDisease[];
   synonym: string;
 }
 export default function DiseaseList(props: SymptomProps) {
@@ -74,9 +81,11 @@ export default function DiseaseList(props: SymptomProps) {
               </div>
               <div className="list-title-box">
                 <div>
-                  <p className="list-title">정의</p>
+                  <p className="list-title">관련질병</p>
                   <div className="detail-item-list">
-                    <p>{disease.definition}</p>
+                    {disease.related_disease.map((disease: any) => (
+                      <p key={disease.no}>{disease.name} </p>
+                    ))}
                   </div>
                 </div>
                 <div>
