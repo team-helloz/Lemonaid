@@ -23,8 +23,7 @@ public class MedicineController {
     private final MedicineService medicineService;
 
     @GetMapping
-    @ApiOperation(value = "의약품 목록 조회", notes = "<stong>검색 조건</strong>을 통해 의약품 목록을 조회 한다." +
-            "현재 color, form(제형), shape(모양), sign(식별문자) 검색 가능하며 나머지 쿼리는 주석처리한 상태입니다.")
+    @ApiOperation(value = "의약품 목록 조회", notes = "<strong>검색 조건</strong>을 통해 의약품 목록을 조회 한다.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 404, message = "Not Found"),
@@ -34,12 +33,12 @@ public class MedicineController {
             @ApiParam("약품명") @RequestParam(required = false) String name,
             @ApiParam(value = "약품 모양", defaultValue = "전체") @RequestParam(required = false) String shape,
             @ApiParam(value = "약품 색상", defaultValue = "전체") @RequestParam(required = false) String color,
-            @ApiParam(value = "약품 제형", defaultValue = "전체") @RequestParam(required = false) String form,
-            @ApiParam(value = "약품 분할선", defaultValue = "전체") @RequestParam(required = false) String line,
+            @ApiParam(value = "약품 제형 (정제, 경질캡슐, 연질캡슐, 기타, 전체)", defaultValue = "전체") @RequestParam(required = false) String form,
+            @ApiParam(value = "약품 분할선 (없음, -, +, 기타, 전체)", defaultValue = "전체") @RequestParam(required = false) String line,
             @ApiParam(value = "약품 식별문자", defaultValue = "전체") @RequestParam(required = false) String sign
     ) {
         MedicineSearchFilter filter = new MedicineSearchFilter();
-        filter.setName("전체");
+        filter.setName(name);
         filter.setShape(shape);
         filter.setColor(color);
         filter.setForm(form);
