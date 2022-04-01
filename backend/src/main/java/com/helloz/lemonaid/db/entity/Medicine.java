@@ -73,6 +73,9 @@ public class Medicine {
     @Column(name = "medicine_etc_otc_name")
     private String etcOtcName;
 
+    @Column(name = "medicine_form_code_no")
+    private int formCodeNo;
+
     @Column(name = "medicine_form_code_name")
     private String formCodeName;
 
