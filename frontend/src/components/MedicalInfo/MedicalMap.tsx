@@ -1,4 +1,4 @@
-import { Map, ZoomControl } from "react-kakao-maps-sdk";
+import { Map, MapMarker, ZoomControl } from "react-kakao-maps-sdk";
 import { IHospital, ICoord } from "../../interface";
 import MedicalMarkerContainer from "./MedicalMarkerContainer";
 import CustomCurpos from "../../assets/medical_png/map_curpos.png";
@@ -22,6 +22,7 @@ interface MedicalMapProps {
   isEmergency: boolean;
   selectHospital: string;
   UpdateSelectHospital: (selectHospital: string) => void;
+  setMapZoomLevel: (mapZoomLevel: number) => void;
 }
 
 export default function KakaoMap(props: MedicalMapProps) {
@@ -37,12 +38,13 @@ export default function KakaoMap(props: MedicalMapProps) {
     isEmergency,
     selectHospital,
     UpdateSelectHospital,
+    setMapZoomLevel,
   } = props;
 
   return (
     <>
       <Map
-        center={{ lat: viewCenter.lat, lng: viewCenter.lng }}
+        center={{ lat: nowCenter.lat, lng: nowCenter.lng }}
         style={{ width: "78vw", height: "100vh", left: "7vw" }}
         level={3} // 지도의 확대 레벨
         onDragEnd={(map) =>
@@ -51,7 +53,19 @@ export default function KakaoMap(props: MedicalMapProps) {
             lng: map.getCenter().getLng(),
           })
         }
+        onZoomChanged={(map) => setMapZoomLevel(map.getLevel())}
       >
+        <MapMarker
+          position={{ lat: nowCenter.lat, lng: nowCenter.lng }} // 마커를 표시할 위치
+          image={{
+            src: CustomCurpos,
+            size: CustomCurpos,
+            options: {
+              spriteSize: { width: 36, height: 36 },
+              spriteOrigin: { x: 20, y: 65 },
+            },
+          }}
+        />
         {hospitals &&
           hospitals.map((hospital, _index) => (
             <MedicalMarkerContainer

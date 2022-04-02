@@ -23,24 +23,28 @@ export default function MedicalList({
   };
 
   return (
-    <div>
-      {hospitals &&
-        hospitals.map((hospital) => (
-          <div
-            className={
-              "hos-list-container" +
-              (hospital.name === selectHospital ? "-selected" : "")
-            }
-            onClick={() => onClickListItem(hospital)}
-            onMouseEnter={() => UpdateSelectHospital(hospital.name)}
-            onMouseLeave={() => UpdateSelectHospital("")}
-            key={hospital.no}
-          >
-            <h1>{hospital.name}</h1>
-            <p>{hospital.distance.toFixed()}m</p>
-            <p>{hospital.tel}</p>
-          </div>
-        ))}
-    </div>
+    <>
+      <div>
+        {hospitals &&
+          hospitals.map((hospital) => (
+            <div
+              className={
+                "hos-list-container" +
+                (hospital.name === selectHospital ? "-selected" : "")
+              }
+              onClick={() => onClickListItem(hospital)}
+              onMouseEnter={() => UpdateSelectHospital(hospital.name)}
+              onMouseLeave={() => UpdateSelectHospital("")}
+              key={hospital.no}
+            >
+              <h1>{hospital.name}</h1>
+              <p>{hospital.distance.toFixed()}m</p>
+              <p>{hospital.tel}</p>
+            </div>
+          ))}
+        {hospitals && hospitals.length === 0 && <h3>검색결과가 없습니다.</h3>}
+      </div>
+      <div>1, 2, 3</div>
+    </>
   );
 }
