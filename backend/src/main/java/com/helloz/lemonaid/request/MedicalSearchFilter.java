@@ -47,17 +47,4 @@ public class MedicalSearchFilter {
     @ApiModelProperty(name = "반경")
     private int radius;
 
-    public void setSubjects(List<Long> subjects) {
-
-        Long[] dentistry = {50L, 51L, 52L, 53L, 54L, 55L, 56L,57L, 58L, 59L, 60L, 61L};
-        Long[] herb = {81L, 82L, 83L, 84L, 85L, 86L, 87L, 88L};
-
-        if (subjects.contains(49L)){
-            subjects.addAll(Arrays.asList(dentistry));
-        }
-        if (subjects.contains(80L)) {
-            subjects.addAll(Arrays.asList(herb));
-        }
-        this.subjects = subjects;
-    }
 }

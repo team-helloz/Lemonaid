@@ -1,5 +1,6 @@
 package com.helloz.lemonaid.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class HospitalMedicalSubject {
     @Column(name = "hospital_medical_subject_no")
     private long no;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "hospital_medical_subject_hospital_no")
     private Hospital hospital;
