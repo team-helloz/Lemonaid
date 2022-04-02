@@ -5,29 +5,45 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class Medical implements Comparable<Medical> {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "medical_type")
+@Table(name = "MEDICAL")
+public abstract class Medical{
 
-    MedicalType type;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "medical_no")
+    private long no;
 
-    double distance;
+    @OneToOne
+    @JoinColumn(name = "opentime_no")
+    private OpenTime opentime;
 
-    List<MedicalSubject> medicalSubjectList;
-    public Medical(){
+    @Column(name = "medical_name")
+    private String name;
 
-    }
+    @Column(name = "medical_tel")
+    private String tel;
 
-    public Medical(MedicalType medicalType) {
-        this.type = medicalType;
-    }
+    @Column(name = "medical_y")
+    private double lat;
 
-    @Override
-    public int compareTo(Medical o) {
-        return Double.compare(this.distance, o.distance);
-    }
+    @Column(name = "medical_x")
+    private double lng;
+
+    @Column(name = "medical_address")
+    private String address;
+
+    @Column(name = "medical_parking_count")
+    private int parkingCount;
+
+    @Transient
+    private double distance;
 }

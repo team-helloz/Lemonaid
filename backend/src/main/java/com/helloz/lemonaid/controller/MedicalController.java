@@ -1,10 +1,8 @@
 package com.helloz.lemonaid.controller;
 
 import com.helloz.lemonaid.common.model.response.BaseResponseBody;
-import com.helloz.lemonaid.db.entity.Medical;
-import com.helloz.lemonaid.db.entity.MedicalSubject;
+import com.helloz.lemonaid.db.entity.*;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
-import com.helloz.lemonaid.db.entity.MedicalType;
 import com.helloz.lemonaid.response.*;
 import com.helloz.lemonaid.service.MedicalService;
 import io.swagger.annotations.*;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Api(value = "의료 기관 정보 API", tags = {"Medical"})
 @Slf4j
@@ -59,7 +58,15 @@ public class MedicalController {
 
         List<Medical> result = medicalService.getMedicalList(filter, pageable);
 
-        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
+        List<MedicalRes> data = result.stream().map(m -> {
+            if (m instanceof Hospital){
+                return HospitalRes.of((Hospital) m);
+            }else{
+                return PharmacyRes.of((Pharmacy) m);
+            }
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", data));
     }
 
     @GetMapping("/{medicalType}/{medicalNo}")
@@ -75,7 +82,8 @@ public class MedicalController {
 
         Medical result = medicalService.getMedical(MedicalType.valueOf(medicalType), medicalNo);
 
-        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
+        MedicalRes data = result instanceof Hospital ? HospitalRes.of((Hospital) result) : PharmacyRes.of((Pharmacy) result);
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", data));
     }
 
     @GetMapping("/subject")

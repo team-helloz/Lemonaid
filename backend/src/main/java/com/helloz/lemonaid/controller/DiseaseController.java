@@ -3,7 +3,7 @@ package com.helloz.lemonaid.controller;
 import com.helloz.lemonaid.common.model.response.BaseResponseBody;
 import com.helloz.lemonaid.db.entity.Disease;
 import com.helloz.lemonaid.db.entity.Symptom;
-import com.helloz.lemonaid.response.DiseaseInfo;
+import com.helloz.lemonaid.response.DiseaseRes;
 import com.helloz.lemonaid.service.DiseaseService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,11 +35,11 @@ public class DiseaseController {
 
         List<Disease> diseases = diseaseService.getDiseaseList(symptoms);
 
-        List<DiseaseInfo> diseaseInfos = diseases.stream().map(
-                DiseaseInfo::of
+        List<DiseaseRes> diseaseRes = diseases.stream().map(
+                DiseaseRes::of
         ).collect(Collectors.toList());
 
-        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", diseaseInfos));
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", diseaseRes));
     }
 
     @GetMapping("/{no}")
@@ -55,7 +54,7 @@ public class DiseaseController {
     ){
         Disease disease = diseaseService.getDiseaseByNo(no);
 
-        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", DiseaseInfo.of(disease)));
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", DiseaseRes.of(disease)));
     }
 
     @GetMapping("/site")
