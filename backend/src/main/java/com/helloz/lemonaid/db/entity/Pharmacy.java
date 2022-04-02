@@ -9,38 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-@Table(name = "PHARMACY")
+@DiscriminatorValue("P")
 public class Pharmacy extends Medical {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pharmacy_no")
-    private long no;
-
-    @OneToOne
-    @JoinColumn(name = "opentime_no")
-    private OpenTime openTime;
-
-    @Column(name = "pharmacy_name")
-    private String name;
-
-    @Column(name = "pharmacy_tel")
-    private String tel;
-
-    @Column(name = "pharmacy_y")
-    private double lat;
-
-    @Column(name = "pharmacy_x")
-    private double lng;
-
-    @Column(name = "pharmacy_address")
-    private String address;
-
-    @Column(name = "pharmacy_parking_count")
-    private int parkingCount;
-
-    public Pharmacy(){
-        super(MedicalType.pharmacy);
-    }
 }

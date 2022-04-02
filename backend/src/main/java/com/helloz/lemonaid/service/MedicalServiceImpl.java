@@ -2,10 +2,7 @@ package com.helloz.lemonaid.service;
 
 import com.helloz.lemonaid.common.exception.NotFoundException;
 import com.helloz.lemonaid.db.entity.*;
-import com.helloz.lemonaid.db.repository.HospitalMedicalSubjectRepository;
-import com.helloz.lemonaid.db.repository.HospitalRepository;
-import com.helloz.lemonaid.db.repository.MedicalSubjectRepository;
-import com.helloz.lemonaid.db.repository.PharmacyRepository;
+import com.helloz.lemonaid.db.repository.*;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
 import com.helloz.lemonaid.response.MedicalCode;
 import com.helloz.lemonaid.util.DistanceUtil;
@@ -28,32 +25,32 @@ public class MedicalServiceImpl implements MedicalService {
     private final HospitalRepository hospitalRepository;
     private final PharmacyRepository pharmacyRepository;
     private final MedicalSubjectRepository medicalSubjectRepository;
-    private final HospitalMedicalSubjectRepository hospitalMedicalSubjectRepository;
+    private final MedicalRepository medicalRepository;
 
     @Override
     public List<Medical> getMedicalList(MedicalSearchFilter filter, Pageable pageable) {
         List<Medical> result = new ArrayList<>();
 
+        int subjectSize = filter.getSubjects()!= null ? filter.getSubjects().size(): 0;
+
         if (filter.getSearchType() == MedicalType.all) {
-            result.addAll(getHospitalList(filter, pageable));
-            result.addAll(getPharmacyList(filter, pageable));
+            result.addAll(medicalRepository.searchByFilter(filter, subjectSize, pageable));
         } else if (filter.getSearchType() == MedicalType.hospital) {
-            result.addAll(getHospitalList(filter, pageable));
+            result.addAll(hospitalRepository.searchByFilter(filter,subjectSize, pageable));
         } else if (filter.getSearchType() == MedicalType.pharmacy) {
-            result.addAll(getPharmacyList(filter, pageable));
+            result.addAll(pharmacyRepository.searchByFilter(filter, pageable));
         }
 
-        Collections.sort(result);
-        result = new ArrayList<>(result.subList(0, Math.min(20, result.size())));
+        result.forEach(m -> {
+            m.setDistance(DistanceUtil.getDistance(m.getLat(), m.getLng(), filter.getLat(), filter.getLng()));
+        });
         return result;
     }
 
     @Override
     public Medical getMedical(MedicalType medicalType, long no) {
         if (medicalType == MedicalType.hospital) {
-            Hospital hospital = hospitalRepository.findById(no).orElseThrow(NotFoundException::new);
-            hospital.setMedicalSubjectList(getMedicalSubjectListByHospital(hospital));
-            return hospital;
+            return hospitalRepository.findById(no).orElseThrow(NotFoundException::new);
         } else if (medicalType == MedicalType.pharmacy) {
             return pharmacyRepository.findById(no).orElseThrow(NotFoundException::new);
         }
@@ -71,27 +68,4 @@ public class MedicalServiceImpl implements MedicalService {
         return hospitalRepository.findCodeAll();
     }
 
-    private List<Hospital> getHospitalList(MedicalSearchFilter filter, Pageable pageable) {
-        List<Hospital> result = hospitalRepository.searchByFilter(filter, filter.getSubjects()!= null ? filter.getSubjects().size() : 0, pageable);
-        result.forEach(
-                hospital -> {
-                    hospital.setMedicalSubjectList(getMedicalSubjectListByHospital(hospital));
-                    hospital.setDistance(DistanceUtil.getDistance(hospital.getLat(), hospital.getLng(), filter.getLat(), filter.getLng()));
-                }
-        );
-
-        return result;
-    }
-
-    private List<Pharmacy> getPharmacyList(MedicalSearchFilter filter, Pageable pageable) {
-        List<Pharmacy>  result = pharmacyRepository.searchByFilter(filter, pageable);
-        result.forEach(pharmacy -> pharmacy.setDistance(DistanceUtil.getDistance(pharmacy.getLat(), pharmacy.getLng(), filter.getLat(), filter.getLng())));
-
-        return result;
-    }
-
-    private List<MedicalSubject> getMedicalSubjectListByHospital(Hospital hospital) {
-        return hospitalMedicalSubjectRepository.findAllByHospital(hospital)
-                .stream().map(HospitalMedicalSubject::getMedicalSubject).collect(Collectors.toList());
-    }
 }
