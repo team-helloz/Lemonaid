@@ -4,7 +4,7 @@ import { IHospital } from "../../interface";
 import MarkerImgHospital from "../../assets/medical_png/marker_hospital.png";
 import MarkerImgMedicine from "../../assets/medical_png/marker_medicine.png";
 import MarkerImgHospitalSelect from "../../assets/medical_png/marker_hospital_select.png";
-import MarkerImgMedicineSelect from "../../assets/medical_png/marker_hospital_select.png";
+import MarkerImgMedicineSelect from "../../assets/medical_png/marker_medicine_select.png";
 import "./MedicalMarkerContainer.css";
 
 interface MarkerProps {
