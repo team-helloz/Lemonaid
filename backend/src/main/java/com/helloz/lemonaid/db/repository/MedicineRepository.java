@@ -43,6 +43,6 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
     @Query("update Medicine m set m.hit = m.hit+1 where m.no = :#{#no}")
     void updateHit(Long no);
 
-    @Query(nativeQuery = true, value = "select medicine_no, medicine_name, medicine_image from medicine order by medicine_hit desc limit 5")
+    @Query(nativeQuery = true, value = "select medicine_no, medicine_num, medicine_name, medicine_image from medicine order by medicine_hit desc limit 5")
     List<Tuple> findTopMedicines();
 }
