@@ -8,6 +8,9 @@ import com.helloz.lemonaid.service.DiseaseService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,15 +34,14 @@ public class DiseaseController {
             @ApiResponse(code = 500, message = "Server Error")
     })
     private ResponseEntity<? extends BaseResponseBody> getDiseaseList(
-            @ApiParam("symptoms") @RequestParam(required = false, defaultValue = "") List<String> symptoms){
+            @ApiParam("symptoms") @RequestParam(required = false, defaultValue = "") List<String> symptoms,
+            @PageableDefault(size = 20) Pageable pageable)
+    {
 
-        List<Disease> diseases = diseaseService.getDiseaseList(symptoms);
+        Page<DiseaseRes> result= diseaseService.getDiseaseList(symptoms, pageable);
 
-        List<DiseaseRes> diseaseRes = diseases.stream().map(
-                DiseaseRes::of
-        ).collect(Collectors.toList());
 
-        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", diseaseRes));
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
     }
 
     @GetMapping("/{no}")
