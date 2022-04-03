@@ -28,8 +28,8 @@ public class CoronaServiceImpl implements CoronaService {
 
         CoronaGenderRes result = new CoronaGenderRes();
         result.setCoronaGenderList(coronaGenderRepository.findAll());
-        result.setCoronaMenTotal(coronaGenderRepository.countByGenderMen());
-        result.setCoronaWomenTotal(coronaGenderRepository.countByGenderWomen());
+        result.setCoronaMenTotal(coronaGenderRepository.countGroupByGenderMen());
+        result.setCoronaWomenTotal(coronaGenderRepository.countGroupByGenderWomen());
         return result;
     }
 
