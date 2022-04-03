@@ -64,7 +64,7 @@ export default function MedicineDetail(Params: any) {
 
   const handleLoad = () => {
     const mediNo = Params.match.params.medicineNo;
-    console.log(mediNo)
+    console.log(mediNo);
     axios
       .get(`/medicine/${mediNo}`)
       .then((res) => {
@@ -73,8 +73,8 @@ export default function MedicineDetail(Params: any) {
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
   useEffect(() => {
     handleLoad();
   }, []);
@@ -159,7 +159,9 @@ export default function MedicineDetail(Params: any) {
               <p>성상: {medicineInfo?.form_code_name}</p>
               <p>색상: {medicineInfo?.color_f}</p>
               <p>두께: {medicineInfo?.thick}</p>
-              <p>장축/단축: {medicineInfo?.leng_l}/{medicineInfo?.leng_s}</p>
+              <p>
+                장축/단축: {medicineInfo?.leng_l}/{medicineInfo?.leng_s}
+              </p>
               <p>전면 분할선: {medicineInfo?.line_f}</p>
               <p>후면 분할선: {medicineInfo?.line_b}</p>
               <p>전면 인식문자: {medicineInfo?.print_f}</p>
