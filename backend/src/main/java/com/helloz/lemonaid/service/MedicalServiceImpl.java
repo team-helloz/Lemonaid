@@ -42,7 +42,7 @@ public class MedicalServiceImpl implements MedicalService {
         }
 
         result.forEach(m -> {
-            m.setDistance(DistanceUtil.getDistance(m.getLat(), m.getLng(), filter.getLat(), filter.getLng()));
+            m.setDistance(DistanceUtil.getDistance(m.getLat(), m.getLng(), filter.getNowLat(), filter.getNowLng()));
         });
         return result;
     }
