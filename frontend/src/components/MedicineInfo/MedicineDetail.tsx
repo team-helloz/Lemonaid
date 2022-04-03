@@ -12,6 +12,8 @@ interface MedicineDetailInfo {
   num: number;
   // 구분
   etc_otc_name: string;
+  // 분류
+  class_name: string;
   // 제조업체
   company: string;
   // 외형정보
@@ -89,6 +91,7 @@ export default function MedicineDetail(Params: any) {
             <div className="medicine-detail-title-desc">
               <div className="medicine-detail-title-letter">
                 <p className="medicine-detail-title-name">{medicineInfo?.name}</p>
+                <p>분류: {medicineInfo?.class_name}</p>
                 <p>구분: {medicineInfo?.etc_otc_name}</p>
                 <p>제조 업체명: {medicineInfo?.company}</p>
               </div>
@@ -146,7 +149,7 @@ export default function MedicineDetail(Params: any) {
                 </div>
               </div>
             </div>
-            <img src={`https://helloz-lemonaid.s3.ap-northeast-2.amazonaws.com/medicine/${medicineInfo?.num}.jpg`} alt="" />
+            <img src={`https://j6d108.p.ssafy.io/images/medicine/${medicineInfo?.num}.jpg`} alt="" />
           </div>
         </div>
         <div className="medicine-detail-desc-box">
