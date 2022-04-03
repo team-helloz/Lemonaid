@@ -9,3 +9,38 @@
   padding: 10px;
   cursor: pointer;
 }
+
+.hos-list-name{
+  font-size: x-large;
+  margin: 5px 0;
+}
+
+.hos-list-code {
+  font-size: large;
+  margin: 5px 0;
+}
+
+.hos-list-subject {
+  font-size: large;
+  margin: 5px 0;
+}
+
+.hos-list-openornot {
+  font-size: large;
+  margin: 5px 0;
+}
+
+.hos-list-address {
+  font-size: large;
+  margin: 5px 0;
+}
+
+.hos-list-tel {
+  font-size: large;
+  margin: 5px 0;
+}
+
+.hos-list-distance {
+  font-size: large;
+  margin: 5px 0;
+}
