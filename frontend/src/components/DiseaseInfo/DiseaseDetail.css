@@ -26,18 +26,38 @@
 }
 .dd-name-title p {
   margin: 0;
+  font-weight: 600;
+}
+
+.title-sub {
+  color: beige;
+  background: rgba(112, 128, 144, 0.5);
+  padding: 3px 8px !important;
+  border-radius: 10px;
+  font-weight: 800 !important;
 }
 .title-small {
   display: flex;
   margin-right: auto;
   color: rgba(255, 255, 255, 0.8);
   font-size: 15px;
+  margin-top: 20px;
 }
 .title-small p {
   margin: 0;
   margin-right: 10px;
+  padding: 3px;
+  font-weight: 600;
 }
-
+.dd-hash-tag {
+  background: rgba(212, 212, 212, 0.7);
+  padding: 0px 5px;
+  margin-right: 5px !important;
+  color: rgb(102, 102, 102) !important;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer;
+}
 .d-detail-name {
   font-size: 28px;
   font-weight: bold;
@@ -67,6 +87,7 @@
   flex-direction: column;
   min-width: 150px;
   max-width: 300px;
+  flex: 1;
   padding: 20px;
 }
 
