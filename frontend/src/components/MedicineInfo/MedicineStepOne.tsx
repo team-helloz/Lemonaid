@@ -83,12 +83,7 @@ export default function MedicineStepOne(props: MedicineStepProps) {
               onClick={() => routeDetail(medicine.no)}
               className="medicine-most"
             >
-              <img
-                className="medicine-most-img"
-                src={`https://helloz-lemonaid.s3.ap-northeast-2.amazonaws.com/medicine/${medicine.no}.jpg`}
-                alt=""
-              />
-              <p>{medicine.name}</p>
+              <p>Top {i+1}. {medicine.name}</p>
             </div>
           ))}
         </div>
