@@ -32,7 +32,7 @@
 .medicine-search-logo {
   font-weight: bold;
   font-size: 50px;
-  margin: 0 0 30px 0;
+  margin: 20px 0;
 }
 
 .medicine-search-input-name {
@@ -47,28 +47,31 @@
 }
 
 .medicine-search-input-name:focus {
-  outline: 1px solid #0DADEA;
-  border: 1px solid #0DADEA;
+  outline: 1px solid #64cada;
+  border: 1px solid #64cada;
 }
 
 .medicine-most-list {
-  display: flex;
-  justify-content: space-between;
+  margin-top: 10px;
   width: 400px;
 }
 
 .medicine-most {
   display: flex;
-  flex-direction: column;
   align-items: center;
   margin-top: 10px;
+  height: 30px;
+  background-color: #f5f5f5;
   border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px;
   cursor: pointer;
+  transition: .5s ease;
 }
 
 .medicine-most p {
-  margin: 0 0 5px 0;
-  font-size: 12px;
+  margin: 0 20px;
+  font-size: 13px;
 }
 
 .medicine-most-img {
@@ -77,7 +80,10 @@
 }
 
 .medicine-most:hover {
-  border: 1px solid #0DADEA;
+  border: 1px solid #64cada;
+  font-weight: bold;
+  color: #64cada;
+  transform: scale(1.05);
 }
 
 .medicine-search-box {
@@ -178,8 +184,8 @@
 }
 
 .medicine-search-input:focus {
-  outline: 1px solid #0DADEA;
-  border: 1px solid #0DADEA;
+  outline: 1px solid #64cada;
+  border: 1px solid #64cada;
 }
 
 .medicine-search-btn {
@@ -195,5 +201,5 @@
 
 .medicine-search-btn:hover {
   font-weight: bold;
-  background-color: #0DADEA;
+  background-color: #64cada;
 }
