@@ -18,13 +18,13 @@ export default function HomeNav(props: routeProps) {
   function openNav() {
     setNav(!isNav)
     const HomeNav = document.getElementById("open")
-    const Burger = document.getElementById("burger")
+    const Cover = document.getElementById("cover")
     if (isNav) {
-      Burger?.classList.add("h-nav-open-burger")
       HomeNav?.classList.add("open")
+      Cover?.classList.remove("h-nav-close")
     } else {
-      Burger?.classList.remove("h-nav-open-burger")
       HomeNav?.classList.remove("open")
+      Cover?.classList.add("h-nav-close")
     }
   }
 
@@ -53,6 +53,11 @@ export default function HomeNav(props: routeProps) {
           className="h-nav-menu"
           onClick={routeCovid}>코로나 정보 조회</p>
       </div>
+      <div
+        onClick={openNav}
+        id="cover"
+        className="h-nav-cover h-nav-close"
+      ></div>
     </div>
   );
 }
