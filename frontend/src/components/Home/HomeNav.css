@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  border-left: 1px solid;
+  border-left: 1px solid rgba(141, 141, 141, 0.4);
   background-color: #f5f5f7;
   transition: 0.5s ease;
   box-shadow: rgba(60, 64, 67, 0) 0px 0px 0px 1900px;
@@ -37,12 +37,13 @@
   height: 100vh;
   z-index: 10;
   background-color: white;
-  border-left: 1px solid;
+  border-left: 1px solid rgba(141, 141, 141, 0.4);
 }
 
 .open {
   transform: translateX(-220px);
-  box-shadow: rgba(60, 64, 67, 0.4) 0px 0px 0px 1900px;
+  /* box-shadow: rgba(60, 64, 67, 0.4) 0px 0px 0px 1900px; */
+  box-shadow: rgba(29, 29, 29, 0.6) 0px 0px 0px 1900px;
 }
 
 .h-nav-menu {
