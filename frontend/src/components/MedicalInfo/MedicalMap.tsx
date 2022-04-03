@@ -11,13 +11,11 @@ declare global {
 }
 
 interface MedicalMapProps {
-  viewCenter: ICoord;
   setViewCenter: (coord: ICoord) => void;
   hospitals: IHospital[];
   handDetailOpen: (hospital: IHospital) => void;
   directionMode: boolean;
   nowCenter: ICoord;
-  destCoord: ICoord;
   userGeo: () => void;
   isEmergency: boolean;
   selectHospital: string;
@@ -27,13 +25,11 @@ interface MedicalMapProps {
 
 export default function KakaoMap(props: MedicalMapProps) {
   const {
-    viewCenter,
     setViewCenter,
     hospitals,
     handDetailOpen,
     directionMode,
     nowCenter,
-    destCoord,
     userGeo,
     isEmergency,
     selectHospital,
@@ -46,8 +42,8 @@ export default function KakaoMap(props: MedicalMapProps) {
       <Map
         center={{ lat: nowCenter.lat, lng: nowCenter.lng }}
         style={{ width: "74vw", height: "100vh", left: "7vw" }}
-        level={3} // 지도의 확대 레벨
-        onDragEnd={(map) =>
+        level={4} // 지도의 확대 레벨
+        onCenterChanged={(map) =>
           setViewCenter({
             lat: map.getCenter().getLat(),
             lng: map.getCenter().getLng(),
