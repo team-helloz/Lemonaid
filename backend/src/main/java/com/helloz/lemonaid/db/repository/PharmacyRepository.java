@@ -17,7 +17,7 @@ public interface PharmacyRepository extends JpaRepository<Pharmacy, Long>{
                     "p.medical_x, p.medical_y, p.medical_address, p.medical_parking_count, " +
                     "ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.lat}, ' ', :#{#filter.lng}, ')'), 4326), p.medical_point) AS distance" +
                     " from medical p" +
-                    " where p.medal_type ='P'" +
+                    " where p.medical_type ='P'" +
                     " and (:#{#filter.parking} is false or p.medical_parking_count > 0)" +
                     " and (:#{#filter.keyword} = '' or p.medical_name like concat('%',:#{#filter.keyword},'%'))" +
                     " having distance <= :#{#filter.radius} order by distance"
