@@ -91,8 +91,9 @@ public class MedicineServiceImpl implements MedicineService {
         medicineRepository.findTopMedicines().stream().forEach(tuple -> {
             Medicine medicine = new Medicine();
             medicine.setNo(new Long(tuple.get(0, Integer.class)));
-            medicine.setName(tuple.get(1, String.class));
-            medicine.setImage(tuple.get(2, String.class));
+            medicine.setNum(new Long(tuple.get(1, Integer.class)));
+            medicine.setName(tuple.get(2, String.class));
+            medicine.setImage(tuple.get(3, String.class));
             medicineList.add(medicine);
         });
         return medicineList;
