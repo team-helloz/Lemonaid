@@ -62,7 +62,7 @@ export default function MedicineDetail(Params: any) {
 
   const handleLoad = () => {
     const mediNo = Params.match.params.medicineNo;
-    console.log(mediNo)
+    console.log(mediNo);
     axios
       .get(`/medicine/${mediNo}`)
       .then((res) => {
@@ -71,8 +71,8 @@ export default function MedicineDetail(Params: any) {
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
   useEffect(() => {
     handleLoad();
   }, []);
@@ -88,7 +88,9 @@ export default function MedicineDetail(Params: any) {
           <div className="medicine-detail-title-container">
             <div className="medicine-detail-title-desc">
               <div className="medicine-detail-title-letter">
-                <p className="medicine-detail-title-name">{medicineInfo?.name}</p>
+                <p className="medicine-detail-title-name">
+                  {medicineInfo?.name}
+                </p>
                 <p>구분: {medicineInfo?.etc_otc_name}</p>
                 <p>제조 업체명: {medicineInfo?.company}</p>
               </div>
@@ -146,7 +148,10 @@ export default function MedicineDetail(Params: any) {
                 </div>
               </div>
             </div>
-            <img src={`https://helloz-lemonaid.s3.ap-northeast-2.amazonaws.com/medicine/${medicineInfo?.num}.jpg`} alt="" />
+            <img
+              src={`https://helloz-lemonaid.s3.ap-northeast-2.amazonaws.com/medicine/${medicineInfo?.num}.jpg`}
+              alt=""
+            />
           </div>
         </div>
         <div className="medicine-detail-desc-box">
@@ -156,7 +161,9 @@ export default function MedicineDetail(Params: any) {
               <p>성상: {medicineInfo?.form_code_name}</p>
               <p>색상: {medicineInfo?.color_f}</p>
               <p>두께: {medicineInfo?.thick}</p>
-              <p>장축/단축: {medicineInfo?.leng_l}/{medicineInfo?.leng_s}</p>
+              <p>
+                장축/단축: {medicineInfo?.leng_l}/{medicineInfo?.leng_s}
+              </p>
               <p>전면 분할선: {medicineInfo?.line_f}</p>
               <p>후면 분할선: {medicineInfo?.line_b}</p>
               <p>전면 인식문자: {medicineInfo?.print_f}</p>
