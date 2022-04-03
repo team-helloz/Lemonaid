@@ -38,11 +38,17 @@ public class MedicalSearchFilter {
     @ApiModelProperty(name = "검색어", example = "삼성")
     private String keyword;
 
-    @ApiModelProperty(name = "경도")
-    private double lat;
+    @ApiModelProperty(name = "현재 위치 경도")
+    private double nowLat;
 
-    @ApiModelProperty(name = "위도")
-    private double lng;
+    @ApiModelProperty(name = "현재 위치 위도")
+    private double nowLng;
+
+    @ApiModelProperty(name = "지도 중심 경도")
+    private double mapLat;
+
+    @ApiModelProperty(name = "지도 중심 위도")
+    private double mapLng;
 
     @ApiModelProperty(name = "반경")
     private int radius;

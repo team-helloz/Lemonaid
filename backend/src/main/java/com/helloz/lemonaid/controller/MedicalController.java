@@ -40,8 +40,10 @@ public class MedicalController {
             @ApiParam("emergency") @RequestParam(required = false, defaultValue = "false") boolean emergency,
             @ApiParam("parking") @RequestParam(required = false, defaultValue = "false") boolean parking,
             @ApiParam("keyword") @RequestParam(required = false, defaultValue = "") String keyword,
-            @ApiParam("lat") @RequestParam double lat,
-            @ApiParam("lng") @RequestParam double lng,
+            @ApiParam("now_lat") @RequestParam(value = "now_lat") double nowLat,
+            @ApiParam("now_lng") @RequestParam(value = "now_lng") double nowLng,
+            @ApiParam("map_lat") @RequestParam(value = "map_lat") double mapLat,
+            @ApiParam("map_lng") @RequestParam(value = "map_lng") double mapLng,
             @ApiParam("radius") @RequestParam(defaultValue = "0") int radius,
             @PageableDefault(size = 20)Pageable pageable
             ) {
@@ -52,8 +54,10 @@ public class MedicalController {
         filter.setEmergency(emergency);
         filter.setParking(parking);
         filter.setKeyword(keyword);
-        filter.setLat(lat);
-        filter.setLng(lng);
+        filter.setNowLat(nowLat);
+        filter.setNowLng(nowLng);
+        filter.setMapLat(mapLat);
+        filter.setMapLng(mapLng);
         filter.setRadius(radius);
 
         List<Medical> result = medicalService.getMedicalList(filter, pageable);

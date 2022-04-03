@@ -13,7 +13,7 @@ import java.util.List;
 public interface MedicalRepository extends JpaRepository<Medical, Long> {
 
     @Query(value = "((select distinct h.*," +
-            " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.lat}, ' ', :#{#filter.lng}, ')'), 4326), medical_point) AS distance" +
+            " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), medical_point) AS distance" +
             " from medical h inner join hospital_medical_subject hms " +
             " on h.medical_no = hms.hospital_medical_subject_hospital_no"+
             " where h.medical_type = 'H'" +
@@ -25,7 +25,7 @@ public interface MedicalRepository extends JpaRepository<Medical, Long> {
             " having distance <= :#{#filter.radius}) " +
             "union (" +
             " select distinct p.*," +
-            " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.lat}, ' ', :#{#filter.lng}, ')'), 4326), p.medical_point) AS distance" +
+            " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), p.medical_point) AS distance" +
             " from medical p" +
             " where p.medical_type ='P'" +
             " and (:#{#filter.parking} is false or p.medical_parking_count > 0)" +
