@@ -1,16 +1,15 @@
 // Style
-import "./HomeScroll.css"
+import "./HomeScroll.css";
 
 interface RouteProps {
-  routeMedical: () => void,
-  routeMedicine: () => void,
-  routeDisease: () => void,
-  routeCovid: () => void,
+  routeMedical: () => void;
+  routeMedicine: () => void;
+  routeDisease: () => void;
+  routeCovid: () => void;
 }
 
 export default function HomeScroll(props: RouteProps) {
-
-  const { routeMedical, routeMedicine, routeDisease, routeCovid } = props
+  const { routeMedical, routeMedicine, routeDisease, routeCovid } = props;
 
   return (
     <div className="h-scroll">
@@ -18,7 +17,11 @@ export default function HomeScroll(props: RouteProps) {
         <p className="h-menu-lside-description">내 주변</p>
         <div>
           <p className="h-menu-num">1</p>
-          <div className="cursor-pointer h-menu-box" onClick={routeMedical}>
+          <div
+            className="cursor-pointer h-menu-box"
+            onClick={routeMedical}
+            style={{ backgroundImage: "url(/home1.jpg)" }}
+          >
             <p className="h-move-title">의료기관 조회</p>
             <p className="h-move-to">바로가기</p>
           </div>
@@ -29,7 +32,11 @@ export default function HomeScroll(props: RouteProps) {
       <div className="home-medicine">
         <div>
           <p className="h-menu-num">2</p>
-          <div className="cursor-pointer h-menu-box" onClick={routeMedicine}>
+          <div
+            className="cursor-pointer h-menu-box"
+            onClick={routeMedicine}
+            style={{ backgroundImage: "url(/home2.jpg)" }}
+          >
             <p className="h-move-title">의약품 조회</p>
             <p className="h-move-to">바로가기</p>
           </div>
@@ -42,7 +49,11 @@ export default function HomeScroll(props: RouteProps) {
         <p className="h-menu-lside-description">어디가</p>
         <div>
           <p className="h-menu-num">3</p>
-          <div className="cursor-pointer h-menu-box" onClick={routeDisease}>
+          <div
+            className="cursor-pointer h-menu-box"
+            onClick={routeDisease}
+            style={{ backgroundImage: "url(/home3.jpg)" }}
+          >
             <p className="h-move-title">증상 조회</p>
             <p className="h-move-to">바로가기</p>
           </div>
@@ -53,7 +64,11 @@ export default function HomeScroll(props: RouteProps) {
       <div className="home-covid">
         <div>
           <p className="h-menu-num">4</p>
-          <div className="cursor-pointer h-menu-box" onClick={routeCovid}>
+          <div
+            className="cursor-pointer h-menu-box"
+            onClick={routeCovid}
+            style={{ backgroundImage: "url(/home4.jpg)" }}
+          >
             <p className="h-move-title">코로나 정보 조회</p>
             <p className="h-move-to">바로가기</p>
           </div>
