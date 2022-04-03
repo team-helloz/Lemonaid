@@ -9,6 +9,7 @@ import { useState } from "react";
 
 interface MedicineDetailInfo {
   name: string;
+  num: number;
   // 구분
   etc_otc_name: string;
   // 제조업체
@@ -145,7 +146,7 @@ export default function MedicineDetail(Params: any) {
                 </div>
               </div>
             </div>
-            <img src="/medicine.jpg" alt="" />
+            <img src={`https://helloz-lemonaid.s3.ap-northeast-2.amazonaws.com/medicine/${medicineInfo?.num}.jpg`} alt="" />
           </div>
         </div>
         <div className="medicine-detail-desc-box">

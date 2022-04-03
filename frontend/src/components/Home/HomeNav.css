@@ -23,20 +23,6 @@
   cursor: pointer;
 }
 
-.h-nav-hamburger:hover {
-  transition: all 0.5s ease;
-  transform: rotate(90deg);
-}
-
-.h-nav-open-burger {
-  transform: rotate(90deg);
-}
-
-.h-nav-open-burger:hover {
-  transition: all 1s ease;
-  transform: rotate(0deg);
-}
-
 .h-nav-line {
   width: 35px;
   height: 5px;
@@ -45,9 +31,9 @@
 
 .h-nav-open {
   position: fixed;
-  right: -371px;
+  right: -221px;
   padding: 0 10px;
-  width: 350px;
+  width: 200px;
   height: 100vh;
   z-index: 10;
   background-color: white;
@@ -55,7 +41,7 @@
 }
 
 .open {
-  transform: translateX(-370px);
+  transform: translateX(-220px);
   box-shadow: rgba(60, 64, 67, 0.4) 0px 0px 0px 1900px;
 }
 
@@ -80,4 +66,15 @@
 
 .h-nav-menu:hover:after {
   transform: scaleX(1);
+}
+
+.h-nav-cover {
+  position: absolute;
+  left: -1980px;
+  width: 1980px;
+  height: 1080px;
+}
+
+.h-nav-close {
+  display: none;
 }

@@ -26,7 +26,7 @@
 
 .nav-news-group {
   position: relative;
-  top: 67px;
+  top: 58px;
 
   animation-name: cardnews;
   animation-duration: 15s;
@@ -44,7 +44,7 @@
     animation-timing-function: linear;
   }
   25% {
-    top: 34px;
+    top: 29px;
     animation-play-state: paused;
   }
   40% {
@@ -52,7 +52,7 @@
     animation-timing-function: linear;
   }
   50% {
-    top: 1px;
+    top: 0px;
     animation-play-state: paused;
   }
   65% {
@@ -60,7 +60,7 @@
     animation-timing-function: linear;
   }
   75% {
-    top: -32px;
+    top: -29px;
     animation-play-state: paused;
   }
   90% {
@@ -68,7 +68,7 @@
     animation-timing-function: linear;
   }
   100% {
-    top: -65px;
+    top: -58px;
   }
 }
 
