@@ -105,7 +105,7 @@ export default function MedicineList(props: SearchData) {
           >
             <img
               className="medicine-list-item-img"
-              src={require("../../assets/medicine.png")}
+              src={`https://helloz-lemonaid.s3.ap-northeast-2.amazonaws.com/medicine/${medicine.num}.jpg`}
               alt=""
             />
             <div>
@@ -142,7 +142,11 @@ export default function MedicineList(props: SearchData) {
             <div
               key={i}
               onClick={() => {pageChange(num)}}
-              className="pagination-btn"
+              className={
+                nowPage === num
+                  ? "pagination-btn now-page-num"
+                  : "pagination-btn"
+              }
             >
               <p>{num + 1}</p>
             </div>
