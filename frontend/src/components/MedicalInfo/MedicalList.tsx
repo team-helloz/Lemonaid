@@ -1,6 +1,7 @@
 import "./MedicalList.css";
 import { IHospital, ICoord } from "../../interface";
 import ParkingPng from "../../assets/medical_png/parking.png";
+import { useEffect, useState } from "react";
 
 export interface HospitalProps {
   hospitals: IHospital[];
@@ -8,6 +9,9 @@ export interface HospitalProps {
   handDetailOpen: (hospital: IHospital) => void;
   selectHospital: string;
   UpdateSelectHospital: (selectHospital: string) => void;
+  nowPage: number;
+  totalPage: number;
+  setNowPage: (nowPage: number) => void;
 }
 
 export default function MedicalList({
@@ -16,12 +20,43 @@ export default function MedicalList({
   handDetailOpen,
   selectHospital,
   UpdateSelectHospital,
+  nowPage,
+  totalPage,
+  setNowPage,
 }: HospitalProps) {
+  const [pageBtn, setPageBtn] = useState<number[]>([]);
+
   const onClickListItem = (hospital: IHospital) => {
     // console.log(hospital.name);
     setViewCenter({ lat: hospital.lat, lng: hospital.lng });
     handDetailOpen(hospital);
   };
+
+  function pageChange(n: number) {
+    setNowPage(n);
+  }
+
+  function paginationBtn() {
+    const result = [];
+    if (nowPage < 2) {
+      for (let i = 0; i <= totalPage && i < 5; i++) {
+        result.push(i);
+      }
+    } else if (nowPage + 2 > totalPage) {
+      for (let i = totalPage - 4; i <= totalPage; i++) {
+        result.push(i);
+      }
+    } else {
+      for (let i = nowPage - 2; i <= totalPage && i <= nowPage + 2; i++) {
+        result.push(i);
+      }
+    }
+    setPageBtn(result);
+  }
+
+  useEffect(() => {
+    paginationBtn();
+  }, [nowPage, totalPage]);
 
   return (
     <>
@@ -73,7 +108,43 @@ export default function MedicalList({
           ))}
         {hospitals && hospitals.length === 0 && <h3>검색결과가 없습니다.</h3>}
       </div>
-      <div>1, 2, 3</div>
+      {totalPage > 1 && (
+        <div className="pagination">
+          <div
+            onClick={() => {
+              pageChange(0);
+            }}
+            className="pagination-pre-btn"
+          >
+            <p>{"<<"}</p>
+          </div>
+
+          {pageBtn.map((num, i: number) => (
+            <div
+              key={i}
+              onClick={() => {
+                pageChange(num);
+              }}
+              className={
+                nowPage === num
+                  ? "pagination-btn now-page-num"
+                  : "pagination-btn"
+              }
+            >
+              <p>{num + 1}</p>
+            </div>
+          ))}
+
+          <div
+            onClick={() => {
+              pageChange(totalPage);
+            }}
+            className="pagination-nxt-btn"
+          >
+            <p>{">>"}</p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
