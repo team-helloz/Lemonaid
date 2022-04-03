@@ -15,7 +15,7 @@ public interface PharmacyRepository extends JpaRepository<Pharmacy, Long>{
     @Query(
             value = "select distinct p.medical_no, p.opentime_no, p.medical_name, p.medical_tel," +
                     "p.medical_x, p.medical_y, p.medical_address, p.medical_parking_count, " +
-                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), p.medical_point) AS mapDistance" +
+                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), p.medical_point) AS mapDistance," +
                     " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.nowLat}, ' ', :#{#filter.nowLng}, ')'), 4326), p.medical_point) AS nowDistance" +
                     " from medical p" +
                     " where p.medical_type ='P'" +

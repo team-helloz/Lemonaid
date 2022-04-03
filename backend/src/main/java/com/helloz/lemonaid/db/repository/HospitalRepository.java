@@ -20,7 +20,7 @@ public interface HospitalRepository extends JpaRepository<Hospital, Long>{
             value = "select distinct h.medical_no, h.opentime_no, h.medical_name, h.medical_tel," +
                     "h.medical_x, h.medical_y, h.medical_address, h.hospital_url, h.hospital_emergency_day," +
                     "h.hospital_emergency_night, h.medical_parking_count, h.hospital_code, h.hospital_code_name ," +
-                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), h.medical_point) AS mapDistance" +
+                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), h.medical_point) AS mapDistance," +
                     " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.nowLat}, ' ', :#{#filter.nowLng}, ')'), 4326), h.medical_point) AS nowDistance" +
                     "from medical h inner join hospital_medical_subject hms " +
                     " on h.medical_no = hms.hospital_medical_subject_hospital_no"+
