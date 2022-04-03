@@ -1,6 +1,7 @@
 import Dialog from "@mui/material/Dialog";
-import { forwardRef, useEffect, useState } from "react";
 import { IHospital, ICoord } from "../../interface";
+import ParkingPng from "../../assets/medical_png/parking.png";
+import EmergencyPng from "../../assets/medical_png/emergency.png";
 import "./MedicalDetail.css";
 
 export interface MedicalDetailDlgProps {
@@ -25,9 +26,6 @@ export default function MedicalDetail(props: MedicalDetailDlgProps) {
         "_blank"
       );
     }
-    // if (hospitalDetail !== undefined) {
-    //   SetDirectionMode({ lat: hospitalDetail.lat, lng: hospitalDetail.lng });
-    // }
   };
 
   return (
@@ -37,19 +35,131 @@ export default function MedicalDetail(props: MedicalDetailDlgProps) {
       PaperProps={{
         style: {
           backgroundColor: "rgb(255, 255, 255 )",
-          minWidth: "70vh",
-          maxWidth: "90vh",
-          minHeight: "60vh",
-          maxHeight: "60vh",
+          minWidth: "80vh",
+          maxWidth: "100vh",
+          minHeight: "70vh",
+          maxHeight: "70vh",
         },
       }}
     >
       {hospitalDetail !== undefined && (
         <div className="liarresdlg-container init-contain">
-          <h2>{hospitalDetail.name}</h2>
-          <h4>{hospitalDetail.tel}</h4>
-          <h4>{hospitalDetail.address}</h4>
-          <h4>내위치 : {roadAdd}</h4>
+          <p>
+            <span className="hos-list-name">{hospitalDetail.name}</span>
+            <span className="hos-list-code">{hospitalDetail.code_name}</span>
+            {hospitalDetail.parking_count > 0 && (
+              <img src={ParkingPng} alt="주차" />
+            )}
+            {(hospitalDetail.emergency_day === "Y" ||
+              hospitalDetail.emergency_night === "Y") && (
+              <img src={EmergencyPng} alt="응급" />
+            )}
+          </p>
+          <p className="hos-list-subject">
+            {hospitalDetail.type === "hospital" &&
+              hospitalDetail.medical_subject_list.length > 0 &&
+              hospitalDetail.medical_subject_list.map((subjects, index) => (
+                <span key={index}>{subjects.name} </span>
+              ))}
+          </p>
+          <p className="hos-list-address">{hospitalDetail.address}</p>
+          {hospitalDetail.opentime.opentime_valid === "Y" && (
+            <div>
+              <p className="hos-list-openornot">{hospitalDetail.openornot}</p>
+              {hospitalDetail.opendays !== "" && (
+                <p>영업일 : {hospitalDetail.opendays}</p>
+              )}
+              {hospitalDetail.opentime.opentime_sun > 0 &&
+                hospitalDetail.opentime.closetime_sun > 0 && (
+                  <p>
+                    일 {hospitalDetail.opentime.opentime_sun_str} -
+                    {hospitalDetail.opentime.closetime_sun_str}
+                  </p>
+                )}
+              {hospitalDetail.opentime.opentime_sun === -1 &&
+                hospitalDetail.opentime.closetime_sun === -1 && (
+                  <p>일 정기휴무</p>
+                )}
+              {hospitalDetail.opentime.opentime_mon > 0 &&
+                hospitalDetail.opentime.closetime_mon > 0 && (
+                  <p>
+                    월 {hospitalDetail.opentime.opentime_mon_str} -
+                    {hospitalDetail.opentime.closetime_mon_str}
+                  </p>
+                )}
+              {hospitalDetail.opentime.opentime_mon === -1 &&
+                hospitalDetail.opentime.closetime_mon === -1 && (
+                  <p>월 정기휴무</p>
+                )}
+              {hospitalDetail.opentime.opentime_tue > 0 &&
+                hospitalDetail.opentime.closetime_tue > 0 && (
+                  <p>
+                    화 {hospitalDetail.opentime.opentime_tue_str} -
+                    {hospitalDetail.opentime.closetime_tue_str}
+                  </p>
+                )}
+              {hospitalDetail.opentime.opentime_tue === -1 &&
+                hospitalDetail.opentime.closetime_tue === -1 && (
+                  <p>화 정기휴무</p>
+                )}
+              {hospitalDetail.opentime.opentime_wed > 0 &&
+                hospitalDetail.opentime.closetime_wed > 0 && (
+                  <p>
+                    수 {hospitalDetail.opentime.opentime_wed_str} -
+                    {hospitalDetail.opentime.closetime_wed_str}
+                  </p>
+                )}
+              {hospitalDetail.opentime.opentime_wed === -1 &&
+                hospitalDetail.opentime.closetime_wed === -1 && (
+                  <p>수 정기휴무</p>
+                )}
+              {hospitalDetail.opentime.opentime_thu > 0 &&
+                hospitalDetail.opentime.closetime_thu > 0 && (
+                  <p>
+                    목 {hospitalDetail.opentime.opentime_thu_str} -
+                    {hospitalDetail.opentime.closetime_thu_str}
+                  </p>
+                )}
+              {hospitalDetail.opentime.opentime_thu === -1 &&
+                hospitalDetail.opentime.closetime_thu === -1 && (
+                  <p>목 정기휴무</p>
+                )}
+              {hospitalDetail.opentime.opentime_fri > 0 &&
+                hospitalDetail.opentime.closetime_fri > 0 && (
+                  <p>
+                    금 {hospitalDetail.opentime.opentime_fri_str} -
+                    {hospitalDetail.opentime.closetime_fri_str}
+                  </p>
+                )}
+              {hospitalDetail.opentime.opentime_fri === -1 &&
+                hospitalDetail.opentime.closetime_fri === -1 && (
+                  <p>금 정기휴무</p>
+                )}
+              {hospitalDetail.opentime.opentime_sat > 0 &&
+                hospitalDetail.opentime.closetime_sat > 0 && (
+                  <p>
+                    토 {hospitalDetail.opentime.opentime_sat_str} -
+                    {hospitalDetail.opentime.closetime_sat_str}
+                  </p>
+                )}
+              {hospitalDetail.opentime.opentime_sat === -1 &&
+                hospitalDetail.opentime.closetime_sat === -1 && (
+                  <p>토 정기휴무</p>
+                )}
+            </div>
+          )}
+          {hospitalDetail.opentime.opentime_valid === "N" && (
+            <p>영업시간정보없음</p>
+          )}
+          <p className="hos-list-tel">{hospitalDetail.tel}</p>
+          {hospitalDetail.parking_count > 0 && (
+            <p className="hos-list-parking">
+              주차 가능 대수 : {hospitalDetail.parking_count}
+            </p>
+          )}
+          {hospitalDetail.parking_count < 1 && (
+            <p className="hos-list-parking">주차 불가능</p>
+          )}
           <button onClick={findPath}>길찾기</button>
         </div>
       )}

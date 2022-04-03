@@ -10,6 +10,7 @@ interface IHospital {
   no: number;
   opentime: {
     no: number;
+    opentime_valid: string;
     opentime_sun: number;
     closetime_sun: number;
     opentime_mon: number;
@@ -24,6 +25,21 @@ interface IHospital {
     closetime_fri: number;
     opentime_sat: number;
     closetime_sat: number;
+
+    opentime_sun_str: string;
+    closetime_sun_str: string;
+    opentime_mon_str: string;
+    closetime_mon_str: string;
+    opentime_tue_str: string;
+    closetime_tue_str: string;
+    opentime_wed_str: string;
+    closetime_wed_str: string;
+    opentime_thu_str: string;
+    closetime_thu_str: string;
+    opentime_fri_str: string;
+    closetime_fri_str: string;
+    opentime_sat_str: string;
+    closetime_sat_str: string;
   };
   name: string;
   tel: string;
@@ -36,6 +52,8 @@ interface IHospital {
   emergency_day: string;
   emergency_night: string;
   parking_count: number;
+  openornot: string;
+  opendays: string;
 }
 
 interface ICoord {

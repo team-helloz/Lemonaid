@@ -149,11 +149,11 @@ export default function MedicalInfo() {
       return;
     }
 
-    let lat = viewCenter.lat;
-    let lng = viewCenter.lng;
+    let maplat = viewCenter.lat;
+    let maplng = viewCenter.lng;
     if (isNowCenter === true) {
-      lat = nowCenter.lat;
-      lng = nowCenter.lng;
+      maplat = nowCenter.lat;
+      maplng = nowCenter.lng;
     }
 
     let subjects: number[] = [];
@@ -174,18 +174,311 @@ export default function MedicalInfo() {
           subjects: subjects.join(","),
           emergency: isEmergency,
           keyword: keyword,
-          lat: lat,
-          lng: lng,
+          map_lat: maplat,
+          map_lng: maplng,
+          now_lat: nowCenter.lat,
+          now_lng: nowCenter.lng,
           radius: radius,
           paged: false,
         },
       })
       .then((res) => {
         const { data: medical_list } = res.data;
-        setHospitalList(medical_list);
+
+        let mediList: IHospital[] = medical_list;
+        mediList = addOpentimeValid(mediList);
+        mediList = addOpenOrNot(mediList);
+        mediList = addOpenDays(mediList);
+
+        setHospitalList(mediList);
         setSelectHospital("");
       })
       .catch((e) => console.log(e));
+  };
+
+  const addOpentimeValid = (medicalList: IHospital[]): IHospital[] => {
+    medicalList.forEach(function (element: IHospital) {
+      if (
+        element.opentime.opentime_sun === -1 &&
+        element.opentime.closetime_sun === -1 &&
+        element.opentime.opentime_mon === -1 &&
+        element.opentime.closetime_mon === -1 &&
+        element.opentime.opentime_tue === -1 &&
+        element.opentime.closetime_tue === -1 &&
+        element.opentime.opentime_thu === -1 &&
+        element.opentime.closetime_thu === -1 &&
+        element.opentime.opentime_fri === -1 &&
+        element.opentime.closetime_fri === -1 &&
+        element.opentime.opentime_sat === -1 &&
+        element.opentime.closetime_sat === -1
+      ) {
+        element.opentime.opentime_valid = "N";
+      } else {
+        element.opentime.opentime_valid = "Y";
+      }
+    });
+    return medicalList;
+  };
+
+  const addOpenOrNot = (medicalList: IHospital[]): IHospital[] => {
+    let today = new Date();
+    let day = today.getDay();
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let curTime = hours * 100 + minutes;
+
+    medicalList.forEach(function (element: IHospital) {
+      let openTime = -1;
+      let closeTime = -1;
+
+      if (element.opentime.opentime_valid === "Y") {
+        if (day === 0) {
+          openTime = element.opentime.opentime_sun;
+          closeTime = element.opentime.closetime_sun;
+        } else if (day === 1) {
+          openTime = element.opentime.opentime_mon;
+          closeTime = element.opentime.closetime_mon;
+        } else if (day === 2) {
+          openTime = element.opentime.opentime_tue;
+          closeTime = element.opentime.closetime_tue;
+        } else if (day === 3) {
+          openTime = element.opentime.opentime_wed;
+          closeTime = element.opentime.closetime_wed;
+        } else if (day === 4) {
+          openTime = element.opentime.opentime_thu;
+          closeTime = element.opentime.closetime_thu;
+        } else if (day === 5) {
+          openTime = element.opentime.opentime_fri;
+          closeTime = element.opentime.closetime_fri;
+        } else if (day === 6) {
+          openTime = element.opentime.opentime_sat;
+          closeTime = element.opentime.closetime_sat;
+        }
+
+        if (openTime > 0 || closeTime > 0) {
+          let openornot = "";
+          if (curTime < openTime) {
+            openornot = "영업전";
+          } else if (curTime < closeTime) {
+            openornot = "영업중";
+          } else {
+            openornot = "영업종료";
+          }
+          element.openornot = openornot;
+        } else {
+          element.openornot = "영업종료";
+        }
+      }
+    });
+    return medicalList;
+  };
+
+  const addOpenDays = (medicalList: IHospital[]): any => {
+    medicalList.forEach(function (element: IHospital) {
+      if (element.opentime.opentime_valid === "Y") {
+        let opendays = "";
+        if (
+          element.opentime.opentime_mon > 0 &&
+          element.opentime.closetime_mon > 0
+        ) {
+          let opentime_mon_str = element.opentime.opentime_mon.toString();
+          if (opentime_mon_str.length === 3) {
+            opentime_mon_str =
+              opentime_mon_str.slice(0, 1) + ":" + opentime_mon_str.slice(1, 3);
+          } else if (opentime_mon_str.length === 4) {
+            opentime_mon_str =
+              opentime_mon_str.slice(0, 2) + ":" + opentime_mon_str.slice(2, 4);
+          }
+          element.opentime.opentime_mon_str = opentime_mon_str;
+          let closetime_mon_str = element.opentime.closetime_mon.toString();
+          if (closetime_mon_str.length === 3) {
+            closetime_mon_str =
+              closetime_mon_str.slice(0, 1) +
+              ":" +
+              closetime_mon_str.slice(1, 3);
+          } else if (closetime_mon_str.length === 4) {
+            closetime_mon_str =
+              closetime_mon_str.slice(0, 2) +
+              ":" +
+              closetime_mon_str.slice(2, 4);
+          }
+          element.opentime.closetime_mon_str = closetime_mon_str;
+          opendays = opendays.concat("월 ");
+        }
+        if (
+          element.opentime.opentime_tue > 0 &&
+          element.opentime.closetime_tue > 0
+        ) {
+          let opentime_tue_str = element.opentime.opentime_tue.toString();
+          if (opentime_tue_str.length === 3) {
+            opentime_tue_str =
+              opentime_tue_str.slice(0, 1) + ":" + opentime_tue_str.slice(1, 3);
+          } else if (opentime_tue_str.length === 4) {
+            opentime_tue_str =
+              opentime_tue_str.slice(0, 2) + ":" + opentime_tue_str.slice(2, 4);
+          }
+          element.opentime.opentime_tue_str = opentime_tue_str;
+          let closetime_tue_str = element.opentime.closetime_tue.toString();
+          if (closetime_tue_str.length === 3) {
+            closetime_tue_str =
+              closetime_tue_str.slice(0, 1) +
+              ":" +
+              closetime_tue_str.slice(1, 3);
+          } else if (closetime_tue_str.length === 4) {
+            closetime_tue_str =
+              closetime_tue_str.slice(0, 2) +
+              ":" +
+              closetime_tue_str.slice(2, 4);
+          }
+          element.opentime.closetime_tue_str = closetime_tue_str;
+          opendays = opendays.concat("화 ");
+        }
+        if (
+          element.opentime.opentime_wed > 0 &&
+          element.opentime.closetime_wed > 0
+        ) {
+          let opentime_wed_str = element.opentime.opentime_wed.toString();
+          if (opentime_wed_str.length === 3) {
+            opentime_wed_str =
+              opentime_wed_str.slice(0, 1) + ":" + opentime_wed_str.slice(1, 3);
+          } else if (opentime_wed_str.length === 4) {
+            opentime_wed_str =
+              opentime_wed_str.slice(0, 2) + ":" + opentime_wed_str.slice(2, 4);
+          }
+          element.opentime.opentime_wed_str = opentime_wed_str;
+          let closetime_wed_str = element.opentime.closetime_wed.toString();
+          if (closetime_wed_str.length === 3) {
+            closetime_wed_str =
+              closetime_wed_str.slice(0, 1) +
+              ":" +
+              closetime_wed_str.slice(1, 3);
+          } else if (closetime_wed_str.length === 4) {
+            closetime_wed_str =
+              closetime_wed_str.slice(0, 2) +
+              ":" +
+              closetime_wed_str.slice(2, 4);
+          }
+          element.opentime.closetime_wed_str = closetime_wed_str;
+          opendays = opendays.concat("수 ");
+        }
+        if (
+          element.opentime.opentime_thu > 0 &&
+          element.opentime.closetime_thu > 0
+        ) {
+          let opentime_thu_str = element.opentime.opentime_thu.toString();
+          if (opentime_thu_str.length === 3) {
+            opentime_thu_str =
+              opentime_thu_str.slice(0, 1) + ":" + opentime_thu_str.slice(1, 3);
+          } else if (opentime_thu_str.length === 4) {
+            opentime_thu_str =
+              opentime_thu_str.slice(0, 2) + ":" + opentime_thu_str.slice(2, 4);
+          }
+          element.opentime.opentime_thu_str = opentime_thu_str;
+          let closetime_thu_str = element.opentime.closetime_thu.toString();
+          if (closetime_thu_str.length === 3) {
+            closetime_thu_str =
+              closetime_thu_str.slice(0, 1) +
+              ":" +
+              closetime_thu_str.slice(1, 3);
+          } else if (closetime_thu_str.length === 4) {
+            closetime_thu_str =
+              closetime_thu_str.slice(0, 2) +
+              ":" +
+              closetime_thu_str.slice(2, 4);
+          }
+          element.opentime.closetime_thu_str = closetime_thu_str;
+          opendays = opendays.concat("목 ");
+        }
+        if (
+          element.opentime.opentime_fri > 0 &&
+          element.opentime.closetime_fri > 0
+        ) {
+          let opentime_fri_str = element.opentime.opentime_fri.toString();
+          if (opentime_fri_str.length === 3) {
+            opentime_fri_str =
+              opentime_fri_str.slice(0, 1) + ":" + opentime_fri_str.slice(1, 3);
+          } else if (opentime_fri_str.length === 4) {
+            opentime_fri_str =
+              opentime_fri_str.slice(0, 2) + ":" + opentime_fri_str.slice(2, 4);
+          }
+          element.opentime.opentime_fri_str = opentime_fri_str;
+          let closetime_fri_str = element.opentime.closetime_fri.toString();
+          if (closetime_fri_str.length === 3) {
+            closetime_fri_str =
+              closetime_fri_str.slice(0, 1) +
+              ":" +
+              closetime_fri_str.slice(1, 3);
+          } else if (closetime_fri_str.length === 4) {
+            closetime_fri_str =
+              closetime_fri_str.slice(0, 2) +
+              ":" +
+              closetime_fri_str.slice(2, 4);
+          }
+          element.opentime.closetime_fri_str = closetime_fri_str;
+          opendays = opendays.concat("금 ");
+        }
+        if (
+          element.opentime.opentime_sat > 0 &&
+          element.opentime.closetime_sat > 0
+        ) {
+          let opentime_sat_str = element.opentime.opentime_sat.toString();
+          if (opentime_sat_str.length === 3) {
+            opentime_sat_str =
+              opentime_sat_str.slice(0, 1) + ":" + opentime_sat_str.slice(1, 3);
+          } else if (opentime_sat_str.length === 4) {
+            opentime_sat_str =
+              opentime_sat_str.slice(0, 2) + ":" + opentime_sat_str.slice(2, 4);
+          }
+          element.opentime.opentime_sat_str = opentime_sat_str;
+          let closetime_sat_str = element.opentime.closetime_sat.toString();
+          if (closetime_sat_str.length === 3) {
+            closetime_sat_str =
+              closetime_sat_str.slice(0, 1) +
+              ":" +
+              closetime_sat_str.slice(1, 3);
+          } else if (closetime_sat_str.length === 4) {
+            closetime_sat_str =
+              closetime_sat_str.slice(0, 2) +
+              ":" +
+              closetime_sat_str.slice(2, 4);
+          }
+          element.opentime.closetime_sat_str = closetime_sat_str;
+          opendays = opendays.concat("토 ");
+        }
+        if (
+          element.opentime.opentime_sun > 0 &&
+          element.opentime.closetime_sun > 0
+        ) {
+          let opentime_sun_str = element.opentime.opentime_sun.toString();
+          if (opentime_sun_str.length === 3) {
+            opentime_sun_str =
+              opentime_sun_str.slice(0, 1) + ":" + opentime_sun_str.slice(1, 3);
+          } else if (opentime_sun_str.length === 4) {
+            opentime_sun_str =
+              opentime_sun_str.slice(0, 2) + ":" + opentime_sun_str.slice(2, 4);
+          }
+          element.opentime.opentime_sun_str = opentime_sun_str;
+          let closetime_sun_str = element.opentime.closetime_sun.toString();
+          if (closetime_sun_str.length === 3) {
+            closetime_sun_str =
+              closetime_sun_str.slice(0, 1) +
+              ":" +
+              closetime_sun_str.slice(1, 3);
+          } else if (closetime_sun_str.length === 4) {
+            closetime_sun_str =
+              closetime_sun_str.slice(0, 2) +
+              ":" +
+              closetime_sun_str.slice(2, 4);
+          }
+          element.opentime.closetime_sun_str = closetime_sun_str;
+          opendays = opendays.concat("일 ");
+        }
+
+        element.opendays = opendays;
+      }
+    });
+
+    return medicalList;
   };
 
   // 시작 시 유저 위치 찾기
