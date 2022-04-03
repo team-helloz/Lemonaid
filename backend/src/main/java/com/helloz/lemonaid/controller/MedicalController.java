@@ -8,6 +8,7 @@ import com.helloz.lemonaid.service.MedicalService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -60,17 +61,9 @@ public class MedicalController {
         filter.setMapLng(mapLng);
         filter.setRadius(radius);
 
-        List<Medical> result = medicalService.getMedicalList(filter, pageable);
 
-        List<MedicalRes> data = result.stream().map(m -> {
-            if (m instanceof Hospital){
-                return HospitalRes.of((Hospital) m);
-            }else{
-                return PharmacyRes.of((Pharmacy) m);
-            }
-        }).collect(Collectors.toList());
-
-        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", data));
+        Page<MedicalRes> result = medicalService.getMedicalList(filter, pageable);
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
     }
 
     @GetMapping("/{medicalType}/{medicalNo}")
