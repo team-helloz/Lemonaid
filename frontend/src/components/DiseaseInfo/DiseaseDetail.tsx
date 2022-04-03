@@ -39,6 +39,11 @@ interface Disease {
 export default function DiseaseDetail(Params: any) {
   const [disease, setDisease] = useState<Disease>(Params);
   const history = useHistory();
+
+  function routeDetail(diseaseno: number) {
+    history.push(`/disease/${diseaseno}`);
+  }
+
   const handleLoad = () => {
     const disNo = Params.match.params.diseaseno;
     axios
@@ -55,6 +60,10 @@ export default function DiseaseDetail(Params: any) {
   useEffect(() => {
     handleLoad();
   }, []);
+
+  useEffect(() => {
+    handleLoad();
+  }, [Params.match.params.diseaseno]);
 
   function routeMedical() {
     history.push("/medical");
@@ -75,7 +84,18 @@ export default function DiseaseDetail(Params: any) {
                 <img onClick={routeMedical} src="/map.png" alt="map" />
               </button>
             </div>
-            <div className="title-small"></div>
+            <div className="title-small">
+              <p>진료과목</p>
+              {disease.symptoms !== undefined && (
+                <>
+                  {disease.subjects.map((subject, i: number) => (
+                    <p className="title-sub" key={i}>
+                      {subject.name}
+                    </p>
+                  ))}
+                </>
+              )}
+            </div>
           </div>
           <div className="dd-2-box">
             <div className="d-item-box">
@@ -98,36 +118,24 @@ export default function DiseaseDetail(Params: any) {
               )}
             </div>
             <div className="d-item-box">
-              <p className="d-item-mini-title">관련질병</p>
+              <p className="d-item-mini-title">관련 질병</p>
               {disease.symptoms !== undefined ? (
                 <div className="d-detail-list">
                   {disease.related_disease.map((relate, i: number) => (
-                    <>
-                      {i < disease.symptoms.length - 1 && (
-                        <span key={i}>{relate.name}, </span>
-                      )}
-                      {i === disease.symptoms.length - 1 && (
-                        <span key={i}>{relate.name}</span>
-                      )}
-                    </>
+                    <span
+                      onClick={() => routeDetail(relate.no)}
+                      className="dd-hash-tag"
+                      key={i}
+                    >
+                      #{relate.name}
+                    </span>
                   ))}
                 </div>
               ) : (
                 ""
               )}
             </div>
-            <div className="d-item-box">
-              <p className="d-item-mini-title">진료과목</p>
-              <div className="d-detail-list">
-                {disease.symptoms !== undefined && (
-                  <>
-                    {disease.subjects.map((subject, i: number) => (
-                      <p key={i}>{subject.name}</p>
-                    ))}
-                  </>
-                )}
-              </div>
-            </div>
+
             <div className="d-item-box">
               <p className="d-item-mini-title">동의어</p>
               <div className="d-detail-list">
