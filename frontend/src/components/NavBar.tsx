@@ -78,7 +78,7 @@ export default function NavBar() {
       </div>
       <div className="nav-bottom">
         <div className="nav-bottom-content">
-          <p>멘트고민</p>
+          <p>오늘의 의료정보</p>
           <div className="nav-news-group">
             {CardNews.map((news, i: number) => (
               <div className="nave-news-item">

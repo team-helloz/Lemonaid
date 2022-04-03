@@ -28,6 +28,7 @@
   width: 30px;
   cursor: pointer;
   transition: 0.5s ease;
+  filter: invert(82%) sepia(47%) saturate(1%) hue-rotate(43deg) brightness(101%) contrast(95%);
 }
 
 .refresh-icon:hover {
@@ -65,6 +66,7 @@
 .medicine-info-reset p {
   margin: 0 5px;
   font-size: 12px;
+  color: #e5e5e5;
 }
 
 .medicine-info-c {

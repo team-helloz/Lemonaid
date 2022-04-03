@@ -85,7 +85,7 @@ export default function MedicineStepOne(props: MedicineStepProps) {
             >
               <img
                 className="medicine-most-img"
-                src={`/MedicineSearch/${medicine.shape}.png`}
+                src={`https://helloz-lemonaid.s3.ap-northeast-2.amazonaws.com/medicine/${medicine.no}.jpg`}
                 alt=""
               />
               <p>{medicine.name}</p>

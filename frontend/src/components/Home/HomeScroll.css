@@ -6,10 +6,12 @@
 }
 
 .h-menu-num {
-  margin: 50px 0 10px 0;
+  margin: 50px 0 0 0;
   text-align: end;
-  font-size: 40px;
-  font-weight: bold;
+  font-family: 'roboto';
+  font-size: 50px;
+  font-weight: 1000;
+  color: rgb(201, 201, 201);
 }
 
 .h-menu-box {
@@ -25,6 +27,10 @@
 
 .h-menu-box:hover {
   width: 500px;
+}
+
+.h-menu-box:hover p {
+  color: black;
 }
 
 .h-move-title {
@@ -46,16 +52,8 @@
   transition: .5s ease;
 }
 
-.home-medical:hover p{
-  color: black;
-}
-
 .home-medicine {
   display: flex;
-}
-
-.home-medicine:hover p{
-  color: black;
 }
 
 .home-disease {
@@ -63,16 +61,8 @@
   justify-content: end;
 }
 
-.home-disease:hover p{
-  color: black;
-}
-
 .home-covid {
   display: flex;
-}
-
-.home-covid:hover p{
-  color: black;
 }
 
 .h-menu-l-description {

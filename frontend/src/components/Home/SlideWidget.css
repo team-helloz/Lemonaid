@@ -21,7 +21,7 @@
 
 .h-m-medicine {
   color: rgb(150, 150, 150);
-  top: 525px;
+  top: 531px;
   left: 165px;
   font-size: 12px;
   letter-spacing: 2px;
@@ -29,7 +29,7 @@
 
 .h-m-disease {
   color: rgb(150, 150, 150);
-  top: 565px;
+  top: 571px;
   left: 150px;
   font-size: 12px;
   letter-spacing: 2px;
@@ -37,7 +37,7 @@
 
 .h-m-covid {
   color: rgb(150, 150, 150);
-  top: 605px;
+  top: 611px;
   left: 130px;
   font-size: 12px;
   letter-spacing: 2px;
@@ -110,21 +110,21 @@
 }
 /* Medicine */
 .medicine-up-1 {
-  transform: translate(15px, -40px);
+  transform: translate(15px, -46px);
   color: #06beb6;
   font-size: 18px;
   letter-spacing: 3px;
 }
 
 .medicine-up-2 {
-  transform: translate(0, -80px);
+  transform: translate(0, -86px);
   color: rgb(150, 150, 150);
   font-size: 12px;
   letter-spacing: 2px;
 }
 
 .medicine-up-3 {
-  transform: translate(-15px, -120px);
+  transform: translate(-15px, -126px);
 }
 
 /* Disease */
@@ -134,13 +134,13 @@
 
 .disease-up-2 {
   color: #06beb6;
-  transform: translate(30px, -80px);
+  transform: translate(30px, -86px);
   font-size: 18px;
   letter-spacing: 3px;
 }
 
 .disease-up-3 {
-  transform: translate(15px, -120px);
+  transform: translate(15px, -126px);
   color: rgb(150, 150, 150);
   font-size: 12px;
   letter-spacing: 2px;
@@ -156,7 +156,7 @@
 
 .covid-up-3 {
   color: #06beb6;
-  transform: translate(50px, -120px);
+  transform: translate(50px, -126px);
   font-size: 18px;
   letter-spacing: 3px;
 }
