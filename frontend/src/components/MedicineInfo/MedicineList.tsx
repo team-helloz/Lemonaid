@@ -23,7 +23,8 @@ interface Medicine {
   num: number;
   name: string;
   company: string;
-  material: string;
+  class_name: string;
+  etc_otc_name: string;
 }
 
 export default function MedicineList(props: SearchData) {
@@ -105,7 +106,7 @@ export default function MedicineList(props: SearchData) {
           >
             <img
               className="medicine-list-item-img"
-              src={`https://helloz-lemonaid.s3.ap-northeast-2.amazonaws.com/medicine/${medicine.num}.jpg`}
+              src={`https://j6d108.p.ssafy.io/images/medicine/${medicine.num}.jpg`}
               alt=""
             />
             <div>
@@ -118,7 +119,9 @@ export default function MedicineList(props: SearchData) {
                 />
               </div>
               <div className="medicine-list-item-desc">
-                <p>{medicine.material}</p>
+                <p>○ 제조사: {medicine.company}</p>
+                <p>○ 분류: {medicine.class_name}</p>
+                <p>○ 구분: {medicine.etc_otc_name}</p>
               </div>
             </div>
           </div>
