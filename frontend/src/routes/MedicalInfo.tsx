@@ -18,7 +18,7 @@ import MenuOpen from "../assets/medical_png/menu_open.png";
 import MenuClose from "../assets/medical_png/menu_close.png";
 
 const radiusLevel = [
-  0, 460, 600, 1300, 3000, 6300, 13000, 24400, 56300, 100000, 174670,
+  0, 260, 460, 600, 1300, 3000, 6300, 13000, 24400, 56300, 100000, 174670,
 ];
 
 const id = "daum-postcode"; // script가 이미 rending 되어 있는지 확인하기 위한 ID
@@ -66,10 +66,10 @@ export default function MedicalInfo() {
   const [subjectId, setSubjectId] = useState(0);
   const [subjectName, setSubjectName] = useState("전체");
 
-  const [mapZoomLevel, setMapZoomLevel] = useState(3);
-  const [mapRadius, setMapRadius] = useState(0);
+  const [mapZoomLevel, setMapZoomLevel] = useState(4);
 
-  const [pageNumber, setPageNumber] = useState(1);
+  const [nowPage, setNowPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(0);
 
   const postcodeRef = useRef<HTMLDivElement | null>(null);
   const isLoading = useRef(false);
@@ -129,6 +129,7 @@ export default function MedicalInfo() {
         if (lng !== null && lng !== undefined) {
           // 현재 위치 옮기기
           setNowCenter({ lat: lat, lng: lng });
+          setViewCenter({ lat: lat, lng: lng });
         }
       })
       .catch((e) => console.log(e));
@@ -179,19 +180,23 @@ export default function MedicalInfo() {
           now_lat: nowCenter.lat,
           now_lng: nowCenter.lng,
           radius: radius,
-          paged: false,
+          page: nowPage,
+          size: 10,
         },
       })
       .then((res) => {
         const { data: medical_list } = res.data;
 
-        let mediList: IHospital[] = medical_list;
+        let mediList: IHospital[] = medical_list.content;
         mediList = addOpentimeValid(mediList);
         mediList = addOpenOrNot(mediList);
         mediList = addOpenDays(mediList);
 
         setHospitalList(mediList);
         setSelectHospital("");
+
+        let totalPages: number = medical_list.totalPages;
+        setTotalPage(totalPages);
       })
       .catch((e) => console.log(e));
   };
@@ -501,8 +506,13 @@ export default function MedicalInfo() {
   }, [nowCenter]);
 
   useEffect(() => {
+    setNowPage(0);
     getMedicalList(false);
   }, [keyword, viewHospital, viewPharmacy, isEmergency, codeId, subjectId]);
+
+  useEffect(() => {
+    getMedicalList(false);
+  }, [nowPage]);
 
   // 병원 상세보기창 닫기
   const handDetailClose = () => {
@@ -540,12 +550,6 @@ export default function MedicalInfo() {
   const handleKeyPressSearch = (e: any) => {
     if (e.key === "Enter") {
       setKeyword(e.target.value);
-    }
-  };
-
-  const handleKeyPressAddress = (e: any) => {
-    if (e.key === "Enter") {
-      addToXy(e.target.value);
     }
   };
 
@@ -588,7 +592,6 @@ export default function MedicalInfo() {
               onKeyPress={handleKeyPressSearch}
             />
           </div>
-          {/* <img src={SearchGlass} alt="" width={"30px"} /> */}
         </div>
       )}
       {openAddress === true && (
@@ -651,7 +654,6 @@ export default function MedicalInfo() {
           <img src={openSubject ? MenuClose : MenuOpen} alt="" width={"17px"} />
         </div>
       </div>
-      {/* <div className="medi-curpos"></div> */}
       <div className="medi-right">
         <MedicalList
           hospitals={hospitalList}
@@ -659,16 +661,17 @@ export default function MedicalInfo() {
           handDetailOpen={handDetailOpen}
           selectHospital={selectHospital}
           UpdateSelectHospital={UpdateSelectHospital}
+          nowPage={nowPage}
+          totalPage={totalPage}
+          setNowPage={setNowPage}
         />
       </div>
       <MedicalMap
-        viewCenter={viewCenter}
         setViewCenter={setViewCenter}
         hospitals={hospitalList}
         handDetailOpen={handDetailOpen}
         directionMode={directionMode}
         nowCenter={nowCenter}
-        destCoord={destCoord}
         userGeo={userGeo}
         isEmergency={isEmergency}
         selectHospital={selectHospital}
