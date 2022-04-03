@@ -1,13 +1,19 @@
 package com.helloz.lemonaid.service;
 
+import com.google.common.base.Converter;
 import com.helloz.lemonaid.common.exception.NotFoundException;
 import com.helloz.lemonaid.db.entity.*;
 import com.helloz.lemonaid.db.repository.*;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
+import com.helloz.lemonaid.response.HospitalRes;
 import com.helloz.lemonaid.response.MedicalCode;
+import com.helloz.lemonaid.response.MedicalRes;
+import com.helloz.lemonaid.response.PharmacyRes;
 import com.helloz.lemonaid.util.DistanceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -28,23 +34,28 @@ public class MedicalServiceImpl implements MedicalService {
     private final MedicalRepository medicalRepository;
 
     @Override
-    public List<Medical> getMedicalList(MedicalSearchFilter filter, Pageable pageable) {
-        List<Medical> result = new ArrayList<>();
+    public Page<MedicalRes> getMedicalList(MedicalSearchFilter filter, Pageable pageable) {
+        Page<? extends Medical> result = null;
+        int subjectSize = filter.getSubjects() != null ? filter.getSubjects().size() : 0;
 
-        int subjectSize = filter.getSubjects()!= null ? filter.getSubjects().size(): 0;
-
-        if (filter.getSearchType() == MedicalType.all) {
-            result.addAll(medicalRepository.searchByFilter(filter, subjectSize, pageable));
-        } else if (filter.getSearchType() == MedicalType.hospital) {
-            result.addAll(hospitalRepository.searchByFilter(filter,subjectSize, pageable));
+        if (filter.getSearchType() == MedicalType.hospital) {
+            result = hospitalRepository.searchByFilter(filter, subjectSize, pageable);
         } else if (filter.getSearchType() == MedicalType.pharmacy) {
-            result.addAll(pharmacyRepository.searchByFilter(filter, pageable));
+            result = pharmacyRepository.searchByFilter(filter, pageable);
+        } else {
+            result = medicalRepository.searchByFilter(filter, subjectSize, pageable);
         }
 
-        result.forEach(m -> {
-            m.setDistance(DistanceUtil.getDistance(m.getLat(), m.getLng(), filter.getNowLat(), filter.getNowLng()));
-        });
-        return result;
+        List<MedicalRes> contents = result.getContent().stream().map(m -> {
+            if (m instanceof Hospital) {
+                return HospitalRes.of((Hospital) m);
+            } else {
+                return PharmacyRes.of((Pharmacy) m);
+            }
+        }).collect(Collectors.toList());
+
+
+        return new PageImpl<>(contents, pageable, result.getTotalElements());
     }
 
     @Override
