@@ -2,6 +2,8 @@ package com.helloz.lemonaid.controller;
 
 import com.helloz.lemonaid.common.model.response.BaseResponseBody;
 import com.helloz.lemonaid.db.entity.CoronaCount;
+import com.helloz.lemonaid.db.entity.CoronaGender;
+import com.helloz.lemonaid.response.CoronaGenderRes;
 import com.helloz.lemonaid.service.CoronaService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +33,21 @@ public class CoronaController {
 
     ) {
         List<CoronaCount> result = coronaService.getCoronaCountList();
+        return ResponseEntity.ok(result);
+    }
+
+
+    @GetMapping("/gender")
+    @ApiOperation(value = "코로나 성별별 확진자 수 조회", notes = "<strong>성별별 확진자 수</strong>를 날짜별로 조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Server Error")
+    })
+    private ResponseEntity<CoronaGenderRes> getCoronaGenderList(
+
+    ) {
+        CoronaGenderRes result = coronaService.getCoronaGenderList();
         return ResponseEntity.ok(result);
     }
 
