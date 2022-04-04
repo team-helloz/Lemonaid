@@ -1,7 +1,23 @@
-.medi-home {
-  background: black;
+.medi-left {
+  position: absolute;
+  z-index: 2;
+  background: rgb(247, 247, 247);
+  width: 8vw;
+  height: 94vh;
+  left: 3vh;
+  top: 3vh;
+  border: 1px solid #b1b1b1;
+  display: flex;
+  justify-content: center;
+}
 
-  color: white;
+.medi-home img {
+  width: 6vw;
+}
+.medi-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 7vw;
   position: absolute;
   cursor: pointer;
@@ -13,26 +29,16 @@
 .medi-right {
   position: absolute;
   z-index: 2;
-  background: rgb(215, 215, 255);
   width: 19vw;
-  height: 100vh;
-  right: 0;
-  top: 0;
+  height: 96vh;
+  right: 2vh;
+  top: 2vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .medi-right::-webkit-scrollbar {
   width: 0px;
-}
-.medi-left {
-  position: absolute;
-  z-index: 2;
-  background: rgb(150, 150, 245);
-  width: 7vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
 }
 
 .medi-search {
@@ -46,7 +52,7 @@
   margin-left: 13px;
 }
 
-.medi-serach-detail{
+.medi-serach-detail {
   position: absolute;
   z-index: 2;
   background: rgb(100, 218, 100);
@@ -57,11 +63,11 @@
   transform: translate(-50%, 0%);
 }
 
-.medi-address{
+.medi-address {
   background: rgb(211, 160, 65);
   width: 7vw;
   height: 5vh;
-  top : 5vh;
+  top: 5vh;
   cursor: pointer;
 }
 

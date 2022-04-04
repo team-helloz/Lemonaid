@@ -41,7 +41,7 @@ export default function KakaoMap(props: MedicalMapProps) {
     <>
       <Map
         center={{ lat: nowCenter.lat, lng: nowCenter.lng }}
-        style={{ width: "74vw", height: "100vh", left: "7vw" }}
+        style={{ width: "100vw", height: "100vh" }}
         level={4} // 지도의 확대 레벨
         onCenterChanged={(map) =>
           setViewCenter({
