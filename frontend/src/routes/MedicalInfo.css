@@ -3,12 +3,15 @@
   z-index: 2;
   background: rgb(247, 247, 247);
   width: 8vw;
-  height: 94vh;
-  left: 3vh;
-  top: 3vh;
-  border: 1px solid #b1b1b1;
+  height: 90vh;
+  left: 2vh;
+  top: 2vh;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .medi-home img {
@@ -19,37 +22,24 @@
   align-items: center;
   justify-content: center;
   width: 7vw;
-  position: absolute;
   cursor: pointer;
   height: 5vh;
   text-align: center;
-  bottom: 0;
+  border-bottom: 1px solid rgba(95, 95, 95, 0.5);
+  margin-bottom: 5px;
 }
 
 .medi-right {
   position: absolute;
   z-index: 2;
-  width: 22vw;
+  width: 40vh;
   height: 96vh;
   right: 2vh;
   top: 2vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.medi-right::-webkit-scrollbar {
-  width: 0px;
 }
 
 .medi-search {
-  background: rgb(211, 160, 65);
-  width: 7vw;
-  height: 5vh;
   cursor: pointer;
-}
-
-.medi-search img {
-  margin-left: 13px;
 }
 
 .medi-serach-detail {
@@ -63,102 +53,129 @@
   transform: translate(-50%, 0%);
 }
 
-.medi-address {
-  background: rgb(211, 160, 65);
-  width: 7vw;
-  height: 5vh;
-  top: 5vh;
-  cursor: pointer;
-}
-
 .medi-address-detail {
   position: absolute;
   z-index: 2;
-  background: rgb(100, 218, 100);
-  width: 20vw;
+  background: rgba(77, 150, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 20%;
   height: 5vh;
-  left: 17%;
-  top: 7%;
+  left: 50%;
+  font-weight: 600;
+  top: 2vh;
   transform: translate(-50%, 0%);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 0px 10px;
 }
-
+.medi-address-detail button {
+  margin-left: auto;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "lemon-font";
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: rgb(83, 83, 83);
+  background: rgb(247, 247, 247);
+}
 .medi-bottom {
   position: absolute;
   z-index: 2;
-  background: #e5e9ff;
-  width: 60vw;
+  width: 50vw;
   height: 5vh;
-  left: 45%;
-  bottom: 5%;
+  left: 50%;
+  bottom: 8vh;
   transform: translate(-50%, 0%);
   overflow: hidden;
   border-radius: 10px;
   vertical-align: middle;
-  border: 1px solid;
+  background: rgba(66, 194, 255, 0.9);
+  color: rgb(73, 73, 73);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .medi-bottom-menu-item {
-  width: 17.5%;
+  flex: 1;
   height: 100%;
-  float: left;
-  background-color: #e5e9ff;
   cursor: pointer;
-  border-right: 1px solid;
-  display: flex;
-  align-items: center; /* 수직 정렬 */
-  flex-direction: row; /* default: row */
-  justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
-}
-
-.medi-bottom-menu-item-selected {
-  width: 17.5%;
-  height: 100%;
-  float: left;
-  background-color: #8864db;
-  cursor: pointer;
-  border-right: 1px solid;
-  display: flex;
-  align-items: center; /* 수직 정렬 */
-  flex-direction: row; /* default: row */
-  justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
-}
-
-.medi-bottom-menu-item img {
-  margin-right: 8px;
-}
-
-.medi-bottom-menu-item-selected img {
-  margin-right: 8px;
-}
-
-.medi-bottom-menu-item-code {
-  width: 15%;
-  height: 100%;
-  float: left;
-  background-color: #e5e9ff;
-  cursor: pointer;
-  border-right: 1px solid;
-  display: flex;
-  align-items: center; /* 수직 정렬 */
-  flex-direction: row; /* default: row */
-  justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
-}
-
-.medi-bottom-menu-item-code img {
-  margin-left: 13px;
-}
-
-.medi-bottom-menu-item-code-selected {
-  width: 15%;
-  height: 100%;
-  float: left;
-  background-color: #8864db;
-  cursor: pointer;
-  border-right: 1px solid;
+  border-right: 1px solid rgb(73, 73, 73);
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(73, 73, 73);
+}
+
+.medi-bottom-menu-item-selected {
+  background-color: #5463ff;
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  border-right: 1px solid rgb(73, 73, 73);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(219, 219, 219) !important;
+}
+
+.emer-text {
+  color: #ff1818;
+}
+.medi-bottom-menu-item img {
+  margin-right: 10px;
+}
+
+.medi-bottom-menu-item-selected img {
+  margin-right: 10px;
+}
+
+.medi-bottom-menu-item-code {
+  background-color: #488fb1;
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  border-right: 1px solid rgb(73, 73, 73);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(73, 73, 73);
+}
+
+.medi-bottom-menu-item-code img {
+  margin-left: 10px;
+}
+
+.medi-bottom-menu-item-code-selected {
+  background: #8864db;
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  border-right: 1px solid rgb(73, 73, 73);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(73, 73, 73);
 }
 
 .medi-bottom-menu-item-code-selected img {
@@ -166,36 +183,37 @@
 }
 
 .medi-bottom-menu-item-subject {
-  width: 14%;
+  background-color: #488fb1;
+  flex: 1;
   height: 100%;
-  float: left;
-  background-color: #e5e9ff;
-  cursor: pointer;
-  display: flex;
-  align-items: center; /* 수직 정렬 */
-  flex-direction: row; /* default: row */
-  justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
-}
-
-.medi-bottom-menu-item-subject img {
-  margin-left: 13px;
-}
-
-.medi-bottom-menu-item-subject-selected {
-  width: 14%;
-  height: 100%;
-  float: left;
-  background-color: #8864db;
   cursor: pointer;
   display: flex;
   align-items: center;
-  /* 수직 정렬 */
   flex-direction: row;
-  /* default: row */
   justify-content: center;
-  /* flex direction에 대해서 정렬방식 선택 */
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(73, 73, 73);
+}
+
+.medi-bottom-menu-item-subject img {
+  margin-left: 10px;
+}
+
+.medi-bottom-menu-item-subject-selected {
+  background-color: #8864db;
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(73, 73, 73);
 }
 
 .medi-bottom-menu-item-subject-selected img {
-  margin-left: 13px;
+  margin-left: 10px;
 }

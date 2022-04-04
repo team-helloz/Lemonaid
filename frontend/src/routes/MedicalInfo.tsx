@@ -580,18 +580,16 @@ export default function MedicalInfo() {
 
   return (
     <>
+      <div className="medi-address-detail">
+        {roadAdd}
+        <button onClick={loadLayout}>변경</button>
+      </div>
       <div className="medi-left">
-        <div className="medi-search" onClick={() => setOpenSerach(!openSerach)}>
-          <img src={SearchGlass} alt="" width={"50px"} />
-        </div>
-        <div
-          className="medi-address"
-          onClick={() => setOpenAddress(!openAddress)}
-        >
-          <h3>현재위치변경</h3>
-        </div>
         <div className="medi-home" onClick={routeHome}>
-          Home
+          <img src="/Lemonaid.png" alt="" />
+        </div>
+        <div className="medi-search" onClick={() => setOpenSerach(!openSerach)}>
+          이름으로 검색
         </div>
       </div>
       {openSerach === true && (
@@ -606,19 +604,12 @@ export default function MedicalInfo() {
           </div>
         </div>
       )}
-      {openAddress === true && (
-        <div className="medi-address-detail">
-          <div>
-            {roadAdd} <button onClick={loadLayout}>변경</button>
-          </div>
-        </div>
-      )}
       <div className="medi-bottom">
         <div
           className="medi-bottom-menu-item"
           onClick={() => getMedicalList(false)}
         >
-          <img src={RefreshIcon} alt="" width={"17px"} />현 위치에서 검색
+          <img src={RefreshIcon} alt="" width={"17px"} />현 지도에서 검색
         </div>
         <div
           className={
@@ -627,7 +618,7 @@ export default function MedicalInfo() {
           onClick={() => setViewHospital(!viewHospital)}
         >
           <img src={SymbolHospital} alt="" width={"17px"} />
-          병원 조회
+          병원 검색
         </div>
         <div
           className={
@@ -636,14 +627,16 @@ export default function MedicalInfo() {
           onClick={() => setViewPharmacy(!viewPharmacy)}
         >
           <img src={SymbolPharmacy} alt="" width={"17px"} />
-          약국 조회
+          약국 검색
         </div>
         <div
-          className={"medi-bottom-menu-item" + (isEmergency ? "-selected" : "")}
+          className={
+            "emer-text medi-bottom-menu-item" + (isEmergency ? "-selected" : "")
+          }
           onClick={() => setIsEmergency(!isEmergency)}
         >
           <img src={SymbolEmergency} alt="" width={"17px"} />
-          응급실 조회
+          응급 진료
         </div>
         <div
           className={
