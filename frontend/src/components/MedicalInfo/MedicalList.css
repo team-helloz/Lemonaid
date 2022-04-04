@@ -1,59 +1,116 @@
 .hos-list-container {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   border-radius: 10px;
   padding: 20px;
   cursor: pointer;
   margin-bottom: 20px;
   background: rgb(247, 247, 247);
-  height: 250px;
+  height: 210px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-
+.hos-list-container::-webkit-scrollbar {
+  width: 0px;
+}
 .hos-list-container-selected {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 6px 1px;
   border-radius: 10px;
   padding: 20px;
   cursor: pointer;
   margin-bottom: 20px;
   background: rgb(247, 247, 247);
-  height: 250px;
+  height: 210px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-
+.hos-list-container-selected::-webkit-scrollbar {
+  width: 0px;
+}
 .hos-title-sub {
   margin: 0;
   border-radius: 5px;
-  background: rgb(172, 172, 172);
+  background: rgba(197, 197, 197, 0.5);
   cursor: default;
-  color: aqua;
+  color: #f24a72;
   border: 0;
+  font-weight: 600;
+  font-family: "lemon-font";
+  margin-bottom: 5px;
 }
 .medi-list-container img {
   width: 25px;
+}
+
+.right-top-container {
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.right-top-container::-webkit-scrollbar {
+  width: 0px;
 }
 .hos-list-name {
   font-size: 18px;
   font-weight: 800;
   margin: 0;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
 }
-
-.hos-list-code {
-  font-size: 16px;
-  margin: 5px 0;
+.hos-list-name button {
+  color: #30aadd;
+  border: 2px solid #30aadd;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 2;
+  margin-left: 5px;
+  background: none;
+  font-family: "lemon-font";
 }
 
 .hos-list-subject {
-  font-size: large;
-  margin: 5px 0;
+  font-size: 15px;
+  margin-top: 10px !important;
+  font-weight: 600;
+  margin: 0;
+  color: #8479e1;
 }
-
+.hos-list-subject span {
+  margin-right: 5px;
+  display: inline-block;
+}
 .hos-list-openornot {
-  font-size: large;
-  margin: 5px 0;
+  margin: 0;
+  border-radius: 5px;
+  background: rgba(197, 197, 197, 0.5);
+  cursor: default;
+  color: #fdaf75;
+  border: 0;
+  font-weight: 600;
+  font-family: "lemon-font";
+  margin-bottom: 10px;
+  margin-right: 5px;
 }
-
+.hos-list-openornot2 {
+  margin: 0;
+  border-radius: 5px;
+  background: rgba(197, 197, 197, 0.5);
+  cursor: default;
+  color: #6bcb77;
+  border: 0;
+  font-weight: 600;
+  font-family: "lemon-font";
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
 .hos-list-address {
   font-size: 13px;
   font-weight: 600;
   margin: 0;
+  margin-bottom: 15px;
   color: rgb(133, 133, 133);
 }
 .hos-list-address span {
@@ -61,22 +118,22 @@
   margin-right: 3px;
 }
 .hos-list-tel {
-  font-size: large;
-  margin: 5px 0;
-}
-
-.hos-list-distance {
-  font-size: large;
-  margin: 5px 0;
-}
-
-.medi-pagi {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  background: #c9c9c9;
+  color: rgb(104, 104, 104);
+  border: 0;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "lemon-font";
+  cursor: pointer;
 }
 
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 ul {
@@ -105,7 +162,7 @@ ul.pagination li:last-child {
 
 ul.pagination li a {
   text-decoration: none;
-  color: #337ab7;
+  color: #48b1bf;
   font-size: 1rem;
 }
 
@@ -114,16 +171,16 @@ ul.pagination li.active a {
 }
 
 ul.pagination li.active {
-  background-color: #337ab7;
+  background-color: #48b1bf;
 }
 
 ul.pagination li a:hover,
 ul.pagination li a.active {
-  color: blue;
+  color: #48b1bf;
 }
 
 .page-selection {
   width: 48px;
   height: 30px;
-  color: #337ab7;
+  color: #48b1bf;
 }
