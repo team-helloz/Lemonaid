@@ -6,8 +6,8 @@
   position: fixed;
   top: 0;
   right: 0;
-  border-left: 1px solid rgba(141, 141, 141, 0.4);
-  background-color: #f5f5f7;
+  /* border-left: 1px solid rgba(141, 141, 141, 0.4); */
+  background-color: rgb(224, 224, 224);
   transition: 0.5s ease;
   box-shadow: rgba(60, 64, 67, 0) 0px 0px 0px 1900px;
 }
@@ -26,7 +26,7 @@
 .h-nav-line {
   width: 35px;
   height: 5px;
-  background-color: #0dadea;
+  background-color: #06beb6;
 }
 
 .h-nav-open {
@@ -54,13 +54,13 @@
 }
 
 .h-nav-menu:hover {
-  color: #0dadea;
+  color: #06beb6;
 }
 
 .h-nav-menu:after {
   display: block;
   content: "";
-  border-bottom: solid 2px #21b1ea;
+  border-bottom: solid 2px #06beb6;
   transform: scaleX(0);
   transition: transform 0.3s ease-in-out;
 }

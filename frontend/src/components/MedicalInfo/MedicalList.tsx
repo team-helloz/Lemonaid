@@ -109,7 +109,7 @@ export default function MedicalList({
         {hospitals && hospitals.length === 0 && <h3>검색결과가 없습니다.</h3>}
       </div>
       {totalPage > 1 && (
-        <div className="pagination">
+        <div className="pagination medi-pagi">
           <div
             onClick={() => {
               pageChange(0);

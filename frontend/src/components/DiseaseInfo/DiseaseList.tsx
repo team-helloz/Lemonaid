@@ -47,7 +47,7 @@ export default function DiseaseList(props: SymptomProps) {
     axios
       .get(`/disease/?symptoms=${nowSymptoms}`)
       .then((res) => {
-        setDiseases(res.data.data);
+        setDiseases(res.data.data.content);
       })
       .catch((err) => {
         console.log(err);
