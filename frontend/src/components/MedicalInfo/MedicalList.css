@@ -1,30 +1,42 @@
 .hos-list-container {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   cursor: pointer;
   margin-bottom: 20px;
   background: rgb(247, 247, 247);
-  height: 300px;
+  height: 250px;
 }
 
 .hos-list-container-selected {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   cursor: pointer;
   margin-bottom: 20px;
   background: rgb(247, 247, 247);
-  height: 300px;
+  height: 250px;
 }
 
+.hos-title-sub {
+  margin: 0;
+  border-radius: 5px;
+  background: rgb(172, 172, 172);
+  cursor: default;
+  color: aqua;
+  border: 0;
+}
+.medi-list-container img {
+  width: 25px;
+}
 .hos-list-name {
-  font-size: x-large;
-  margin: 5px 0;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
 }
 
 .hos-list-code {
-  font-size: large;
+  font-size: 16px;
   margin: 5px 0;
 }
 
@@ -39,10 +51,15 @@
 }
 
 .hos-list-address {
-  font-size: large;
-  margin: 5px 0;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  color: rgb(133, 133, 133);
 }
-
+.hos-list-address span {
+  color: #48b1bf;
+  margin-right: 3px;
+}
 .hos-list-tel {
   font-size: large;
   margin: 5px 0;
