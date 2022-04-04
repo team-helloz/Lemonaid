@@ -61,7 +61,7 @@ export default function MedicalList({
 
   return (
     <>
-      <div>
+      <div className="right-top-container">
         {hospitals &&
           hospitals.map((hospital) => (
             <div
@@ -74,15 +74,29 @@ export default function MedicalList({
               onMouseLeave={() => UpdateSelectHospital("")}
               key={hospital.no}
             >
-              <button className="hos-title-sub">{hospital.code_name}</button>
-              <p className="hos-list-name">{hospital.name}</p>
-              {hospital.parking_count > 0 && (
-                <img src={ParkingPng} alt="주차" />
+              {hospital.opentime.opentime_valid === "Y" && (
+                <button className="hos-list-openornot2">
+                  {hospital.openornot}
+                </button>
               )}
+              {hospital.opentime.opentime_valid === "N" && (
+                <button className="hos-list-openornot">
+                  영업 시간 정보 없음
+                </button>
+              )}
+              <button className="hos-title-sub">{hospital.code_name}</button>
+              <p className="hos-list-name">
+                {hospital.name}
+                {hospital.parking_count > 0 && <button>P</button>}
+              </p>
+              <p className="hos-list-address">
+                <span>{hospital.distance.toFixed()}</span>m · {hospital.address}
+              </p>
+              <button className="hos-list-tel">TEL : {hospital.tel}</button>
 
               <p className="hos-list-subject">
                 {hospital.type === "hospital" && hospital.code <= 21 && (
-                  <span>{hospital.code_name}</span>
+                  <span>-</span>
                 )}
                 {hospital.type === "hospital" &&
                   hospital.code > 21 &&
@@ -91,16 +105,6 @@ export default function MedicalList({
                     <span key={index}>{subjects.name}</span>
                   ))}
               </p>
-              <p className="hos-list-address">
-                <span>{hospital.distance.toFixed()}</span>m · {hospital.address}
-              </p>
-              {hospital.opentime.opentime_valid === "Y" && (
-                <p className="hos-list-openornot">{hospital.openornot}</p>
-              )}
-              {hospital.opentime.opentime_valid === "N" && (
-                <p className="hos-list-openornot">영업시간정보없음</p>
-              )}
-              <p className="hos-list-tel">{hospital.tel}</p>
             </div>
           ))}
         {hospitals && hospitals.length === 0 && <h3>검색결과가 없습니다.</h3>}
