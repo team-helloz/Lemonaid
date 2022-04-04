@@ -1,16 +1,24 @@
 .hos-list-container {
-  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
   padding: 10px;
   cursor: pointer;
+  margin-bottom: 20px;
+  background: rgb(247, 247, 247);
+  height: 300px;
 }
 
 .hos-list-container-selected {
-  border: 2px solid red;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
   padding: 10px;
   cursor: pointer;
+  margin-bottom: 20px;
+  background: rgb(247, 247, 247);
+  height: 300px;
 }
 
-.hos-list-name{
+.hos-list-name {
   font-size: x-large;
   margin: 5px 0;
 }
@@ -43,4 +51,7 @@
 .hos-list-distance {
   font-size: large;
   margin: 5px 0;
+}
+
+.medi-pagi {
 }
