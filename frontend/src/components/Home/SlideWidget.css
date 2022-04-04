@@ -72,7 +72,7 @@
   border: 8px solid transparent;
   background-size: 100% 100%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
   background-repeat: no-repeat;
-  background-image: linear-gradient(white, white),
+  background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247)),
     linear-gradient(30deg, lightgrey 36%, lightgrey 30%),
     linear-gradient(130deg, #06beb6 36%, lightgrey 30%),
     linear-gradient(300deg, lightgrey 36%, lightgrey 30%),
