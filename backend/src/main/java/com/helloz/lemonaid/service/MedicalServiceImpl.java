@@ -47,6 +47,7 @@ public class MedicalServiceImpl implements MedicalService {
         }
 
         List<MedicalRes> contents = result.getContent().stream().map(m -> {
+            m.setDistance(DistanceUtil.getDistance(m.getLat(), m.getLng(), filter.getNowLat(), filter.getNowLng()));
             if (m instanceof Hospital) {
                 return HospitalRes.of((Hospital) m);
             } else {
