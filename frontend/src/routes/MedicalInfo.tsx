@@ -68,21 +68,28 @@ export default function MedicalInfo() {
 
   const [mapZoomLevel, setMapZoomLevel] = useState(4);
 
-  const [nowPage, setNowPage] = useState(0);
+  const [nowPage, setNowPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const postcodeRef = useRef<HTMLDivElement | null>(null);
-  const isLoading = useRef(false);
 
   // 유저 위치 자동 추적
-  const userGeo = () => {
+  const userGeo = async () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var lat = position.coords.latitude,
-          lng = position.coords.longitude;
-        setNowCenter({ lat: lat, lng: lng });
-        setViewCenter({ lat: lat, lng: lng });
-      });
+      await navigator.geolocation.getCurrentPosition(
+        function (position) {
+          var lat = position.coords.latitude,
+            lng = position.coords.longitude;
+          setNowCenter({ lat: lat, lng: lng });
+          setViewCenter({ lat: lat, lng: lng });
+          setIsLoading(true);
+        },
+        function () {
+          setIsLoading(true);
+        }
+      );
     }
   };
 
@@ -106,7 +113,6 @@ export default function MedicalInfo() {
           addr = res.data.documents[0].address.address_name;
           setRoadAdd(addr);
         }
-        isLoading.current = true;
       })
       .catch((e) => console.log(e));
   };
@@ -136,7 +142,7 @@ export default function MedicalInfo() {
   };
 
   const getMedicalList = (isNowCenter: boolean) => {
-    if (isLoading.current === false) return;
+    if (isLoading === false) return;
 
     let serachType = "all";
     if (viewHospital === true && viewPharmacy === true) {
@@ -180,7 +186,7 @@ export default function MedicalInfo() {
           now_lat: nowCenter.lat,
           now_lng: nowCenter.lng,
           radius: radius,
-          page: nowPage,
+          page: nowPage - 1,
           size: 10,
         },
       })
@@ -513,6 +519,12 @@ export default function MedicalInfo() {
   useEffect(() => {
     getMedicalList(false);
   }, [nowPage]);
+
+  useEffect(() => {
+    if (isLoading === true) {
+      getMedicalList(true);
+    }
+  }, [isLoading]);
 
   // 병원 상세보기창 닫기
   const handDetailClose = () => {
