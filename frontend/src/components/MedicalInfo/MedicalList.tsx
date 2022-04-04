@@ -73,15 +73,12 @@ export default function MedicalList({
               onMouseLeave={() => UpdateSelectHospital("")}
               key={hospital.no}
             >
-              <p>
-                <span className="hos-list-name">{hospital.name}</span>
-                {hospital.type === "hospital" && hospital.code === 11 && (
-                  <span className="hos-list-code">{hospital.code_name}</span>
-                )}
-                {hospital.parking_count > 0 && (
-                  <img src={ParkingPng} alt="주차" />
-                )}
-              </p>
+              <button className="hos-title-sub">{hospital.code_name}</button>
+              <p className="hos-list-name">{hospital.name}</p>
+              {hospital.parking_count > 0 && (
+                <img src={ParkingPng} alt="주차" />
+              )}
+
               <p className="hos-list-subject">
                 {hospital.type === "hospital" && hospital.code <= 21 && (
                   <span>{hospital.code_name}</span>
@@ -90,10 +87,12 @@ export default function MedicalList({
                   hospital.code > 21 &&
                   hospital.medical_subject_list.length > 0 &&
                   hospital.medical_subject_list.map((subjects, index) => (
-                    <span key={index}>{subjects.name} </span>
+                    <span key={index}>{subjects.name}</span>
                   ))}
               </p>
-              <p className="hos-list-address">{hospital.address}</p>
+              <p className="hos-list-address">
+                <span>{hospital.distance.toFixed()}</span>m · {hospital.address}
+              </p>
               {hospital.opentime.opentime_valid === "Y" && (
                 <p className="hos-list-openornot">{hospital.openornot}</p>
               )}
@@ -101,9 +100,6 @@ export default function MedicalList({
                 <p className="hos-list-openornot">영업시간정보없음</p>
               )}
               <p className="hos-list-tel">{hospital.tel}</p>
-              <p className="hos-list-distance">
-                {hospital.distance.toFixed()}m
-              </p>
             </div>
           ))}
         {hospitals && hospitals.length === 0 && <h3>검색결과가 없습니다.</h3>}
