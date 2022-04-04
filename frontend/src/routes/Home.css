@@ -1,6 +1,6 @@
 .home-page {
   display: flex;
-  background: rgb(253, 253, 253);
+  background: rgb(247, 247, 247);
 }
 
 .h-main {
@@ -42,17 +42,20 @@
 .home-mouse {
   padding-top: 60px;
 }
-
+.home-mouse span:active {
+  top: 80%;
+}
 .home-mouse span {
   position: absolute;
   top: 70%;
-  left: 92%;
-  width: 35px;
-  height: 55px;
+  left: 95%;
+  width: 30px;
+  height: 50px;
   margin-left: -15px;
   border: 2px solid rgba(141, 141, 141, 0.8);
   border-radius: 50px;
   box-sizing: border-box;
+  transition: 0.5s;
 }
 .home-mouse span::before {
   position: absolute;
@@ -62,7 +65,7 @@
   width: 6px;
   height: 6px;
   margin-left: -3px;
-  background-color: black;
+  background-color: rgba(141, 141, 141, 0.8);
   border-radius: 100%;
   -webkit-animation: sdb 2s infinite;
   animation: sdb 2s infinite;
