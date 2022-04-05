@@ -3,7 +3,7 @@
   z-index: 2;
   background: rgb(247, 247, 247);
   width: 8vw;
-  height: 90vh;
+  height: 96vh;
   left: 2vh;
   top: 2vh;
   border-radius: 10px;
@@ -36,10 +36,34 @@
   height: 96vh;
   right: 2vh;
   top: 2vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .medi-search {
   cursor: pointer;
+}
+.mi-container {
+  display: flex;
+  flex-direction: row;
+  width: 20vw;
+  height: 5vh;
+  left: 10vw;
+  top: 2vh;
+  position: absolute;
+}
+.custom-curposcontrol {
+  z-index: 2;
+  background: rgb(61, 61, 61);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.custom-curposcontrol img {
+  height: 90%;
 }
 
 .medi-serach-detail {
@@ -48,13 +72,28 @@
   background: rgb(100, 218, 100);
   width: 20vw;
   height: 5vh;
-  left: 17%;
-  top: 0%;
-  transform: translate(-50%, 0%);
+  left: 10vw;
+  top: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "lemon-font";
+  padding: 0px 10px;
 }
-
+.medi-serach-detail input {
+  font-family: "lemon-font";
+  border: 0;
+  margin-left: 10px;
+  width: 100%;
+  height: 60%;
+  border-radius: 5px;
+  color: black;
+  font-weight: 600;
+}
 .medi-address-detail {
-  position: absolute;
   z-index: 2;
   background: rgba(77, 150, 255, 0.9);
   display: flex;
@@ -62,12 +101,10 @@
   justify-content: center;
   border-radius: 10px;
   font-size: 16px;
-  width: 20%;
-  height: 5vh;
-  left: 50%;
+  width: 18vw;
+  height: 100%;
+  margin-right: 5px;
   font-weight: 600;
-  top: 2vh;
-  transform: translate(-50%, 0%);
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   padding: 0px 10px;
@@ -90,7 +127,7 @@
   width: 50vw;
   height: 5vh;
   left: 50%;
-  bottom: 8vh;
+  bottom: 2vh;
   transform: translate(-50%, 0%);
   overflow: hidden;
   border-radius: 10px;

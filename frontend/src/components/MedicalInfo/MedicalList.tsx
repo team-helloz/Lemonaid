@@ -58,7 +58,6 @@ export default function MedicalList({
   useEffect(() => {
     paginationBtn();
   }, [nowPage, totalPage]);
-
   return (
     <>
       <div className="right-top-container">
@@ -84,7 +83,9 @@ export default function MedicalList({
                   영업 시간 정보 없음
                 </button>
               )}
-              <button className="hos-title-sub">{hospital.code_name}</button>
+              {hospital.code_name !== undefined && (
+                <button className="hos-title-sub">{hospital.code_name}</button>
+              )}
               <p className="hos-list-name">
                 {hospital.name}
                 {hospital.parking_count > 0 && <button>P</button>}
@@ -95,9 +96,6 @@ export default function MedicalList({
               <button className="hos-list-tel">TEL : {hospital.tel}</button>
 
               <p className="hos-list-subject">
-                {hospital.type === "hospital" && hospital.code <= 21 && (
-                  <span>-</span>
-                )}
                 {hospital.type === "hospital" &&
                   hospital.code > 21 &&
                   hospital.medical_subject_list.length > 0 &&
@@ -107,7 +105,6 @@ export default function MedicalList({
               </p>
             </div>
           ))}
-        {hospitals && hospitals.length === 0 && <h3>검색결과가 없습니다.</h3>}
       </div>
       {totalPage > 1 && (
         <Pagination

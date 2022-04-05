@@ -580,9 +580,14 @@ export default function MedicalInfo() {
 
   return (
     <>
-      <div className="medi-address-detail">
-        {roadAdd}
-        <button onClick={loadLayout}>변경</button>
+      <div className="mi-container">
+        <div className="medi-address-detail">
+          {roadAdd}
+          <button onClick={loadLayout}>변경</button>
+        </div>
+        <div className="custom-curposcontrol" onClick={userGeo}>
+          <img src="/map.png" alt="" />
+        </div>
       </div>
       <div className="medi-left">
         <div className="medi-home" onClick={routeHome}>
@@ -592,16 +597,15 @@ export default function MedicalInfo() {
           이름으로 검색
         </div>
       </div>
+
       {openSerach === true && (
         <div className="medi-serach-detail">
-          <div>
-            검색
-            <input
-              type="text"
-              placeholder="키워드를 입력하고 엔터를 눌러보세요"
-              onKeyPress={handleKeyPressSearch}
-            />
-          </div>
+          SEARCH
+          <input
+            type="text"
+            placeholder="검색어를 입력하세요"
+            onKeyPress={handleKeyPressSearch}
+          />
         </div>
       )}
       <div className="medi-bottom">
