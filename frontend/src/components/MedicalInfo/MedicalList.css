@@ -60,14 +60,27 @@
   display: flex;
   align-items: center;
 }
-.hos-list-name button {
+
+.mlist-park {
   color: #30aadd;
   border: 2px solid #30aadd;
   font-weight: 700;
   border-radius: 5px;
-  margin-left: 5px;
   background: none;
   font-family: "lemon-font";
+  margin: 0;
+  margin-left: 10px;
+}
+
+.mlist-em {
+  color: #e45826;
+  border: 2px solid #e45826;
+  font-weight: 600;
+  border-radius: 5px;
+  background: none;
+  font-family: "lemon-font";
+  margin: 0;
+  margin-left: 10px;
 }
 
 .hos-list-subject {

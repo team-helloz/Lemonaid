@@ -88,7 +88,13 @@ export default function MedicalList({
               )}
               <p className="hos-list-name">
                 {hospital.name}
-                {hospital.parking_count > 0 && <button>P</button>}
+                {hospital.parking_count > 0 && (
+                  <button className="mlist-park">P</button>
+                )}
+                {(hospital.emergency_day === "Y" ||
+                  hospital.emergency_night === "Y") && (
+                  <button className="mlist-em">응급</button>
+                )}
               </p>
               <p className="hos-list-address">
                 <span>{hospital.distance.toFixed()}</span>m · {hospital.address}
