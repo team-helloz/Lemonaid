@@ -20,7 +20,7 @@ export default function HomeScroll(props: RouteProps) {
           <div
             className="cursor-pointer h-menu-box"
             onClick={routeMedical}
-            style={{ backgroundImage: "url(/home1.jpg)" }}
+            style={{ backgroundImage: "url(/medical_bg1.jpg)" }}
           >
             <p className="h-move-title">의료기관 조회</p>
             <p className="h-move-to">바로가기</p>
@@ -33,9 +33,9 @@ export default function HomeScroll(props: RouteProps) {
         <div>
           <p className="h-menu-num">2</p>
           <div
-            className="cursor-pointer h-menu-box"
+            className="cursor-pointer h-menu-box h-menu-bg-center"
             onClick={routeMedicine}
-            style={{ backgroundImage: "url(/home2.jpg)" }}
+            style={{ backgroundImage: "url(/medicine_bg3.jpg)" }}
           >
             <p className="h-move-title">의약품 조회</p>
             <p className="h-move-to">바로가기</p>
@@ -52,7 +52,7 @@ export default function HomeScroll(props: RouteProps) {
           <div
             className="cursor-pointer h-menu-box"
             onClick={routeDisease}
-            style={{ backgroundImage: "url(/home3.jpg)" }}
+            style={{ backgroundImage: "url(/disease_bg1.jpg)" }}
           >
             <p className="h-move-title">증상 조회</p>
             <p className="h-move-to">바로가기</p>
