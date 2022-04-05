@@ -49,8 +49,6 @@
 .disease-img {
   width: 280px;
   height: 280px;
-  background-image: url(../../../public/gamgi.jpg);
-  background-size: cover;
   overflow: hidden;
   display: flex;
   align-self: center;
