@@ -10,9 +10,12 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface DiseaseRepository extends JpaRepository<Disease, Long> {
-    @Query("select d from Disease d join SymptomDisease sd" +
+    @Query("select distinct d from Disease d join SymptomDisease sd" +
             " on d = sd.disease"+
-            " where sd.symptom.name in :symptoms")
-    Page<Disease> findAllBySymptoms(List<String> symptoms, Pageable pageable);
+            " where sd.symptom.name in :symptoms" +
+            " group by sd.disease.no" +
+            " having count(sd.disease.no) >= :symptomSize")
+
+    Page<Disease> findAllBySymptoms(List<String> symptoms, int symptomSize, Pageable pageable);
 
 }
