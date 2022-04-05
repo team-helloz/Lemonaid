@@ -40,7 +40,7 @@ public class CoronaServiceImpl implements CoronaService {
     public CoronaAgeRes getCoronaAgeList() {
 
         CoronaAgeRes result = new CoronaAgeRes();
-        result.setCoronaAgeList(coronaAgeRepository.findAll());
+        result.setCoronaAgeList(coronaAgeRepository.findByRecentDate());
         result.setCorona0Total(coronaAgeRepository.countGroupByAge0());
         result.setCorona10Total(coronaAgeRepository.countGroupByAge10());
         result.setCorona20Total(coronaAgeRepository.countGroupByAge20());
