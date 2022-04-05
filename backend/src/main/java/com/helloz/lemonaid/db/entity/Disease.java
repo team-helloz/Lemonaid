@@ -44,6 +44,9 @@ public class Disease {
     @Column(name = "disease_symptom_description")
     private String symptom_description;
 
+    @Column(name = "disease_keyword")
+    private String keyword;
+
     @OneToMany(mappedBy = "disease")
     private List<SymptomDisease> symptomDiseases;
 
