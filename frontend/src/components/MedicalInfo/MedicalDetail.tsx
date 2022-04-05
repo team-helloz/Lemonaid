@@ -34,27 +34,31 @@ export default function MedicalDetail(props: MedicalDetailDlgProps) {
       open={open}
       PaperProps={{
         style: {
-          backgroundColor: "rgb(255, 255, 255 )",
+          backgroundColor: "rgb(247, 247, 247)",
           minWidth: "80vh",
-          maxWidth: "100vh",
+          maxWidth: "80vh",
           minHeight: "70vh",
           maxHeight: "70vh",
+          borderRadius:"10px"
         },
       }}
     >
       {hospitalDetail !== undefined && (
-        <div className="liarresdlg-container init-contain">
-          <p>
-            <span className="hos-list-name">{hospitalDetail.name}</span>
-            <span className="hos-list-code">{hospitalDetail.code_name}</span>
-            {hospitalDetail.parking_count > 0 && (
-              <img src={ParkingPng} alt="주차" />
-            )}
-            {(hospitalDetail.emergency_day === "Y" ||
-              hospitalDetail.emergency_night === "Y") && (
-              <img src={EmergencyPng} alt="응급" />
-            )}
-          </p>
+        <div className="initialresdlg-container init-contain">
+          <div className="md-title-container">
+            <div className="md-title-container-1">
+              <span className="hos-dd-name">{hospitalDetail.name}</span>
+              {hospitalDetail.parking_count > 0 && (
+                <button className="md-park">P</button>
+              )}
+              {(hospitalDetail.emergency_day === "Y" ||
+                hospitalDetail.emergency_night === "Y") && (
+                  <button className="md-em">응급</button>
+              )}
+              <button className="md-navi" onClick={findPath}><img src="/navi.png" alt="" /></button>
+            </div>
+            <p className="hos-dd-address">{hospitalDetail.address}</p>
+          </div>
           <p className="hos-list-subject">
             {hospitalDetail.type === "hospital" &&
               hospitalDetail.medical_subject_list.length > 0 &&
@@ -62,7 +66,7 @@ export default function MedicalDetail(props: MedicalDetailDlgProps) {
                 <span key={index}>{subjects.name} </span>
               ))}
           </p>
-          <p className="hos-list-address">{hospitalDetail.address}</p>
+
           {hospitalDetail.opentime.opentime_valid === "Y" && (
             <div>
               <p className="hos-list-openornot">{hospitalDetail.openornot}</p>
@@ -160,7 +164,6 @@ export default function MedicalDetail(props: MedicalDetailDlgProps) {
           {hospitalDetail.parking_count < 1 && (
             <p className="hos-list-parking">주차 불가능</p>
           )}
-          <button onClick={findPath}>길찾기</button>
         </div>
       )}
     </Dialog>
