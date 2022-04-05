@@ -133,7 +133,7 @@ export default function MedicineList(props: SearchData) {
         )}
       </div>
       {totalPage > 20 && (
-        <div className="pagination">
+        <div className="pagination2">
           <div
             onClick={() => {pageChange(0)}}
             className="pagination-pre-btn"
