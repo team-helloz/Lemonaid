@@ -5,9 +5,9 @@
   box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   overflow: hidden;
+  justify-content: space-evenly;
   overflow-y: scroll;
   height: 410px;
 }
@@ -25,19 +25,22 @@
 .symptom-btn:hover {
   box-shadow: 1px 1px 3px 1px #dadce0 inset;
   color: white;
+  background: #06beb6;
 }
 
 .selected-symptom {
   box-shadow: 1px 1px 3px 1px #dadce0 inset;
   font-family: "lemon-font";
   color: white;
+  background: #06beb6;
 }
 
 .sys-btn {
-  width: 224px;
-  height: 75px;
   margin: 5px;
   cursor: pointer;
   border: 0;
   transition: 0.2s;
+  width: 19%;
+  height: 15%;
+  transition: .2s ease;
 }
