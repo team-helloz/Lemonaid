@@ -60,7 +60,8 @@ public class MedicalController {
         filter.setMapLat(mapLat);
         filter.setMapLng(mapLng);
         filter.setRadius(radius);
-
+        filter.setBoundary();
+        log.info("x1: {}, y1: {}, x2: {}, y2:{} ", filter.getX1(), filter.getY1(), filter.getX2(), filter.getY2());
 
         Page<MedicalRes> result = medicalService.getMedicalList(filter, pageable);
         return ResponseEntity.ok(BaseResponseBody.of(200, "Success", result));
