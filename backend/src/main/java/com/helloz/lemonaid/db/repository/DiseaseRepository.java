@@ -16,6 +16,6 @@ public interface DiseaseRepository extends JpaRepository<Disease, Long> {
             " group by sd.disease.no" +
             " having count(sd.disease.no) >= :symptomSize")
 
-    Page<Disease> findAllBySymptoms(List<String> symptoms, int symptomSize, Pageable pageable);
+    Page<Disease> findAllBySymptoms(List<String> symptoms, long symptomSize, Pageable pageable);
 
 }
