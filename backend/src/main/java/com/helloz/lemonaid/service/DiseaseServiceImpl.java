@@ -26,7 +26,7 @@ public class DiseaseServiceImpl implements DiseaseService {
 
     @Override
     public Page<DiseaseRes> getDiseaseList(List<String> symptoms, Pageable pageable) {
-        Page<Disease> diseases = diseaseRepository.findAllBySymptoms(symptoms, pageable);
+        Page<Disease> diseases = diseaseRepository.findAllBySymptoms(symptoms, symptoms != null ? symptoms.size() : 0, pageable);
 
         List<DiseaseRes> contents = diseases.getContent().stream().map(DiseaseRes::of).collect(Collectors.toList());
 
