@@ -71,7 +71,12 @@ const MedicalSubjects: Subject[] = [
 export default function DiseaseDetail(Params: any) {
   const [disease, setDisease] = useState<Disease>(Params);
   const history = useHistory();
-
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+  useEffect(() => {
+    scrollToTop();
+  }, []);
   function routeDetail(diseaseno: number) {
     history.push(`/disease/${diseaseno}`);
   }
@@ -196,7 +201,10 @@ export default function DiseaseDetail(Params: any) {
               </div>
             </div>
             <div className="d-item-img-box">
-            <img src={`https://j6d108.p.ssafy.io/images/disease/${disease.no}.jpg`} alt="" />
+              <img
+                src={`https://j6d108.p.ssafy.io/images/disease/${disease.no}.jpg`}
+                alt=""
+              />
             </div>
           </div>
           <div className="dd-content">

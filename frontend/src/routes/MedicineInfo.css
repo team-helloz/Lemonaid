@@ -3,6 +3,7 @@
   margin: 0 auto 40px auto;
   box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 5px;
 }
 
 .p-flex {
@@ -18,6 +19,8 @@
   background: rgb(78, 78, 78);
   width: 1080px;
   height: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .medicine-icon {
@@ -28,7 +31,8 @@
   width: 30px;
   cursor: pointer;
   transition: 0.5s ease;
-  filter: invert(82%) sepia(47%) saturate(1%) hue-rotate(43deg) brightness(101%) contrast(95%);
+  filter: invert(82%) sepia(47%) saturate(1%) hue-rotate(43deg) brightness(101%)
+    contrast(95%);
 }
 
 .refresh-icon:hover {

@@ -6,6 +6,7 @@
   width: 100%;
   height: 588px;
   background-color: #e5e5e5;
+  font-family: 'lemon-font';
 }
 
 .medicine-search-one-bottom {
@@ -21,11 +22,11 @@
   margin: 0;
   font-weight: bold;
   cursor: pointer;
-  transition: .5s ease;
+  transition: .2s ease;
 }
 
 .medicine-search-one-bottom p:hover {
-  color: #0DADEA;
+  color: #06beb6;
   transform: scale(1.1);
 }
 
@@ -43,12 +44,13 @@
   border: 1px solid white;
   border-radius: 100px;
   box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px;
-  transition: .5s ease;
+  transition: .2s ease;
+  
 }
 
 .medicine-search-input-name:focus {
-  outline: 1px solid #64cada;
-  border: 1px solid #64cada;
+  outline: 1px solid #06beb6;
+  border: 1px solid #06beb6;
 }
 
 .medicine-most-list {
@@ -66,7 +68,7 @@
   border-radius: 5px;
   box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px;
   cursor: pointer;
-  transition: .5s ease;
+  transition: .2s ease;
 }
 
 .medicine-most p {
@@ -80,10 +82,10 @@
 }
 
 .medicine-most:hover {
-  border: 1px solid #64cada;
+  border: 1px solid #06beb6;
   font-weight: bold;
   color: #64cada;
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .medicine-search-box {
@@ -93,7 +95,7 @@
   width: 100%;
   height: 550px;
   background-color: #e5e5e5;
-  transition: .5s ease;
+  transition: .2s ease;
 }
 
 .medicine-search-close {
@@ -179,13 +181,14 @@
   width: 500px;
   height: 15px;
   border: 1px solid white;
-  transition: .5s ease;
+  transition: .2s ease;
+  
   box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px;
 }
 
 .medicine-search-input:focus {
-  outline: 1px solid #64cada;
-  border: 1px solid #64cada;
+  outline: 1px solid #06beb6;
+  border: 1px solid #06beb6;
 }
 
 .medicine-search-btn {
@@ -195,11 +198,11 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #64cada;
+  background-color: #06beb6;
   box-shadow: rgba(60, 64, 67, 0.2) 0px 1px 3px 0px;
 }
 
 .medicine-search-btn:hover {
   font-weight: bold;
-  background-color: #64cada;
+  background-color: #06beb6;
 }
