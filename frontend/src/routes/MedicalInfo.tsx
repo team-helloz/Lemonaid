@@ -176,9 +176,9 @@ export default function MedicalInfo() {
     }
 
     let radius = radiusLevel[mapZoomLevel];
-    if (radius > 3000) {
-      radius = 3000;
-    }
+    // if (radius > 3000) {
+    //   radius = 3000;
+    // }
 
     axios
       .get("/medical", {
