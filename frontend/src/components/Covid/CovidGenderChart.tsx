@@ -78,8 +78,6 @@ export function CovidGenderChart() {
     }
 
     return (
-        <div>
-            <Pie data={data} options={options} />;
-        </div>
+        <Pie data={data} options={options} />
     )
 }

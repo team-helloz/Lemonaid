@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 
 import { CovidGenderChart } from "../components/Covid/CovidGenderChart";
 import { CovidAgeChart } from "../components/Covid/CovidAgeChart";
+import CovidHighMap from "../components/Covid/CovidHighMap.jsx";
 
 export default function CovidInfo() {
   return (
@@ -18,8 +19,10 @@ export default function CovidInfo() {
             <CovidAgeChart />
           </div>
         </div>
-        <div className="covid-oneline"></div>
+        <div className="covid-oneline">
+        </div>
       </div>
+          <CovidHighMap />
       <Footer />
     </div>
   );
