@@ -10,8 +10,25 @@ nav {
 a {
   text-decoration: none;
   color: black;
+  font-family: "lemon-font";
 }
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+input {
+  font-family: "lemon-font";
+}
+
+button {
+  font-family: "lemon-font";
+}
+
+p {
+  font-family: "lemon-font";
+}
+
+span {
+  font-family: "lemon-font";
 }

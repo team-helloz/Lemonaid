@@ -83,3 +83,71 @@
   margin: 0;
   margin-left: 10px;
 }
+
+.md-detail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 20px;
+}
+.hos-md-subject {
+  text-align: start;
+}
+
+.md-sub-title {
+  font-weight: 700;
+  color: rgb(143, 143, 143);
+  font-size: 16px;
+}
+.md-sub-content {
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.md-time {
+  flex: 1;
+}
+
+.md-2-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.md-2-park {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.md-call {
+  margin: 0;
+  color: rgb(124, 124, 124);
+  font-weight: 600;
+}
+.no-open {
+  color: #06beb6;
+}
+.hos-dd-parking {
+  font-weight: 600;
+}
+.hos-dd-parking span {
+  color: #e45826;
+}
+
+.hos-dd-tel {
+  margin-top: 10px !important;
+  font-weight: 700 !important;
+}
+
+.hos-dp-parking span {
+  color: #1890c4;
+}
+
+.hos-dp-parking {
+  font-weight: 600;
+}
+.md-date-list {
+  font-weight: 600;
+}

@@ -43,7 +43,7 @@
   margin: 0;
   padding-left: 5px;
   font-weight: bold;
-  border-left: solid 4px #5ee6eb;
+  border-left: solid 4px #06beb6;
 }
 
 .disease-img {
@@ -65,7 +65,7 @@
   padding-left: 5px;
   font-weight: bold;
   font-size: 15px;
-  border-left: solid 2px #5ee6eb;
+  border-left: solid 2px #06beb6;
 }
 
 .detail-item-list {

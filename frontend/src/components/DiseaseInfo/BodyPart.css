@@ -32,7 +32,7 @@
 }
 
 .part-btn:hover {
-  background-color: #48b1bf;
+  background-color: #06beb6;
 }
 
 .part-btn p {
@@ -44,6 +44,6 @@
 }
 
 .selected-part {
-  background-color: #48b1bf;
+  background-color: #06beb6;
   color: white;
 }
