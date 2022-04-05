@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import internal from "stream";
 import axios from "axios";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -25,8 +24,12 @@ export function CovidGenderChart() {
 
     const options: any = {
         plugins: {
+            title: {
+                display: true,
+                text: '성별별 코로나 확진자 수'
+            },
             legend: {
-                display: false,
+                display: true,
             },
         },
         tooltips: {
