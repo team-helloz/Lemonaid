@@ -6,6 +6,7 @@ import com.helloz.lemonaid.db.entity.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,7 @@ public class DiseaseRes {
     private String caution;
     private String synonym;
     private String symptom_description;
-    private String keyword;
+    private List<String> keyword;
     private List<Symptom> symptoms;
     private List<RelatedDiseaseRes> relatedDisease;
     private List<MedicalSubject> subjects;
@@ -38,7 +39,7 @@ public class DiseaseRes {
         info.caution = disease.getCaution();
         info.synonym = disease.getSynonym();
         info.symptom_description = disease.getSymptom_description();
-        info.keyword = disease.getKeyword();
+        info.keyword = Arrays.asList(disease.getKeyword().split(","));
         info.symptoms = disease.getSymptomDiseases().stream().map(SymptomDisease::getSymptom).collect(Collectors.toList());
         info.relatedDisease = disease.getRelatedDiseases().stream().map(rd -> RelatedDiseaseRes.of(rd.getRelatedDisease())).collect(Collectors.toList());
         info.setSubjects(disease.getMedicalSubjects().stream().map(DiseaseMedicalSubject::getMedicalSubject).collect(Collectors.toList()));
