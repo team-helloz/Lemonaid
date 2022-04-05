@@ -9,11 +9,11 @@ import MedicineFomula from "../components/MedicineInfo/MedicineFomula";
 import MedicineDivide from "../components/MedicineInfo/MedicineDivide";
 import MedicineIdentifier from "../components/MedicineInfo/MedicineIdentifier";
 import MedicineList from "../components/MedicineInfo/MedicineList";
+import Footer from "../components/Footer";
 // Style
 import "./MedicineInfo.css";
 
 export default function MedicineInfo() {
-
   const [page, setPage] = useState<number>(0);
   const [shape, setShape] = useState<string>("STEP1");
   const [color, setColor] = useState<string>("STEP2");
@@ -99,7 +99,8 @@ export default function MedicineInfo() {
               <div className="medicine-info-step">
                 <p className="medicine-step">SEARCH</p>
                 <p className="medicine-progress">
-                  [ (모양) {shape} {"/"} (색상) {color} {"/"} (제형) {fomula} {"/"} (분할선) {divide} {"/"} (식별문자) {identifier} ]
+                  [ (모양) {shape} {"/"} (색상) {color} {"/"} (제형) {fomula}{" "}
+                  {"/"} (분할선) {divide} {"/"} (식별문자) {identifier} ]
                 </p>
               </div>
             )}
@@ -163,6 +164,7 @@ export default function MedicineInfo() {
           medicineName={medicineName}
         />
       )}
+      <Footer />
     </>
   );
 }

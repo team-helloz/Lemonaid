@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { useEffect } from "react";
 import "./App.css";
 
 import Home from "./routes/Home";
@@ -10,6 +11,7 @@ import DiseaseDetail from "./components/DiseaseInfo/DiseaseDetail";
 import CovidInfo from "./routes/CovidInfo";
 
 function App() {
+  
   return (
     <Router>
       <Route path="/" exact component={Home} />

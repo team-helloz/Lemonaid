@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import axios from "axios";
 // Components
 import NavBar from "../NavBar";
+import Footer from "../Footer";
 import "./MedicineDetail.css";
 import { useState } from "react";
+
 
 interface MedicineDetailInfo {
   name: string;
@@ -190,6 +192,7 @@ export default function MedicineDetail(Params: any) {
           )}
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 }
