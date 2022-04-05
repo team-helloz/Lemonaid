@@ -196,7 +196,7 @@ export default function DiseaseDetail(Params: any) {
               </div>
             </div>
             <div className="d-item-img-box">
-              <img src="/gamgi.jpg" alt="" />
+            <img src={`https://j6d108.p.ssafy.io/images/disease/${disease.no}.jpg`} alt="" />
             </div>
           </div>
           <div className="dd-content">
