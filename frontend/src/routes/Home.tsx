@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import HomeScroll from "../components/Home/HomeScroll";
 import SlideWidget from "../components/Home/SlideWidget";
 import HomeNav from "../components/Home/HomeNav";
+// SVG
+import stethoscope from "../assets/home-img.svg"
 // Style
 import "./Home.css";
 
@@ -32,6 +34,8 @@ export default function Home() {
           <img className="team-logo" src="/Lemonaid.png" alt="" />
           <p className="logo-description">건강한 삶을 위한 의료 정보 플랫폼</p>
         </div>
+        <img src={stethoscope} alt="" className="home-stethoscope" />
+        <img src="./line.png" alt="" className="home-line"/>
         <p className="home-mouse">
           <span></span>
         </p>

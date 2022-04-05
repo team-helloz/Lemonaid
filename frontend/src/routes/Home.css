@@ -24,6 +24,21 @@
   margin-bottom: 10px;
 }
 
+.home-stethoscope {
+  position: absolute;
+  height: 600px;
+  bottom: 0;
+  right: 10%;
+  z-index: -1;
+}
+
+.home-line {
+  height: 200px;
+  position: absolute;
+  left: -30px;
+  bottom: -30px;
+}
+
 .logo-description {
   margin: 0 40px;
   font-size: 16px;
@@ -35,7 +50,7 @@
   position: absolute;
   margin: 0;
   bottom: 20px;
-  left: 20px;
+  left: 130px;
   font-size: 12px;
 }
 
