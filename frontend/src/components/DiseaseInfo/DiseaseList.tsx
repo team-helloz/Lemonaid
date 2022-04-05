@@ -67,7 +67,12 @@ export default function DiseaseList(props: SymptomProps) {
       <div className="disease-list">
         {diseases.map((disease) => (
           <div key={disease.no} className="disease-item disease-box">
-            <div className="disease-img" />
+            <div className="disease-img">
+              <img
+                src={`https://j6d108.p.ssafy.io/images/disease/${disease.no}.jpg`}
+                alt=""
+              />
+            </div>
             <div className="disease-content">
               <div className="detail-list">
                 <p className="disease-name">{disease.name}</p>
