@@ -126,9 +126,8 @@
   z-index: 2;
   width: 50vw;
   height: 5vh;
-  left: 50%;
+  left: 20vw;
   bottom: 2vh;
-  transform: translate(-50%, 0%);
   overflow: hidden;
   border-radius: 10px;
   vertical-align: middle;
