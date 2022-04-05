@@ -9,7 +9,7 @@ import com.helloz.lemonaid.response.HospitalRes;
 import com.helloz.lemonaid.response.MedicalCode;
 import com.helloz.lemonaid.response.MedicalRes;
 import com.helloz.lemonaid.response.PharmacyRes;
-import com.helloz.lemonaid.util.DistanceUtil;
+import com.helloz.lemonaid.util.GeometryUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -47,7 +47,7 @@ public class MedicalServiceImpl implements MedicalService {
         }
 
         List<MedicalRes> contents = result.getContent().stream().map(m -> {
-            m.setDistance(DistanceUtil.getDistance(m.getLat(), m.getLng(), filter.getNowLat(), filter.getNowLng()));
+            m.setDistance(GeometryUtil.getDistance(m.getLat(), m.getLng(), filter.getNowLat(), filter.getNowLng()));
             if (m instanceof Hospital) {
                 return HospitalRes.of((Hospital) m);
             } else {

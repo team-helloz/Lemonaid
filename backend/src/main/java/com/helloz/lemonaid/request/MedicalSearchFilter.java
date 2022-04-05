@@ -3,14 +3,14 @@ package com.helloz.lemonaid.request;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.helloz.lemonaid.db.entity.MedicalType;
-import com.helloz.lemonaid.util.DistanceUtil;
+import com.helloz.lemonaid.util.Direction;
+import com.helloz.lemonaid.util.GeometryUtil;
+import com.helloz.lemonaid.util.Location;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.geo.Point;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Getter
@@ -53,4 +53,23 @@ public class MedicalSearchFilter {
     @ApiModelProperty(name = "반경")
     private int radius;
 
+    private double x1;
+
+    private double y1;
+
+    private double x2;
+
+    private double y2;
+
+    public void setBoundary(){
+        Location northEast = GeometryUtil
+                .getLocation(mapLat, mapLng, (double)radius / 1000, Direction.NORTHEAST.getBearing());
+        Location southWest = GeometryUtil
+                .getLocation(mapLat, mapLng, (double)radius / 1000, Direction.SOUTHWEST.getBearing());
+
+        this.x1 = northEast.getLatitude();
+        this.y1 = northEast.getLongitude();
+        this.x2 = southWest.getLatitude();
+        this.y2 = southWest.getLongitude();
+    }
 }

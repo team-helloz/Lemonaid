@@ -18,30 +18,33 @@ public interface HospitalRepository extends JpaRepository<Hospital, Long>{
         List<MedicalCode> findCodeAll();
 
     @Query(
-            value = "select distinct h.*," +
-                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), h.medical_point) AS mapDistance," +
-                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.nowLat}, ' ', :#{#filter.nowLng}, ')'), 4326), h.medical_point) AS nowDistance" +
+            value =
+                    "select distinct h.*," +
+                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), h.medical_point) AS mapDistance" +
                     " from medical h inner join hospital_medical_subject hms " +
                     " on h.medical_no = hms.hospital_medical_subject_hospital_no"+
                     " where h.medical_type = 'H'" +
-                    " and (:subjectsSize = 0 or hms.hospital_medical_subject_medical_subject_no in :#{#filter.subjects})" +
+                    " and MBRContains(ST_LINESTRINGFROMTEXT(concat('LINESTRING(',:#{#filter.x1}, ' ', :#{#filter.y1}, ',', :#{#filter.x2},' ',:#{#filter.y2},')'), 4326), h.medical_point)"+
+                    " and (:subjectSize = 0 or hms.hospital_medical_subject_medical_subject_no in :#{#filter.subjects})" +
                     " and (:#{#filter.code} = 0 or h.hospital_code = :#{#filter.code})" +
                     " and (:#{#filter.emergency} is false or h.hospital_emergency_day = 'Y' or h.hospital_emergency_night ='Y')" +
                     " and (:#{#filter.parking} is false or h.medical_parking_count  >= 0)" +
                     " and (:#{#filter.keyword} = '' or :#{#filter.keyword} is null or h.medical_name like concat('%',:#{#filter.keyword},'%'))" +
-                    " having mapDistance <= :#{#filter.radius} order by mapDistance"
-            , countQuery = "select distinct h.*," +
-                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), h.medical_point) AS mapDistance," +
-                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.nowLat}, ' ', :#{#filter.nowLng}, ')'), 4326), h.medical_point) AS nowDistance" +
+                    " order by mapDistance"
+            , countQuery =
+                    "select distinct h.*," +
+                    " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), h.medical_point) AS mapDistance" +
                     " from medical h inner join hospital_medical_subject hms " +
                     " on h.medical_no = hms.hospital_medical_subject_hospital_no"+
                     " where h.medical_type = 'H'" +
-                    " and (:subjectsSize = 0 or hms.hospital_medical_subject_medical_subject_no in :#{#filter.subjects})" +
+                    " and MBRContains(ST_LINESTRINGFROMTEXT(concat('LINESTRING(',:#{#filter.x1}, ' ', :#{#filter.y1}, ',', :#{#filter.x2},' ',:#{#filter.y2},')'), 4326), h.medical_point)"+
+                    " and (:subjectSize = 0 or hms.hospital_medical_subject_medical_subject_no in :#{#filter.subjects})" +
                     " and (:#{#filter.code} = 0 or h.hospital_code = :#{#filter.code})" +
                     " and (:#{#filter.emergency} is false or h.hospital_emergency_day = 'Y' or h.hospital_emergency_night ='Y')" +
                     " and (:#{#filter.parking} is false or h.medical_parking_count  >= 0)" +
                     " and (:#{#filter.keyword} = '' or :#{#filter.keyword} is null or h.medical_name like concat('%',:#{#filter.keyword},'%'))" +
-                    " having mapDistance <= :#{#filter.radius} order by mapDistance"
+                    " order by mapDistance"
+
             , nativeQuery = true)
-    Page<Hospital> searchByFilter(@Param("filter") MedicalSearchFilter filter, int subjectsSize, Pageable pageable);
+    Page<Hospital> searchByFilter(@Param("filter") MedicalSearchFilter filter, int subjectSize, Pageable pageable);
 }
