@@ -77,11 +77,11 @@ export default function KakaoMap(props: MedicalMapProps) {
         {/* <ZoomControl position={kakao.maps.ControlPosition.TOP} /> */}
       </Map>
       {/* 지도 현재위치 컨트롤 div 입니다 */}
-      <div className="custom-curposcontrol" onClick={userGeo}>
+      {/* <div className="custom-curposcontrol" onClick={userGeo}>
         <span>
           <img src={CustomCurpos} alt="현재위치" />
         </span>
-      </div>
+      </div> */}
     </>
   );
 }

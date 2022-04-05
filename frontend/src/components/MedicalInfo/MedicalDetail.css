@@ -16,10 +16,70 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 8%;
-  color: white;
   cursor: default;
   text-align: center;
   font-size: 16px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.initialresdlg-container::-webkit-scrollbar {
+  width: 0;
+}
+.md-title-container {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #06beb6, #48b1bf);
+  padding: 30px 20px;
+  flex-direction: column;
+}
+.md-navi {
+  border: 0;
+  background: none;
+  margin-left: auto;
+  cursor: pointer;
+  border-left: 1px solid white;
+  padding: 0 15px;
+}
+.md-navi img {
+  width: 35px;
+}
+.hos-dd-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+}
+.md-title-container-1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.md-park {
+  color: #1890c4;
+  border: 2px solid #1890c4;
+  font-weight: 700;
+  border-radius: 5px;
+  background: none;
+  font-family: "lemon-font";
+  margin: 0;
+  margin-left: 10px;
+}
+.hos-dd-address {
+  margin: 0;
+  margin-right: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(224, 224, 224);
+}
+
+.md-em {
+  color: #e45826;
+  border: 2px solid #e45826;
+  font-weight: 600;
+  border-radius: 5px;
+  background: none;
+  font-family: "lemon-font";
+  margin: 0;
+  margin-left: 10px;
 }
