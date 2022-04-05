@@ -35,7 +35,7 @@ public interface MedicalRepository extends JpaRepository<Medical, Long> {
                     " and (:#{#filter.parking} is false or p.medical_parking_count > 0)" +
                     " and (:#{#filter.keyword} = '' or p.medical_name like concat('%',:#{#filter.keyword},'%'))" +
                     " having mapDistance <= :#{#filter.radius}))" +
-                    " order by nowDistance"
+                    " order by mapDistance"
             , countQuery = "((select distinct h.*," +
                     " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.mapLat}, ' ', :#{#filter.mapLng}, ')'), 4326), h.medical_point) AS mapDistance," +
                     " ST_DISTANCE_SPHERE(ST_GEOMFROMTEXT(concat('POINT(', :#{#filter.nowLat}, ' ', :#{#filter.nowLng}, ')'), 4326), h.medical_point) AS nowDistance" +
@@ -57,7 +57,7 @@ public interface MedicalRepository extends JpaRepository<Medical, Long> {
                     " and (:#{#filter.parking} is false or p.medical_parking_count > 0)" +
                     " and (:#{#filter.keyword} = '' or p.medical_name like concat('%',:#{#filter.keyword},'%'))" +
                     " having mapDistance <= :#{#filter.radius}))" +
-                    " order by nowDistance"
+                    " order by mapDistance"
         , nativeQuery = true)
     Page<? extends Medical> searchByFilter(MedicalSearchFilter filter, int subjectSize, Pageable pageable);
 }
