@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CoronaAgeRepository extends JpaRepository<CoronaAge, Long> {
 
@@ -36,4 +38,6 @@ public interface CoronaAgeRepository extends JpaRepository<CoronaAge, Long> {
     @Query(value = "select sum(ca.corona_age_80) from corona_age ca", nativeQuery = true)
     long countGroupByAge80();
 
+    @Query(value = "select * from corona_age ca order by ca.corona_age_date desc limit 1", nativeQuery = true)
+    List<CoronaAge> findByRecentDate();
 }
