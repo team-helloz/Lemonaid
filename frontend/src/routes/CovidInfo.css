@@ -6,6 +6,7 @@
   margin: 0 auto;
   height: 500px;
   flex-direction: column;
+  margin-bottom: 400px;
 }
 
 .today-covid {
