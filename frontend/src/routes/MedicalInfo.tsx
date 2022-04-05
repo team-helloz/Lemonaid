@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router";
 import MedicalList from "../components/MedicalInfo/MedicalList";
 import MedicalMap from "../components/MedicalInfo/MedicalMap";
 import MedicalDetail from "../components/MedicalInfo/MedicalDetail";
@@ -24,8 +25,14 @@ const radiusLevel = [
 const id = "daum-postcode"; // script가 이미 rending 되어 있는지 확인하기 위한 ID
 const src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
 
+interface stateType {
+  subjectId: number;
+  subjectName: string;
+}
+
 export default function MedicalInfo() {
   const history = useHistory();
+  const { state } = useLocation<stateType>();
 
   function routeHome() {
     history.push("/");
@@ -494,6 +501,12 @@ export default function MedicalInfo() {
 
   // 시작 시 유저 위치 찾기
   useEffect(() => {
+    //console.log(state.subjectId, state.subjectName);
+    if (state !== undefined) {
+      setSubjectId(state.subjectId);
+      setSubjectName(state.subjectName);
+    }
+
     userGeo();
 
     const isAlready = document.getElementById(id);
