@@ -58,7 +58,9 @@ export default function MedicineFomula(props: MedicineFomulaProps) {
           />
           <p>STEP{page - 1}</p>
         </div>
-        <p>NEXT STEP - 분할선</p>
+        <p
+          onClick={onClickFomula("전체")}
+        >NEXT STEP - 분할선</p>
       </div>
     </div>
   );
