@@ -44,22 +44,16 @@ export default function NavBar() {
     axios
       .get("/corona/count/today")
       .then((res) => {
-        console.log(res);
         setTotal(res.data.corona_count_today[0].count_total)
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      //.catch((err) => {console.log(err);})
 
     axios
       .get("/corona/count/top3")
       .then((res) => {
-        console.log(res);
         setCovid(res.data.corona_count_top3)
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      //.catch((err) => {console.log(err);})
   }
   useEffect(() => {
     handleLoad();

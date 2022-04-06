@@ -75,16 +75,12 @@ export default function MedicineDetail(Params: any) {
 
   const handleLoad = () => {
     const mediNo = Params.match.params.medicineNo;
-    console.log(mediNo);
     axios
       .get(`/medicine/${mediNo}`)
       .then((res) => {
-        console.log(res);
         setMedicineInfo(res.data.medicine);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      //.catch((err) => {console.log(err);});
   };
   useEffect(() => {
     handleLoad();
