@@ -157,7 +157,7 @@ ul {
 }
 
 ul.pagination li {
-  background: rgba(247, 247, 247, 0.5);
+  background: rgb(247, 247, 247);
   display: inline-block;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 6px 1px;
@@ -169,6 +169,7 @@ ul.pagination li {
   align-items: center;
   font-size: 1px;
   font-family: "lemon-font";
+  width: 100%;
 }
 
 ul.pagination li:first-child {
