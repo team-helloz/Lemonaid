@@ -34,6 +34,7 @@ interface Disease {
   related_disease: relatedDisease[];
   symptoms: Sysptom[];
   synonym: string;
+  keyword: [];
 }
 
 const MedicalSubjects: Subject[] = [
@@ -154,6 +155,16 @@ export default function DiseaseDetail(Params: any) {
                 </>
               )}
             </div>
+            {disease.keyword !== undefined && (
+              <div className="title-small">
+                <p>키워드</p>
+                {disease.keyword.map((keyw, i: number) => (
+                  <p className="title-sub2" key={i}>
+                    #{keyw}
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
           <div className="dd-2-box">
             <div className="d-item-box">
@@ -185,7 +196,7 @@ export default function DiseaseDetail(Params: any) {
                       className="dd-hash-tag"
                       key={i}
                     >
-                      #{relate.name}
+                      {relate.name}
                     </span>
                   ))}
                 </div>
