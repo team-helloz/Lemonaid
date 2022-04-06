@@ -4,6 +4,7 @@ import com.helloz.lemonaid.common.model.response.BaseResponseBody;
 import com.helloz.lemonaid.db.entity.CoronaCount;
 import com.helloz.lemonaid.db.entity.CoronaGender;
 import com.helloz.lemonaid.response.CoronaAgeRes;
+import com.helloz.lemonaid.response.CoronaCountTodayRes;
 import com.helloz.lemonaid.response.CoronaGenderRes;
 import com.helloz.lemonaid.service.CoronaService;
 import io.swagger.annotations.*;
@@ -34,6 +35,20 @@ public class CoronaController {
 
     ) {
         List<CoronaCount> result = coronaService.getCoronaCountList();
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/count/today")
+    @ApiOperation(value = "코로나 지역별 오늘 확진자 수 조회", notes = "<strong>지역별 확진자 수</strong>중 오늘날짜를 조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Server Error")
+    })
+    private ResponseEntity<CoronaCountTodayRes> getCoronaCountToday(
+
+    ) {
+        CoronaCountTodayRes result = coronaService.getCoronaCountToday();
         return ResponseEntity.ok(result);
     }
 
