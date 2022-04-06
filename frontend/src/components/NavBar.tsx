@@ -30,6 +30,29 @@ export default function NavBar() {
     },
   ];
 
+  const Covid = [
+    {
+      city: "일일 확진자",
+      cnt: 300000,
+    },
+    {
+      city: "도시명",
+      cnt: 5000,
+    },
+    {
+      city: "도시명",
+      cnt: 5000,
+    },
+    {
+      city: "도시명",
+      cnt: 5000,
+    },
+    {
+      city: "일일 확진자",
+      cnt: 300000,
+    },
+  ];
+
   return (
     <div className="nav-container">
       <div className="nav-content">
@@ -90,6 +113,21 @@ export default function NavBar() {
                 >
                   {news.title}
                 </a>
+              </div>
+            ))}
+          </div>
+          <div className="nav-covid-group">
+            {Covid.map((city, i: number) => (
+              <div
+                key={i}
+                className="nave-news-item"
+              >
+                {i > 0 && (
+                  <>
+                    TOP{i}.
+                  </>
+                )}
+                {city.city} : {city.cnt}명
               </div>
             ))}
           </div>

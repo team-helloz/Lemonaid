@@ -1,5 +1,7 @@
 // React
 import { useEffect } from "react";
+// Router
+import { useLocation } from "react-router-dom";
 // axios
 import axios from "axios";
 // Components
@@ -40,8 +42,15 @@ interface MedicineDetailInfo {
 }
 
 export default function MedicineDetail(Params: any) {
-  const scrollToTop = () => {
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
     window.scrollTo(0, 0);
+  }, [pathname]);
+
+  const scrollToTop = () => {
+    window.scrollTo({top:0, left:0, behavior: 'smooth'});
   };
   const [medicineInfo, setMedicineInfo] = useState<MedicineDetailInfo>();
   const [status, setStatus] = useState<string>("shape");
@@ -85,7 +94,7 @@ export default function MedicineDetail(Params: any) {
     <div>
       <NavBar />
       <button onClick={scrollToTop} className="to-top">
-        TOP
+        맨 위로
       </button>
       <div className="medicine-detail-page">
         <div className="medicine-detail-title">
