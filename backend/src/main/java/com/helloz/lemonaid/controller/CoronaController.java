@@ -5,6 +5,7 @@ import com.helloz.lemonaid.db.entity.CoronaCount;
 import com.helloz.lemonaid.db.entity.CoronaGender;
 import com.helloz.lemonaid.response.CoronaAgeRes;
 import com.helloz.lemonaid.response.CoronaCountTodayRes;
+import com.helloz.lemonaid.response.CoronaCountTop3Res;
 import com.helloz.lemonaid.response.CoronaGenderRes;
 import com.helloz.lemonaid.service.CoronaService;
 import io.swagger.annotations.*;
@@ -81,4 +82,18 @@ public class CoronaController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/count/top3")
+    @ApiOperation(value = "코로나 지역별 오늘 확진자 많은 순 최대 3 지역 조회", notes = "<strong>지역별 확진자 수</strong>중 많은 순으로 세 개의 지역을 조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Server Error")
+    })
+    private ResponseEntity<CoronaCountTop3Res> getCoronaCountTop3(
+
+    ) {
+        CoronaCountTop3Res result = coronaService.getCoronaCountTop3();
+
+        return ResponseEntity.ok(result);
+    }
 }
