@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.d-symptom-group {
+  margin-bottom: 80px;
+}
+
 .to-top {
   position: fixed;
   right: 5%;

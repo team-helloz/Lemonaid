@@ -58,7 +58,9 @@ export default function MedicineDivide(props: MedicineDivideProps) {
           />
           <p>STEP{page - 1}</p>
         </div>
-        <p>NEXT STEP - 식별문자</p>
+        <p
+          onClick={onClickDivide("전체")}
+        >NEXT STEP - 식별문자</p>
       </div>
     </div>
   );
