@@ -682,7 +682,8 @@ export default function MedicalInfo() {
         </div>
         <div
           className={
-            "emer-text medi-bottom-menu-item" + (isEmergency ? "-selected" : "")
+            "emer-text medi-bottom-menu-item" +
+            (isEmergency ? "-selected emer2" : "")
           }
           onClick={() => setIsEmergency(!isEmergency)}
         >
