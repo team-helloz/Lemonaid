@@ -1,8 +1,18 @@
 import { NavLink, useHistory } from "react-router-dom";
 import "./NavBar.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+interface CovidNews {
+  region: string;
+  count: number;
+}
 
 export default function NavBar() {
+
   const history = useHistory();
+  const [covidTotal, setTotal] = useState<number>(0);
+  const [covidData, setCovid] = useState<CovidNews[]>([]);
   function routeHome() {
     history.push("/");
   }
@@ -30,28 +40,30 @@ export default function NavBar() {
     },
   ];
 
-  const Covid = [
-    {
-      city: "일일 확진자",
-      cnt: 300000,
-    },
-    {
-      city: "도시명",
-      cnt: 5000,
-    },
-    {
-      city: "도시명",
-      cnt: 5000,
-    },
-    {
-      city: "도시명",
-      cnt: 5000,
-    },
-    {
-      city: "일일 확진자",
-      cnt: 300000,
-    },
-  ];
+  const handleLoad = () => {
+    axios
+      .get("/corona/count/today")
+      .then((res) => {
+        console.log(res);
+        setTotal(res.data.corona_count_today[0].count_total)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+    axios
+      .get("/corona/count/top3")
+      .then((res) => {
+        console.log(res);
+        setCovid(res.data.corona_count_top3)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+  useEffect(() => {
+    handleLoad();
+  }, []);
 
   return (
     <div className="nav-container">
@@ -116,20 +128,22 @@ export default function NavBar() {
               </div>
             ))}
           </div>
+          <p className="nav-covid-title">[코로나 19]</p>
           <div className="nav-covid-group">
-            {Covid.map((city, i: number) => (
+            <div className="nave-news-item">
+            <span className="nav-covid-sub">일일 확진자</span> : {covidTotal}명
+            </div>
+            {covidData.map((city, i: number) => (
               <div
                 key={i}
                 className="nave-news-item"
               >
-                {i > 0 && (
-                  <>
-                    TOP{i}.
-                  </>
-                )}
-                {city.city} : {city.cnt}명
+                <span className="nav-covid-sub">TOP{i+1}</span> {city.region} : {city.count}명
               </div>
             ))}
+            <div className="nave-news-item">
+              <span className="nav-covid-sub">일일 확진자</span> : {covidTotal}명
+            </div>
           </div>
         </div>
       </div>
