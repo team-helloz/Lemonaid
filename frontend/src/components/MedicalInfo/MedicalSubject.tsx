@@ -59,53 +59,62 @@ export default function MedicalSubject(props: MedicalSubjectProps) {
     <>
       {openSubject === true && (
         <div className="medical-subject-menu">
-          <div className="medical-subject-group-box">
-            <ul className="medical-subject-group">
-              {MedicalSubjects[0].map((subject, i: number) => (
-                <li onClick={onClickSubject(subject)} key={i}>
-                  <MedicalSubjectItem
-                    itemName={subject.name}
-                    selectedSubjectName={selectedSubjectName}
-                  />
-                </li>
-              ))}
-            </ul>
+          <div className="medical-subject-group">
+            {MedicalSubjects[0].map((subject, i: number) => (
+              <div
+                className="medical-subject-group-box"
+                onClick={onClickSubject(subject)}
+                key={i}
+              >
+                <MedicalSubjectItem
+                  itemName={subject.name}
+                  selectedSubjectName={selectedSubjectName}
+                />
+              </div>
+            ))}
           </div>
-          <div className="medical-subject-group-box">
-            <ul className="medical-subject-group">
-              {MedicalSubjects[1].map((subject, i: number) => (
-                <li onClick={onClickSubject(subject)} key={i}>
-                  <MedicalSubjectItem
-                    itemName={subject.name}
-                    selectedSubjectName={selectedSubjectName}
-                  />
-                </li>
-              ))}
-            </ul>
+          <div className="medical-subject-group">
+            {MedicalSubjects[1].map((subject, i: number) => (
+              <div
+                className="medical-subject-group-box"
+                onClick={onClickSubject(subject)}
+                key={i}
+              >
+                <MedicalSubjectItem
+                  itemName={subject.name}
+                  selectedSubjectName={selectedSubjectName}
+                />
+              </div>
+            ))}
           </div>
-          <div className="medical-subject-group-box">
-            <ul className="medical-subject-group">
-              {MedicalSubjects[2].map((subject, i: number) => (
-                <li onClick={onClickSubject(subject)} key={i}>
-                  <MedicalSubjectItem
-                    itemName={subject.name}
-                    selectedSubjectName={selectedSubjectName}
-                  />
-                </li>
-              ))}
-            </ul>
+          <div className="medical-subject-group">
+            {MedicalSubjects[2].map((subject, i: number) => (
+              <div
+                className="medical-subject-group-box"
+                onClick={onClickSubject(subject)}
+                key={i}
+              >
+                <MedicalSubjectItem
+                  itemName={subject.name}
+                  selectedSubjectName={selectedSubjectName}
+                />
+              </div>
+            ))}
           </div>
-          <div className="medical-subject-group-box">
-            <ul className="medical-subject-group">
-              {MedicalSubjects[3].map((subject, i: number) => (
-                <li onClick={onClickSubject(subject)} key={i}>
-                  <MedicalSubjectItem
-                    itemName={subject.name}
-                    selectedSubjectName={selectedSubjectName}
-                  />
-                </li>
-              ))}
-            </ul>
+
+          <div className="medical-subject-group2">
+            {MedicalSubjects[3].map((subject, i: number) => (
+              <div
+                className="medical-subject-group-box"
+                onClick={onClickSubject(subject)}
+                key={i}
+              >
+                <MedicalSubjectItem
+                  itemName={subject.name}
+                  selectedSubjectName={selectedSubjectName}
+                />
+              </div>
+            ))}
           </div>
         </div>
       )}
