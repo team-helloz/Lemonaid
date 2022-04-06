@@ -81,6 +81,7 @@
   font-family: "lemon-font";
   margin: 0;
   margin-left: 10px;
+  white-space: nowrap;
 }
 
 .hos-list-subject {
