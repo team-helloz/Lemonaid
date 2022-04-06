@@ -1,33 +1,64 @@
 .covid-container {
   width: 1120px;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  height: 500px;
   flex-direction: column;
-  margin-bottom: 300px;
-  margin-top: 200px;
 }
 
 .today-covid {
-  width: 45%;
-  height: 200px;
-  margin: 2.5%;
+  width: 540px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .covid-2container {
   display: flex;
   flex-direction: row;
   width: 1120px;
+  justify-content: space-between;
+  margin-bottom: 50px;
 }
 .covid-oneline {
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   border-radius: 10px;
-  margin: 2.5%;
-  width: 90%;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.sedays-btn {
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+.thdays-btn {
+  border: 0;
+  background: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 8px 10px;
+  color: #06beb6;
+  cursor: pointer;
+}
+
+.covid-btn-container {
+  background: #f5f5f5;
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  width: 120px;
+  justify-content: center;
 }
