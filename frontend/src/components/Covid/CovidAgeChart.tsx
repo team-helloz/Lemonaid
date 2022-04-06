@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import faker from '@faker-js/faker';
 import {
   Chart as ChartJS,
   CategoryScale,
