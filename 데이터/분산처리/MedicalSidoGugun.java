@@ -72,19 +72,20 @@ public class MedicalSidoGugun {
             if (keyArr.length != 2) {
                 return;
             }
-            result.set(keyArr[1]);
+//            result.set(keyArr[1]);
 
             int sum = 0;
             for (IntWritable val : values) {
                 sum += val.get();
             }
-            cnt.set(sum);
+//            cnt.set(sum);
+            result.set(keyArr[1] + "," + sum);
 
             if (keyArr[0].equals("sido")) {
-                multiOut.write("sido", result, cnt);
+                multiOut.write("sido", result, null);
             }
             else if (keyArr[0].equals("gugun")) {
-                multiOut.write("gugun", result, cnt);
+                multiOut.write("gugun", result, null);
             }
         }
     }
