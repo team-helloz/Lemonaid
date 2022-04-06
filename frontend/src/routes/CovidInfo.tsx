@@ -12,20 +12,22 @@ export default function CovidInfo() {
     <div>
       <NavBar />
       <div className="covid-container">
-        <div className="covid-2container">
-          <div className="today-covid">
-            <CovidGenderChart />
-          </div>
-          <div className="today-covid">
-            <CovidAgeChart />
-          </div>
-        </div>
         <div className="covid-oneline">
           <CovidCountChart />
         </div>
+        <div className="covid-oneline">
+          <CovidAgeChart />
+        </div>
+        <div className="covid-2container">
+          <div className="today-covid">
+            <CovidHighMap />
+          </div>
+          <div className="today-covid">
+            <CovidGenderChart />
+          </div>
+        </div>
+        <Footer />
       </div>
-      <CovidHighMap />
-      <Footer />
     </div>
   );
 }
