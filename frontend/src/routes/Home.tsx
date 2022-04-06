@@ -26,6 +26,17 @@ export default function Home() {
     history.push("/covid");
   }
 
+  window.addEventListener("scroll", function() {
+    const Mouse = this.document.getElementById("mouse")
+    if (this.window.scrollY > 150) {
+      Mouse?.classList.add("home-mouse-active")
+      Mouse?.classList.add("home-mouse-none")
+    } else {
+      Mouse?.classList.remove("home-mouse-none")
+      Mouse?.classList.remove("home-mouse-active")
+    }
+  })
+
   return (
     <div className="home-page">
       <div className="h-main">
@@ -37,7 +48,7 @@ export default function Home() {
         <img src={stethoscope} alt="" className="home-stethoscope" />
         <img src="./line.png" alt="" className="home-line"/>
         <p className="home-mouse">
-          <span></span>
+          <span id="mouse"></span>
         </p>
         <p className="team">ⓒ SSAFY 6th - 안녕즈</p>
       </div>

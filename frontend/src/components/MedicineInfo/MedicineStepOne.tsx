@@ -54,12 +54,9 @@ export default function MedicineStepOne(props: MedicineStepProps) {
     axios
       .get(`/medicine/hit`)
       .then((res) => {
-        console.log(res);
         setHit(res.data.medicines)
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      //.catch((err) => {console.log(err);})
   }
   useEffect(() => {
     handleLoad();
