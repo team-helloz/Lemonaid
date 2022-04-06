@@ -29,7 +29,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
     selectHospital,
     UpdateSelectHospital,
   } = props;
-
+  const hoverEvent = (hospital: IHospital) => {};
   const map = useMap();
   // const [isVisible, setIsVisible] = useState(false);
   // const content = <div style={{ color: "#000" }}>{hospital.name}</div>;

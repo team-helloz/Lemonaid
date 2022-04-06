@@ -87,16 +87,18 @@
 .custom-curposcontrol {
   z-index: 2;
   background: rgb(255, 255, 255);
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .custom-curposcontrol img {
-  height: 80%;
-  margin: 5px;
+  height: 60%;
+  margin: 10px;
 }
 
 .medi-serach-detail {
@@ -162,11 +164,11 @@
   width: 50vw;
   height: 5vh;
   left: 20vw;
-  bottom: 2vh;
+  bottom: 5vh;
   overflow: hidden;
   border-radius: 10px;
   vertical-align: middle;
-  background: rgba(66, 194, 255, 0.9);
+  background: rgb(247, 247, 247);
   color: rgb(73, 73, 73);
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -188,9 +190,10 @@
   font-weight: 600;
   color: rgb(73, 73, 73);
 }
-
+.medi-bottom-menu-item:hover {
+  color: #06beb6;
+}
 .medi-bottom-menu-item-selected {
-  background-color: #5463ff;
   flex: 1;
   height: 100%;
   cursor: pointer;
@@ -201,11 +204,14 @@
   justify-content: center;
   font-size: 16px;
   font-weight: 600;
-  color: rgb(219, 219, 219) !important;
+  color: #06beb6;
 }
 
 .emer-text {
   color: #ff1818;
+}
+.emer2 {
+  color: #06beb6;
 }
 .medi-bottom-menu-item img {
   margin-right: 10px;
@@ -216,7 +222,7 @@
 }
 
 .medi-bottom-menu-item-code {
-  background-color: #488fb1;
+  background-color: #c9c9c9;
   flex: 1;
   height: 100%;
   cursor: pointer;
@@ -235,7 +241,6 @@
 }
 
 .medi-bottom-menu-item-code-selected {
-  background: #8864db;
   flex: 1;
   height: 100%;
   cursor: pointer;
@@ -246,7 +251,7 @@
   justify-content: center;
   font-size: 16px;
   font-weight: 600;
-  color: rgb(73, 73, 73);
+  color: #06beb6;
 }
 
 .medi-bottom-menu-item-code-selected img {
@@ -254,7 +259,7 @@
 }
 
 .medi-bottom-menu-item-subject {
-  background-color: #488fb1;
+  background-color: #c9c9c9;
   flex: 1;
   height: 100%;
   cursor: pointer;
@@ -272,7 +277,6 @@
 }
 
 .medi-bottom-menu-item-subject-selected {
-  background-color: #8864db;
   flex: 1;
   height: 100%;
   cursor: pointer;
@@ -282,7 +286,7 @@
   justify-content: center;
   font-size: 16px;
   font-weight: 600;
-  color: rgb(73, 73, 73);
+  color: #06beb6;
 }
 
 .medi-bottom-menu-item-subject-selected img {

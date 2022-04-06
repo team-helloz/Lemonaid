@@ -1,28 +1,39 @@
 .medical-subject-menu {
   position: absolute;
   z-index: 2;
-  background: rgb(247, 247, 247);
+  background: rgb(187, 187, 187);
   width: 40vw;
   height: 40vh;
   left: 30vw;
-  bottom: 8vh;
+  bottom: 11vh;
   border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 6px 1px;
   display: flex;
-  flex-direction: column;
   overflow: hidden;
+  flex-direction: column;
 }
 
 .medical-subject-group-box {
-  height: 90px;
-  display: flex;
-  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 .medical-subject-group {
-  list-style: none;
-  display: flex;
-  padding: 0 10px;
+  height: 25%;
   width: 100%;
+  display: flex;
+  background: rgb(247, 247, 247);
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(61, 61, 61, 0.2);
+}
+
+.medical-subject-group2 {
+  background: rgb(247, 247, 247);
+  height: 25%;
+  width: 62.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
