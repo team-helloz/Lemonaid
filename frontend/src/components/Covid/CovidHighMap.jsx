@@ -7,7 +7,6 @@ import mapData from '../../assets/data/mapData.js';
 
 import axios from 'axios';
 
-import "./CovidHighMap.css";
 
 require('highcharts/modules/map')(Highcharts)
 
