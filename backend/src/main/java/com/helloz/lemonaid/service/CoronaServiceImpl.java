@@ -28,7 +28,7 @@ public class CoronaServiceImpl implements CoronaService {
 
     @Override
     public List<CoronaCount> getCoronaCountList() {
-        return coronaCountRepository.findAll();
+        return coronaCountRepository.findAllByOrderByCountDateDesc();
     }
 
     @Override
