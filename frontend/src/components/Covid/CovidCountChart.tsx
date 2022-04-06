@@ -49,7 +49,6 @@ export function CovidCountChart() {
         axios
           .get('/corona/count')
           .then((res) => {
-              console.log(res.data.slice(0, 31).map((row: any) => row.count_date)[0])
               setCovidDateArr(res.data.slice(0, 31).map((row: any) => row.count_date.split("T")[0]))
               setCovidCountArr(res.data.slice(0, 31).map((row: any) => row.count_total))
           })
@@ -70,14 +69,14 @@ export function CovidCountChart() {
         setFlagBtn(31);
     }
 
-    const labels = covidDateArr.slice(0, flagBtn);
+    const labels = covidDateArr.slice(0, flagBtn).reverse();
 
     const data = {
         labels,
         datasets: [
             {
                 label: '국내 총 확진자 수',
-                data: covidCountArr.slice(0, flagBtn),
+                data: covidCountArr.slice(0, flagBtn).reverse(),
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
             },
         ],
