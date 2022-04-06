@@ -1,10 +1,9 @@
 .customoverlay {
   position: relative;
-  bottom: 85px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  border-bottom: 2px solid #ddd;
+  bottom: 80px;
+  border-radius: 8px;
   float: left;
+  cursor: pointer;
 }
 .customoverlay:nth-of-type(n) {
   border: 0;
@@ -19,11 +18,11 @@
   font-size: 14px;
   font-weight: bold;
   overflow: hidden;
-  background: #d95050;
-  background: #d95050
+  background: #06beb6
     url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
     no-repeat right 14px center;
 }
+
 .customoverlay .title {
   display: block;
   text-align: center;
@@ -33,6 +32,7 @@
   font-size: 14px;
   font-weight: bold;
 }
+
 .customoverlay:after {
   content: "";
   position: absolute;

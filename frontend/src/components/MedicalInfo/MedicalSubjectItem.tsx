@@ -15,15 +15,11 @@ export default function MedicalSubjectItem(props: MedicalSubjectItemProps) {
         (itemName === selectedSubjectName ? "-selected" : "")
       }
     >
-      <div className="medical-subject-item-img">
-        <img
-          className="medicine-subject-img"
-          src={`/MedicineSearch/기타.png`}
-          alt=""
-          width={40}
-          height={40}
-        />
-      </div>
+      <img
+        className="medical-subject-item-img"
+        src={`/Subject/${itemName}.png`}
+        alt=""
+      />
       <p className="medical-subject-item-text">{itemName}</p>
     </div>
   );
