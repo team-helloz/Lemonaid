@@ -1,5 +1,7 @@
 // React
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// Router
+import { useLocation } from "react-router-dom";
 // Components
 import NavBar from "../components/NavBar";
 import MedicineStepOne from "../components/MedicineInfo/MedicineStepOne";
@@ -14,6 +16,9 @@ import Footer from "../components/Footer";
 import "./MedicineInfo.css";
 
 export default function MedicineInfo() {
+
+  const { pathname } = useLocation();
+
   const [page, setPage] = useState<number>(0);
   const [shape, setShape] = useState<string>("STEP1");
   const [color, setColor] = useState<string>("STEP2");
@@ -26,6 +31,10 @@ export default function MedicineInfo() {
   const updatePage = (page: number): void => {
     setPage(page);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const updateCondition = (name: string, value: string): void => {
     if (name === "shape") {
