@@ -501,8 +501,7 @@ export default function MedicalInfo() {
 
   // 시작 시 유저 위치 찾기
   useEffect(() => {
-    //console.log(state.subjectId, state.subjectName);
-    if (state !== undefined) {
+    if (state !== undefined && state !== null) {
       setSubjectId(state.subjectId);
       setSubjectName(state.subjectName);
     }
