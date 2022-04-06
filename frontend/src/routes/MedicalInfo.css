@@ -42,19 +42,51 @@
 
 .medi-search {
   cursor: pointer;
+  margin-top: 10px;
+  font-weight: 700;
+  background: rgb(100, 218, 100);
+  border-radius: 5px;
+  padding: 10px;
+  width: 70%;
+  text-align: center;
+  color: rgb(80, 80, 80);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 .mi-container {
   display: flex;
   flex-direction: row;
-  width: 20vw;
+  width: 420px;
   height: 5vh;
   left: 10vw;
   top: 2vh;
   position: absolute;
 }
+
+.medi-nav {
+  cursor: pointer;
+  font-size: 18px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  color: #383838;
+  font-weight: 600;
+  border-top: 1px solid rgba(60, 64, 67, 0.3);
+  transition: 0.2s;
+}
+
+.medi-nav:hover {
+  color: #06beb6;
+}
+.medi-nav1 {
+  margin-top: auto;
+}
 .custom-curposcontrol {
   z-index: 2;
-  background: rgb(61, 61, 61);
+  background: rgb(255, 255, 255);
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -63,14 +95,15 @@
 }
 
 .custom-curposcontrol img {
-  height: 90%;
+  height: 80%;
+  margin: 5px;
 }
 
 .medi-serach-detail {
   position: absolute;
   z-index: 2;
   background: rgb(100, 218, 100);
-  width: 20vw;
+  width: 400px;
   height: 5vh;
   left: 10vw;
   top: 8vh;
@@ -82,6 +115,8 @@
   font-weight: 600;
   font-family: "lemon-font";
   padding: 0px 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 .medi-serach-detail input {
   font-family: "lemon-font";
@@ -101,7 +136,7 @@
   justify-content: center;
   border-radius: 10px;
   font-size: 16px;
-  width: 18vw;
+  width: 100%;
   height: 100%;
   margin-right: 5px;
   font-weight: 600;
