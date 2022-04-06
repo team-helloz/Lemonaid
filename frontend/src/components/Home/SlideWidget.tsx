@@ -13,7 +13,7 @@ export default function SlideWidget() {
     window.scrollTo({top:1191, left:0, behavior: 'smooth'});
   }
   function scrollToCovid() {
-    window.scrollTo({top:1591, left:0, behavior: 'smooth'});
+    window.scrollTo({top:1800, left:0, behavior: 'smooth'});
   }
 
   window.addEventListener('scroll', function() {

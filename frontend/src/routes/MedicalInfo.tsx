@@ -123,7 +123,7 @@ export default function MedicalInfo() {
           setRoadAdd(addr);
         }
       })
-      .catch((e) => console.log(e));
+      //.catch((e) => console.log(e));
   };
   // 주소로 좌표 찾기
   const addToXy = (address: any) => {
@@ -147,7 +147,7 @@ export default function MedicalInfo() {
           setViewCenter({ lat: lat, lng: lng });
         }
       })
-      .catch((e) => console.log(e));
+      //.catch((e) => console.log(e));
   };
 
   const getMedicalList = (isNowCenter: boolean) => {
@@ -213,7 +213,7 @@ export default function MedicalInfo() {
         let totalPages: number = medical_list.totalPages;
         setTotalPage(totalPages);
       })
-      .catch((e) => console.log(e));
+      // .catch((e) => console.log(e));
   };
 
   const addOpentimeValid = (medicalList: IHospital[]): IHospital[] => {

@@ -49,9 +49,7 @@ export default function DiseaseList(props: SymptomProps) {
       .then((res) => {
         setDiseases(res.data.data.content);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      //.catch((err) => {console.log(err);});
   };
   useEffect(() => {
     handleLoad();
@@ -59,7 +57,6 @@ export default function DiseaseList(props: SymptomProps) {
 
   useEffect(() => {
     handleLoad();
-    console.log(diseases);
   }, [nowSymptoms]);
 
   return (

@@ -105,7 +105,9 @@ export default function MedicalList({
               <p className="hos-list-address">
                 <span>{hospital.distance.toFixed()}</span>m · {hospital.address}
               </p>
-              <button className="hos-list-tel">TEL : {hospital.tel}</button>
+              {hospital.tel !== "-1" && (
+                <button className="hos-list-tel">TEL : {hospital.tel}</button>
+              )}
 
               <p className="hos-list-subject">
                 {hospital.type === "hospital" &&
