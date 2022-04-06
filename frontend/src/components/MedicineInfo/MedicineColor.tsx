@@ -101,7 +101,9 @@ export default function MedicineColor(props: MedicineColorProps) {
           />
           <p>STEP{page - 1}</p>
         </div>
-        <p>NEXT STEP - 제형</p>
+        <p
+          onClick={onClickColor("전체")}
+        >NEXT STEP - 제형</p>
       </div>
     </div>
   );
