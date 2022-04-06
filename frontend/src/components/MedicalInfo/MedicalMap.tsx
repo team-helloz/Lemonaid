@@ -1,8 +1,9 @@
-import { Map, MapMarker, ZoomControl } from "react-kakao-maps-sdk";
+import { Map, MapMarker, useMap, ZoomControl } from "react-kakao-maps-sdk";
 import { IHospital, ICoord } from "../../interface";
 import MedicalMarkerContainer from "./MedicalMarkerContainer";
 import CustomCurpos from "../../assets/medical_png/map_curpos.png";
 import "./MedicalMap.css";
+import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -19,8 +20,13 @@ interface MedicalMapProps {
   userGeo: () => void;
   isEmergency: boolean;
   selectHospital: string;
-  UpdateSelectHospital: (selectHospital: string) => void;
+  UpdateSelectHospital: (
+    selectedHospital: string,
+    selectedLat: number,
+    selectedLng: number
+  ) => void;
   setMapZoomLevel: (mapZoomLevel: number) => void;
+  setKakaoMap: (map: kakao.maps.Map | null) => void;
 }
 
 export default function KakaoMap(props: MedicalMapProps) {
@@ -35,6 +41,7 @@ export default function KakaoMap(props: MedicalMapProps) {
     selectHospital,
     UpdateSelectHospital,
     setMapZoomLevel,
+    setKakaoMap,
   } = props;
 
   return (
@@ -50,6 +57,7 @@ export default function KakaoMap(props: MedicalMapProps) {
           })
         }
         onZoomChanged={(map) => setMapZoomLevel(map.getLevel())}
+        onCreate={(map) => setKakaoMap(map)}
       >
         <MapMarker
           position={{ lat: nowCenter.lat, lng: nowCenter.lng }} // 마커를 표시할 위치
