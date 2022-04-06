@@ -87,13 +87,9 @@ export default function DiseaseDetail(Params: any) {
     axios
       .get(`/disease/${disNo}`)
       .then((res) => {
-        console.log(res.data.data);
         setDisease(res.data.data);
-        console.log(disease);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      //.catch((err) => {console.log(err);});
   };
   useEffect(() => {
     handleLoad();

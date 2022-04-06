@@ -60,6 +60,12 @@
 .home-mouse span:active {
   top: 80%;
 }
+.home-mouse-active {
+  transform: translate(0, 100%);
+}
+.home-mouse-none {
+  opacity: 0;
+}
 .home-mouse span {
   position: absolute;
   top: 70%;
@@ -70,7 +76,7 @@
   border: 2px solid rgba(141, 141, 141, 0.8);
   border-radius: 50px;
   box-sizing: border-box;
-  transition: 0.5s;
+  transition: 1s;
 }
 .home-mouse span::before {
   position: absolute;

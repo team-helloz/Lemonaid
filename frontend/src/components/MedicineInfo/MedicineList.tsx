@@ -61,13 +61,10 @@ export default function MedicineList(props: SearchData) {
     axios
       .get(url)
       .then((res) => {
-        console.log(res);
         setList(res.data.medicineList)
         setTotal(~~((res.data.resultCnt + 1) / 20))
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      //.catch((err) => {console.log(err);})
   }
   useEffect(() => {
     handleLoad();

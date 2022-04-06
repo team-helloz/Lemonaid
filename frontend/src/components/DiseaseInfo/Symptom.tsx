@@ -26,9 +26,7 @@ export default function Symptom(props: SetPartProps) {
       .then((res) => {
         setSymptom(res.data.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      //.catch((err) => {console.log(err);});
   };
   useEffect(() => {
     handleLoad();
