@@ -50,7 +50,7 @@ export default function DiseaseInfo() {
           removeSymptom={removeSymptom}
         />
       </div>
-      <div className="disease-group">
+      <div className="disease-group d-symptom-group">
         <Symptom
           nowPart={nowPart}
           nowSymptoms={nowSymptoms}
@@ -58,9 +58,11 @@ export default function DiseaseInfo() {
           removeSymptom={removeSymptom}
         />
       </div>
-      <div className="disease-group">
-        <DiseaseList nowSymptoms={nowSymptoms} />
-      </div>
+      {nowSymptoms.length > 0 && (
+        <div className="disease-group">
+          <DiseaseList nowSymptoms={nowSymptoms} />
+        </div>
+      )}
       <button onClick={scrollToTop} className="to-top">
         맨 위로
       </button>

@@ -104,7 +104,9 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
             />
             <p>STEP{page - 1}</p>
           </div>
-          <p>FINAL STEP</p>
+          <p
+            onClick={onClickDontKnow}
+          >FINAL STEP</p>
         </div>
       </div>
       {hide && !isSearch && (

@@ -81,7 +81,9 @@ export default function MedicineShape(props: MedicineShapeProps) {
           />
           <p>의약품 명칭으로 검색하기</p>
         </div>
-        <p>NEXT STEP - 색상</p>
+        <p
+          onClick={onClickShape("전체")}
+        >NEXT STEP - 색상</p>
       </div>
     </div>
   );
