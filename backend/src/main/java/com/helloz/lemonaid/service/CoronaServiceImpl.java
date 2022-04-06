@@ -3,8 +3,10 @@ package com.helloz.lemonaid.service;
 import com.helloz.lemonaid.db.entity.CoronaCount;
 import com.helloz.lemonaid.db.repository.CoronaAgeRepository;
 import com.helloz.lemonaid.db.repository.CoronaCountRepository;
+import com.helloz.lemonaid.db.repository.CoronaCountTodayRepository;
 import com.helloz.lemonaid.db.repository.CoronaGenderRepository;
 import com.helloz.lemonaid.response.CoronaAgeRes;
+import com.helloz.lemonaid.response.CoronaCountTodayRes;
 import com.helloz.lemonaid.response.CoronaGenderRes;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ public class CoronaServiceImpl implements CoronaService {
     private final CoronaCountRepository coronaCountRepository;
     private final CoronaGenderRepository coronaGenderRepository;
     private final CoronaAgeRepository coronaAgeRepository;
+    private final CoronaCountTodayRepository coronaCountTodayRepository;
 
 
     @Override
@@ -50,6 +53,13 @@ public class CoronaServiceImpl implements CoronaService {
         result.setCorona60Total(coronaAgeRepository.countGroupByAge60());
         result.setCorona70Total(coronaAgeRepository.countGroupByAge70());
         result.setCorona80Total(coronaAgeRepository.countGroupByAge80());
+        return result;
+    }
+
+    @Override
+    public CoronaCountTodayRes getCoronaCountToday() {
+        CoronaCountTodayRes result = new CoronaCountTodayRes();
+        result.setCoronaCountToday(coronaCountTodayRepository.findByRecentDate());
         return result;
     }
 
