@@ -2,7 +2,6 @@ import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 
 import mapData from '../../assets/data/mapData.js';
-import mapData2 from '../../assets/data/mapData2.js';
 
 require('highcharts/modules/map')(Highcharts)
 
