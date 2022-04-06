@@ -38,13 +38,22 @@
 .nav-covid-group {
   position: relative;
   top: 58px;
-  right: -516px;
+  margin-left: 10px;
+  text-align: end;
 
   animation-name: cardnews;
   animation-duration: 15s;
   animation-timing-function: ease;
   animation-iteration-count: infinite;
   animation-direction: normal;
+}
+
+.nav-covid-title {
+  margin-left: 435px;
+}
+
+.nav-covid-sub {
+  color: #06beb6;
 }
 
 @keyframes cardnews {
