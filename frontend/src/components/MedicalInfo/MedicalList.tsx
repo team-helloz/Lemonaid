@@ -9,7 +9,11 @@ export interface HospitalProps {
   setViewCenter: (coord: ICoord) => void;
   handDetailOpen: (hospital: IHospital) => void;
   selectHospital: string;
-  UpdateSelectHospital: (selectHospital: string) => void;
+  UpdateSelectHospital: (
+    selectedHospital: string,
+    selectedLat: number,
+    selectedLng: number
+  ) => void;
   nowPage: number;
   totalPage: number;
   setNowPage: (nowPage: number) => void;
@@ -69,8 +73,10 @@ export default function MedicalList({
                 (hospital.name === selectHospital ? "-selected" : "")
               }
               onClick={() => onClickListItem(hospital)}
-              onMouseEnter={() => UpdateSelectHospital(hospital.name)}
-              onMouseLeave={() => UpdateSelectHospital("")}
+              onMouseEnter={() =>
+                UpdateSelectHospital(hospital.name, hospital.lat, hospital.lng)
+              }
+              onMouseLeave={() => UpdateSelectHospital("", 0, 0)}
               key={hospital.no}
             >
               {hospital.opentime.opentime_valid === "Y" && (
