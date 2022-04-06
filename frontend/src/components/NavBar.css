@@ -1,6 +1,6 @@
 .nav-container {
   width: 100%;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .nav-bottom {
@@ -27,6 +27,18 @@
 .nav-news-group {
   position: relative;
   top: 58px;
+
+  animation-name: cardnews;
+  animation-duration: 15s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+.nav-covid-group {
+  position: relative;
+  top: 58px;
+  right: -516px;
 
   animation-name: cardnews;
   animation-duration: 15s;

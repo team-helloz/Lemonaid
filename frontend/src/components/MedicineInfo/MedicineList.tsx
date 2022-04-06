@@ -40,6 +40,10 @@ export default function MedicineList(props: SearchData) {
     history.push(`/medicine/${medicineNo}`);
   }
 
+  const scrollToTop = () => {
+    window.scrollTo({top:0, left:0, behavior: 'smooth'});
+  };
+
   const handleLoad = () => {
     let url = ""
     if (medicineName === "") {
@@ -97,6 +101,9 @@ export default function MedicineList(props: SearchData) {
 
   return (
     <div className="medicine-list-page">
+      <button onClick={scrollToTop} className="to-top">
+        맨 위로
+      </button>
       <div className="medicine-list-group-box">
         {medicineList.length > 0 && medicineList.map((medicine, i: number) => (
           <div
