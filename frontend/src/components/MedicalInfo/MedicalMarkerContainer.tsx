@@ -1,5 +1,5 @@
 import { CustomOverlayMap, MapMarker, useMap } from "react-kakao-maps-sdk";
-import { IHospital } from "../../interface";
+import { IHospital, ICoord } from "../../interface";
 
 import MarkerImgHospital from "../../assets/medical_png/marker_hospital.png";
 import MarkerImgMedicine from "../../assets/medical_png/marker_medicine.png";
@@ -13,7 +13,11 @@ interface MarkerProps {
   directionMode: boolean;
   isEmergency: boolean;
   selectHospital: string;
-  UpdateSelectHospital: (selectHospital: string) => void;
+  UpdateSelectHospital: (
+    selectedHospital: string,
+    selectedLat: number,
+    selectedLng: number
+  ) => void;
 }
 
 // const imageSize = { width: 100, height: 137 };
@@ -29,16 +33,12 @@ export default function EventMarkerContainer(props: MarkerProps) {
     selectHospital,
     UpdateSelectHospital,
   } = props;
-  const hoverEvent = (hospital: IHospital) => {};
+
   const map = useMap();
-  // const [isVisible, setIsVisible] = useState(false);
-  // const content = <div style={{ color: "#000" }}>{hospital.name}</div>;
 
   const onClickMarker = (hospital: IHospital) => {
-    //console.log(hospital.name);
     handDetailOpen(hospital);
     // setNowCenter({ lat: hospital.lat, lng: hospital.lng });
-    // handDetailOpen(hospital);
   };
 
   return (
@@ -49,8 +49,10 @@ export default function EventMarkerContainer(props: MarkerProps) {
           onClick={(marker) => {
             map.panTo(marker.getPosition());
           }}
-          onMouseOver={() => UpdateSelectHospital(hospital.name)}
-          onMouseOut={() => UpdateSelectHospital("")}
+          onMouseOver={() =>
+            UpdateSelectHospital(hospital.name, hospital.lat, hospital.lng)
+          }
+          onMouseOut={() => UpdateSelectHospital("", 0, 0)}
           image={{
             src: MarkerImgHospital,
             size: MarkerImgHospital,
@@ -68,8 +70,10 @@ export default function EventMarkerContainer(props: MarkerProps) {
             //console.log(marker);
             map.panTo(marker.getPosition());
           }}
-          onMouseOver={() => UpdateSelectHospital(hospital.name)}
-          onMouseOut={() => UpdateSelectHospital("")}
+          onMouseOver={() =>
+            UpdateSelectHospital(hospital.name, hospital.lat, hospital.lng)
+          }
+          onMouseOut={() => UpdateSelectHospital("", 0, 0)}
           image={{
             src: MarkerImgHospitalSelect,
             size: MarkerImgHospitalSelect,
@@ -86,8 +90,10 @@ export default function EventMarkerContainer(props: MarkerProps) {
           onClick={(marker) => {
             map.panTo(marker.getPosition());
           }}
-          onMouseOver={() => UpdateSelectHospital(hospital.name)}
-          onMouseOut={() => UpdateSelectHospital("")}
+          onMouseOver={() =>
+            UpdateSelectHospital(hospital.name, hospital.lat, hospital.lng)
+          }
+          onMouseOut={() => UpdateSelectHospital("", 0, 0)}
           image={{
             src: MarkerImgMedicine,
             size: MarkerImgMedicine,
@@ -104,8 +110,10 @@ export default function EventMarkerContainer(props: MarkerProps) {
           onClick={(marker) => {
             map.panTo(marker.getPosition());
           }}
-          onMouseOver={() => UpdateSelectHospital(hospital.name)}
-          onMouseOut={() => UpdateSelectHospital("")}
+          onMouseOver={() =>
+            UpdateSelectHospital(hospital.name, hospital.lat, hospital.lng)
+          }
+          onMouseOut={() => UpdateSelectHospital("", 0, 0)}
           image={{
             src: MarkerImgMedicineSelect,
             size: MarkerImgMedicineSelect,
@@ -124,8 +132,10 @@ export default function EventMarkerContainer(props: MarkerProps) {
         <div
           className="customoverlay"
           onClick={() => onClickMarker(hospital)}
-          onMouseEnter={() => UpdateSelectHospital(hospital.name)}
-          onMouseLeave={() => UpdateSelectHospital("")}
+          onMouseEnter={() =>
+            UpdateSelectHospital(hospital.name, hospital.lat, hospital.lng)
+          }
+          onMouseLeave={() => UpdateSelectHospital("", 0, 0)}
         >
           <a
             //href="https://map.kakao.com/link/map/11394059"

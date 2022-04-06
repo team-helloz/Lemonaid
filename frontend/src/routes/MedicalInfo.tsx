@@ -80,6 +80,8 @@ export default function MedicalInfo() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [kakaoMap, setKakaoMap] = useState<kakao.maps.Map | null>(null);
+
   const postcodeRef = useRef<HTMLDivElement | null>(null);
 
   // 유저 위치 자동 추적
@@ -555,7 +557,14 @@ export default function MedicalInfo() {
     setOpenCode(false);
   };
 
-  const UpdateSelectHospital = (selectedHospital: string) => {
+  const UpdateSelectHospital = (
+    selectedHospital: string,
+    selectedLat: number,
+    selectedLng: number
+  ) => {
+    if (selectedHospital !== "" && kakaoMap !== null) {
+      kakaoMap.panTo(new kakao.maps.LatLng(selectedLat, selectedLng));
+    }
     setSelectHospital(selectedHospital);
   };
 
@@ -616,6 +625,25 @@ export default function MedicalInfo() {
     }
   };
 
+  const selectViewHospitalEvent = () => {
+    if (viewHospital === false) {
+      setViewHospital(!viewHospital);
+      setViewPharmacy(viewHospital);
+    } else {
+      setViewHospital(!viewHospital);
+    }
+  };
+
+  const selectViewPharmacyEvent = () => {
+    if (viewPharmacy === false) {
+      setViewPharmacy(!viewPharmacy);
+      setViewHospital(viewPharmacy);
+      setIsEmergency(viewPharmacy);
+    } else {
+      setViewPharmacy(!viewPharmacy);
+    }
+  };
+
   return (
     <>
       <div className="mi-container">
@@ -666,7 +694,7 @@ export default function MedicalInfo() {
           className={
             "medi-bottom-menu-item" + (viewHospital ? "-selected" : "")
           }
-          onClick={() => setViewHospital(!viewHospital)}
+          onClick={selectViewHospitalEvent}
         >
           <img src={SymbolHospital} alt="" width={"17px"} />
           병원 검색
@@ -675,7 +703,7 @@ export default function MedicalInfo() {
           className={
             "medi-bottom-menu-item" + (viewPharmacy ? "-selected" : "")
           }
-          onClick={() => setViewPharmacy(!viewPharmacy)}
+          onClick={selectViewPharmacyEvent}
         >
           <img src={SymbolPharmacy} alt="" width={"17px"} />
           약국 검색
@@ -734,6 +762,7 @@ export default function MedicalInfo() {
         selectHospital={selectHospital}
         UpdateSelectHospital={UpdateSelectHospital}
         setMapZoomLevel={setMapZoomLevel}
+        setKakaoMap={setKakaoMap}
       ></MedicalMap>
       <MedicalDetail
         open={openDetailDlg}
