@@ -7,7 +7,7 @@ export default function Footer() {
         <h1 className="footer__logo">Lemonaid</h1>
         <h2>Info</h2>
         <address>
-          SSAFY 6기 특화 구미 1반 Helloz
+          SSAFY 6기 특화 구미 1반 8조 Helloz
           <br />
           <a className="footer__btn" href="mailto:ssafyd108@gmail.com">
             Email Us
@@ -68,7 +68,7 @@ export default function Footer() {
       </ul>
 
       <div className="legal">
-        <p>&copy; 2022 Helloz. All rights reserved.</p>
+        <p>&copy; 2022 SSAFY. All rights reserved.</p>
 
         <div className="legal__links">
           <img
