@@ -47,6 +47,7 @@
   margin-right: 10px;
   padding: 3px;
   font-weight: 600;
+  font-size: 16px;
 }
 .dd-hash-tag {
   background: rgba(212, 212, 212, 0.7);
@@ -61,6 +62,7 @@
   font-size: 28px;
   font-weight: bold;
   color: white;
+  margin: 0;
   margin-top: 15px;
 }
 .dd-main-title {
@@ -150,4 +152,10 @@
   font-size: 18px;
   font-weight: 700;
   border-bottom: 2px solid #06beb6;
+}
+
+.title-sub2 {
+  font-size: 16px;
+  color: aliceblue;
+  margin-right: 5px !important;
 }

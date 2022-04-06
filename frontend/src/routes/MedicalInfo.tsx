@@ -576,7 +576,15 @@ export default function MedicalInfo() {
       setKeyword(e.target.value);
     }
   };
-
+  function routeMedicine() {
+    history.push("/medicine");
+  }
+  function routeDisease() {
+    history.push("/disease");
+  }
+  function routeCovid() {
+    history.push("/covid");
+  }
   const loadLayout = () => {
     window.daum.postcode.load(() => {
       const postcode = new window.daum.Postcode({
@@ -598,7 +606,7 @@ export default function MedicalInfo() {
           <button onClick={loadLayout}>변경</button>
         </div>
         <div className="custom-curposcontrol" onClick={userGeo}>
-          <img src="/map.png" alt="" />
+          <img src="/map_curpos.png" alt="" />
         </div>
       </div>
       <div className="medi-left">
@@ -606,7 +614,16 @@ export default function MedicalInfo() {
           <img src="/Lemonaid.png" alt="" />
         </div>
         <div className="medi-search" onClick={() => setOpenSerach(!openSerach)}>
-          이름으로 검색
+          이름 검색
+        </div>
+        <div onClick={routeMedicine} className="medi-nav medi-nav1">
+          의약품 조회
+        </div>
+        <div onClick={routeDisease} className="medi-nav">
+          질병 조회
+        </div>
+        <div onClick={routeCovid} className="medi-nav">
+          COVID
         </div>
       </div>
 

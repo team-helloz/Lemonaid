@@ -43,28 +43,32 @@ export default function MedicalCode(props: MedicalCodeProps) {
       {openCode === true && (
         <div className="medical-code-menu">
           <div className="medical-code-group-box">
-            <ul className="medical-code-group">
-              {MedicalCodes[0].map((Code, i: number) => (
-                <li onClick={onClickCode(Code)} key={i}>
-                  <MedicalCodeItem
-                    itemName={Code.name}
-                    selectedCodeName={selectedCodeName}
-                  />
-                </li>
-              ))}
-            </ul>
+            {MedicalCodes[0].map((Code, i: number) => (
+              <div
+                className="medi-code-container"
+                onClick={onClickCode(Code)}
+                key={i}
+              >
+                <MedicalCodeItem
+                  itemName={Code.name}
+                  selectedCodeName={selectedCodeName}
+                />
+              </div>
+            ))}
           </div>
           <div className="medical-code-group-box">
-            <ul className="medical-code-group">
-              {MedicalCodes[1].map((Code, i: number) => (
-                <li onClick={onClickCode(Code)} key={i}>
-                  <MedicalCodeItem
-                    itemName={Code.name}
-                    selectedCodeName={selectedCodeName}
-                  />
-                </li>
-              ))}
-            </ul>
+            {MedicalCodes[1].map((Code, i: number) => (
+              <div
+                className="medi-code-container"
+                onClick={onClickCode(Code)}
+                key={i}
+              >
+                <MedicalCodeItem
+                  itemName={Code.name}
+                  selectedCodeName={selectedCodeName}
+                />
+              </div>
+            ))}
           </div>
         </div>
       )}

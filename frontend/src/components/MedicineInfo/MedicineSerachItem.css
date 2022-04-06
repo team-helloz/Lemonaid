@@ -1,7 +1,7 @@
 .medicine-serach-item {
   margin: 0 36px;
   padding: 10px;
-  border: 1px solid #e5e5e5;
+  /* border: 1px solid #e5e5e5; */
   transition: 0.2s ease;
   border-radius: 10px;
 }
