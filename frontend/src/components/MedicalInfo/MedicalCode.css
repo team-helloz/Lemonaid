@@ -1,24 +1,28 @@
 .medical-code-menu {
   position: absolute;
   z-index: 2;
-  background: #e5e9ff;
-  width: 53vw;
-  height: 22vh;
-  right: 33%;
-  bottom: 12%;
+  background: rgb(247, 247, 247);
+  width: 40vw;
+  height: 16vh;
+  left: 30vw;
+  bottom: 8vh;
   border-radius: 10px;
-  border: 1px solid;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 6px 1px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .medical-code-group-box {
-  height: 90px;
+  height: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.medical-code-group {
-  list-style: none;
-  display: flex;
-  padding: 0 10px;
+.medi-code-container {
+  height: 100%;
   width: 100%;
 }
