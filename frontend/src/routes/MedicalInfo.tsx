@@ -598,6 +598,24 @@ export default function MedicalInfo() {
     });
   };
 
+  const openCodeEvent = () => {
+    if (openCode === false) {
+      setOpenCode(true);
+      setOpenSubject(false);
+    } else {
+      setOpenCode(false);
+    }
+  };
+
+  const openSubjectEvent = () => {
+    if (openSubject === false) {
+      setOpenSubject(true);
+      setOpenCode(false);
+    } else {
+      setOpenSubject(false);
+    }
+  };
+
   return (
     <>
       <div className="mi-container">
@@ -676,7 +694,7 @@ export default function MedicalInfo() {
             "medi-bottom-menu-item-code" +
             (codeName !== "전체" ? "-selected" : "")
           }
-          onClick={() => setOpenCode(!openCode)}
+          onClick={openCodeEvent}
         >
           {codeName === "전체" ? "병원 종류" : codeName}
           <img src={openCode ? MenuClose : MenuOpen} alt="" width={"17px"} />
@@ -686,7 +704,7 @@ export default function MedicalInfo() {
             "medi-bottom-menu-item-subject" +
             (subjectName !== "전체" ? "-selected" : "")
           }
-          onClick={() => setOpenSubject(!openSubject)}
+          onClick={openSubjectEvent}
         >
           {subjectName === "전체" ? "진료 과목" : subjectName}
           <img src={openSubject ? MenuClose : MenuOpen} alt="" width={"17px"} />
