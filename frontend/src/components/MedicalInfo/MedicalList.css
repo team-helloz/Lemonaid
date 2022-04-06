@@ -148,6 +148,10 @@
   justify-content: center;
   margin: 0;
   margin-top: auto;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 6px 1px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 ul {
@@ -159,8 +163,7 @@ ul {
 ul.pagination li {
   background: rgb(247, 247, 247);
   display: inline-block;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 6px 1px;
+
   width: 30px;
   height: 30px;
   border-right: 1px solid #48b1bf;

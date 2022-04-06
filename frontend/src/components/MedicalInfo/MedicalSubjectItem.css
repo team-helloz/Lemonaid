@@ -1,48 +1,46 @@
 .medical-subject-item {
-  margin: 0 10px;
-  padding: 10px;
-  border: 1px solid #e5e5e5;
-  transition: .5s ease;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(61, 61, 61, 0.2);
+  border-width: 50%;
+  border-right: 1px solid rgba(61, 61, 61, 0.2);
+  font-weight: 600;
 }
 
 .medical-subject-item-selected {
-  margin: 0 10px;
-  padding: 10px;
-  border: 1px solid #973232;
-  transition: .5s ease;
-}
-
-.medical-subject-item p {
-  margin: 0;
-}
-
-.medical-subject-item:hover {
-  border: 1px solid #0DADEA;
-  transform: scale(1.1);
-}
-
-.medical-subject-item:hover p {
-  color: #0DADEA;
-  font-weight: bold;
-}
-
-.medical-subject-item:hover {
+  background: #06beb6;
+  height: 100%;
+  font-weight: 600;
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
   cursor: pointer;
+  border-bottom: 1px solid rgba(61, 61, 61, 0.2);
+  border-width: 50%;
+  border-right: 1px solid rgba(61, 61, 61, 0.2);
+}
+
+.medical-subject-item:hover {
+  background: #06beb6;
+  color: white;
 }
 
 .medical-subject-item-text {
   text-align: center;
-  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .medical-subject-item-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-}
-
-.medical-subject-img {
-  width: 80%;
+  height: 50%;
 }
