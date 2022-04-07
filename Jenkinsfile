@@ -17,7 +17,7 @@ pipeline {
 			steps {
 				script {
                     	try {
-							sh 'cp /var/jenkins_home/lemonaid-screts/.env ./frontend/' 
+							sh 'cp /var/jenkins_home/lemonaid-secrets/.env ./frontend/' 
                             sh 'docker-compose build'
 					}catch(e) {
                         				mattermostSend (
