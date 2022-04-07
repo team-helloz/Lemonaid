@@ -24,6 +24,7 @@
   justify-content: space-between;
   margin-bottom: 60px;
 }
+
 .covid-oneline {
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
@@ -41,6 +42,7 @@
   border-radius: 10px;
   padding: 8px 10px;
 }
+
 .thdays-btn {
   border: 0;
   background: white;
@@ -59,6 +61,62 @@
   display: flex;
   flex-direction: row;
   border-radius: 10px;
-  width: 120px;
+  width: 130px;
   justify-content: center;
+}
+
+
+.covid-main-title {
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  border-radius: 10px;
+  width: 1080px;
+  margin-bottom: 100px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.covid-main-title :first-child {
+  color: #808080;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.covid-main-title :nth-child(2) {
+  color: #06beb6;
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.covid-main-title :nth-child(2) span {
+  font-size: 24px;
+}
+
+.covid-up {
+  background: #FDEAEE;
+  color: #EB5374 !important;
+  padding: 5px;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  border-radius: 10px;
+  margin-left: 10px !important;
+}
+
+.covid-down {
+  background: #EFF2FF;
+  color: #5673EB !important;
+  padding: 5px;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  border-radius: 10px;
+  margin-left: 10px !important;
 }
