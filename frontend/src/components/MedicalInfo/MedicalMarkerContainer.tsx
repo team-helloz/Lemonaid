@@ -3,8 +3,8 @@ import { IHospital } from "../../interface";
 
 import MarkerImgHospital from "../../assets/medical_png/marker_hospital.png";
 import MarkerImgMedicine from "../../assets/medical_png/marker_medicine.png";
-import MarkerImgHospitalSelect from "../../assets/medical_png/marker_hospital_select.png";
-import MarkerImgMedicineSelect from "../../assets/medical_png/marker_medicine_select.png";
+// import MarkerImgHospitalSelect from "../../assets/medical_png/marker_hospital_select.png";
+// import MarkerImgMedicineSelect from "../../assets/medical_png/marker_medicine_select.png";
 import "./MedicalMarkerContainer.css";
 
 interface MarkerProps {
@@ -58,6 +58,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
               spriteOrigin: spriteMargin,
             },
           }}
+          zIndex={hospital.name === selectHospital ? 3 : 1}
         />
       )}
       {/* {hospital.type === "hospital" && hospital.name === selectHospital && (
@@ -95,6 +96,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
               spriteOrigin: spriteMargin,
             },
           }}
+          zIndex={hospital.name === selectHospital ? 3 : 1}
         />
       )}
       {/* {hospital.type === "pharmacy" && hospital.name === selectHospital && (
@@ -118,6 +120,7 @@ export default function EventMarkerContainer(props: MarkerProps) {
       <CustomOverlayMap
         position={{ lat: hospital.lat, lng: hospital.lng }}
         yAnchor={1}
+        zIndex={hospital.name === selectHospital ? 3 : 1}
       >
         <div
           className="customoverlay"

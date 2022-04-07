@@ -1,9 +1,8 @@
 import { Map, MapMarker, useMap, ZoomControl } from "react-kakao-maps-sdk";
 import { IHospital, ICoord } from "../../interface";
 import MedicalMarkerContainer from "./MedicalMarkerContainer";
-import CustomCurpos from "../../assets/medical_png/map_curpos.png";
+import MarkerMePng from "../../assets/medical_png/marker_me.png";
 import "./MedicalMap.css";
-import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -62,10 +61,10 @@ export default function KakaoMap(props: MedicalMapProps) {
         <MapMarker
           position={{ lat: nowCenter.lat, lng: nowCenter.lng }} // 마커를 표시할 위치
           image={{
-            src: CustomCurpos,
-            size: CustomCurpos,
+            src: MarkerMePng,
+            size: MarkerMePng,
             options: {
-              spriteSize: { width: 36, height: 36 },
+              spriteSize: { width: 36, height: 60 },
               spriteOrigin: { x: 20, y: 65 },
             },
           }}
