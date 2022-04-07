@@ -122,8 +122,8 @@ export default function MedicalInfo() {
           addr = res.data.documents[0].address.address_name;
           setRoadAdd(addr);
         }
-      })
-      //.catch((e) => console.log(e));
+      });
+    //.catch((e) => console.log(e));
   };
   // 주소로 좌표 찾기
   const addToXy = (address: any) => {
@@ -146,8 +146,8 @@ export default function MedicalInfo() {
           setNowCenter({ lat: lat, lng: lng });
           setViewCenter({ lat: lat, lng: lng });
         }
-      })
-      //.catch((e) => console.log(e));
+      });
+    //.catch((e) => console.log(e));
   };
 
   const getMedicalList = (isNowCenter: boolean) => {
@@ -212,8 +212,8 @@ export default function MedicalInfo() {
 
         let totalPages: number = medical_list.totalPages;
         setTotalPage(totalPages);
-      })
-      // .catch((e) => console.log(e));
+      });
+    // .catch((e) => console.log(e));
   };
 
   const addOpentimeValid = (medicalList: IHospital[]): IHospital[] => {
@@ -562,7 +562,12 @@ export default function MedicalInfo() {
     selectedLat: number,
     selectedLng: number
   ) => {
-    if (selectedHospital !== "" && kakaoMap !== null) {
+    if (
+      selectedHospital !== "" &&
+      kakaoMap !== null &&
+      selectedLat > 0 &&
+      selectedLng > 0
+    ) {
       kakaoMap.panTo(new kakao.maps.LatLng(selectedLat, selectedLng));
     }
     setSelectHospital(selectedHospital);

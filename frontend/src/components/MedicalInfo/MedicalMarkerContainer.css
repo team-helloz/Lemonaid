@@ -33,6 +33,17 @@
   font-weight: bold;
 }
 
+.customoverlay .title-selected {
+  display: block;
+  text-align: center;
+  background: #fff;
+  margin-right: 35px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color:#06beb6;
+}
+
 .customoverlay:after {
   content: "";
   position: absolute;
