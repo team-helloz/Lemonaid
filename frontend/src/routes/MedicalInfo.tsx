@@ -104,7 +104,7 @@ export default function MedicalInfo() {
 
   // 좌표로 주소 찾기
   const xyToAdd = (lat: number, lng: number) => {
-    const api = "8bfd93b5e35e8d6039d2b40188560f8b";
+    const api = process.env.REACT_APP_KAKAO_API_KEY;
     let addr = "";
     axios
       .get(
