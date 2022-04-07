@@ -7,7 +7,16 @@ import { CovidAgeChart } from "../components/Covid/CovidAgeChart";
 import CovidHighMap from "../components/Covid/CovidHighMap.jsx";
 import { CovidCountChart } from "../components/Covid/CovidCountChart";
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 export default function CovidInfo() {
+
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div>
       <NavBar />

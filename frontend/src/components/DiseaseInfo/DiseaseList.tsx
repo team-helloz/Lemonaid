@@ -61,58 +61,63 @@ export default function DiseaseList(props: SymptomProps) {
 
   return (
     <div className="disease-list-container">
-      <div className="disease-list">
-        {diseases.map((disease) => (
-          <div key={disease.no} className="disease-item disease-box">
-            <div className="disease-img">
-              <img
-                src={`https://j6d108.p.ssafy.io/images/disease/${disease.no}.jpg`}
-                alt=""
-              />
-            </div>
-            <div className="disease-content">
-              <div className="detail-list">
-                <p className="disease-name">{disease.name}</p>
+      {diseases.length === 0 && (
+        <p className="res-none">검색 결과가 없습니다.</p>
+      )}
+      {diseases.length > 0 && (
+        <div className="disease-list">
+          {diseases.map((disease) => (
+            <div key={disease.no} className="disease-item disease-box">
+              <div className="disease-img">
                 <img
-                  src={Popup}
+                  src={`https://j6d108.p.ssafy.io/images/disease/${disease.no}.jpg`}
                   alt=""
-                  width={"18px"}
-                  onClick={() => routeDetail(disease.no)}
-                  className="popup-btn"
                 />
               </div>
-              <div className="list-title-box">
-                <div>
-                  <p className="list-title">관련질병</p>
-                  <div className="detail-item-list">
-                    {disease.related_disease.map((disease: any) => (
-                      <p key={disease.no}>{disease.name} </p>
-                    ))}
-                  </div>
+              <div className="disease-content">
+                <div className="detail-list">
+                  <p className="disease-name">{disease.name}</p>
+                  <img
+                    src={Popup}
+                    alt=""
+                    width={"18px"}
+                    onClick={() => routeDetail(disease.no)}
+                    className="popup-btn"
+                  />
                 </div>
-                <div>
-                  <p className="list-title">증상</p>
-                  <div className="detail-item-list">
-                    {disease.symptoms.map((symptom: any, j: number) => (
-                      <span key={j}>{symptom.name} </span>
-                    ))}
+                <div className="list-title-box">
+                  <div>
+                    <p className="list-title">관련질병</p>
+                    <div className="detail-item-list">
+                      {disease.related_disease.map((disease: any) => (
+                        <p key={disease.no}>{disease.name} </p>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <p className="list-title">동의어</p>
-                  <div className="detail-item-list">
-                    {disease.synonym === "" ? (
-                      <p>-</p>
-                    ) : (
-                      <p>{disease.synonym}</p>
-                    )}
+                  <div>
+                    <p className="list-title">증상</p>
+                    <div className="detail-item-list">
+                      {disease.symptoms.map((symptom: any, j: number) => (
+                        <span key={j}>{symptom.name} </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="list-title">동의어</p>
+                    <div className="detail-item-list">
+                      {disease.synonym === "" ? (
+                        <p>-</p>
+                      ) : (
+                        <p>{disease.synonym}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
