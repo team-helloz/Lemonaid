@@ -91,13 +91,13 @@ export function CovidCountChart() {
           className={flagBtn === 8 ? "thdays-btn" : "sedays-btn"}
           onClick={sevenBtn}
         >
-          7일
+          주간
         </div>
         <div
           className={flagBtn === 31 ? "thdays-btn" : "sedays-btn"}
           onClick={thirtyBtn}
         >
-          30일
+          월간
         </div>
       </div>
       <Bar options={options} data={data} style={{ margin: "20px" }} />
