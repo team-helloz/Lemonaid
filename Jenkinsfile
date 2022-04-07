@@ -17,7 +17,7 @@ pipeline {
 			steps {
 				script {
                     	try {
-							sh 'cp /home/ubuntu/lemonaid/.env ./frontend/' 
+							sh 'pwd' 
                             sh 'docker-compose build'
 					}catch(e) {
                         				mattermostSend (
