@@ -23,7 +23,7 @@
   height: 380px;
   background: linear-gradient(to right bottom, #0dadea, #64cada);
   background-size: cover;
-  transition: 0.5s ease;
+  transition: 0.2s ease;
 }
 
 .h-menu-bg-center {
@@ -35,7 +35,7 @@
 }
 
 .h-menu-box:hover p {
-  color: black;
+  color: #38fff5;
 }
 
 .h-move-title {
