@@ -25,7 +25,7 @@ export const options = {
   plugins: {
     title: {
       display: true,
-      text: "나이대별 코로나 확진자 수",
+      text: "연령별 코로나 확진자 수",
     },
   },
   responsive: true,
@@ -121,7 +121,7 @@ export function CovidAgeChart() {
           covid70Total,
           covid80Total,
         ],
-        backgroundColor: "#48b1bf",
+        backgroundColor: "rgb(75, 192, 192)",
       },
       {
         label: "일일 확진자 수",
@@ -136,7 +136,7 @@ export function CovidAgeChart() {
           covid70Today,
           covid80Today,
         ],
-        backgroundColor: "rgb(75, 192, 192)",
+        backgroundColor: "#ffff54",
       },
     ],
   };
