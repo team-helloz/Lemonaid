@@ -1,0 +1,126 @@
+.home-page {
+  display: flex;
+  background: rgb(247, 247, 247);
+}
+
+.h-main {
+  display: flex;
+  width: 65%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.logo-container {
+  position: relative;
+  top: 100px;
+  left: 15%;
+  z-index: -1;
+}
+
+.team-logo {
+  margin: 0;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.home-stethoscope {
+  position: absolute;
+  height: 600px;
+  bottom: 0;
+  right: 10%;
+  z-index: -1;
+}
+
+.home-line {
+  height: 200px;
+  position: absolute;
+  left: -30px;
+  bottom: -30px;
+}
+
+.logo-description {
+  margin: 0 40px;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(119, 119, 119);
+}
+
+.team {
+  position: absolute;
+  margin: 0;
+  bottom: 20px;
+  left: 130px;
+  font-size: 12px;
+}
+
+.home-mouse {
+  padding-top: 60px;
+}
+.home-mouse span:active {
+  top: 80%;
+}
+.home-mouse-active {
+  transform: translate(0, 100%);
+}
+.home-mouse-none {
+  opacity: 0;
+}
+.home-mouse span {
+  position: absolute;
+  top: 70%;
+  left: 95%;
+  width: 30px;
+  height: 50px;
+  margin-left: -15px;
+  border: 2px solid rgba(141, 141, 141, 0.8);
+  border-radius: 50px;
+  box-sizing: border-box;
+  transition: 1s;
+}
+.home-mouse span::before {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: rgba(141, 141, 141, 0.8);
+  border-radius: 100%;
+  -webkit-animation: sdb 2s infinite;
+  animation: sdb 2s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb {
+  0% {
+    -webkit-transform: translate(0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: translate(0, 20px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(0, 20px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

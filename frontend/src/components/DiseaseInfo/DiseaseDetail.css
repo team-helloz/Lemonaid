@@ -1,48 +1,161 @@
 .d-detail-page {
   display: flex;
   justify-content: center;
+  cursor: default;
 }
 
 .d-detail-content {
   width: 1120px;
+  border: 1px solid rgba(122, 122, 122, 0.3);
+  background: rgba(247, 247, 247);
 }
 
 .d-detail-title {
   display: flex;
   align-items: center;
+  background: linear-gradient(to right, #06beb6, #48b1bf);
+  padding: 30px 20px;
+  flex-direction: column;
+  justify-content: flex-start;
 }
-
-.d-detail-name {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.d-medical-btn {
-  height: 25px;
-  margin-left: 10px;
-}
-
-.d-detail-list {
+.dd-name-title {
   display: flex;
-  margin-left: 20px;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
 }
-
-.d-detail-list * {
+.dd-name-title p {
+  margin: 0;
+  font-weight: 600;
+}
+.title-sub {
+  color: beige;
+  background: rgba(112, 128, 144, 0.5);
+  padding: 3px 8px !important;
+  border-radius: 10px;
+  font-weight: 800 !important;
+}
+.title-small {
+  display: flex;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  margin-top: 20px;
+}
+.title-small p {
+  margin: 0;
   margin-right: 10px;
+  padding: 3px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.dd-hash-tag {
+  background: rgba(212, 212, 212, 0.7);
+  padding: 0px 5px;
+  margin-right: 5px !important;
+  color: rgb(102, 102, 102) !important;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.d-detail-name {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  margin-top: 15px;
+}
+.dd-main-title {
+  width: 1080px;
+  display: flex;
+  align-items: center;
+}
+.d-medical-btn {
+  height: 35px;
+  margin-left: auto;
+  width: 100px;
+  border: 0;
+  border-left: 1px solid white;
+  background: none;
+}
+.d-medical-btn img {
+  width: 35px;
+  cursor: pointer;
 }
 
 .d-item-box {
   display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  max-width: 300px;
+  flex: 1;
+  padding: 20px;
 }
 
-.d-item-blue {
-  width: 3px;
-  height: 16px;
-  background-color: blue;
-  margin: 13px 5px 0 0;
+.d-item-img-box img {
+  height: 200px;
+  border-radius: 10px;
+  margin-left: auto;
 }
 
+.d-item-img-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1.5;
+  padding: 20px;
+}
 .d-item-mini-title {
-  margin: 10px 0 5px 0;
-  font-weight: bold;
+  font-weight: 900;
+  font-size: 14px;
+  color: rgba(122, 122, 122, 0.6);
+}
+
+.dd-2-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.d-detail-list p {
+  margin-right: 10px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.d-detail-list span {
+  margin-right: 10px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.dd-content {
+  border-top: 1px solid rgba(122, 122, 122, 0.5);
+  margin: 0 20px 20px 20px;
+  padding-top: 50px;
+}
+
+.dd-content-content {
+  padding: 15px;
+  margin-bottom: 80px;
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  white-space: pre-line;
+}
+.dd-content-title span {
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 2px solid #06beb6;
+}
+
+.title-sub2 {
+  font-size: 16px;
+  color: aliceblue;
+  margin-right: 5px !important;
 }
