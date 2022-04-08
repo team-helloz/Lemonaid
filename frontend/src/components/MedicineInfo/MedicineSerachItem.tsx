@@ -9,16 +9,15 @@ export default function MedicineSerachItem(props: MedicineSerachItemProps) {
   const { itemName } = props;
 
   return (
-    <>
-      <div>
+    <div className="medicine-serach-item">
+      <div className="medicine-serach-item-img">
         <img
-          src={require("../../assets/medicine.png")}
-          width="80"
-          height="80"
+          className="medicine-search-img"
+          src={`/MedicineSearch/${itemName}.png`}
           alt=""
         />
       </div>
-      <div className="medicine-serach-item-text">{itemName}</div>
-    </>
+      <p className="medicine-serach-item-text">{itemName}</p>
+    </div>
   );
 }

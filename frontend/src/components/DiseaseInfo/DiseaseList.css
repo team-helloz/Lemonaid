@@ -1,70 +1,92 @@
+.disease-list-container {
+  background: rgb(247, 247, 247);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #5c5c5c;
+}
+
 .disease-list {
   width: 1120px;
+  background: rgb(247, 247, 247);
+  margin: 80px 0;
 }
 
 .disease-box {
-  border-top: solid 1px black;
-  margin-top: 10px;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 80px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  overflow: hidden;
+}
+
+.disease-content {
+  width: 840px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .disease-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.disease-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 20px 0 0 0;
-}
-
-.disease-img {
-  margin-top: 40px;
-  width: 500px;
-  height: 230px;
-  background-color: gray;
-}
-
-.disease-img:hover {
-  cursor: pointer;
-}
-
-.list-title-box {
-  display: flex;
-}
-
-.item-title-blue {
-  width: 3px;
-  height: 16px;
-  background-color: blue;
-  margin: 13px 5px 0 0;
-}
-
-.list-title {
-  margin: 10px 0 5px 0;
-  font-weight: bold;
-  font-size: 15px;
 }
 
 .detail-list {
   display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 20px;
+}
+
+.disease-name {
+  font-size: 20px;
+  margin: 0;
+  padding-left: 5px;
+  font-weight: bold;
+  border-left: solid 4px #06beb6;
+}
+
+.disease-img {
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
+  display: flex;
+  align-self: center;
+}
+
+.list-title-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 20px 20px;
+}
+
+.list-title {
+  margin: 10px 10px 5px 0;
+  padding-left: 5px;
+  font-weight: bold;
+  font-size: 15px;
+  border-left: solid 2px #06beb6;
 }
 
 .detail-item-list {
-  display: flex;
-  padding-left: 10px;
+  width: 200px;
 }
 
-.detail-item-list * {
-  margin: 0 10px 10px 0;
-  font-size: 14px;
+.detail-item-list p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+.detail-item-list span {
+  margin: 5px 0;
+  font-size: 13px;
 }
 
 .popup-btn {
-  margin: 20px 0 0 10px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
-.related-disease:hover {
-  cursor: pointer;
+.res-none {
+  width: 1120px;
 }

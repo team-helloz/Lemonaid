@@ -1,22 +1,27 @@
 package com.helloz.lemonaid.service;
 
+import com.google.common.base.Converter;
 import com.helloz.lemonaid.common.exception.NotFoundException;
-import com.helloz.lemonaid.db.entity.Hospital;
-import com.helloz.lemonaid.db.entity.Medical;
-import com.helloz.lemonaid.db.entity.MedicalSubject;
-import com.helloz.lemonaid.db.entity.Pharmacy;
-import com.helloz.lemonaid.db.repository.HospitalRepository;
-import com.helloz.lemonaid.db.repository.MedicalSubjectRepository;
-import com.helloz.lemonaid.db.repository.PharmacyRepository;
+import com.helloz.lemonaid.db.entity.*;
+import com.helloz.lemonaid.db.repository.*;
 import com.helloz.lemonaid.request.MedicalSearchFilter;
-import com.helloz.lemonaid.db.entity.MedicalType;
+import com.helloz.lemonaid.response.HospitalRes;
 import com.helloz.lemonaid.response.MedicalCode;
+import com.helloz.lemonaid.response.MedicalRes;
+import com.helloz.lemonaid.response.PharmacyRes;
+import com.helloz.lemonaid.util.GeometryUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Slf4j
 @Service
@@ -26,28 +31,32 @@ public class MedicalServiceImpl implements MedicalService {
     private final HospitalRepository hospitalRepository;
     private final PharmacyRepository pharmacyRepository;
     private final MedicalSubjectRepository medicalSubjectRepository;
+    private final MedicalRepository medicalRepository;
 
     @Override
-    public List<Medical> getMedicalList(MedicalSearchFilter filter) {
-        List<Medical> result = new ArrayList<>();
+    public Page<MedicalRes> getMedicalList(MedicalSearchFilter filter, Pageable pageable) {
+        Page<? extends Medical> result = null;
+        int subjectSize = filter.getSubjects() != null ? filter.getSubjects().size() : 0;
 
-        if (filter.getSearchType() == MedicalType.all) {
-            List<Hospital> hospitals = hospitalRepository.searchByFilter(filter,  filter.getSubjects() != null ? filter.getSubjects().size() : 0);
-            List<Pharmacy> pharmacies = pharmacyRepository.searchByFilter(filter);
-
-            if (hospitals != null) result.addAll(hospitals);
-            if (pharmacies != null) result.addAll( pharmacies);
-
-        } else if (filter.getSearchType() == MedicalType.hospital) {
-            List<Hospital> hospitals = hospitalRepository.searchByFilter(filter, filter.getSubjects() != null ? filter.getSubjects().size() : 0);
-            if (hospitals != null) result.addAll(hospitals);
-
+        if (filter.getSearchType() == MedicalType.hospital) {
+            result = hospitalRepository.searchByFilter(filter, subjectSize, pageable);
         } else if (filter.getSearchType() == MedicalType.pharmacy) {
-            List<Pharmacy> pharmacies = pharmacyRepository.searchByFilter(filter);
-            if (pharmacies != null) result.addAll(pharmacies);
+            result = pharmacyRepository.searchByFilter(filter, pageable);
+        } else {
+            result = medicalRepository.searchByFilter(filter, subjectSize, pageable);
         }
 
-        return result;
+        List<MedicalRes> contents = result.getContent().stream().map(m -> {
+            m.setDistance(GeometryUtil.getDistance(m.getLat(), m.getLng(), filter.getNowLat(), filter.getNowLng()));
+            if (m instanceof Hospital) {
+                return HospitalRes.of((Hospital) m);
+            } else {
+                return PharmacyRes.of((Pharmacy) m);
+            }
+        }).collect(Collectors.toList());
+
+
+        return new PageImpl<>(contents, pageable, result.getTotalElements());
     }
 
     @Override
@@ -67,6 +76,8 @@ public class MedicalServiceImpl implements MedicalService {
 
     @Override
     public List<MedicalCode> getMedicalCodeList() {
+
         return hospitalRepository.findCodeAll();
     }
+
 }

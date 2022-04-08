@@ -1,62 +1,67 @@
 import MedicineSerachItem from "./MedicineSerachItem";
-import "./MedicineFomula.css";
+import "./MedicineSearch.css";
 
 interface MedicineFomulaProps {
   page: number;
   updatePage: (arg: number) => void;
-  updateFomula: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineFomula(props: MedicineFomulaProps) {
-  const { page, updatePage, updateFomula } = props;
+  const { page, updatePage, updateCondition } = props;
 
   const onClickBack = () => {
     updatePage(page - 1);
-    updateFomula("");
+    updateCondition("color", "STEP2");
+    updateCondition("fomula", "STEP3");
   };
 
-  const onClickInit = () => {
-    updatePage(1);
-  };
-
-  const onClickFomula = (Fomula: string) => () => {
+  const onClickFomula = (value: string) => () => {
     updatePage(page + 1);
-    updateFomula(Fomula);
+    updateCondition("fomula", value);
   };
+
+  const MedicineFomulaList = [
+    "전체",
+    "정제",
+    "경질캡슐",
+    "연질캡슐",
+    "기타"
+  ]
 
   return (
-    <>
-      <h3>찾으시는 약은 어떤 제형인가요?</h3>
-      <div className="medicine-fomula-group-box">
-        <ul className="medicine-fomula-group">
-          <li>
-            <button onClick={onClickBack}>뒤로가기</button>
-          </li>
-          <li>
-            <button onClick={onClickInit}>초기화</button>
-          </li>
-          <li>
-            <span onClick={onClickFomula("제형전체")}>
-              <MedicineSerachItem itemName="제형전체"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickFomula("정제류")}>
-              <MedicineSerachItem itemName="정제류"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickFomula("경질캡슐")}>
-              <MedicineSerachItem itemName="경질캡슐"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickFomula("연질캡슐")}>
-              <MedicineSerachItem itemName="연질캡슐"></MedicineSerachItem>
-            </span>
-          </li>
-        </ul>
+    <div className="medicine-search-box">
+      <div>  
+        <p className="medicine-search-title">STEP{page}. 찾으시는 약은 어떤 제형인가요?</p>
+        <div className="medicine-search-group-box">
+          <ul className="medicine-search-group">
+            {MedicineFomulaList.map((formula, i: number) => (
+              <li
+                onClick={onClickFomula(formula)}
+                key={i}
+              >
+                <MedicineSerachItem
+                  itemName={formula}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </>
+      <div className="medicine-search-bottom">
+        <div className="medicine-search-back">
+          <img
+            onClick={onClickBack}
+            className="back-img"
+            src={require("../../assets/back-icon.png")}
+            alt=""
+          />
+          <p>STEP{page - 1}</p>
+        </div>
+        <p
+          onClick={onClickFomula("전체")}
+        >NEXT STEP - 분할선</p>
+      </div>
+    </div>
   );
 }

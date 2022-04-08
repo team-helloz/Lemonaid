@@ -7,7 +7,6 @@ interface SymptomsProps {
 }
 
 export default function Symptom(props: SymptomsProps) {
-
   const { nowSymptoms, removeSymptom } = props;
 
   function onClickSymptom(symptomname: string) {
@@ -17,15 +16,18 @@ export default function Symptom(props: SymptomsProps) {
 
   return (
     <div className="selected-symptom-group">
-      <p>증상 : </p>
-      { nowSymptoms.map((symptom, i: number) => (
-        <button
+      {nowSymptoms.length !== 0 ? <p>선택한 증상 :</p> : <p></p>}
+
+      {nowSymptoms.map((symptom, i: number) => (
+        <div
           key={i}
-          onClick={() => {onClickSymptom(symptom)}}
-          className="selected-symptom"
+          onClick={() => {
+            onClickSymptom(symptom);
+          }}
+          className="ssg-button"
         >
-          {symptom}
-        </button>
+          {symptom} <span className="ssg-close">✖︎</span>
+        </div>
       ))}
     </div>
   );

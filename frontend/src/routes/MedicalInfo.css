@@ -1,73 +1,294 @@
-#map {
-  left: 10vw;
-  width: 75vw;
-  height: 100vh;
+.medi-left {
+  position: absolute;
+  z-index: 2;
+  background: rgb(247, 247, 247);
+  width: 8vw;
+  height: 96vh;
+  left: 2vh;
+  top: 2vh;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
+.medi-home img {
+  width: 6vw;
+}
 .medi-home {
-  background: black;
-
-  color: white;
-  width: 10vw;
-  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7vw;
   cursor: pointer;
   height: 5vh;
   text-align: center;
-  bottom: 0;
+  border-bottom: 1px solid rgba(95, 95, 95, 0.5);
+  margin-bottom: 5px;
 }
 
 .medi-right {
   position: absolute;
   z-index: 2;
-  background: rgb(215, 215, 255);
-  width: 15vw;
-  height: 100vh;
-  right: 0;
-  top: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.medi-right::-webkit-scrollbar {
-  width: 0px;
-}
-.medi-left {
-  position: absolute;
-  z-index: 2;
-  background: rgb(150, 150, 245);
-  width: 10vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
+  width: 40vh;
+  height: 96vh;
+  right: 2vh;
+  top: 2vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .medi-search {
-  background: rgb(211, 160, 65);
-  width: 10vw;
-  height: 5vh;
   cursor: pointer;
+  margin-top: 10px;
+  font-weight: 700;
+  background: rgb(100, 218, 100);
+  border-radius: 5px;
+  padding: 10px;
+  width: 70%;
+  text-align: center;
+  color: rgb(80, 80, 80);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.mi-container {
+  display: flex;
+  flex-direction: row;
+  width: 420px;
+  height: 5vh;
+  left: 10vw;
+  top: 2vh;
+  position: absolute;
 }
 
-.medi-center1 {
+.medi-nav {
+  cursor: pointer;
+  font-size: 18px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  color: #383838;
+  font-weight: 600;
+  border-top: 1px solid rgba(60, 64, 67, 0.3);
+  transition: 0.2s;
+}
+
+.medi-nav:hover {
+  color: #06beb6;
+}
+.medi-nav1 {
+  margin-top: auto;
+}
+.custom-curposcontrol {
+  z-index: 2;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.custom-curposcontrol img {
+  height: 60%;
+  margin: 10px;
+}
+
+.medi-serach-detail {
   position: absolute;
   z-index: 2;
   background: rgb(100, 218, 100);
-  width: 30vw;
+  width: 400px;
   height: 5vh;
-  left: 50%;
-  top: 5%;
-  transform: translate(-50%, 0%);
+  left: 10vw;
+  top: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "lemon-font";
+  padding: 0px 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
-
-.medi-center2 {
+.medi-serach-detail input {
+  font-family: "lemon-font";
+  border: 0;
+  margin-left: 10px;
+  width: 100%;
+  height: 60%;
+  border-radius: 5px;
+  color: black;
+  font-weight: 600;
+}
+.medi-address-detail {
+  z-index: 2;
+  background: rgba(77, 150, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  margin-right: 5px;
+  font-weight: 600;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 0px 10px;
+}
+.medi-address-detail button {
+  margin-left: auto;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: "lemon-font";
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: rgb(83, 83, 83);
+  background: rgb(247, 247, 247);
+}
+.medi-bottom {
   position: absolute;
   z-index: 2;
-  background: rgb(64, 157, 219);
   width: 50vw;
-  height: 10vh;
-  left: 50%;
-  bottom: 5%;
-  transform: translate(-50%, 0%);
+  height: 5vh;
+  left: 20vw;
+  bottom: 5vh;
+  overflow: hidden;
+  border-radius: 10px;
+  vertical-align: middle;
+  background: rgb(247, 247, 247);
+  color: rgb(73, 73, 73);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.medi-bottom-menu-item {
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  border-right: 1px solid rgb(73, 73, 73);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(73, 73, 73);
+}
+.medi-bottom-menu-item:hover {
+  color: #06beb6;
+}
+.medi-bottom-menu-item-selected {
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  border-right: 1px solid rgb(73, 73, 73);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #06beb6;
+}
 
+.emer-text {
+  color: #ff1818;
+}
+.emer2 {
+  color: #06beb6;
+}
+.medi-bottom-menu-item img {
+  margin-right: 10px;
+}
+
+.medi-bottom-menu-item-selected img {
+  margin-right: 10px;
+}
+
+.medi-bottom-menu-item-code {
+  background-color: #c9c9c9;
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  border-right: 1px solid rgb(73, 73, 73);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(73, 73, 73);
+}
+
+.medi-bottom-menu-item-code img {
+  margin-left: 10px;
+}
+
+.medi-bottom-menu-item-code-selected {
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  border-right: 1px solid rgb(73, 73, 73);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #06beb6;
+}
+
+.medi-bottom-menu-item-code-selected img {
+  margin-left: 13px;
+}
+
+.medi-bottom-menu-item-subject {
+  background-color: #c9c9c9;
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(73, 73, 73);
+}
+
+.medi-bottom-menu-item-subject img {
+  margin-left: 10px;
+}
+
+.medi-bottom-menu-item-subject-selected {
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #06beb6;
+}
+
+.medi-bottom-menu-item-subject-selected img {
+  margin-left: 10px;
+}

@@ -1,7 +1,11 @@
-.part-group-box {
-  background-color: gray;
+.bodypart-container {
+  overflow: hidden;
+  border-left: 1px solid rgba(122, 122, 122, 0.3);
+  border-top: 1px solid rgba(122, 122, 122, 0.3);
 }
-
+.part-group-box {
+  overflow: hidden;
+}
 .body-part-group {
   list-style: none;
   padding: 0;
@@ -16,35 +20,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px 0;
-  background-color: rgb(151, 204, 235);
-  border: none;
+  padding: 10px 0;
+  border: 0;
+  border-right: 1px solid rgba(122, 122, 122, 0.3);
+  border-bottom: 1px solid rgba(122, 122, 122, 0.3);
   width: 112px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #474747;
+  background: white;
 }
 
 .part-btn:hover {
-  background-color: rgb(65, 126, 161);
-  cursor: pointer;
+  background-color: #06beb6;
 }
 
 .part-btn p {
-  margin: 0 0 0 10px;
+  margin: 0 0 0 13px;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "lemon-font";
 }
 
 .selected-part {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 0;
-  background-color: rgb(65, 126, 161);
-  border: none;
-  width: 112px;
-}
-
-.selected-part:hover {
-  cursor: pointer;
-}
-
-.selected-part p {
-  margin: 0 0 0 10px;
+  background-color: #06beb6;
+  color: white;
 }

@@ -1,4 +1,8 @@
-import { useEffect } from "react";
+import { Map, MapMarker, useMap, ZoomControl } from "react-kakao-maps-sdk";
+import { IHospital, ICoord } from "../../interface";
+import MedicalMarkerContainer from "./MedicalMarkerContainer";
+import MarkerMePng from "../../assets/medical_png/marker_me.png";
+import "./MedicalMap.css";
 
 declare global {
   interface Window {
@@ -6,19 +10,85 @@ declare global {
   }
 }
 
-export default function MedicalMap() {
-  useEffect(() => {
-    let container = document.getElementById("map");
-    let options = {
-      center: new window.kakao.maps.LatLng(35.850701, 128.570667), // 중심 좌표
-      level: 4, // 확대 정도
-    };
+interface MedicalMapProps {
+  setViewCenter: (coord: ICoord) => void;
+  hospitals: IHospital[];
+  handDetailOpen: (hospital: IHospital) => void;
+  directionMode: boolean;
+  nowCenter: ICoord;
+  userGeo: () => void;
+  isEmergency: boolean;
+  selectHospital: string;
+  UpdateSelectHospital: (
+    selectedHospital: string,
+    selectedLat: number,
+    selectedLng: number
+  ) => void;
+  setMapZoomLevel: (mapZoomLevel: number) => void;
+  setKakaoMap: (map: kakao.maps.Map | null) => void;
+}
 
-    let map = new window.kakao.maps.Map(container, options);
-    var position = map.getCenter();
-    var control = new window.kakao.maps.ZoomControl();
-    map.addControl(control, window.kakao.maps.ControlPosition.TOPRIGHT);
-    console.log(position);
-  }, []);
-  return <div id="map"></div>;
+export default function KakaoMap(props: MedicalMapProps) {
+  const {
+    setViewCenter,
+    hospitals,
+    handDetailOpen,
+    directionMode,
+    nowCenter,
+    userGeo,
+    isEmergency,
+    selectHospital,
+    UpdateSelectHospital,
+    setMapZoomLevel,
+    setKakaoMap,
+  } = props;
+
+  return (
+    <>
+      <Map
+        center={{ lat: nowCenter.lat, lng: nowCenter.lng }}
+        style={{ width: "100vw", height: "100vh" }}
+        level={4} // 지도의 확대 레벨
+        onCenterChanged={(map) =>
+          setViewCenter({
+            lat: map.getCenter().getLat(),
+            lng: map.getCenter().getLng(),
+          })
+        }
+        onZoomChanged={(map) => setMapZoomLevel(map.getLevel())}
+        onCreate={(map) => setKakaoMap(map)}
+      >
+        <MapMarker
+          position={{ lat: nowCenter.lat, lng: nowCenter.lng }} // 마커를 표시할 위치
+          image={{
+            src: MarkerMePng,
+            size: MarkerMePng,
+            options: {
+              spriteSize: { width: 36, height: 60 },
+              spriteOrigin: { x: 20, y: 65 },
+            },
+          }}
+        />
+        {hospitals &&
+          hospitals.map((hospital, _index) => (
+            <MedicalMarkerContainer
+              hospital={hospital}
+              handDetailOpen={handDetailOpen}
+              key={hospital.no}
+              directionMode={directionMode}
+              isEmergency={isEmergency}
+              selectHospital={selectHospital}
+              UpdateSelectHospital={UpdateSelectHospital}
+            />
+          ))}
+        {/* <ZoomControl position={kakao.maps.ControlPosition.TOP} /> */}
+      </Map>
+      {/* 지도 현재위치 컨트롤 div 입니다 */}
+      {/* <div className="custom-curposcontrol" onClick={userGeo}>
+        <span>
+          <img src={CustomCurpos} alt="현재위치" />
+        </span>
+      </div> */}
+    </>
+  );
 }
