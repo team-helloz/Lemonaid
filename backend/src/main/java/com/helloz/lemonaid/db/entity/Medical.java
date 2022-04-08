@@ -5,18 +5,45 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 @Getter
 @Setter
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class Medical {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "medical_type")
+@Table(name = "MEDICAL")
+public abstract class Medical{
 
-    MedicalType type;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "medical_no")
+    private long no;
 
-    public Medical(){
+    @OneToOne
+    @JoinColumn(name = "opentime_no")
+    private OpenTime opentime;
 
-    }
+    @Column(name = "medical_name")
+    private String name;
 
-    public Medical(MedicalType medicalType) {
-        this.type = medicalType;
-    }
+    @Column(name = "medical_tel")
+    private String tel;
+
+    @Column(name = "medical_y")
+    private double lat;
+
+    @Column(name = "medical_x")
+    private double lng;
+
+    @Column(name = "medical_address")
+    private String address;
+
+    @Column(name = "medical_parking_count")
+    private int parkingCount;
+
+    @Transient
+    private double distance;
 }

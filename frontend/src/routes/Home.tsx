@@ -1,11 +1,19 @@
+// Route
 import { useHistory } from "react-router-dom";
+// Components
+import HomeScroll from "../components/Home/HomeScroll";
+import SlideWidget from "../components/Home/SlideWidget";
+import HomeNav from "../components/Home/HomeNav";
+// SVG
+import stethoscope from "../assets/home-img.svg"
+// Style
+import "./Home.css";
 
 export default function Home() {
-  // 경로로 이동하는 함수
   const history = useHistory();
 
+  // 해당 링크로 이동
   function routeMedical() {
-    // 해당 링크로 이동
     history.push("/medical");
   }
   function routeMedicine() {
@@ -17,21 +25,47 @@ export default function Home() {
   function routeCovid() {
     history.push("/covid");
   }
+
+  window.addEventListener("scroll", function() {
+    const Mouse = this.document.getElementById("mouse")
+    if (this.window.scrollY > 150) {
+      Mouse?.classList.add("home-mouse-active")
+      Mouse?.classList.add("home-mouse-none")
+    } else {
+      Mouse?.classList.remove("home-mouse-none")
+      Mouse?.classList.remove("home-mouse-active")
+    }
+  })
+
   return (
-    <div>
-      <h1>home</h1>
-      <div className="home-hospital cursor-pointer" onClick={routeMedical}>
-        <p>의료기관 조회</p>
+    <div className="home-page">
+      <div className="h-main">
+        <SlideWidget />
+        <div className="logo-container">
+          <img className="team-logo" src="/Lemonaid.png" alt="" />
+          <p className="logo-description">건강한 삶을 위한 의료 정보 플랫폼</p>
+        </div>
+        <img src={stethoscope} alt="" className="home-stethoscope" />
+        <img src="./line.png" alt="" className="home-line"/>
+        <p className="home-mouse">
+          <span id="mouse"></span>
+        </p>
+        <p className="team">ⓒ SSAFY 6th - 안녕즈</p>
       </div>
-      <div className="home-medicine cursor-pointer" onClick={routeMedicine}>
-        <p>의약품 조회</p>
-      </div>
-      <div className="home-disease cursor-pointer" onClick={routeDisease}>
-        <p>질병 조회</p>
-      </div>
-      <div className="home-covid cursor-pointer" onClick={routeCovid}>
-        <p>코로나</p>
-      </div>
+
+      <HomeScroll
+        routeMedical={routeMedical}
+        routeMedicine={routeMedicine}
+        routeDisease={routeDisease}
+        routeCovid={routeCovid}
+      />
+
+      <HomeNav
+        routeMedical={routeMedical}
+        routeMedicine={routeMedicine}
+        routeDisease={routeDisease}
+        routeCovid={routeCovid}
+      />
     </div>
   );
 }

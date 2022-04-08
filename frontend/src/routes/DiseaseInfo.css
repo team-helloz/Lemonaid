@@ -4,12 +4,18 @@
   width: 100%;
 }
 
-.to-top {
-  position: fixed;
-  right: 250px;
-  bottom: 50px;
+.d-symptom-group {
+  margin-bottom: 60px;
 }
 
-.to-top:hover {
+.to-top {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  border: 0;
+  background: none;
+  font-weight: 600;
+  font-size: 15px;
   cursor: pointer;
+  font-family: "lemon-font";
 }

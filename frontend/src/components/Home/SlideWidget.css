@@ -1,0 +1,162 @@
+.h-m-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.h-m-menu-list p {
+  position: absolute;
+  margin: 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.h-m-medical {
+  color: #06beb6;
+  top: 485px;
+  left: 180px;
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.h-m-medicine {
+  color: rgb(150, 150, 150);
+  top: 531px;
+  left: 165px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.h-m-disease {
+  color: rgb(150, 150, 150);
+  top: 571px;
+  left: 150px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.h-m-covid {
+  color: rgb(150, 150, 150);
+  top: 611px;
+  left: 130px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.stethoscope {
+  position: absolute;
+  top: 375px;
+  left: -125px;
+  height: 250px;
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+/* Animation */
+.h-m-translate {
+  transition: all 0.5s ease;
+}
+
+.h-m-circle {
+  position: absolute;
+  top: 340px;
+  left: -155px;
+  height: 300px;
+  width: 300px;
+  border: 1px solid;
+  border-radius: 100%;
+}
+
+.circle-st {
+  border-radius: 50%;
+  border: 8px solid transparent;
+  background-size: 100% 100%, 50% 50%, 50% 50%, 50% 50%, 50% 50%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247)),
+    linear-gradient(30deg, lightgrey 36%, lightgrey 30%),
+    linear-gradient(130deg, #06beb6 36%, lightgrey 30%),
+    linear-gradient(300deg, lightgrey 36%, lightgrey 30%),
+    linear-gradient(210deg, lightgrey 36%, lightgrey 30%);
+  background-position: center center, left top, right top, left bottom,
+    right bottom;
+  background-origin: content-box, border-box, border-box, border-box, border-box;
+  background-clip: content-box, border-box, border-box, border-box, border-box;
+  transform: rotate(10deg);
+}
+
+.circle-turn-1 {
+  transform: rotate(45deg);
+}
+.circle-turn-2 {
+  transform: rotate(90deg);
+}
+.circle-turn-3 {
+  transform: rotate(135deg);
+}
+/* Medical */
+.medical-up-1 {
+  transform: translate(-15px, -40px);
+  color: rgb(150, 150, 150);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.medical-up-2 {
+  transform: translate(-30px, -80px);
+}
+
+.medical-up-3 {
+  transform: translate(-50px, -120px);
+}
+/* Medicine */
+.medicine-up-1 {
+  transform: translate(15px, -46px);
+  color: #06beb6;
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.medicine-up-2 {
+  transform: translate(0, -86px);
+  color: rgb(150, 150, 150);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.medicine-up-3 {
+  transform: translate(-15px, -126px);
+}
+
+/* Disease */
+.disease-up-1 {
+  transform: translate(15px, -40px);
+}
+
+.disease-up-2 {
+  color: #06beb6;
+  transform: translate(30px, -86px);
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.disease-up-3 {
+  transform: translate(15px, -126px);
+  color: rgb(150, 150, 150);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+/* Covid */
+.covid-up-1 {
+  transform: translate(20px, -40px);
+}
+
+.covid-up-2 {
+  transform: translate(35px, -80px);
+}
+
+.covid-up-3 {
+  color: #06beb6;
+  transform: translate(50px, -126px);
+  font-size: 18px;
+  letter-spacing: 3px;
+}

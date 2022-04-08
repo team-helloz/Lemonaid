@@ -1,96 +1,110 @@
 import MedicineSerachItem from "./MedicineSerachItem";
-import "./MedicineColor.css";
+import "./MedicineSearch.css";
 
 interface MedicineColorProps {
   page: number;
   updatePage: (arg: number) => void;
-  updateColor: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineColor(props: MedicineColorProps) {
-  const { page, updatePage, updateColor } = props;
+  const { page, updatePage, updateCondition } = props;
 
   const onClickBack = () => {
     updatePage(page - 1);
-    updateColor("");
+    updateCondition("shape", "STEP1");
   };
 
-  const onClickInit = () => {
-    updatePage(1);
-  };
-
-  const onClickColor = (color: string) => () => {
+  const onClickColor = (value: string) => () => {
     updatePage(page + 1);
-    updateColor(color);
+    updateCondition("color", value);
   };
+
+  const MedicineColorList = [
+    [
+      "전체",
+      "하양",
+      "노랑",
+      "주황",
+      "분홍",
+      "빨강"
+    ],
+    [
+      "갈색",
+      "연두",
+      "초록",
+      "청록",
+      "파랑",
+      "남색"
+    ],
+    [
+      "자주",
+      "보라",
+      "회색",
+      "검정",
+      "투명"
+    ]
+  ]
 
   return (
-    <>
-      <h3>찾으시는 약은 어떤 색깔인가요?</h3>
-      <div className="medicine-color-group-box">
-        <ul className="medicine-color-group">
-          <li>
-            <button onClick={onClickBack}>뒤로가기</button>
-          </li>
-          <li>
-            <button onClick={onClickInit}>초기화</button>
-          </li>
-          <li>
-            <span onClick={onClickColor("하양")}>
-              <MedicineSerachItem itemName="하양"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickColor("노랑")}>
-              <MedicineSerachItem itemName="노랑"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickColor("주황")}>
-              <MedicineSerachItem itemName="주황"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickColor("분홍")}>
-              <MedicineSerachItem itemName="분홍"></MedicineSerachItem>
-            </span>
-          </li>
+    <div className="medicine-search-box">
+      <p className="medicine-search-title">STEP{page}. 찾으시는 약은 어떤 색상인가요?</p>
+      <div className="medicine-search-group-box">
+        <ul className="medicine-search-group">
+          {MedicineColorList[0].map((color, i: number) => (
+            <li
+              onClick={onClickColor(color)}
+              key={i}
+            >
+              <MedicineSerachItem
+                itemName={color}
+              />
+            </li>
+          ))}
         </ul>
       </div>
-      <div className="medicine-color-group-box">
-        <ul className="medicine-color-group">
-          <li>
-            <span onClick={onClickColor("빨강")}>
-              <MedicineSerachItem itemName="빨강"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickColor("갈색")}>
-              <MedicineSerachItem itemName="갈색"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickColor("연두")}>
-              <MedicineSerachItem itemName="연두"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickColor("초록")}>
-              <MedicineSerachItem itemName="초록"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickColor("청록")}>
-              <MedicineSerachItem itemName="청록"></MedicineSerachItem>
-            </span>
-          </li>
-          <li>
-            <span onClick={onClickColor("파랑")}>
-              <MedicineSerachItem itemName="파랑"></MedicineSerachItem>
-            </span>
-          </li>
+      <div className="medicine-search-group-box">
+        <ul className="medicine-search-group">
+        {MedicineColorList[1].map((color, i: number) => (
+            <li
+              onClick={onClickColor(color)}
+              key={i}
+            >
+              <MedicineSerachItem
+                itemName={color}
+              />
+            </li>
+          ))}
         </ul>
       </div>
-    </>
+      <div className="medicine-search-group-box">
+        <ul className="medicine-search-group">
+        {MedicineColorList[2].map((color, i: number) => (
+            <li
+              onClick={onClickColor(color)}
+              key={i}
+            >
+              <MedicineSerachItem
+                itemName={color}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="medicine-search-bottom">
+        <div className="medicine-search-back">
+          <img
+            onClick={onClickBack}
+            className="back-img"
+            src={require("../../assets/back-icon.png")}
+            alt=""
+          />
+          <p>STEP{page - 1}</p>
+        </div>
+        <p
+          onClick={onClickColor("전체")}
+        >NEXT STEP - 제형</p>
+      </div>
+    </div>
   );
 }

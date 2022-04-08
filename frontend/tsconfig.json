@@ -23,5 +23,8 @@
   "include": [
     "src",
     "src/custom.d.ts"
+  ],
+  "types":[
+    "kakao.maps.d.ts"
   ]
 }

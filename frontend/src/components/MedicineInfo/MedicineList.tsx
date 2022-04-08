@@ -1,111 +1,172 @@
-import { NavLink, useLocation } from "react-router-dom";
-import NavBar from "../NavBar";
-
+// React
+import { useEffect, useState } from "react";
+// Router
+import { useHistory } from "react-router-dom";
+// axios
+import axios from "axios";
+// SVG
+import Popup from "../../assets/popup.svg";
+// Style
 import "./MedicineList.css";
 
-interface medicineInfoInterface {
-  medicineInfo: {
-    shape: string;
-    color: string;
-    fomula: string;
-    divide: string;
-    identifier: string;
-  };
+interface SearchData {
+  shape: string;
+  color: string;
+  form: string;
+  line: string;
+  sign: string;
+  medicineName: string;
 }
 
-export default function MedicineList() {
-  const location = useLocation();
-  const medicineInfoInterface = location.state as medicineInfoInterface;
-  const { medicineInfo } = medicineInfoInterface;
+interface Medicine {
+  no: number;
+  num: number;
+  name: string;
+  company: string;
+  class_name: string;
+  etc_otc_name: string;
+}
 
-  const medicines = [
-    {
-      name: "팍스로비드",
-      desc: "측면에 텍스트가 있는 이미지리스트입니다.",
-      image: "img",
-    },
-    {
-      name: "팍스로비드",
-      desc: "측면에 텍스트가 있는 이미지리스트입니다.",
-      image: "img",
-    },
-    {
-      name: "팍스로비드",
-      desc: "측면에 텍스트가 있는 이미지리스트입니다.",
-      image: "img",
-    },
-  ];
+export default function MedicineList(props: SearchData) {
+
+  const history = useHistory();
+  const { shape, color, form, line, sign, medicineName } = props
+  const [medicineList, setList] = useState<Medicine[]>([]);
+  const [nowPage, setPage] = useState<number>(0);
+  const [totalPage, setTotal] = useState<number>(0);
+  const [pageBtn, setBtn] = useState<number[]>([]);
+
+  function routeDetail(medicineNo: number) {
+    history.push(`/medicine/${medicineNo}`);
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({top:0, left:0, behavior: 'smooth'});
+  };
+
+  const handleLoad = () => {
+    let url = ""
+    if (medicineName === "") {
+      let nl = ""
+      if (line === "+") {        
+        nl = "%2B"
+      } else {
+        nl = line
+      }
+      url = `/medicine?shape=${shape}&color=${color}&form=${form}&line=${nl}&sign=${sign}&page=${nowPage}&size=20`
+    } else {
+      url = `/medicine?shape=전체&color=전체&form=전체&line=전체&sign=전체&name=${medicineName}`
+    }
+
+    axios
+      .get(url)
+      .then((res) => {
+        setList(res.data.medicineList)
+        setTotal(~~((res.data.resultCnt + 1) / 20))
+      })
+      //.catch((err) => {console.log(err);})
+  }
+  useEffect(() => {
+    handleLoad();
+  }, [shape, color, form, line, sign, nowPage]);
+
+  function pageChange(n: number) {
+    setPage(n)
+  }
+
+  function paginationBtn() {
+    const result = []
+    if (nowPage < 2) {
+      for (let i = 0; i <= totalPage && i < 5; i++) {
+        result.push(i)
+      }
+    } else if (nowPage + 2 > totalPage) {
+      for (let i = totalPage - 4; i <= totalPage; i++) {
+        result.push(i)
+      }
+    }
+      else {
+      for (let i = nowPage - 2; i <= totalPage && i <= nowPage + 2; i++) {
+        result.push(i)
+      }
+    }
+    setBtn(result)
+  }
+  useEffect(() => {
+    paginationBtn();
+  }, [nowPage, totalPage])
 
   return (
-    <>
-      <NavBar></NavBar>
-      <h2>의약품 검색 결과</h2>
-      <h3>
-        검색조건 : {medicineInfo.shape} {" > "} {medicineInfo.color} {" > "}{" "}
-        {medicineInfo.fomula} {" > "}
-        {medicineInfo.divide} {" > "} {medicineInfo.identifier}
-      </h3>
-      <NavLink to="/medicine">
-        <button>검색조건 초기화</button>
-      </NavLink>
+    <div className="medicine-list-page">
+      <button onClick={scrollToTop} className="to-top">
+        맨 위로
+      </button>
       <div className="medicine-list-group-box">
-        <ul className="medicine-list-type">
-          <li>
-            <NavLink to="/medicine/list/park">
-              <img
-                src={require("../../assets/medicine.png")}
-                width="90"
-                height="90"
-                alt=""
-              />
-            </NavLink>
-            <NavLink to="/medicine/list/park">
-              <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/medicine/list/park">
-              <img
-                src={require("../../assets/medicine.png")}
-                width="90"
-                height="90"
-                alt=""
-              />
-            </NavLink>
-            <NavLink to="/medicine/list/park">
-              <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/medicine/list/park">
-              <img
-                src={require("../../assets/medicine.png")}
-                width="90"
-                height="90"
-                alt=""
-              />
-            </NavLink>
-            <NavLink to="/medicine/list/park">
-              <strong>측면에 텍스트가 있는 이미지리스트입니다.</strong>측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.측면에 텍스트가 있는
-              이미지리스트입니다.측면에 텍스트가 있는 이미지리스트입니다.측면에
-              텍스트가 있는 이미지리스트입니다.
-            </NavLink>
-          </li>
-        </ul>
+        {medicineList.length > 0 && medicineList.map((medicine, i: number) => (
+          <div
+            key={i}
+            onClick={() => routeDetail(medicine.no)}
+            className="medicine-list-item"
+          >
+            <img
+              className="medicine-list-item-img"
+              src={`https://j6d108.p.ssafy.io/images/medicine/${medicine.num}.jpg`}
+              alt=""
+            />
+            <div>
+              <div className="medicine-list-item-title">
+                <p className="medicine-list-item-name">{medicine.name}</p>
+                <img
+                  className="medicine-list-item-popup"
+                  src={Popup}
+                  alt=""
+                />
+              </div>
+              <div className="medicine-list-item-desc">
+                <p>○ 제조사: {medicine.company}</p>
+                <p>○ 분류: {medicine.class_name}</p>
+                <p>○ 구분: {medicine.etc_otc_name}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+        {medicineList.length === 0 && (
+          <div className="medicine-list-group-box">
+            <p>검색 결과가 없습니다.</p>
+          </div>
+        )}
       </div>
-    </>
+      {totalPage > 20 && (
+        <div className="pagination2">
+          <div
+            onClick={() => {pageChange(0)}}
+            className="pagination-pre-btn"
+          >
+            <p>{"<<"}</p>
+          </div>
+
+          {pageBtn.map((num, i: number) => (
+            <div
+              key={i}
+              onClick={() => {pageChange(num)}}
+              className={
+                nowPage === num
+                  ? "pagination-btn now-page-num"
+                  : "pagination-btn"
+              }
+            >
+              <p>{num + 1}</p>
+            </div>
+          ))}
+
+          <div
+            onClick={() => {pageChange(totalPage)}}
+            className="pagination-nxt-btn"
+          >
+            <p>{">>"}</p>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

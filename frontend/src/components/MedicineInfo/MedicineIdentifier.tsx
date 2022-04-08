@@ -1,16 +1,21 @@
-import { useState } from "react";
-import "./MedicineIdentifier.css";
+// React
+import { useState, useEffect } from "react";
+import { KeyboardEvent } from "react";
+// Style
+import "./MedicineSearch.css";
 
 interface MedicineIdentifierProps {
   page: number;
+  isSearch: boolean;
   updatePage: (arg: number) => void;
-  moveMedicineList: (arg: string) => void;
+  updateCondition: (name: string, value: string) => void;
 }
 
 export default function MedicineIdentifier(props: MedicineIdentifierProps) {
-  const { page, updatePage, moveMedicineList } = props;
-
+  
+  const { page, isSearch, updatePage, updateCondition } = props;
   const [value, setValue] = useState("");
+  const [hide, sethide] = useState<boolean>(false);
 
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
     const {
@@ -19,47 +24,99 @@ export default function MedicineIdentifier(props: MedicineIdentifierProps) {
     setValue(value);
   };
 
+  function keyDownHandler(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.code === "Enter") {
+      onClickIdentifier();
+    }
+  }
+
+  function closeSearchBox() {
+    const SearchBox = document.getElementById("search-box");
+    SearchBox?.classList.add("medicine-search-close")
+    window.setTimeout(() => SearchBox?.classList.add("medicine-search-none"), 500)
+    sethide(true);
+  }
+
+  function openSearchBox() {
+    const SearchBox = document.getElementById("search-box");
+    SearchBox?.classList.remove("medicine-search-none")
+    window.setTimeout(() => SearchBox?.classList.remove("medicine-search-close"), 10)
+    sethide(false);
+  }
+
+  useEffect(() => {
+    if (isSearch) {
+      closeSearchBox()
+    }
+  }, [isSearch])
+
   const onClickBack = () => {
     updatePage(page - 1);
-  };
-
-  const onClickInit = () => {
-    updatePage(1);
+    updateCondition("divide", "STEP4");
+    updateCondition("identifier", "STEP5");
   };
 
   const onClickDontKnow = () => {
-    moveMedicineList("식별문자모름");
+    updateCondition("identifier", "전체");
+    closeSearchBox();
   };
 
   const onClickIdentifier = () => {
-    moveMedicineList(value);
+    let identifier = value;
+    if (identifier === "") {
+      identifier = "전체";
+    }
+    updateCondition("identifier", identifier);
+    closeSearchBox();
   };
 
   return (
-    <>
-      <h3>찾으시는 약은 어떤 식별문자가 있나요?</h3>
-      <div className="medicine-identifier-group-box">
-        <ul className="medicine-identifier-group">
-          <li>
-            <button onClick={onClickBack}>뒤로가기</button>
-          </li>
-          <li>
-            <button onClick={onClickInit}>초기화</button>
-          </li>
-          <li>
-            <button onClick={onClickDontKnow}>식별문자모름</button>
-          </li>
-          <li>
-            <input
-              value={value}
-              onChange={onChange}
-              placeholder="식별문자 (약의 앞면이나 뒷면의 문자)"
-              className="medicine-identifier-input"
-            ></input>
-            <button onClick={onClickIdentifier}>확인</button>
-          </li>
-        </ul>
+    <div>
+      <div
+        id="search-box"
+        className="medicine-search-box"
+      >
+        <p className="medicine-search-title">STEP{page}. 찾으시는 약은 어떤 식별문자가 있나요?</p>
+        <div className="medicine-search-identifier-box">
+          <input
+            value={value}
+            onChange={onChange}
+            onKeyDown={keyDownHandler}
+            placeholder="식별문자 (약의 앞면이나 뒷면의 문자)"
+            className="medicine-search-input"
+          ></input>
+          <button
+            className="medicine-search-btn"
+            onClick={onClickIdentifier}
+          >확인</button>
+          <button
+            className="medicine-search-btn"
+            onClick={onClickDontKnow}
+          >식별문자모름</button>
+        </div>
+        <div className="medicine-search-bottom">
+        <div className="medicine-search-back">
+            <img
+              onClick={onClickBack}
+              className="back-img"
+              src={require("../../assets/back-icon.png")}
+              alt=""
+            />
+            <p>STEP{page - 1}</p>
+          </div>
+          <p
+            onClick={onClickDontKnow}
+          >FINAL STEP</p>
+        </div>
       </div>
-    </>
+      {hide && !isSearch && (
+        <div
+          onClick={openSearchBox}
+          className="medicine-search-open"
+        >
+          <img className="medicine-search-open-btn" src="./Asset 83.png" alt="" />
+        </div>
+      )}
+    </div>
   );
 }
