@@ -126,11 +126,11 @@
 
 ## 서비스 아키텍처
 
-![SystemArchitecture](산출물/SystemArchitecture.assets/%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B5%AC%EC%84%B1%EB%8F%84.png)
+![SystemArchitecture](readme/%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B5%AC%EC%84%B1%EB%8F%84.png)
 
 ## ER Diagram
 
-![lemonaid_erd_220407](산출물/ERD.assets/lemonaid%20_erd_220407.png)
+![lemonaid_erd_220407](readme/lemonaid_erd_220407.png)
 
 ## 안녕즈 팀
 
